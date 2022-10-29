@@ -9,7 +9,6 @@ public interface StudentRepository {
 
     void saveStudent(Student student);
     void removeStudentWithId(Long id);
-    void updateStudentWithId(Long id, Object studentDto); // todo; create StudentDto
     Optional<Student> findStudentWithId(Long id);
     List<Student> getAllStudents();
 
