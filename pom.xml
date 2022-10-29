@@ -111,7 +111,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.unidashboard.universitydashboard/com.unidashboard.universitydashboard.HelloApplication
+                                com.unidashboard.universitydashboard/com.fxproject.unidashboard.HelloApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

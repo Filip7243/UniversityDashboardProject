@@ -4,10 +4,12 @@ module com.unidashboard.universitydashboard {
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
-    requires validatorfx;
+    requires net.synedra.validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
+    requires jakarta.persistence;
+    requires org.hibernate.orm.core;
 
-    opens com.unidashboard.universitydashboard to javafx.fxml;
-    exports com.unidashboard.universitydashboard;
+    opens com.fxproject.unidashboard to javafx.fxml, org.hibernate.orm.core;
+    exports com.fxproject.unidashboard;
 }

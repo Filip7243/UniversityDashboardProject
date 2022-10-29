@@ -1,4 +1,4 @@
-package com.unidashboard.universitydashboard;
+package com.fxproject.unidashboard;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

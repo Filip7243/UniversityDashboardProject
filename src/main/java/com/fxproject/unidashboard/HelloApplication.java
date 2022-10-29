@@ -1,4 +1,4 @@
-package com.unidashboard.universitydashboard;
+package com.fxproject.unidashboard;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
