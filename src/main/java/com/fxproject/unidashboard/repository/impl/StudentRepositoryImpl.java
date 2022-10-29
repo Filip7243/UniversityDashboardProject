@@ -11,10 +11,9 @@ import java.util.Optional;
 
 public class StudentRepositoryImpl implements StudentRepository {
 
-    private EntityManager em;
+    private EntityManager em = HibernateUtils.getEntityManager();
 
-    public StudentRepositoryImpl(EntityManager em) {
-        this.em = HibernateUtils.getEntityManager();
+    public StudentRepositoryImpl() {
     }
 
     @Override
