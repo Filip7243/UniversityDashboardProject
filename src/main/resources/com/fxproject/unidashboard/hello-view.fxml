@@ -14,7 +14,12 @@
     </padding>
 
     <TextField fx:id="idInput"/>
+    <TextField fx:id="firstNameInput"/>
+    <TextField fx:id="secondNameInput"/>
+    <TextField fx:id="lastNameInput"/>
     <ListView fx:id="studentsDtoList"/>
     <Button text="Hello!" onAction="#onHelloButtonClick"/>
     <Button text="Find!" onAction="#onFindButtonClick" fx:id="findButton"/>
+    <Button text="Find!" onAction="#onAddButtonClick" fx:id="addButton"/>
+    <Button text="Find!" onAction="#onRemoveButtonClick" fx:id="removeButton"/>
 </VBox>

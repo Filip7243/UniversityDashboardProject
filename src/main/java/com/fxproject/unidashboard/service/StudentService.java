@@ -41,11 +41,31 @@ public class StudentService {
             em.getTransaction().begin();
             Student student = studentRepository.findStudentWithId(id).orElseThrow();// todo; custom exception
             em.getTransaction().commit();
-            return new StudentDto(student.getAlbumId(), student.getFirstName(), student.getSecondName(), student.getLastName(), student.getEmail(),
+            return new StudentDto(student.getId(), student.getAlbumId(), student.getFirstName(), student.getSecondName(), student.getLastName(), student.getEmail(),
                     student.getUniversityEmail(), student.getPhoneNumber(), student.getAlbumId());
         } catch (Exception e) {
             em.getTransaction().rollback();
             return null;
+        }
+    }
+
+    public void saveStudent(Student student) {
+        try {
+            em.getTransaction().begin();
+            studentRepository.saveStudent(student);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+        }
+    }
+
+    public void removeStudentWithId(Long id) {
+        try {
+            em.getTransaction().begin();
+            studentRepository.removeStudentWithId(id);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
         }
     }
 

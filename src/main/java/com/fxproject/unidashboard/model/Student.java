@@ -183,4 +183,19 @@ public class Student {
     public void setParentId(Long parentId) {
         this.parentId = parentId;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+               "id=" + id +
+               ", albumId='" + albumId + '\'' +
+               ", firstName='" + firstName + '\'' +
+               ", secondName='" + secondName + '\'' +
+               ", lastName='" + lastName + '\'' +
+               ", email='" + email + '\'' +
+               ", universityEmail='" + universityEmail + '\'' +
+               ", dateOfBirth=" + dateOfBirth +
+               ", placeOfBirth='" + placeOfBirth + '\'' +
+               '}';
+    }
 }

@@ -2,6 +2,7 @@ package com.fxproject.unidashboard.dto;
 
 public class StudentDto {
 
+    private Long id;
     private String albumId; // this is id that student uses (generate value)
     private String firstName;
     private String secondName; // optional
@@ -11,7 +12,8 @@ public class StudentDto {
     private String phoneNumber;
     private String pesel;
 
-    public StudentDto(String albumId, String firstName, String secondName, String lastName, String email, String universityEmail, String phoneNumber, String pesel) {
+    public StudentDto(Long id, String albumId, String firstName, String secondName, String lastName, String email, String universityEmail, String phoneNumber, String pesel) {
+        this.id = id;
         this.albumId = albumId;
         this.firstName = firstName;
         this.secondName = secondName;
@@ -25,7 +27,7 @@ public class StudentDto {
     @Override
     public String toString() {
         return "StudentDto{" +
-               "albumId='" + albumId + '\'' +
+               ", albumId='" + albumId + '\'' +
                ", firstName='" + firstName + '\'' +
                ", secondName='" + secondName + '\'' +
                ", lastName='" + lastName + '\'' +
@@ -34,6 +36,14 @@ public class StudentDto {
                ", phoneNumber='" + phoneNumber + '\'' +
                ", pesel='" + pesel + '\'' +
                '}';
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getAlbumId() {

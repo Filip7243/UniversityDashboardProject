@@ -2,24 +2,22 @@ package com.fxproject.unidashboard;
 
 import com.fxproject.unidashboard.dto.StudentDto;
 import com.fxproject.unidashboard.model.Student;
-import com.fxproject.unidashboard.repository.StudentRepository;
-import com.fxproject.unidashboard.repository.impl.StudentRepositoryImpl;
 import com.fxproject.unidashboard.service.StudentService;
 import com.fxproject.unidashboard.utils.HibernateUtils;
-import jakarta.persistence.EntityManager;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 
 public class HelloController {
     @FXML
@@ -28,24 +26,33 @@ public class HelloController {
     private ListView<StudentDto> studentsDtoList;
     @FXML
     private Button findButton;
+    @FXML
+    private TextField firstNameInput;
+    @FXML
+    private TextField secondNameInput;
+    @FXML
+    private TextField lastNameInput;
+    @FXML
+    private Button addButton;
+
 
     private StudentService studentService;
-    private List<StudentDto> students;
+    private ObservableList<StudentDto> students;
 
     public void initialize() {
         this.studentService = new StudentService(HibernateUtils.getEntityManager());
         this.students = FXCollections.observableList(studentService.getAllStudents());
 
-        // input for finding
+        // input
         findButton.setDisable(true);
-        idInput.textProperty().addListener((obs, oldText, newText) -> {
-            findButton.setDisable(obs.getValue().trim().isEmpty());
-        });
+        idInput.textProperty()
+                .addListener((obs, oldText, newText) -> findButton.setDisable(obs.getValue().trim().isEmpty()));
+
     }
 
     @FXML
     protected void onHelloButtonClick() {
-        studentsDtoList.setItems((ObservableList<StudentDto>) students);
+        studentsDtoList.setItems(students);
     }
 
     @FXML
@@ -58,4 +65,38 @@ public class HelloController {
 
         studentsDtoList.setItems(s);
     }
+
+    @FXML
+    protected void onAddButtonClick() {
+        Student student = new Student(
+                null,
+                "123",
+                firstNameInput.getText(),
+                secondNameInput.getText(),
+                lastNameInput.getText(),
+                "231321",
+                "321351",
+                LocalDateTime.now(),
+                "sadsa",
+                "3214214",
+                "2414214",
+                LocalDateTime.now(),
+                LocalDateTime.now(),
+                true,
+                1L
+        );
+        studentService.saveStudent(student);
+        students = FXCollections.observableList(studentService.getAllStudents());
+        studentsDtoList.setItems(students);
+    }
+
+    @FXML
+    protected void onRemoveButtonClick() {
+        Long id = studentsDtoList.getSelectionModel().getSelectedItem().getId();
+        studentService.removeStudentWithId(id);
+        students = FXCollections.observableList(studentService.getAllStudents());
+        studentsDtoList.setItems(students);
+    }
+
+
 }
