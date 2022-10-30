@@ -1,4 +1,4 @@
-module com.unidashboard.universitydashboard {
+module com.fxproject.unidashboard {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -11,5 +11,6 @@ module com.unidashboard.universitydashboard {
     requires org.hibernate.orm.core;
 
     opens com.fxproject.unidashboard to javafx.fxml, org.hibernate.orm.core;
+    opens com.fxproject.unidashboard.model to org.hibernate.orm.core;
     exports com.fxproject.unidashboard;
 }
