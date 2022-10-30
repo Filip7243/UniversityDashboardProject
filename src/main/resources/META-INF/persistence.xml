@@ -13,7 +13,7 @@
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3305/university"/>
             <property name="jakarta.persistence.jdbc.user" value="root"/>
-            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
             <property name="show_sql" value="true"/>
         </properties>
