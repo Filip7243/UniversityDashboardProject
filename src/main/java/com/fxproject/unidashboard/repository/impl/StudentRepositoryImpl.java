@@ -19,7 +19,7 @@ public class StudentRepositoryImpl implements StudentRepository {
 
     @Override
     public void saveStudent(Student student) {
-        if(student.getId() == null) {
+        if (student.getId() == null) {
             em.persist(student);
         } else {
             em.merge(student);
