@@ -19,14 +19,14 @@ public class Student {
     private String secondName; // optional
     private String lastName;
     private String email;
-    private String universityEmail;
+    private String universityEmail; // @stud.uni.edu.pl
     private LocalDateTime dateOfBirth;
     private String placeOfBirth;
     private String phoneNumber;
     private String pesel;
     private LocalDateTime dateOfStartStudies;
     private LocalDateTime createdAt; // time when student acc was created
-    private Boolean isEnabled; // if not student can't login to system
+    private Boolean isEnabled; // if not enabled, student can't login to system
     private Long parentId; // foreign key from Parent entity
 
     public Student() {
