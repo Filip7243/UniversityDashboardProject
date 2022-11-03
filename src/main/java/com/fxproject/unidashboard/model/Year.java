@@ -21,5 +21,5 @@ public class Year { // konkretny rocznik, danego kierunku
     private Integer yearOfStudy;
     private LocalDateTime startedStudies;
     private LocalDateTime expectedYearOfEndStudies;
-    //todo; timetable
+    //todo; timetable, sylabus
 }
