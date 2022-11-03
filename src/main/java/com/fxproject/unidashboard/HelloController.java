@@ -83,7 +83,7 @@ public class HelloController {
                 LocalDateTime.now(),
                 LocalDateTime.now(),
                 true,
-                1L
+                new ArrayList<>()
         );
         studentService.saveStudent(student);
         students = FXCollections.observableList(studentService.getAllStudents());

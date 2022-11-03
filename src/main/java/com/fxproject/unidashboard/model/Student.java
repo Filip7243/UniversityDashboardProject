@@ -3,8 +3,10 @@ package com.fxproject.unidashboard.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -27,26 +29,12 @@ public class Student {
     private LocalDateTime dateOfStartStudies;
     private LocalDateTime createdAt; // time when student acc was created
     private Boolean isEnabled; // if not enabled, student can't login to system
-    private Long parentId; // foreign key from Parent entity
-
+    @ManyToMany
+    private List<Year> years; // many students can attend on many years
     public Student() {
     }
 
-    public Student(Long id,
-                   String albumId,
-                   String firstName,
-                   String secondName,
-                   String lastName,
-                   String email,
-                   String universityEmail,
-                   LocalDateTime dateOfBirth,
-                   String placeOfBirth,
-                   String phoneNumber,
-                   String pesel,
-                   LocalDateTime dateOfStartStudies,
-                   LocalDateTime createdAt,
-                   Boolean isEnabled,
-                   Long parentId) {
+    public Student(Long id, String albumId, String firstName, String secondName, String lastName, String email, String universityEmail, LocalDateTime dateOfBirth, String placeOfBirth, String phoneNumber, String pesel, LocalDateTime dateOfStartStudies, LocalDateTime createdAt, Boolean isEnabled, List<Year> years) {
         this.id = id;
         this.albumId = albumId;
         this.firstName = firstName;
@@ -61,7 +49,7 @@ public class Student {
         this.dateOfStartStudies = dateOfStartStudies;
         this.createdAt = createdAt;
         this.isEnabled = isEnabled;
-        this.parentId = parentId;
+        this.years = years;
     }
 
     public Long getId() {
@@ -176,12 +164,12 @@ public class Student {
         isEnabled = enabled;
     }
 
-    public Long getParentId() {
-        return parentId;
+    public List<Year> getFieldsOfStudy() {
+        return years;
     }
 
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
+    public void setFieldsOfStudy(List<Year> years) {
+        this.years = years;
     }
 
     @Override
