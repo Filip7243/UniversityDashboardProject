@@ -80,8 +80,6 @@ public class HelloController {
                 "sadsa",
                 "3214214",
                 "2414214",
-                LocalDateTime.now(),
-                LocalDateTime.now(),
                 true,
                 new ArrayList<>()
         );

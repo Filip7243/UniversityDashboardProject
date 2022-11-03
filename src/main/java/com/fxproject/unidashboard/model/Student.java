@@ -26,15 +26,15 @@ public class Student {
     private String placeOfBirth;
     private String phoneNumber;
     private String pesel;
-    private LocalDateTime dateOfStartStudies;
-    private LocalDateTime createdAt; // time when student acc was created
+    //    private LocalDateTime createdAt; // time when student acc was created todo: account table
     private Boolean isEnabled; // if not enabled, student can't login to system
     @ManyToMany
     private List<Year> years; // many students can attend on many years
+
     public Student() {
     }
 
-    public Student(Long id, String albumId, String firstName, String secondName, String lastName, String email, String universityEmail, LocalDateTime dateOfBirth, String placeOfBirth, String phoneNumber, String pesel, LocalDateTime dateOfStartStudies, LocalDateTime createdAt, Boolean isEnabled, List<Year> years) {
+    public Student(Long id, String albumId, String firstName, String secondName, String lastName, String email, String universityEmail, LocalDateTime dateOfBirth, String placeOfBirth, String phoneNumber, String pesel, Boolean isEnabled, List<Year> years) {
         this.id = id;
         this.albumId = albumId;
         this.firstName = firstName;
@@ -46,8 +46,6 @@ public class Student {
         this.placeOfBirth = placeOfBirth;
         this.phoneNumber = phoneNumber;
         this.pesel = pesel;
-        this.dateOfStartStudies = dateOfStartStudies;
-        this.createdAt = createdAt;
         this.isEnabled = isEnabled;
         this.years = years;
     }
@@ -140,22 +138,6 @@ public class Student {
         this.pesel = pesel;
     }
 
-    public LocalDateTime getDateOfStartStudies() {
-        return dateOfStartStudies;
-    }
-
-    public void setDateOfStartStudies(LocalDateTime dateOfStartStudies) {
-        this.dateOfStartStudies = dateOfStartStudies;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
     public Boolean getEnabled() {
         return isEnabled;
     }
@@ -175,15 +157,15 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-               "id=" + id +
-               ", albumId='" + albumId + '\'' +
-               ", firstName='" + firstName + '\'' +
-               ", secondName='" + secondName + '\'' +
-               ", lastName='" + lastName + '\'' +
-               ", email='" + email + '\'' +
-               ", universityEmail='" + universityEmail + '\'' +
-               ", dateOfBirth=" + dateOfBirth +
-               ", placeOfBirth='" + placeOfBirth + '\'' +
-               '}';
+                "id=" + id +
+                ", albumId='" + albumId + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", universityEmail='" + universityEmail + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", placeOfBirth='" + placeOfBirth + '\'' +
+                '}';
     }
 }
