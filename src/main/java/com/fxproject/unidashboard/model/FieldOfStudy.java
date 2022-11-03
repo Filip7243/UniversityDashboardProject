@@ -16,4 +16,55 @@ public class FieldOfStudy {
     @ManyToOne
     private UniversityDepartment department;
 
+    public FieldOfStudy() {
+    }
+
+    public FieldOfStudy(Long id, String name, TypeOfStudy type, UniversityDepartment department) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.department = department;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public TypeOfStudy getType() {
+        return type;
+    }
+
+    public void setType(TypeOfStudy type) {
+        this.type = type;
+    }
+
+    public UniversityDepartment getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(UniversityDepartment department) {
+        this.department = department;
+    }
+
+    @Override
+    public String toString() {
+        return "FieldOfStudy{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", department=" + department +
+                '}';
+    }
 }

@@ -12,4 +12,5 @@ public enum TypeOfStudy {
         this.name = name;
         this.duration = duration;
     }
+
 }
