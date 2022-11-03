@@ -1,9 +1,6 @@
 package com.fxproject.unidashboard.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -27,6 +24,8 @@ public class Professor {
     private LocalDateTime dateOfEmployment;
     private LocalDateTime createdAt; // time when student acc was created
     private Boolean isEnabled; // if not enabled, can't login to system
+    @Enumerated(EnumType.STRING)
+    private AcademicTitle academicTitle;
 
     public Professor() {
     }
