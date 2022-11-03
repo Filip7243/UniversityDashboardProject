@@ -21,5 +21,7 @@ public class Year { // konkretny rocznik, danego kierunku
     private Integer yearOfStudy;
     private LocalDateTime startedStudies;
     private LocalDateTime expectedYearOfEndStudies;
+    @ManyToMany
+    private List<Subject> subjects;
     //todo; timetable, sylabus
 }
