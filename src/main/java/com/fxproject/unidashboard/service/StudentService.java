@@ -42,7 +42,7 @@ public class StudentService {
             Student student = studentRepository.findStudentWithId(id).orElseThrow();// todo; custom exception
             em.getTransaction().commit();
             return new StudentDto(student.getId(), student.getAlbumId(), student.getFirstName(), student.getSecondName(), student.getLastName(), student.getEmail(),
-                    student.getUniversityEmail(), student.getPhoneNumber(), student.getAlbumId());
+                    student.getEmail(), student.getPhoneNumber(), student.getAlbumId());//todo:universityEmail
         } catch (Exception e) {
             em.getTransaction().rollback();
             return null;
