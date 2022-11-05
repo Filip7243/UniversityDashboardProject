@@ -1,21 +1,13 @@
 package com.fxproject.unidashboard.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
-import static jakarta.persistence.GenerationType.IDENTITY;
+@MappedSuperclass
+public class UniversityEmployee { // ex. secretary etc...
 
-@Entity
-public class UniversityEmployee { // ex. secretary etc... except Professors
-
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Long id;
-    private String name;
+    private String firstName;
     private String secondName;
     private String lastName;
     private String email;
@@ -28,9 +20,8 @@ public class UniversityEmployee { // ex. secretary etc... except Professors
     public UniversityEmployee() {
     }
 
-    public UniversityEmployee(Long id, String name, String secondName, String lastName, String email, String universityEmail, LocalDateTime dateOfBirth, String placeOfBirth, String phoneNumber, String pesel) {
-        this.id = id;
-        this.name = name;
+    public UniversityEmployee(String firstName, String secondName, String lastName, String email, String universityEmail, LocalDateTime dateOfBirth, String placeOfBirth, String phoneNumber, String pesel) {
+        this.firstName = firstName;
         this.secondName = secondName;
         this.lastName = lastName;
         this.email = email;
@@ -44,8 +35,7 @@ public class UniversityEmployee { // ex. secretary etc... except Professors
     @Override
     public String toString() {
         return "UniversityEmployee{" +
-               "id=" + id +
-               ", name='" + name + '\'' +
+               " name='" + firstName + '\'' +
                ", secondName='" + secondName + '\'' +
                ", lastName='" + lastName + '\'' +
                ", email='" + email + '\'' +
@@ -57,20 +47,13 @@ public class UniversityEmployee { // ex. secretary etc... except Professors
                '}';
     }
 
-    public Long getId() {
-        return id;
+
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getSecondName() {
