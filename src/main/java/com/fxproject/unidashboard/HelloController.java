@@ -68,22 +68,7 @@ public class HelloController {
 
     @FXML
     protected void onAddButtonClick() {
-        Student student = new Student(
-                null,
-                "123",
-                firstNameInput.getText(),
-                secondNameInput.getText(),
-                lastNameInput.getText(),
-                "231321",
-                "321351",
-                LocalDateTime.now(),
-                "sadsa",
-                "3214214",
-                "2414214",
-                true,
-                new ArrayList<>()
-        );
-        studentService.saveStudent(student);
+
         students = FXCollections.observableList(studentService.getAllStudents());
         studentsDtoList.setItems(students);
     }
