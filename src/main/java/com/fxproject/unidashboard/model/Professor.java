@@ -8,20 +8,11 @@ import java.util.List;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
-public class Professor {
+public class Professor extends UniversityEmployee{
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    private String firstName;
-    private String secondName;
-    private String lastName;
-    private String email;
-    private String universityEmail; // @uni.edu.pl
-    private LocalDateTime dateOfBirth;
-    private String placeOfBirth;
-    private String phoneNumber;
-    private String pesel;
     private LocalDateTime dateOfEmployment; // todo: account table
     private LocalDateTime createdAt; // time when student acc was created
     private Boolean isEnabled; // if not enabled, can't login to system
@@ -35,20 +26,15 @@ public class Professor {
     public Professor() {
     }
 
-    public Professor(Long id, String firstName, String secondName, String lastName, String email, String universityEmail, LocalDateTime dateOfBirth, String placeOfBirth, String phoneNumber, String pesel, LocalDateTime dateOfEmployment, LocalDateTime createdAt, Boolean isEnabled) {
+    public Professor(String name, String secondName, String lastName, String email, String universityEmail, LocalDateTime dateOfBirth, String placeOfBirth, String phoneNumber, String pesel, Long id, LocalDateTime dateOfEmployment, LocalDateTime createdAt, Boolean isEnabled, AcademicTitle academicTitle, List<Subject> subjects, List<Year> years) {
+        super(name, secondName, lastName, email, universityEmail, dateOfBirth, placeOfBirth, phoneNumber, pesel);
         this.id = id;
-        this.firstName = firstName;
-        this.secondName = secondName;
-        this.lastName = lastName;
-        this.email = email;
-        this.universityEmail = universityEmail;
-        this.dateOfBirth = dateOfBirth;
-        this.placeOfBirth = placeOfBirth;
-        this.phoneNumber = phoneNumber;
-        this.pesel = pesel;
         this.dateOfEmployment = dateOfEmployment;
         this.createdAt = createdAt;
         this.isEnabled = isEnabled;
+        this.academicTitle = academicTitle;
+        this.subjects = subjects;
+        this.years = years;
     }
 
     public Long getId() {
@@ -59,77 +45,7 @@ public class Professor {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUniversityEmail() {
-        return universityEmail;
-    }
-
-    public void setUniversityEmail(String universityEmail) {
-        this.universityEmail = universityEmail;
-    }
-
-    public LocalDateTime getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDateTime dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getPlaceOfBirth() {
-        return placeOfBirth;
-    }
-
-    public void setPlaceOfBirth(String placeOfBirth) {
-        this.placeOfBirth = placeOfBirth;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getPesel() {
-        return pesel;
-    }
-
-    public void setPesel(String pesel) {
-        this.pesel = pesel;
-    }
 
     public LocalDateTime getDateOfEmployment() {
         return dateOfEmployment;
@@ -159,15 +75,6 @@ public class Professor {
     public String toString() {
         return "Professor{" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", secondName='" + secondName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", universityEmail='" + universityEmail + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", placeOfBirth='" + placeOfBirth + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", pesel='" + pesel + '\'' +
                 ", dateOfEmployment=" + dateOfEmployment +
                 '}';
     }
