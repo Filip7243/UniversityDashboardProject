@@ -5,10 +5,8 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static jakarta.persistence.GenerationType.IDENTITY;
-
 @Entity
-public class Professor extends UniversityEmployee{
+public class Professor extends UniversityMember {
 
     private LocalDateTime dateOfEmployment; // todo: account table
     private LocalDateTime createdAt; // time when student acc was created

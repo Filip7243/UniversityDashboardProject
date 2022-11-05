@@ -12,7 +12,7 @@ public class Wage {
     private Long id;
     private Double salary;
     @ManyToOne
-    private UniversityEmployee employee;
+    private UniversityMember employee;
     private Double hourlyRate;
     private Integer hoursWorked;
 
