@@ -32,7 +32,6 @@ public class Professor {
     @ManyToMany
     private List<Year> years; // years that this professor teaches
 
-
     public Professor() {
     }
 
