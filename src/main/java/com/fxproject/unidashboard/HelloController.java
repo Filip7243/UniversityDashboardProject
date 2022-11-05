@@ -1,13 +1,14 @@
 package com.fxproject.unidashboard;
 
 import com.fxproject.unidashboard.dto.StudentDto;
+import com.fxproject.unidashboard.model.AcademicTitle;
+import com.fxproject.unidashboard.model.Professor;
 import com.fxproject.unidashboard.model.Student;
-import com.fxproject.unidashboard.service.StudentService;
+import com.fxproject.unidashboard.model.UniversityMember;
+import com.fxproject.unidashboard.repository.UniversityMemberRepository;
 import com.fxproject.unidashboard.utils.HibernateUtils;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import jakarta.persistence.EntityManager;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,8 +17,8 @@ import javafx.scene.control.TextField;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 public class HelloController {
     @FXML
@@ -35,13 +36,13 @@ public class HelloController {
     @FXML
     private Button addButton;
 
-
-    private StudentService studentService;
     private ObservableList<StudentDto> students;
+    private UniversityMemberRepository uniRepo;
+    EntityManager em = HibernateUtils.getEntityManager();
+
 
     public void initialize() {
-        this.studentService = new StudentService(HibernateUtils.getEntityManager());
-        this.students = FXCollections.observableList(studentService.getAllStudents());
+        this.uniRepo = new UniversityMemberRepository(em);
 
         // input
         findButton.setDisable(true);
@@ -52,33 +53,41 @@ public class HelloController {
 
     @FXML
     protected void onHelloButtonClick() {
-        studentsDtoList.setItems(students);
+//        Student professor = new Student();
+//        professor.setFirstName("John");
+//        professor.setSecondName("Mark");
+//        professor.setLastName("Doe");
+//        professor.setEmail("john.mark.doe@mail.com");
+//        professor.setPlaceOfBirth("New York City");
+//        professor.setPesel("65439201832");
+//        professor.setDateOfBirth(LocalDateTime.now());
+//        professor.setPhoneNumber("(+48)786-492-771");
+//        professor.setAlbumId(UUID.randomUUID().toString());
+//        professor.setYears(new ArrayList<>());
+//
+//        em.getTransaction().begin();
+//        uniRepo.save(professor);
+//        em.getTransaction().commit();
+
+        em.getTransaction().begin();
+        List<UniversityMember> all = uniRepo.findAll();
+        em.getTransaction();
+        System.out.println(all);
     }
 
     @FXML
     protected void onFindButtonClick() {
-        Long id = Long.parseLong(idInput.getText());
-        StudentDto studentWithId = studentService.getStudentWithId(id);
-        ArrayList<StudentDto> list = new ArrayList<>();
-        ObservableList<StudentDto> s = FXCollections.observableList(list);
-        s.add(studentWithId);
 
-        studentsDtoList.setItems(s);
     }
 
     @FXML
     protected void onAddButtonClick() {
 
-        students = FXCollections.observableList(studentService.getAllStudents());
-        studentsDtoList.setItems(students);
     }
 
     @FXML
     protected void onRemoveButtonClick() {
-        Long id = studentsDtoList.getSelectionModel().getSelectedItem().getId();
-        studentService.removeStudentWithId(id);
-        students = FXCollections.observableList(studentService.getAllStudents());
-        studentsDtoList.setItems(students);
+
     }
 
 
