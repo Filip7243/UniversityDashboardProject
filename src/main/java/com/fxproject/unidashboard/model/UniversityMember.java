@@ -17,7 +17,6 @@ public class UniversityMember { // ex. secretary, professor, student etc...
     private String secondName;
     private String lastName;
     private String email;
-    private String universityEmail; // @stud.uni.empl.pl
     private LocalDateTime dateOfBirth;
     private String placeOfBirth;
     private String phoneNumber;
@@ -26,13 +25,12 @@ public class UniversityMember { // ex. secretary, professor, student etc...
     public UniversityMember() {
     }
 
-    public UniversityMember(Long id, String firstName, String secondName, String lastName, String email, String universityEmail, LocalDateTime dateOfBirth, String placeOfBirth, String phoneNumber, String pesel) {
+    public UniversityMember(Long id, String firstName, String secondName, String lastName, String email, LocalDateTime dateOfBirth, String placeOfBirth, String phoneNumber, String pesel) {
         this.id = id;
         this.firstName = firstName;
         this.secondName = secondName;
         this.lastName = lastName;
         this.email = email;
-        this.universityEmail = universityEmail;
         this.dateOfBirth = dateOfBirth;
         this.placeOfBirth = placeOfBirth;
         this.phoneNumber = phoneNumber;
@@ -46,7 +44,6 @@ public class UniversityMember { // ex. secretary, professor, student etc...
                ", secondName='" + secondName + '\'' +
                ", lastName='" + lastName + '\'' +
                ", email='" + email + '\'' +
-               ", universityEmail='" + universityEmail + '\'' +
                ", dateOfBirth=" + dateOfBirth +
                ", placeOfBirth='" + placeOfBirth + '\'' +
                ", phoneNumber='" + phoneNumber + '\'' +
@@ -92,14 +89,6 @@ public class UniversityMember { // ex. secretary, professor, student etc...
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUniversityEmail() {
-        return universityEmail;
-    }
-
-    public void setUniversityEmail(String universityEmail) {
-        this.universityEmail = universityEmail;
     }
 
     public LocalDateTime getDateOfBirth() {
