@@ -8,9 +8,6 @@ import java.util.List;
 @Entity
 public class Professor extends UniversityMember {
 
-    private LocalDateTime dateOfEmployment; // todo: account table
-    private LocalDateTime createdAt; // time when student acc was created
-    private Boolean isEnabled; // if not enabled, can't login to system
     @Enumerated(EnumType.STRING)
     private AcademicTitle academicTitle;
     @ManyToMany
@@ -21,43 +18,33 @@ public class Professor extends UniversityMember {
     public Professor() {
     }
 
-    public Professor(LocalDateTime dateOfEmployment, LocalDateTime createdAt, Boolean isEnabled, AcademicTitle academicTitle, List<Subject> subjects, List<Year> years) {
-        this.dateOfEmployment = dateOfEmployment;
-        this.createdAt = createdAt;
-        this.isEnabled = isEnabled;
+    public Professor(AcademicTitle academicTitle, List<Subject> subjects, List<Year> years) {
         this.academicTitle = academicTitle;
         this.subjects = subjects;
         this.years = years;
     }
 
-    public LocalDateTime getDateOfEmployment() {
-        return dateOfEmployment;
+    public AcademicTitle getAcademicTitle() {
+        return academicTitle;
     }
 
-    public void setDateOfEmployment(LocalDateTime dateOfEmployment) {
-        this.dateOfEmployment = dateOfEmployment;
+    public void setAcademicTitle(AcademicTitle academicTitle) {
+        this.academicTitle = academicTitle;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public List<Subject> getSubjects() {
+        return subjects;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
     }
 
-    public Boolean getEnabled() {
-        return isEnabled;
+    public List<Year> getYears() {
+        return years;
     }
 
-    public void setEnabled(Boolean enabled) {
-        isEnabled = enabled;
-    }
-
-    @Override
-    public String toString() {
-        return "Professor{" +
-                ", dateOfEmployment=" + dateOfEmployment +
-                '}';
+    public void setYears(List<Year> years) {
+        this.years = years;
     }
 }
