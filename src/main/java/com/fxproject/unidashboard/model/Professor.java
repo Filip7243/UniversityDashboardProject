@@ -10,9 +10,6 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Entity
 public class Professor extends UniversityEmployee{
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Long id;
     private LocalDateTime dateOfEmployment; // todo: account table
     private LocalDateTime createdAt; // time when student acc was created
     private Boolean isEnabled; // if not enabled, can't login to system
@@ -26,9 +23,7 @@ public class Professor extends UniversityEmployee{
     public Professor() {
     }
 
-    public Professor(String name, String secondName, String lastName, String email, String universityEmail, LocalDateTime dateOfBirth, String placeOfBirth, String phoneNumber, String pesel, Long id, LocalDateTime dateOfEmployment, LocalDateTime createdAt, Boolean isEnabled, AcademicTitle academicTitle, List<Subject> subjects, List<Year> years) {
-        super(name, secondName, lastName, email, universityEmail, dateOfBirth, placeOfBirth, phoneNumber, pesel);
-        this.id = id;
+    public Professor(LocalDateTime dateOfEmployment, LocalDateTime createdAt, Boolean isEnabled, AcademicTitle academicTitle, List<Subject> subjects, List<Year> years) {
         this.dateOfEmployment = dateOfEmployment;
         this.createdAt = createdAt;
         this.isEnabled = isEnabled;
@@ -36,16 +31,6 @@ public class Professor extends UniversityEmployee{
         this.subjects = subjects;
         this.years = years;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
 
     public LocalDateTime getDateOfEmployment() {
         return dateOfEmployment;
@@ -74,7 +59,6 @@ public class Professor extends UniversityEmployee{
     @Override
     public String toString() {
         return "Professor{" +
-                "id=" + id +
                 ", dateOfEmployment=" + dateOfEmployment +
                 '}';
     }
