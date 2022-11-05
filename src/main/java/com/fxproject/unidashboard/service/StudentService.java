@@ -2,15 +2,10 @@ package com.fxproject.unidashboard.service;
 
 import com.fxproject.unidashboard.dto.StudentDto;
 import com.fxproject.unidashboard.model.Student;
-import com.fxproject.unidashboard.repository.StudentRepository;
-import com.fxproject.unidashboard.repository.impl.StudentRepositoryImpl;
 import com.fxproject.unidashboard.utils.HibernateUtils;
 import jakarta.persistence.EntityManager;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 import static com.fxproject.unidashboard.mapper.StudentMapper.mapToStudentDtos;
 
