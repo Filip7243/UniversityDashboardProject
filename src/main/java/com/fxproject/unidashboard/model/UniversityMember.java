@@ -5,11 +5,10 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
-import static jakarta.persistence.GenerationType.TABLE;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class UniversityEmployee { // ex. secretary, professor etc...
+public class UniversityMember { // ex. secretary, professor, student etc...
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -24,10 +23,10 @@ public class UniversityEmployee { // ex. secretary, professor etc...
     private String phoneNumber;
     private String pesel;
 
-    public UniversityEmployee() {
+    public UniversityMember() {
     }
 
-    public UniversityEmployee(Long id, String firstName, String secondName, String lastName, String email, String universityEmail, LocalDateTime dateOfBirth, String placeOfBirth, String phoneNumber, String pesel) {
+    public UniversityMember(Long id, String firstName, String secondName, String lastName, String email, String universityEmail, LocalDateTime dateOfBirth, String placeOfBirth, String phoneNumber, String pesel) {
         this.id = id;
         this.firstName = firstName;
         this.secondName = secondName;
