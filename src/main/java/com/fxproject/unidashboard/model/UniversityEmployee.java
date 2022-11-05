@@ -4,9 +4,16 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
-@MappedSuperclass
-public class UniversityEmployee { // ex. secretary etc...
+import static jakarta.persistence.GenerationType.IDENTITY;
+import static jakarta.persistence.GenerationType.TABLE;
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public class UniversityEmployee { // ex. secretary, professor etc...
+
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    private Long id;
     private String firstName;
     private String secondName;
     private String lastName;
@@ -20,7 +27,8 @@ public class UniversityEmployee { // ex. secretary etc...
     public UniversityEmployee() {
     }
 
-    public UniversityEmployee(String firstName, String secondName, String lastName, String email, String universityEmail, LocalDateTime dateOfBirth, String placeOfBirth, String phoneNumber, String pesel) {
+    public UniversityEmployee(Long id, String firstName, String secondName, String lastName, String email, String universityEmail, LocalDateTime dateOfBirth, String placeOfBirth, String phoneNumber, String pesel) {
+        this.id = id;
         this.firstName = firstName;
         this.secondName = secondName;
         this.lastName = lastName;
@@ -47,6 +55,13 @@ public class UniversityEmployee { // ex. secretary etc...
                '}';
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
