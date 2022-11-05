@@ -15,6 +15,8 @@ public class UniversityAccount {
     @OneToOne
     private UniversityMember member;
     private String universityEmail;
+    @Enumerated(EnumType.STRING)
+    private Role role;
     private String password;
     private LocalDateTime createdAt; // = dateOfEmployment/startingStudies
     private Boolean isEnabled;
