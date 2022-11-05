@@ -11,7 +11,7 @@
         <properties>
             <property name="hibernate.transaction.jta.platform" value="SunOne"/>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/university"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3305/university"/>
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>

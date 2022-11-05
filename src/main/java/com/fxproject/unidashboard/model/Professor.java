@@ -3,6 +3,7 @@ package com.fxproject.unidashboard.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -21,11 +22,16 @@ public class Professor {
     private String placeOfBirth;
     private String phoneNumber;
     private String pesel;
-    private LocalDateTime dateOfEmployment;
+    private LocalDateTime dateOfEmployment; // todo: account table
     private LocalDateTime createdAt; // time when student acc was created
     private Boolean isEnabled; // if not enabled, can't login to system
     @Enumerated(EnumType.STRING)
     private AcademicTitle academicTitle;
+    @ManyToMany
+    private List<Subject> subjects; // subjects that this professor teaches
+    @ManyToMany
+    private List<Year> years; // years that this professor teaches
+
 
     public Professor() {
     }

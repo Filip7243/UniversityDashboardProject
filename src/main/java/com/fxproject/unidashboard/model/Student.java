@@ -29,7 +29,7 @@ public class Student {
     //    private LocalDateTime createdAt; // time when student acc was created todo: account table
     private Boolean isEnabled; // if not enabled, student can't login to system
     @ManyToMany
-    private List<Year> years; // many students can attend on many years
+    private List<Year> years; // many students can attend to many years
 
     public Student() {
     }
