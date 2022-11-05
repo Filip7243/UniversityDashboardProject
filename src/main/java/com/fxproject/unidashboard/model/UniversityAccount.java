@@ -24,13 +24,22 @@ public class UniversityAccount {
     public UniversityAccount() {
     }
 
-    public UniversityAccount(Long id, UniversityMember member, String universityEmail, String password, LocalDateTime createdAt, Boolean isEnabled) {
+    public UniversityAccount(Long id, UniversityMember member, String universityEmail, Role role, String password, LocalDateTime createdAt, Boolean isEnabled) {
         this.id = id;
         this.member = member;
         this.universityEmail = universityEmail;
+        this.role = role;
         this.password = password;
         this.createdAt = createdAt;
         this.isEnabled = isEnabled;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public Long getId() {
