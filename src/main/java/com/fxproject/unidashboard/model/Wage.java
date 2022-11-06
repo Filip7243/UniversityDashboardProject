@@ -2,6 +2,8 @@ package com.fxproject.unidashboard.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -15,5 +17,6 @@ public class Wage {
     private UniversityMember employee;
     private Double hourlyRate;
     private Integer hoursWorked;
+    private LocalDateTime payday;
 
 }
