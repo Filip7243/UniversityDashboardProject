@@ -1,7 +1,8 @@
 package com.fxproject.unidashboard.repository.impl;
 
 import com.fxproject.unidashboard.model.Subject;
-import com.fxproject.unidashboard.repository.SubjectRepository;
+import com.fxproject.unidashboard.model.UniversityDepartment;
+import com.fxproject.unidashboard.repository.UniversityDepartmentRepository;
 import com.fxproject.unidashboard.utils.HibernateUtils;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -9,10 +10,10 @@ import jakarta.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
 
-public class SubjectRepositoryImpl implements SubjectRepository {
+public class UniversityDepartmentRepositoryImpl implements UniversityDepartmentRepository {
 
     private final EntityManager em = HibernateUtils.getEntityManager();
-    private static final String DEFAULT_QUERY = "SELECT s FROM Subject s";
+    private static final String DEFAULT_QUERY = "SELECT u FROM UniversityDepartment u";
 
     @Override
     public void save(Subject record) {
@@ -37,8 +38,8 @@ public class SubjectRepositoryImpl implements SubjectRepository {
 
         try {
             transaction.begin();
-            Subject subject = findWithId(id).orElseThrow();//todo: exception
-            em.remove(subject);
+            Subject professor = findWithId(id).orElseThrow();//todo: exception
+            em.remove(professor);
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
@@ -76,17 +77,7 @@ public class SubjectRepositoryImpl implements SubjectRepository {
     }
 
     @Override
-    public Optional<Subject> findByName(String name) {
-        var transaction = em.getTransaction();
-        try {
-            transaction.begin();
-            TypedQuery<Subject> query = em.createQuery(DEFAULT_QUERY + " WHERE s.name = :name", Subject.class);
-            query.setParameter("name", name);
-            transaction.commit();
-            return Optional.ofNullable(query.getSingleResult());
-        } catch (Exception e) {
-            transaction.rollback();
-            return Optional.empty();
-        }
+    public Optional<UniversityDepartment> findDepartmentWithName(String name) {
+        return Optional.empty();
     }
 }
