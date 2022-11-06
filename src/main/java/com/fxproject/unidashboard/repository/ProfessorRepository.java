@@ -1,8 +1,9 @@
 package com.fxproject.unidashboard.repository;
 
-import com.fxproject.unidashboard.model.*;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.TypedQuery;
+import com.fxproject.unidashboard.model.AcademicTitle;
+import com.fxproject.unidashboard.model.Professor;
+import com.fxproject.unidashboard.model.Subject;
+import com.fxproject.unidashboard.model.Year;
 
 import java.util.List;
 import java.util.Optional;
