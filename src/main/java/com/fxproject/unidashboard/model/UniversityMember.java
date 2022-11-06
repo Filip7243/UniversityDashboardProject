@@ -21,6 +21,9 @@ public class UniversityMember { // ex. secretary, professor, student etc...
     private String placeOfBirth;
     private String phoneNumber;
     private String pesel;
+    @OneToOne(mappedBy = "member")
+    private UniversityAccount universityAccount;
+
 
     public UniversityMember() {
     }
@@ -121,5 +124,13 @@ public class UniversityMember { // ex. secretary, professor, student etc...
 
     public void setPesel(String pesel) {
         this.pesel = pesel;
+    }
+
+    public UniversityAccount getUniversityAccount() {
+        return universityAccount;
+    }
+
+    public void setUniversityAccount(UniversityAccount universityAccount) {
+        this.universityAccount = universityAccount;
     }
 }
