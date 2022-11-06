@@ -12,4 +12,6 @@ public interface ProfessorRepository extends DefaultRepository<Professor, Long>{
     List<Subject> findProfessorSubjects(Long id);
     List<Year> findProfessorYears(Long id);
     List<AcademicTitle> findProfessorAcademicTitle(Long id);
+    Optional<Professor> findProfessorByUniversityEmail(String universityEmail);
+    Optional<Professor> findProfessorByFirstNameAndLastName(String firstName, String lastName);
 }
