@@ -8,7 +8,8 @@ import java.util.Optional;
 
 public interface StudentRepository extends DefaultRepository<Student, Long> {
 
-    Optional<Student> findStudentWithAlbumId(String albumId);
+    Optional<Student> findStudentByAlbumId(String albumId);
     List<Year> findStudentYears(Long id);
-
+    Optional<Student> findStudentByUniversityEmail(String universityEmail);
+    Optional<Student> findStudentByFirstNameAndLastName(String firstName, String lastName);
 }
