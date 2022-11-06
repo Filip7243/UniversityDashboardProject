@@ -37,7 +37,7 @@ public class HelloController {
 
 
     public void initialize() {
-        this.uniRepo = new ProfessorRepository(em);
+
 
         // input
         findButton.setDisable(true);
@@ -60,9 +60,9 @@ public class HelloController {
         professor.setAlbumId(UUID.randomUUID().toString());
         professor.setYears(new ArrayList<>());
 
-        em.getTransaction().begin();
-        uniRepo.save(professor);
-        em.getTransaction().commit();
+//        em.getTransaction().begin();
+//        uniRepo.save(professor);
+//        em.getTransaction().commit();
 //        em.getTransaction().begin();
 //        List<UniversityMember> all = uniRepo.findAll();
 //        em.getTransaction().commit();
