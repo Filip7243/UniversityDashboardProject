@@ -20,7 +20,7 @@ public class StudentMapper {
                                 student.getSecondName(),
                                 student.getLastName(),
                                 student.getEmail(),
-                                student.getUniversityEmail(),
+                                student.getEmail(),//todo: universityEmail
                                 student.getPhoneNumber(),
                                 student.getPesel())
                 ).toList();
