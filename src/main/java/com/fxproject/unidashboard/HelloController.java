@@ -1,8 +1,13 @@
 package com.fxproject.unidashboard;
 
 import com.fxproject.unidashboard.dto.StudentDto;
+import com.fxproject.unidashboard.model.FieldOfStudy;
 import com.fxproject.unidashboard.model.Student;
+import com.fxproject.unidashboard.model.TypeOfStudy;
+import com.fxproject.unidashboard.model.UniversityDepartment;
+import com.fxproject.unidashboard.repository.FieldOfStudyRepository;
 import com.fxproject.unidashboard.repository.ProfessorRepository;
+import com.fxproject.unidashboard.repository.impl.FieldOfStudyRepositoryImpl;
 import com.fxproject.unidashboard.utils.HibernateUtils;
 import jakarta.persistence.EntityManager;
 import javafx.collections.ObservableList;
@@ -13,6 +18,8 @@ import javafx.scene.control.TextField;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public class HelloController {
@@ -31,59 +38,9 @@ public class HelloController {
     @FXML
     private Button addButton;
 
-    private ObservableList<StudentDto> students;
-    private ProfessorRepository uniRepo;
-    EntityManager em = HibernateUtils.getEntityManager();
-
 
     public void initialize() {
 
-
-        // input
-        findButton.setDisable(true);
-        idInput.textProperty()
-                .addListener((obs, oldText, newText) -> findButton.setDisable(obs.getValue().trim().isEmpty()));
-
     }
-
-    @FXML
-    protected void onHelloButtonClick() {
-        Student professor = new Student();
-        professor.setFirstName("JAREK");
-        professor.setSecondName("Mark");
-        professor.setLastName("Doe");
-        professor.setEmail("john.mark.doe@mail.com");
-        professor.setPlaceOfBirth("New York City");
-        professor.setPesel("65439201832");
-        professor.setDateOfBirth(LocalDateTime.now());
-        professor.setPhoneNumber("(+48)786-492-771");
-        professor.setAlbumId(UUID.randomUUID().toString());
-        professor.setYears(new ArrayList<>());
-
-//        em.getTransaction().begin();
-//        uniRepo.save(professor);
-//        em.getTransaction().commit();
-//        em.getTransaction().begin();
-//        List<UniversityMember> all = uniRepo.findAll();
-//        em.getTransaction().commit();
-//        System.out.println(all);
-
-    }
-
-    @FXML
-    protected void onFindButtonClick() {
-
-    }
-
-    @FXML
-    protected void onAddButtonClick() {
-
-    }
-
-    @FXML
-    protected void onRemoveButtonClick() {
-
-    }
-
 
 }
