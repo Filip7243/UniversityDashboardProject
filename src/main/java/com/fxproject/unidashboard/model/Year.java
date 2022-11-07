@@ -24,4 +24,83 @@ public class Year { // konkretny rocznik, danego kierunku
     @ManyToMany
     private List<Subject> subjects;
     //todo; timetable, sylabus
+
+
+    public Year() {
+    }
+
+    public Year(Long id, String name, List<Student> students, FieldOfStudy fieldOfStudy, Integer yearOfStudy, LocalDateTime startedStudies, LocalDateTime expectedYearOfEndStudies, List<Subject> subjects) {
+        this.id = id;
+        this.name = name;
+        this.students = students;
+        this.fieldOfStudy = fieldOfStudy;
+        this.yearOfStudy = yearOfStudy;
+        this.startedStudies = startedStudies;
+        this.expectedYearOfEndStudies = expectedYearOfEndStudies;
+        this.subjects = subjects;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public FieldOfStudy getFieldOfStudy() {
+        return fieldOfStudy;
+    }
+
+    public void setFieldOfStudy(FieldOfStudy fieldOfStudy) {
+        this.fieldOfStudy = fieldOfStudy;
+    }
+
+    public Integer getYearOfStudy() {
+        return yearOfStudy;
+    }
+
+    public void setYearOfStudy(Integer yearOfStudy) {
+        this.yearOfStudy = yearOfStudy;
+    }
+
+    public LocalDateTime getStartedStudies() {
+        return startedStudies;
+    }
+
+    public void setStartedStudies(LocalDateTime startedStudies) {
+        this.startedStudies = startedStudies;
+    }
+
+    public LocalDateTime getExpectedYearOfEndStudies() {
+        return expectedYearOfEndStudies;
+    }
+
+    public void setExpectedYearOfEndStudies(LocalDateTime expectedYearOfEndStudies) {
+        this.expectedYearOfEndStudies = expectedYearOfEndStudies;
+    }
+
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
+    }
 }
