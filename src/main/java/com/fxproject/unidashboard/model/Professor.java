@@ -23,7 +23,7 @@ public class Professor {
     private String pesel;
     private LocalDateTime dateOfEmployment;
     private LocalDateTime createdAt; // time when student acc was created
-    private Boolean isEnabled; // if not enabled, can't login to system
+    private Boolean isEnabled; // if not enabled, can't login to system // todo; przniesc to do AccountTable
     @Enumerated(EnumType.STRING)
     private AcademicTitle academicTitle;
 
