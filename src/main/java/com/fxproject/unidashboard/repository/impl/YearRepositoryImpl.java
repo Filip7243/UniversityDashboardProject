@@ -2,7 +2,6 @@ package com.fxproject.unidashboard.repository.impl;
 
 import com.fxproject.unidashboard.model.FieldOfStudy;
 import com.fxproject.unidashboard.model.Student;
-import com.fxproject.unidashboard.model.Wage;
 import com.fxproject.unidashboard.model.Year;
 import com.fxproject.unidashboard.repository.YearRepository;
 import com.fxproject.unidashboard.utils.HibernateUtils;
@@ -16,22 +15,6 @@ public class YearRepositoryImpl implements YearRepository {
 
     private EntityManager em = HibernateUtils.getEntityManager();
     public static final String DEFAULT_QUERY = "SELECT y FROM Year y";
-
-    @Override
-    public void save(Year record) {
-        var transaction = em.getTransaction();
-        try {
-            transaction.begin();
-            if (record.getId() == null) {
-                em.persist(record);
-            } else {
-                em.merge(record);
-            }
-            transaction.commit();
-        } catch (Exception e) {
-            transaction.rollback();
-        }
-    }
 
     @Override
     public void removeWithId(Long id) {

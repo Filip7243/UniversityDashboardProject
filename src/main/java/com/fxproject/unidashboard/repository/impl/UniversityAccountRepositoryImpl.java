@@ -14,21 +14,6 @@ public class UniversityAccountRepositoryImpl implements UniversityAccountReposit
     private EntityManager em = HibernateUtils.getEntityManager();
     private static final String DEFAULT_QUERY = "SELECT a FROM UniversityAccount a";
 
-    @Override
-    public void save(UniversityAccount record) {
-        var transaction = em.getTransaction();
-        try {
-            transaction.begin();
-            if (record.getId() == null) {
-                em.persist(record);
-            } else {
-                em.merge(record);
-            }
-            transaction.commit();
-        } catch (Exception e) {
-            transaction.rollback();
-        }
-    }
 
     @Override
     public void removeWithId(Long id) {

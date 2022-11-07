@@ -9,7 +9,6 @@ import com.fxproject.unidashboard.utils.HibernateUtils;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
-import java.security.spec.ECField;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,23 +16,6 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
 
     private final EntityManager em = HibernateUtils.getEntityManager();
     private static final String DEFAULT_QUERY = "SELECT p FROM Professor p";
-
-    @Override
-    public void save(Professor record) {
-        var transaction = em.getTransaction();
-
-        try {
-            transaction.begin();
-            if (record.getId() == null) {
-                em.persist(record);
-            } else {
-                em.merge(record);
-            }
-            transaction.commit();
-        } catch (Exception e) {
-            transaction.rollback();
-        }
-    }
 
     @Override
     public void removeWithId(Long id) {
@@ -149,7 +131,7 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
             transaction.begin();
             TypedQuery<Professor> query =
                     em.createQuery(DEFAULT_QUERY + " JOIN UniversityAccount u ON u.member = p.universityAccount " +
-                                   "WHERE u.universityEmail = :universityEmail", Professor.class);
+                            "WHERE u.universityEmail = :universityEmail", Professor.class);
             query.setParameter("universityEmail", universityEmail);
             transaction.commit();
             return Optional.ofNullable(query.getSingleResult());

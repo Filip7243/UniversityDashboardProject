@@ -16,22 +16,6 @@ public class WageRepositoryImpl implements WageRepository {
     private static final String DEFAULT_QUERY = "SELECT w FROM Wage w";
 
     @Override
-    public void save(Wage record) {
-        var transaction = em.getTransaction();
-        try {
-            transaction.begin();
-            if (record.getId() == null) {
-                em.persist(record);
-            } else {
-                em.merge(record);
-            }
-            transaction.commit();
-        } catch (Exception e) {
-            transaction.rollback();
-        }
-    }
-
-    @Override
     public void removeWithId(Long id) {
         Wage wage = findWithId(id).orElseThrow();// todo: custom exception
 

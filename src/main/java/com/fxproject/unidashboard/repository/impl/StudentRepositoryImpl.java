@@ -5,7 +5,6 @@ import com.fxproject.unidashboard.model.Year;
 import com.fxproject.unidashboard.repository.StudentRepository;
 import com.fxproject.unidashboard.utils.HibernateUtils;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
@@ -15,22 +14,6 @@ public class StudentRepositoryImpl implements StudentRepository {
 
     private EntityManager em = HibernateUtils.getEntityManager();
     private static final String DEFAULT_QUERY = "SELECT s FROM Student s";
-
-    @Override
-    public void save(Student record) {
-        var transaction = em.getTransaction();
-        try {
-            transaction.begin();
-            if (record.getId() == null) {
-                em.persist(record);
-            } else {
-                em.merge(record);
-            }
-            transaction.commit();
-        } catch (Exception e) {
-            transaction.rollback();
-        }
-    }
 
     @Override
     public void removeWithId(Long id) {

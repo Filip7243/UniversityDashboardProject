@@ -14,22 +14,6 @@ public class SubjectRepositoryImpl implements SubjectRepository {
     private final EntityManager em = HibernateUtils.getEntityManager();
     private static final String DEFAULT_QUERY = "SELECT s FROM Subject s";
 
-    @Override
-    public void save(Subject record) {
-        var transaction = em.getTransaction(); //todo:
-
-        try {
-            transaction.begin();
-            if (record.getId() == null) {
-                em.persist(record);
-            } else {
-                em.merge(record);
-            }
-            transaction.commit();
-        } catch (Exception e) {
-            transaction.rollback();
-        }
-    }
 
     @Override
     public void removeWithId(Long id) {

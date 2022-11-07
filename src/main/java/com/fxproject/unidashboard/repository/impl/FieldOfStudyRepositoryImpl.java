@@ -16,17 +16,6 @@ public class FieldOfStudyRepositoryImpl implements FieldOfStudyRepository {
     private final EntityManager em = HibernateUtils.getEntityManager();
 
     @Override
-    public void save(FieldOfStudy record) {
-        em.getTransaction().begin();
-        if(record.getId() == null) {
-            em.persist(record);
-        } else {
-            em.merge(record);
-        }
-        em.getTransaction().commit();
-    }
-
-    @Override
     public void removeWithId(Long id) {
         FieldOfStudy fieldOfStudy = findWithId(id).orElseThrow();//todo: custom exception
         em.getTransaction().begin();

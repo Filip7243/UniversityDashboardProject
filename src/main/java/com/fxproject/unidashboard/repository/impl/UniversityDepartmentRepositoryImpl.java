@@ -1,6 +1,5 @@
 package com.fxproject.unidashboard.repository.impl;
 
-import com.fxproject.unidashboard.model.Subject;
 import com.fxproject.unidashboard.model.UniversityDepartment;
 import com.fxproject.unidashboard.repository.UniversityDepartmentRepository;
 import com.fxproject.unidashboard.utils.HibernateUtils;
@@ -15,22 +14,6 @@ public class UniversityDepartmentRepositoryImpl implements UniversityDepartmentR
     private final EntityManager em = HibernateUtils.getEntityManager();
     private static final String DEFAULT_QUERY = "SELECT u FROM UniversityDepartment u";
 
-    @Override
-    public void save(UniversityDepartment record) {
-        var transaction = em.getTransaction(); //todo:
-
-        try {
-            transaction.begin();
-            if (record.getId() == null) {
-                em.persist(record);
-            } else {
-                em.merge(record);
-            }
-            transaction.commit();
-        } catch (Exception e) {
-            transaction.rollback();
-        }
-    }
 
     @Override
     public void removeWithId(Long id) {
