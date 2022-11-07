@@ -11,5 +11,5 @@ public interface StudentRepository extends DefaultRepository<Student, Long> {
     Optional<Student> findStudentByAlbumId(String albumId);
     List<Year> findStudentYears(Long id);
     Optional<Student> findStudentByUniversityEmail(String universityEmail);
-    Optional<Student> findStudentByFirstNameAndLastName(String firstName, String lastName);
+    List<Student> findStudentByFirstNameAndLastName(String firstName, String lastName);
 }
