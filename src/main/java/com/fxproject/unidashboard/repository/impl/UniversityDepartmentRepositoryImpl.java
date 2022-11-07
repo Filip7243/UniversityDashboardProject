@@ -16,7 +16,7 @@ public class UniversityDepartmentRepositoryImpl implements UniversityDepartmentR
     private static final String DEFAULT_QUERY = "SELECT u FROM UniversityDepartment u";
 
     @Override
-    public void save(Subject record) {
+    public void save(UniversityDepartment record) {
         var transaction = em.getTransaction(); //todo:
 
         try {
@@ -38,8 +38,8 @@ public class UniversityDepartmentRepositoryImpl implements UniversityDepartmentR
 
         try {
             transaction.begin();
-            Subject professor = findWithId(id).orElseThrow();//todo: exception
-            em.remove(professor);
+            UniversityDepartment department = findWithId(id).orElseThrow();//todo: exception
+            em.remove(department);
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
@@ -47,12 +47,12 @@ public class UniversityDepartmentRepositoryImpl implements UniversityDepartmentR
     }
 
     @Override
-    public Optional<Subject> findWithId(Long id) {
+    public Optional<UniversityDepartment> findWithId(Long id) {
         var transaction = em.getTransaction();
         try {
             transaction.begin();
-            TypedQuery<Subject> query =
-                    em.createQuery(DEFAULT_QUERY + " WHERE s.id = :id", Subject.class);
+            TypedQuery<UniversityDepartment> query =
+                    em.createQuery(DEFAULT_QUERY + " WHERE u.id = :id", UniversityDepartment.class);
             query.setParameter("id", id);
             transaction.commit();
             return Optional.ofNullable(query.getSingleResult());
@@ -63,11 +63,11 @@ public class UniversityDepartmentRepositoryImpl implements UniversityDepartmentR
     }
 
     @Override
-    public List<Subject> findAll() {
+    public List<UniversityDepartment> findAll() {
         var transaction = em.getTransaction();
         try {
             transaction.begin();
-            TypedQuery<Subject> query = em.createQuery(DEFAULT_QUERY, Subject.class);
+            TypedQuery<UniversityDepartment> query = em.createQuery(DEFAULT_QUERY, UniversityDepartment.class);
             transaction.commit();
             return query.getResultList();
         } catch (Exception e) {
@@ -78,6 +78,17 @@ public class UniversityDepartmentRepositoryImpl implements UniversityDepartmentR
 
     @Override
     public Optional<UniversityDepartment> findDepartmentWithName(String name) {
-        return Optional.empty();
+        var transaction = em.getTransaction();
+        try {
+            transaction.begin();
+            TypedQuery<UniversityDepartment> query =
+                    em.createQuery(DEFAULT_QUERY + " WHERE u.name =:name", UniversityDepartment.class);
+            query.setParameter("name", name);
+            transaction.commit();
+            return Optional.ofNullable(query.getSingleResult());
+        } catch (Exception e) {
+            transaction.rollback();
+            return Optional.empty();
+        }
     }
 }
