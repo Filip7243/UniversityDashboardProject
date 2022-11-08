@@ -1,13 +1,13 @@
 package com.fxproject.unidashboard;
 
 import com.fxproject.unidashboard.dto.StudentDto;
-import com.fxproject.unidashboard.model.FieldOfStudy;
-import com.fxproject.unidashboard.model.Student;
-import com.fxproject.unidashboard.model.TypeOfStudy;
-import com.fxproject.unidashboard.model.UniversityDepartment;
+import com.fxproject.unidashboard.model.*;
 import com.fxproject.unidashboard.repository.FieldOfStudyRepository;
 import com.fxproject.unidashboard.repository.ProfessorRepository;
+import com.fxproject.unidashboard.repository.UniversityAccountRepository;
 import com.fxproject.unidashboard.repository.impl.FieldOfStudyRepositoryImpl;
+import com.fxproject.unidashboard.repository.impl.ProfessorRepositoryImpl;
+import com.fxproject.unidashboard.repository.impl.UniversityAccountRepositoryImpl;
 import com.fxproject.unidashboard.utils.HibernateUtils;
 import jakarta.persistence.EntityManager;
 import javafx.collections.ObservableList;
@@ -40,7 +40,9 @@ public class HelloController {
 
 
     public void initialize() {
-
+        ProfessorRepository repo = new ProfessorRepositoryImpl();
+        System.out.println(repo.findWithId(1L));
+        repo.removeWithId(2L);
     }
 
 }

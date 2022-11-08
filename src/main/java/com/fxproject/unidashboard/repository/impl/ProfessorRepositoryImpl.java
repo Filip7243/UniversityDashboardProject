@@ -1,9 +1,6 @@
 package com.fxproject.unidashboard.repository.impl;
 
-import com.fxproject.unidashboard.model.AcademicTitle;
-import com.fxproject.unidashboard.model.Professor;
-import com.fxproject.unidashboard.model.Subject;
-import com.fxproject.unidashboard.model.Year;
+import com.fxproject.unidashboard.model.*;
 import com.fxproject.unidashboard.repository.ProfessorRepository;
 import com.fxproject.unidashboard.utils.HibernateUtils;
 import jakarta.persistence.EntityManager;
@@ -23,7 +20,7 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
 
         try {
             transaction.begin();
-            Professor professor = findWithId(id).orElseThrow();//todo: exception
+            UniversityMember professor = findWithId(id).orElseThrow();//todo: exception
             em.remove(professor);
             transaction.commit();
         } catch (Exception e) {
@@ -130,19 +127,20 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
         try {
             transaction.begin();
             TypedQuery<Professor> query =
-                    em.createQuery(DEFAULT_QUERY + " JOIN UniversityAccount u ON u.member = p.universityAccount " +
-                            "WHERE u.universityEmail = :universityEmail", Professor.class);
+                    em.createQuery(DEFAULT_QUERY + " JOIN p.universityAccount " +
+                            "WHERE p.universityAccount.universityEmail = :universityEmail", Professor.class);
             query.setParameter("universityEmail", universityEmail);
             transaction.commit();
             return Optional.ofNullable(query.getSingleResult());
         } catch (Exception e) {
+            System.out.println("MSG = " + e.getMessage());
             transaction.rollback();
             return Optional.empty();
         }
     }
 
     @Override
-    public Optional<Professor> findProfessorByFirstNameAndLastName(String firstName, String lastName) {
+    public List<Professor> findProfessorByFirstNameAndLastName(String firstName, String lastName) {
         var transaction = em.getTransaction();
         try {
             transaction.begin();
@@ -151,10 +149,10 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
             query.setParameter("firstName", firstName);
             query.setParameter("lastName", lastName);
             transaction.commit();
-            return Optional.ofNullable(query.getSingleResult());
+            return query.getResultList();
         } catch (Exception e) {
             transaction.rollback();
-            return Optional.empty();
+            return List.of();
         }
     }
 }

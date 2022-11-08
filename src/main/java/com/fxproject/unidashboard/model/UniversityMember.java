@@ -1,6 +1,8 @@
 package com.fxproject.unidashboard.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDateTime;
 
@@ -21,7 +23,7 @@ public class UniversityMember { // ex. secretary, professor, student etc...
     private String placeOfBirth;
     private String phoneNumber;
     private String pesel;
-    @OneToOne(mappedBy = "member")
+    @OneToOne(cascade = CascadeType.ALL)
     private UniversityAccount universityAccount;
 
 

@@ -1,6 +1,8 @@
 package com.fxproject.unidashboard.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -9,9 +11,9 @@ import java.util.List;
 public class Professor extends UniversityMember {
     @Enumerated(EnumType.STRING)
     private AcademicTitle academicTitle;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Subject> subjects; // subjects that this professor teaches
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Year> years; // years that this professor teaches
 
     public Professor() {
