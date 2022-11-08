@@ -43,8 +43,8 @@ public class HelloController {
 
 
     public void initialize() {
-        StudentRepository repo = new StudentRepositoryImpl();
-        System.out.println(repo.findStudentByFirstNameAndLastName("Maciej", "Kowalski"));
+        ProfessorRepositoryImpl repo = new ProfessorRepositoryImpl();
+        System.out.println(repo.findProfessorByUniversityEmail("mk@mail.com"));
     }
 
 }

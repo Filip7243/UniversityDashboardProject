@@ -127,8 +127,7 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
         try {
             transaction.begin();
             TypedQuery<Professor> query =
-                    em.createQuery(DEFAULT_QUERY + " JOIN p.universityAccount " +
-                            "WHERE p.universityAccount.universityEmail = :universityEmail", Professor.class);
+                    em.createQuery(DEFAULT_QUERY + " WHERE p.universityAccount.universityEmail = :universityEmail", Professor.class);
             query.setParameter("universityEmail", universityEmail);
             transaction.commit();
             return Optional.ofNullable(query.getSingleResult());
