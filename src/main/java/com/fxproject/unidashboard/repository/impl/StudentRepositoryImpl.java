@@ -113,6 +113,8 @@ public class StudentRepositoryImpl implements StudentRepository {
             transaction.begin();
             TypedQuery<Student> query =
                     em.createQuery(DEFAULT_QUERY + " WHERE s.firstName = :firstName AND s.lastName = :lastName", Student.class);
+            query.setParameter("firstName", firstName);
+            query.setParameter("lastName", lastName);
             transaction.commit();
             return query.getResultList();
         } catch (Exception e) {
