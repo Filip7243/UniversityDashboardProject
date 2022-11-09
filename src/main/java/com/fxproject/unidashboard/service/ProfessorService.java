@@ -101,4 +101,18 @@ public class ProfessorService {
         professorRepository.save(professor);
     }
 
+    public void updateProfessor(Long id, ProfessorDto professorDto) {
+        Professor foundProfessor = professorRepository.findWithId(id).orElseThrow();
+        foundProfessor.setFirstName(professorDto.getFirstName());
+        foundProfessor.setLastName(professorDto.getLastName());
+        foundProfessor.setSecondName(professorDto.getSecondName());
+        foundProfessor.setEmail(professorDto.getEmail());
+        foundProfessor.setDateOfBirth(professorDto.getDateOfBirth());
+        foundProfessor.setPlaceOfBirth(professorDto.getPlaceOfBirth());
+        foundProfessor.setPhoneNumber(professorDto.getPhoneNumber());
+        foundProfessor.setPesel(professorDto.getPesel());
+        foundProfessor.setAcademicTitle(professorDto.getAcademicTitle());
+
+        professorRepository.save(foundProfessor);
+    }
 }

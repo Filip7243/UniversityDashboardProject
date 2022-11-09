@@ -1,5 +1,6 @@
 package com.fxproject.unidashboard.repository.impl;
 
+import com.fxproject.unidashboard.dto.ProfessorDto;
 import com.fxproject.unidashboard.model.*;
 import com.fxproject.unidashboard.repository.ProfessorRepository;
 import com.fxproject.unidashboard.utils.HibernateUtils;
