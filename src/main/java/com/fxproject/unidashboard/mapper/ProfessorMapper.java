@@ -4,6 +4,7 @@ import com.fxproject.unidashboard.dto.ProfessorDto;
 import com.fxproject.unidashboard.model.Professor;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProfessorMapper {
 
@@ -24,6 +25,26 @@ public class ProfessorMapper {
         professor.setYears(new ArrayList<>());
         professor.setSubjects(new ArrayList<>());
         return professor;
+    }
+
+    public static ProfessorDto mapToProfessorDto(Professor professor) {
+        return new ProfessorDto(
+                professor.getFirstName(),
+                professor.getSecondName(),
+                professor.getLastName(),
+                professor.getEmail(),
+                professor.getDateOfBirth(),
+                professor.getPlaceOfBirth(),
+                professor.getPhoneNumber(),
+                professor.getPesel(),
+                professor.getAcademicTitle()
+        );
+    }
+
+    public static List<ProfessorDto> mapToProfessorDtos(List<Professor> professors) {
+        return professors.stream()
+                .map(ProfessorMapper::mapToProfessorDto)
+                .toList();
     }
 
 }
