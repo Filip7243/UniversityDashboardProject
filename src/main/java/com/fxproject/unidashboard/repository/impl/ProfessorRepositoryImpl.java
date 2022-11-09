@@ -17,10 +17,9 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
     @Override
     public void removeWithId(Long id) {
         var transaction = em.getTransaction();
-
+        Professor professor = findWithId(id).orElseThrow();//todo: exception
         try {
             transaction.begin();
-            UniversityMember professor = findWithId(id).orElseThrow();//todo: exception
             em.remove(professor);
             transaction.commit();
         } catch (Exception e) {
