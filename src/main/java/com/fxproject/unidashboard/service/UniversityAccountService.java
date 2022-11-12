@@ -1,6 +1,7 @@
 package com.fxproject.unidashboard.service;
 
 import com.fxproject.unidashboard.dto.UniversityAccountDto;
+import com.fxproject.unidashboard.email.EmailAddressGenerator;
 import com.fxproject.unidashboard.mapper.UniversityAccountMapper;
 import com.fxproject.unidashboard.model.Role;
 import com.fxproject.unidashboard.model.UniversityAccount;
@@ -8,7 +9,9 @@ import com.fxproject.unidashboard.model.UniversityMember;
 import com.fxproject.unidashboard.repository.UniversityAccountRepository;
 import com.fxproject.unidashboard.repository.impl.UniversityAccountRepositoryImpl;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 import static com.fxproject.unidashboard.mapper.UniversityAccountMapper.mapToUniversityAccountDto;
 import static com.fxproject.unidashboard.mapper.UniversityAccountMapper.mapToUniversityAccountDtos;
@@ -24,6 +27,18 @@ public class UniversityAccountService {
     public UniversityAccountDto findAccountWithId(Long id) {
         UniversityAccount account = accountRepository.findWithId(id).orElseThrow();
         return mapToUniversityAccountDto(account);
+    }
+
+    public void addAccount(UniversityMember member) {
+        UniversityAccount account = new UniversityAccount();
+        account.setMember(member);
+        account.setPassword(UUID.randomUUID().toString()); //todo: email sent to change email
+        account.setUniversityEmail("test"); //todo: do generator
+        account.setCreatedAt(LocalDateTime.now());
+        account.setRole(null);
+        account.setEnabled(false); //todo :email confirm
+
+        accountRepository.save(account);
     }
 
     public List<UniversityAccountDto> findAllAccounts() {
