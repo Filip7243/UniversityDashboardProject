@@ -1,6 +1,7 @@
 package com.fxproject.unidashboard.repository.impl;
 
 import com.fxproject.unidashboard.model.UniversityAccount;
+import com.fxproject.unidashboard.model.UniversityMember;
 import com.fxproject.unidashboard.repository.UniversityAccountRepository;
 import com.fxproject.unidashboard.utils.HibernateUtils;
 import jakarta.persistence.EntityManager;
@@ -102,6 +103,22 @@ public class UniversityAccountRepositoryImpl implements UniversityAccountReposit
         } catch (Exception e) {
             transaction.rollback();
             return List.of();
+        }
+    }
+
+    public Optional<UniversityAccount> findUniversityAccountByMember(UniversityMember member) {
+        var transaction = em.getTransaction();
+
+        try {
+            transaction.begin();
+            TypedQuery<UniversityAccount> query =
+                    em.createQuery(DEFAULT_QUERY + " WHERE a.member = :member", UniversityAccount.class);
+            transaction.commit();
+            return Optional.ofNullable(query.getSingleResult());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            transaction.rollback();
+            return Optional.empty();
         }
     }
 }
