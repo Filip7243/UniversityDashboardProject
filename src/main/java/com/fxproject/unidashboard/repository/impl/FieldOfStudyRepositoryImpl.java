@@ -126,8 +126,8 @@ public class FieldOfStudyRepositoryImpl implements FieldOfStudyRepository {
             transaction.commit();
             return query.getResultList();
         } catch (Exception e) {
-            transaction.rollback();
             System.out.println(e.getMessage());
+            transaction.rollback();
             return List.of();
         }
     }
