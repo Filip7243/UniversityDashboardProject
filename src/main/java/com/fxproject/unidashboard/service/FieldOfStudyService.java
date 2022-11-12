@@ -53,7 +53,8 @@ public class FieldOfStudyService {
         return fieldOfStudyRepository.findFieldOfStudyDepartment(id).orElseThrow(); //todo: custom exception
     }
 
-    public List<FieldOfStudyDto> findFieldsOfStudyByDepartment(UniversityDepartment department) { // todo: DTO
+    public List<FieldOfStudyDto> findFieldsOfStudyByDepartment(String departmentName) { // todo: DTO
+        UniversityDepartment department = universityDepartmentRepository.findDepartmentWithName(departmentName).orElseThrow();
         List<FieldOfStudy> all = fieldOfStudyRepository.findFieldsOfStudyByDepartment(department);
         return mapToFieldOfStudyDtos(all);
     }
