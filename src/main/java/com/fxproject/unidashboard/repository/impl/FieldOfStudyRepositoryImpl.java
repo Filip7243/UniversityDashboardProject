@@ -6,7 +6,6 @@ import com.fxproject.unidashboard.model.UniversityDepartment;
 import com.fxproject.unidashboard.repository.FieldOfStudyRepository;
 import com.fxproject.unidashboard.utils.HibernateUtils;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
