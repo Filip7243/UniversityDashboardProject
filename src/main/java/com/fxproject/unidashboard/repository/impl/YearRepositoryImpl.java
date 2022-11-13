@@ -108,17 +108,17 @@ public class YearRepositoryImpl implements YearRepository {
     }
 
     @Override
-    public Optional<Year> findYearByYearOfStudy(Integer yearOfStudy) {
+    public List<Year> findYearsByYearOfStudy(Integer yearOfStudy) {
         var transaction = em.getTransaction();
         try {
             transaction.begin();
             TypedQuery<Year> query = em.createQuery(DEFAULT_QUERY + " WHERE y.yearOfStudy = :yearOfStudy", Year.class);
             query.setParameter("yearOfStudy", yearOfStudy);
             transaction.commit();
-            return Optional.ofNullable(query.getSingleResult());
+            return query.getResultList();
         } catch (Exception e) {
             transaction.rollback();
-            return Optional.empty();
+            return List.of();
         }
     }
 }
