@@ -10,6 +10,7 @@ import com.fxproject.unidashboard.repository.WageRepository;
 import com.fxproject.unidashboard.repository.impl.UniversityAccountRepositoryImpl;
 import com.fxproject.unidashboard.repository.impl.WageRepositoryImpl;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class WageService {
 
     private final WageRepository wageRepository = new WageRepositoryImpl();
     private final UniversityAccountRepository accountRepository = new UniversityAccountRepositoryImpl();
+    private static final DecimalFormat df = new DecimalFormat("0.000");
 
     public void addWage(UniversityMember member, Integer hoursWorked) {
         UniversityAccount account = accountRepository.findUniversityAccountByMember(member).orElseThrow();
@@ -33,10 +35,14 @@ public class WageService {
         wage.setPayday(LocalDateTime.now());
         wage.setHourlyRate(hourlyRate);
         if(hourlyRate > 0.0) {
-            wage.setSalary(hourlyRate * hoursWorked);
+            wage.setSalary(Double.valueOf(df.format(hourlyRate * hoursWorked)));
         } else {
             wage.setSalary(0.0);
         }
+        wage.setEmployee(member);
+        wage.setHoursWorked(hoursWorked);
+
+        wageRepository.save(wage);
     }
 
     public void removeWageWithId(Long id) {
@@ -53,7 +59,7 @@ public class WageService {
         return mapToWageDtos(all);
     }
 
-    public List<WageDto> findWagesByPayday(LocalDateTime time) {
+    public List<WageDto> findWagesByPayday(LocalDateTime time) { // todo: improve it
         List<Wage> all = wageRepository.findWagesByPayday(time);
         return mapToWageDtos(all);
     }
@@ -62,7 +68,5 @@ public class WageService {
         List<Wage> all = wageRepository.findWagesByEmployeePesel(pesel);
         return mapToWageDtos(all);
     }
-
-
 
 }
