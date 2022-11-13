@@ -71,6 +71,7 @@ public class UniversityAccountRepositoryImpl implements UniversityAccountReposit
             transaction.commit();
             return Optional.ofNullable(query.getSingleResult());
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             transaction.rollback();
             return Optional.empty();
         }
