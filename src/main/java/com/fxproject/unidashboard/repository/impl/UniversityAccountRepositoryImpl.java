@@ -14,7 +14,7 @@ public class UniversityAccountRepositoryImpl implements UniversityAccountReposit
 
     private EntityManager em = HibernateUtils.getEntityManager();
     private static final String DEFAULT_QUERY = "SELECT a FROM UniversityAccount a";
-
+ // todo: make suer that one member can have one account
 
     @Override
     public void removeWithId(Long id) {
@@ -113,6 +113,7 @@ public class UniversityAccountRepositoryImpl implements UniversityAccountReposit
             transaction.begin();
             TypedQuery<UniversityAccount> query =
                     em.createQuery(DEFAULT_QUERY + " WHERE a.member = :member", UniversityAccount.class);
+            query.setParameter("member", member);
             transaction.commit();
             return Optional.ofNullable(query.getSingleResult());
         } catch (Exception e) {
