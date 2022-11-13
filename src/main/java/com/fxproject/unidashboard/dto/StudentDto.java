@@ -1,50 +1,60 @@
 package com.fxproject.unidashboard.dto;
 
+import com.fxproject.unidashboard.model.Year;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
 public class StudentDto {
 
-    private Long id;
-    private String albumId; // this is id that student uses (generate value)
+    private String albumId;
     private String firstName;
-    private String secondName; // optional
+    private String secondName;
     private String lastName;
     private String email;
-    private String universityEmail; // @stud.uni.edu.pl
+    private LocalDateTime dateOfBirth;
+    private String placeOfBirth;
     private String phoneNumber;
     private String pesel;
+    private List<Year> years;
 
-    public StudentDto(Long id, String albumId, String firstName, String secondName, String lastName, String email, String universityEmail, String phoneNumber, String pesel) {
-        this.id = id;
+    public StudentDto(String albumId, String firstName, String secondName, String lastName, String email, LocalDateTime dateOfBirth, String placeOfBirth, String phoneNumber, String pesel, List<Year> years) {
         this.albumId = albumId;
         this.firstName = firstName;
         this.secondName = secondName;
         this.lastName = lastName;
         this.email = email;
-        this.universityEmail = universityEmail;
+        this.dateOfBirth = dateOfBirth;
+        this.placeOfBirth = placeOfBirth;
         this.phoneNumber = phoneNumber;
         this.pesel = pesel;
+        this.years = years;
     }
 
-    @Override
-    public String toString() {
-        return "StudentDto{" +
-               ", albumId='" + albumId + '\'' +
-               ", firstName='" + firstName + '\'' +
-               ", secondName='" + secondName + '\'' +
-               ", lastName='" + lastName + '\'' +
-               ", email='" + email + '\'' +
-               ", universityEmail='" + universityEmail + '\'' +
-               ", phoneNumber='" + phoneNumber + '\'' +
-               ", pesel='" + pesel + '\'' +
-               '}';
+    public List<Year> getYears() {
+        return years;
     }
 
-    public Long getId() {
-        return id;
+    public void setYears(List<Year> years) {
+        this.years = years;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getPlaceOfBirth() {
+        return placeOfBirth;
     }
+
+    public void setPlaceOfBirth(String placeOfBirth) {
+        this.placeOfBirth = placeOfBirth;
+    }
+
+    public LocalDateTime getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDateTime dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
 
     public String getAlbumId() {
         return albumId;
@@ -84,14 +94,6 @@ public class StudentDto {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUniversityEmail() {
-        return universityEmail;
-    }
-
-    public void setUniversityEmail(String universityEmail) {
-        this.universityEmail = universityEmail;
     }
 
     public String getPhoneNumber() {
