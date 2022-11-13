@@ -14,4 +14,11 @@ public enum TypeOfStudy {
         this.duration = duration;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Double getDuration() {
+        return duration;
+    }
 }
