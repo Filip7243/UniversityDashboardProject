@@ -20,7 +20,7 @@ public class Year { // konkretny rocznik, danego kierunku
     private FieldOfStudy fieldOfStudy;
     private Integer yearOfStudy;
     private LocalDateTime startedStudies;
-    private LocalDateTime expectedYearOfEndStudies;
+    private LocalDateTime expectedYearOfEndStudies; // todo: delete
     @ManyToMany
     private List<Subject> subjects;
     //todo; timetable, sylabus
