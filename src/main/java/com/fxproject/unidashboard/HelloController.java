@@ -38,10 +38,8 @@ public class HelloController {
 
 
     public void initialize() {
-        YearService service = new YearService();
 
-//        service.addYear(new YearDto("2000/2001", new ArrayList<>(), null, 1, new ArrayList<>()), "DUPA");
-        System.out.println(service.findYearsByYearOfStudy(1));
+
     }
 
 }
