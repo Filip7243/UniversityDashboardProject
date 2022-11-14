@@ -39,8 +39,6 @@ public class HelloController {
 
     public void initialize() {
 
-        ProfessorService service = new ProfessorService();
-
     }
 
 }

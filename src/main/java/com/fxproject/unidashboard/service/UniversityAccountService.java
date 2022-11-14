@@ -32,7 +32,7 @@ public class UniversityAccountService {
     public void addAccount(UniversityMember member) {
         UniversityAccount account = new UniversityAccount();
         account.setMember(member);
-        account.setPassword(UUID.randomUUID().toString()); //todo: email sent to change email
+        account.setPassword(UUID.randomUUID().toString()); //todo: email sent to change password
         account.setUniversityEmail("test"); //todo: do generator
         account.setCreatedAt(LocalDateTime.now());
         account.setRole(null);

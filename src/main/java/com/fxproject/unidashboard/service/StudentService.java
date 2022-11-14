@@ -94,6 +94,6 @@ public class StudentService {
         year.getStudents().add(student);
 
         studentRepository.save(student);
-        yearRepository.save(year); // todo: should be set not list
+        yearRepository.save(year);
     }
 }

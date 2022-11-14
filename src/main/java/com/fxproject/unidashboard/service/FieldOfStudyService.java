@@ -49,11 +49,11 @@ public class FieldOfStudyService {
         return mapToFieldOfStudyDtos(all);
     }
 
-    public UniversityDepartment findFieldOfStudyDepartment(Long id) { //todo: change to UniversityDepartmentDto
+    public UniversityDepartment findFieldOfStudyDepartment(Long id) {
         return fieldOfStudyRepository.findFieldOfStudyDepartment(id).orElseThrow(); //todo: custom exception
     }
 
-    public List<FieldOfStudyDto> findFieldsOfStudyByDepartment(String departmentName) { // todo: DTO
+    public List<FieldOfStudyDto> findFieldsOfStudyByDepartment(String departmentName) {
         UniversityDepartment department = universityDepartmentRepository.findDepartmentWithName(departmentName).orElseThrow();
         List<FieldOfStudy> all = fieldOfStudyRepository.findFieldsOfStudyByDepartment(department);
         return mapToFieldOfStudyDtos(all);

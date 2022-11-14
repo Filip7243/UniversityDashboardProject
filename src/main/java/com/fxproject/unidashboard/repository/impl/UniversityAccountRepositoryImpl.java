@@ -14,7 +14,6 @@ public class UniversityAccountRepositoryImpl implements UniversityAccountReposit
 
     private EntityManager em = HibernateUtils.getEntityManager();
     private static final String DEFAULT_QUERY = "SELECT a FROM UniversityAccount a";
- // todo: make suer that one member can have one account
 
 
     @Override
