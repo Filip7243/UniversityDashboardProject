@@ -72,8 +72,6 @@ public class YearService {
         year.setFieldOfStudy(fieldOfStudy); // todo: field of study should be enum maybe
         year.setYearOfStudy(yearDto.getYearOfStudy());
         year.setStartedStudies(LocalDateTime.of(now().getYear(), OCTOBER, 1, 8, 0));
-        String duration = String.valueOf(fieldOfStudy.getType().getDuration());
-        year.setExpectedYearOfEndStudies(year.getStartedStudies().plusYears(Long.parseLong(duration.substring(0,1))));
         year.setSubjects(new HashSet<>());
 
         yearRepository.save(year);

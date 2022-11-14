@@ -21,7 +21,6 @@ public class Year { // konkretny rocznik, danego kierunku
     private FieldOfStudy fieldOfStudy;
     private Integer yearOfStudy;
     private LocalDateTime startedStudies;
-    private LocalDateTime expectedYearOfEndStudies; // todo: delete
     @ManyToMany
     private Set<Subject> subjects;
     //todo; timetable, sylabus
@@ -30,14 +29,13 @@ public class Year { // konkretny rocznik, danego kierunku
     public Year() {
     }
 
-    public Year(Long id, String name, Set<Student> students, FieldOfStudy fieldOfStudy, Integer yearOfStudy, LocalDateTime startedStudies, LocalDateTime expectedYearOfEndStudies, Set<Subject> subjects) {
+    public Year(Long id, String name, Set<Student> students, FieldOfStudy fieldOfStudy, Integer yearOfStudy, LocalDateTime startedStudies, Set<Subject> subjects) {
         this.id = id;
         this.name = name;
         this.students = students;
         this.fieldOfStudy = fieldOfStudy;
         this.yearOfStudy = yearOfStudy;
         this.startedStudies = startedStudies;
-        this.expectedYearOfEndStudies = expectedYearOfEndStudies;
         this.subjects = subjects;
     }
 
@@ -87,14 +85,6 @@ public class Year { // konkretny rocznik, danego kierunku
 
     public void setStartedStudies(LocalDateTime startedStudies) {
         this.startedStudies = startedStudies;
-    }
-
-    public LocalDateTime getExpectedYearOfEndStudies() {
-        return expectedYearOfEndStudies;
-    }
-
-    public void setExpectedYearOfEndStudies(LocalDateTime expectedYearOfEndStudies) {
-        this.expectedYearOfEndStudies = expectedYearOfEndStudies;
     }
 
     public Set<Subject> getSubjects() {
