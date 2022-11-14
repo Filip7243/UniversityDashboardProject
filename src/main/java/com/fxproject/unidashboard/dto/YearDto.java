@@ -7,15 +7,16 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 import java.util.List;
+import java.util.Set;
 
 public class YearDto {
     private String name;
-    private List<Student> students;
+    private Set<Student> students;
     private FieldOfStudy fieldOfStudy;
     private Integer yearOfStudy;
-    private List<Subject> subjects;
+    private Set<Subject> subjects;
 
-    public YearDto(String name, List<Student> students, FieldOfStudy fieldOfStudy, Integer yearOfStudy, List<Subject> subjects) {
+    public YearDto(String name, Set<Student> students, FieldOfStudy fieldOfStudy, Integer yearOfStudy, Set<Subject> subjects) {
         this.name = name;
         this.students = students;
         this.fieldOfStudy = fieldOfStudy;
@@ -31,11 +32,11 @@ public class YearDto {
         this.name = name;
     }
 
-    public List<Student> getStudents() {
+    public Set<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(List<Student> students) {
+    public void setStudents(Set<Student> students) {
         this.students = students;
     }
 
@@ -55,11 +56,11 @@ public class YearDto {
         this.yearOfStudy = yearOfStudy;
     }
 
-    public List<Subject> getSubjects() {
+    public Set<Subject> getSubjects() {
         return subjects;
     }
 
-    public void setSubjects(List<Subject> subjects) {
+    public void setSubjects(Set<Subject> subjects) {
         this.subjects = subjects;
     }
 }

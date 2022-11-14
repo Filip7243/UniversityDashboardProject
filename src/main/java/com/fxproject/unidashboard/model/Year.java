@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -15,21 +16,21 @@ public class Year { // konkretny rocznik, danego kierunku
     private Long id;
     private String name; // "2021/2025"(3.5 lat inżynierka)
     @ManyToMany
-    private List<Student> students;
+    private Set<Student> students;
     @ManyToOne
     private FieldOfStudy fieldOfStudy;
     private Integer yearOfStudy;
     private LocalDateTime startedStudies;
     private LocalDateTime expectedYearOfEndStudies; // todo: delete
     @ManyToMany
-    private List<Subject> subjects;
+    private Set<Subject> subjects;
     //todo; timetable, sylabus
 
 
     public Year() {
     }
 
-    public Year(Long id, String name, List<Student> students, FieldOfStudy fieldOfStudy, Integer yearOfStudy, LocalDateTime startedStudies, LocalDateTime expectedYearOfEndStudies, List<Subject> subjects) {
+    public Year(Long id, String name, Set<Student> students, FieldOfStudy fieldOfStudy, Integer yearOfStudy, LocalDateTime startedStudies, LocalDateTime expectedYearOfEndStudies, Set<Subject> subjects) {
         this.id = id;
         this.name = name;
         this.students = students;
@@ -56,11 +57,11 @@ public class Year { // konkretny rocznik, danego kierunku
         this.name = name;
     }
 
-    public List<Student> getStudents() {
+    public Set<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(List<Student> students) {
+    public void setStudents(Set<Student> students) {
         this.students = students;
     }
 
@@ -96,11 +97,11 @@ public class Year { // konkretny rocznik, danego kierunku
         this.expectedYearOfEndStudies = expectedYearOfEndStudies;
     }
 
-    public List<Subject> getSubjects() {
+    public Set<Subject> getSubjects() {
         return subjects;
     }
 
-    public void setSubjects(List<Subject> subjects) {
+    public void setSubjects(Set<Subject> subjects) {
         this.subjects = subjects;
     }
 }

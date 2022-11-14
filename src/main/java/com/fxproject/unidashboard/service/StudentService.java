@@ -2,9 +2,6 @@ package com.fxproject.unidashboard.service;
 
 import com.fxproject.unidashboard.dto.StudentDto;
 import com.fxproject.unidashboard.dto.YearDto;
-import com.fxproject.unidashboard.email.EmailAddressGenerator;
-import com.fxproject.unidashboard.mapper.StudentMapper;
-import com.fxproject.unidashboard.mapper.YearMapper;
 import com.fxproject.unidashboard.model.Role;
 import com.fxproject.unidashboard.model.Student;
 import com.fxproject.unidashboard.model.UniversityAccount;
@@ -15,10 +12,9 @@ import com.fxproject.unidashboard.repository.impl.StudentRepositoryImpl;
 import com.fxproject.unidashboard.repository.impl.YearRepositoryImpl;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 import static com.fxproject.unidashboard.mapper.StudentMapper.mapToStudentDto;
 import static com.fxproject.unidashboard.mapper.StudentMapper.mapToStudentDtos;
@@ -39,7 +35,7 @@ public class StudentService {
         student.setDateOfBirth(studentDto.getDateOfBirth());
         student.setPlaceOfBirth(studentDto.getPlaceOfBirth());
         student.setPesel(studentDto.getPesel());
-        student.setYears(new ArrayList<>());
+        student.setYears(new HashSet<>());
         student.setUniversityAccount(createUniversityAccountForStudent(student));
         studentRepository.save(student);
     }

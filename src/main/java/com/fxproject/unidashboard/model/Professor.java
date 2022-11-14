@@ -1,25 +1,22 @@
 package com.fxproject.unidashboard.model;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Professor extends UniversityMember {
     @Enumerated(EnumType.STRING)
     private AcademicTitle academicTitle;
     @ManyToMany(cascade = CascadeType.ALL)
-    private List<Subject> subjects; // subjects that this professor teaches
+    private Set<Subject> subjects; // subjects that this professor teaches
     @ManyToMany(cascade = CascadeType.ALL)
-    private List<Year> years; // years that this professor teaches
+    private Set<Year> years; // years that this professor teaches
 
     public Professor() {
     }
 
-    public Professor(AcademicTitle academicTitle, List<Subject> subjects, List<Year> years) {
+    public Professor(AcademicTitle academicTitle, Set<Subject> subjects, Set<Year> years) {
         this.academicTitle = academicTitle;
         this.subjects = subjects;
         this.years = years;
@@ -33,19 +30,19 @@ public class Professor extends UniversityMember {
         this.academicTitle = academicTitle;
     }
 
-    public List<Subject> getSubjects() {
+    public Set<Subject> getSubjects() {
         return subjects;
     }
 
-    public void setSubjects(List<Subject> subjects) {
+    public void setSubjects(Set<Subject> subjects) {
         this.subjects = subjects;
     }
 
-    public List<Year> getYears() {
+    public Set<Year> getYears() {
         return years;
     }
 
-    public void setYears(List<Year> years) {
+    public void setYears(Set<Year> years) {
         this.years = years;
     }
 }

@@ -4,6 +4,7 @@ import com.fxproject.unidashboard.dto.ProfessorDto;
 import com.fxproject.unidashboard.model.Professor;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class ProfessorMapper {
@@ -22,8 +23,8 @@ public class ProfessorMapper {
         professor.setPhoneNumber(professorDto.getPhoneNumber());
         professor.setPesel(professorDto.getPesel());
         professor.setAcademicTitle(professorDto.getAcademicTitle());
-        professor.setYears(new ArrayList<>());
-        professor.setSubjects(new ArrayList<>());
+        professor.setYears(new HashSet<>());
+        professor.setSubjects(new HashSet<>());
         return professor;
     }
 

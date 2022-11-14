@@ -4,6 +4,7 @@ import com.fxproject.unidashboard.model.Year;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 public class StudentDto {
 
@@ -16,9 +17,9 @@ public class StudentDto {
     private String placeOfBirth;
     private String phoneNumber;
     private String pesel;
-    private List<Year> years;
+    private Set<Year> years;
 
-    public StudentDto(String albumId, String firstName, String secondName, String lastName, String email, LocalDateTime dateOfBirth, String placeOfBirth, String phoneNumber, String pesel, List<Year> years) {
+    public StudentDto(String albumId, String firstName, String secondName, String lastName, String email, LocalDateTime dateOfBirth, String placeOfBirth, String phoneNumber, String pesel, Set<Year> years) {
         this.albumId = albumId;
         this.firstName = firstName;
         this.secondName = secondName;
@@ -31,11 +32,11 @@ public class StudentDto {
         this.years = years;
     }
 
-    public List<Year> getYears() {
+    public Set<Year> getYears() {
         return years;
     }
 
-    public void setYears(List<Year> years) {
+    public void setYears(Set<Year> years) {
         this.years = years;
     }
 

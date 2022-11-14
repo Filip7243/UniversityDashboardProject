@@ -5,18 +5,19 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Student extends UniversityMember {
 
     private String albumId; // this is id that student uses (generate value)
     @ManyToMany
-    private List<Year> years; // many students can attend to many years
+    private Set<Year> years; // many students can attend to many years
 
     public Student() {
     }
 
-    public Student(Boolean isEnabled, List<Year> years) {
+    public Student(Boolean isEnabled, Set<Year> years) {
         this.albumId = albumId;
         this.years = years;
     }
@@ -29,11 +30,11 @@ public class Student extends UniversityMember {
         this.albumId = albumId;
     }
 
-    public List<Year> getYears() {
+    public Set<Year> getYears() {
         return years;
     }
 
-    public void setYears(List<Year> years) {
+    public void setYears(Set<Year> years) {
         this.years = years;
     }
 
