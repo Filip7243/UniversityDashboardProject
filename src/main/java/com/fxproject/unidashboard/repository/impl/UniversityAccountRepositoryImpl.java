@@ -16,6 +16,25 @@ public class UniversityAccountRepositoryImpl implements UniversityAccountReposit
     private static final String DEFAULT_QUERY = "SELECT a FROM UniversityAccount a";
  // todo: make suer that one member can have one account
 
+
+    @Override
+    public void save(UniversityAccount record) {
+        var transaction = em.getTransaction();
+        UniversityAccount account = findUniversityAccountByMember(record.getMember()).orElseThrow(); //todo: custom exception and try catch block
+        if(account != null) {
+            return;
+        } else {
+            try {
+                transaction.begin();
+                em.persist(record);
+                transaction.commit();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                transaction.rollback();
+            }
+        }
+    }
+
     @Override
     public void removeWithId(Long id) {
         UniversityAccount universityAccount = findWithId(id).orElseThrow();// todo: custom exception
