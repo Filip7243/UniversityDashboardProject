@@ -2,6 +2,7 @@ package com.fxproject.unidashboard.service;
 
 import com.fxproject.unidashboard.dto.StudentDto;
 import com.fxproject.unidashboard.dto.YearDto;
+import com.fxproject.unidashboard.email.EmailAddressGenerator;
 import com.fxproject.unidashboard.model.Role;
 import com.fxproject.unidashboard.model.Student;
 import com.fxproject.unidashboard.model.UniversityAccount;
@@ -43,7 +44,7 @@ public class StudentService {
     private UniversityAccount createUniversityAccountForStudent(Student student) {
         UniversityAccount account = new UniversityAccount();
         account.setMember(student);
-        account.setUniversityEmail("as"); // todo: mail generator
+        account.setUniversityEmail(EmailAddressGenerator.generateUniversityEmailForStudent(student));
         account.setPassword(UUID.randomUUID().toString());
         account.setRole(Role.ROLE_STUDENT);
         account.setCreatedAt(LocalDateTime.now());

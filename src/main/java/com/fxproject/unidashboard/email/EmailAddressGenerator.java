@@ -2,6 +2,7 @@ package com.fxproject.unidashboard.email;
 
 import com.fxproject.unidashboard.model.Professor;
 import com.fxproject.unidashboard.model.Student;
+import com.fxproject.unidashboard.model.UniversityMember;
 
 import java.util.Random;
 
@@ -23,5 +24,12 @@ public class EmailAddressGenerator {
         char firstLetterName = student.getFirstName().toLowerCase().charAt(0);
         char lastLetterName = student.getLastName().toLowerCase().charAt(0);
         return String.valueOf(firstLetterName) + String.valueOf(lastLetterName) + student.getAlbumId() + "@.stud.uni.pl";
+    }
+
+    public static String generateBasicUniversityEmail(UniversityMember member) {
+        char firstLetterName = member.getFirstName().toLowerCase().charAt(0);
+        char lastLetterName = member.getLastName().toLowerCase().charAt(0);
+
+        return String.valueOf(firstLetterName) + String.valueOf(lastLetterName) + "@base.uni.pl";
     }
 }

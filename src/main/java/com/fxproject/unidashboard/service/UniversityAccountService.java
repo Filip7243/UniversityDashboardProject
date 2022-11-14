@@ -33,7 +33,7 @@ public class UniversityAccountService {
         UniversityAccount account = new UniversityAccount();
         account.setMember(member);
         account.setPassword(UUID.randomUUID().toString()); //todo: email sent to change password
-        account.setUniversityEmail("test"); //todo: do generator
+        account.setUniversityEmail(EmailAddressGenerator.generateBasicUniversityEmail(member));
         account.setCreatedAt(LocalDateTime.now());
         account.setRole(null);
         account.setEnabled(false); //todo :email confirm
