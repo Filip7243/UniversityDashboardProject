@@ -9,6 +9,8 @@ public class HibernateUtils {
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("main-persistence-unit");
     private static EntityManager em;
 
+    private HibernateUtils(){}
+
     static {
         em = emf.createEntityManager();
     }
