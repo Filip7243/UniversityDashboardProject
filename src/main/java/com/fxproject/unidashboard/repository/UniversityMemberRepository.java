@@ -1,5 +1,6 @@
 package com.fxproject.unidashboard.repository;
 
+import com.fxproject.unidashboard.model.UniversityAccount;
 import com.fxproject.unidashboard.model.UniversityMember;
 
 import java.util.List;
@@ -11,4 +12,5 @@ public interface UniversityMemberRepository extends DefaultRepository<University
     Optional<UniversityMember> findByEmail(String email);
     Optional<UniversityMember> findByUniversityEmail(String universityEmail);
     List<UniversityMember> findByFirstNameAndLastName(String firstName, String lastName);
+    Optional<UniversityAccount> findUniversityMemberByUniversityAccount(UniversityAccount account);
 }

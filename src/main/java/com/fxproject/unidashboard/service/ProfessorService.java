@@ -34,7 +34,6 @@ public class ProfessorService {
 
     private UniversityAccount createUniversityAccountForProfessor(Professor professor) {
         UniversityAccount account = new UniversityAccount();
-        account.setMember(professor);
         account.setUniversityEmail(generateUniversityEmailForProfessor(professor));
         account.setPassword(UUID.randomUUID().toString()); // this password will be snet on email then must be changed
         account.setRole(Role.ROLE_PROFESSOR);
@@ -89,7 +88,6 @@ public class ProfessorService {
         Professor professor = professorRepository.findWithId(professorId).orElseThrow();
         Year year = yearRepository.findWithId(yearId).orElseThrow();
 
-        professor.getYears().add(year);
         professorRepository.save(professor);
     }
 
@@ -97,7 +95,6 @@ public class ProfessorService {
         Professor professor = professorRepository.findWithId(professorId).orElseThrow();
         Subject subject = subjectRepository.findByName(subjectName).orElseThrow();
 
-        professor.getSubjects().add(subject);
         professorRepository.save(professor);
     }
 

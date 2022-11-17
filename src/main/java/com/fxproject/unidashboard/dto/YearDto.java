@@ -11,14 +11,12 @@ import java.util.Set;
 
 public class YearDto {
     private String name;
-    private Set<Student> students;
     private FieldOfStudy fieldOfStudy;
     private Integer yearOfStudy;
     private Set<Subject> subjects;
 
-    public YearDto(String name, Set<Student> students, FieldOfStudy fieldOfStudy, Integer yearOfStudy, Set<Subject> subjects) {
+    public YearDto(String name, FieldOfStudy fieldOfStudy, Integer yearOfStudy, Set<Subject> subjects) {
         this.name = name;
-        this.students = students;
         this.fieldOfStudy = fieldOfStudy;
         this.yearOfStudy = yearOfStudy;
         this.subjects = subjects;
@@ -32,13 +30,6 @@ public class YearDto {
         this.name = name;
     }
 
-    public Set<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(Set<Student> students) {
-        this.students = students;
-    }
 
     public FieldOfStudy getFieldOfStudy() {
         return fieldOfStudy;

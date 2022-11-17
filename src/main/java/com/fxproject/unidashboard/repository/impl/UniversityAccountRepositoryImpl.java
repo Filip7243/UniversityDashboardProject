@@ -1,7 +1,6 @@
 package com.fxproject.unidashboard.repository.impl;
 
 import com.fxproject.unidashboard.model.UniversityAccount;
-import com.fxproject.unidashboard.model.UniversityMember;
 import com.fxproject.unidashboard.repository.UniversityAccountRepository;
 import com.fxproject.unidashboard.utils.HibernateUtils;
 import jakarta.persistence.EntityManager;
@@ -19,10 +18,6 @@ public class UniversityAccountRepositoryImpl implements UniversityAccountReposit
     @Override
     public void save(UniversityAccount record) {
         var transaction = em.getTransaction();
-        UniversityAccount account = findUniversityAccountByMember(record.getMember()).orElseThrow(); //todo: custom exception and try catch block
-        if(account != null) {
-            return;
-        } else {
             try {
                 transaction.begin();
                 em.persist(record);
@@ -31,7 +26,6 @@ public class UniversityAccountRepositoryImpl implements UniversityAccountReposit
                 System.out.println(e.getMessage());
                 transaction.rollback();
             }
-        }
     }
 
     @Override
@@ -125,20 +119,4 @@ public class UniversityAccountRepositoryImpl implements UniversityAccountReposit
         }
     }
 
-    public Optional<UniversityAccount> findUniversityAccountByMember(UniversityMember member) {
-        var transaction = em.getTransaction();
-
-        try {
-            transaction.begin();
-            TypedQuery<UniversityAccount> query =
-                    em.createQuery(DEFAULT_QUERY + " WHERE a.member = :member", UniversityAccount.class);
-            query.setParameter("member", member);
-            transaction.commit();
-            return Optional.ofNullable(query.getSingleResult());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            transaction.rollback();
-            return Optional.empty();
-        }
-    }
 }

@@ -11,6 +11,4 @@ public interface UniversityAccountRepository extends DefaultRepository<Universit
     Optional<UniversityAccount> findAccountByUniversityEmail(String universityEmail);
     List<UniversityAccount> findAllDisabledAccounts();
     List<UniversityAccount> findAllEnableAccounts();
-
-    Optional<UniversityAccount> findUniversityAccountByMember(UniversityMember member);
 }

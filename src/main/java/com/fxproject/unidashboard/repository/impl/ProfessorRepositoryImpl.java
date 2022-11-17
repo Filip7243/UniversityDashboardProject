@@ -79,7 +79,8 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
         var transaction = em.getTransaction();
         try {
             transaction.begin();
-            TypedQuery<Subject> query = em.createQuery("SELECT p.subjects FROM Professor p WHERE p.id = :id", Subject.class);
+            TypedQuery<Subject> query =
+                    em.createQuery("SELECT s FROM Subject s JOIN s.professors p WHERE p.id = :id", Subject.class);
             query.setParameter("id", id);
             transaction.commit();
             return query.getResultList();
@@ -94,7 +95,8 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
         var transaction = em.getTransaction();
         try {
             transaction.begin();
-            TypedQuery<Year> query = em.createQuery("SELECT p.years FROM Professor p WHERE p.id = :id", Year.class);
+            TypedQuery<Year> query =
+                    em.createQuery("SELECT y FROM Year y JOIN y.subjects s JOIN s.professors p WHERE p.id = :id", Year.class);
             query.setParameter("id", id);
             transaction.commit();
             return query.getResultList();

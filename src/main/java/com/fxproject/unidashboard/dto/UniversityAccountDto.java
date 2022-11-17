@@ -9,28 +9,18 @@ import java.time.LocalDateTime;
 
 public class UniversityAccountDto {
 
-    private UniversityMember member;
     private String universityEmail;
     private String password;
     private Role role;
     private LocalDateTime createdAt; // = dateOfEmployment/startingStudies
     private Boolean isEnabled;
 
-    public UniversityAccountDto(UniversityMember member, String universityEmail, String password, Role role, LocalDateTime createdAt, Boolean isEnabled) {
-        this.member = member;
+    public UniversityAccountDto(String universityEmail, String password, Role role, LocalDateTime createdAt, Boolean isEnabled) {
         this.universityEmail = universityEmail;
         this.password = password;
         this.role = role;
         this.createdAt = createdAt;
         this.isEnabled = isEnabled;
-    }
-
-    public UniversityMember getMember() {
-        return member;
-    }
-
-    public void setMember(UniversityMember member) {
-        this.member = member;
     }
 
     public String getUniversityEmail() {

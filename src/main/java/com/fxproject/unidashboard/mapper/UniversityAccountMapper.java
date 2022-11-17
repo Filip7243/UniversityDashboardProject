@@ -12,7 +12,6 @@ public class UniversityAccountMapper {
 
     public static UniversityAccountDto mapToUniversityAccountDto(UniversityAccount account) {
         return new UniversityAccountDto(
-                account.getMember(),
                 account.getUniversityEmail(),
                 account.getPassword(),
                 account.getRole(),

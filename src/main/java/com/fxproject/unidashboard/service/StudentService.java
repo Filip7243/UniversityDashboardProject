@@ -43,7 +43,6 @@ public class StudentService {
 
     private UniversityAccount createUniversityAccountForStudent(Student student) {
         UniversityAccount account = new UniversityAccount();
-        account.setMember(student);
         account.setUniversityEmail(EmailAddressGenerator.generateUniversityEmailForStudent(student));
         account.setPassword(UUID.randomUUID().toString());
         account.setRole(Role.ROLE_STUDENT);
@@ -92,9 +91,7 @@ public class StudentService {
         Student student = studentRepository.findWithId(studentId).orElseThrow();
 
         student.getYears().add(year);
-        year.getStudents().add(student);
 
         studentRepository.save(student);
-        yearRepository.save(year);
     }
 }

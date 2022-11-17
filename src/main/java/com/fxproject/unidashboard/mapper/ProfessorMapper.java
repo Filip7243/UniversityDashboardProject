@@ -23,8 +23,6 @@ public class ProfessorMapper {
         professor.setPhoneNumber(professorDto.getPhoneNumber());
         professor.setPesel(professorDto.getPesel());
         professor.setAcademicTitle(professorDto.getAcademicTitle());
-        professor.setYears(new HashSet<>());
-        professor.setSubjects(new HashSet<>());
         return professor;
     }
 

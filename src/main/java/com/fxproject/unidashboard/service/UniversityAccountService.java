@@ -31,7 +31,6 @@ public class UniversityAccountService {
 
     public void addAccount(UniversityMember member) {
         UniversityAccount account = new UniversityAccount();
-        account.setMember(member);
         account.setPassword(UUID.randomUUID().toString()); //todo: email sent to change password
         account.setUniversityEmail(EmailAddressGenerator.generateBasicUniversityEmail(member));
         account.setCreatedAt(LocalDateTime.now());

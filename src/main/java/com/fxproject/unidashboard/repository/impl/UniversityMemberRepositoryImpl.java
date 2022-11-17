@@ -1,5 +1,6 @@
 package com.fxproject.unidashboard.repository.impl;
 
+import com.fxproject.unidashboard.model.UniversityAccount;
 import com.fxproject.unidashboard.model.UniversityMember;
 import com.fxproject.unidashboard.repository.UniversityMemberRepository;
 import com.fxproject.unidashboard.utils.HibernateUtils;
@@ -124,5 +125,10 @@ public class UniversityMemberRepositoryImpl implements UniversityMemberRepositor
             transaction.rollback();
             return List.of();
         }
+    }
+
+    @Override
+    public Optional<UniversityAccount> findUniversityMemberByUniversityAccount(UniversityAccount account) {
+        return Optional.empty(); //todo: implementation
     }
 }

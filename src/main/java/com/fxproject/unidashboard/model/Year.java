@@ -15,8 +15,6 @@ public class Year { // konkretny rocznik, danego kierunku
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     private String name; // "2021/2025"(3.5 lat inżynierka)
-    @ManyToMany
-    private Set<Student> students;
     @ManyToOne
     private FieldOfStudy fieldOfStudy;
     private Integer yearOfStudy;
@@ -32,7 +30,6 @@ public class Year { // konkretny rocznik, danego kierunku
     public Year(Long id, String name, Set<Student> students, FieldOfStudy fieldOfStudy, Integer yearOfStudy, LocalDateTime startedStudies, Set<Subject> subjects) {
         this.id = id;
         this.name = name;
-        this.students = students;
         this.fieldOfStudy = fieldOfStudy;
         this.yearOfStudy = yearOfStudy;
         this.startedStudies = startedStudies;
@@ -55,13 +52,6 @@ public class Year { // konkretny rocznik, danego kierunku
         this.name = name;
     }
 
-    public Set<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(Set<Student> students) {
-        this.students = students;
-    }
 
     public FieldOfStudy getFieldOfStudy() {
         return fieldOfStudy;

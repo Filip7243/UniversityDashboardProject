@@ -14,7 +14,6 @@ public class YearMapper {
     public static YearDto mapToYearDto(Year year) {
         return new YearDto(
                 year.getName(),
-                year.getStudents(),
                 year.getFieldOfStudy(),
                 year.getYearOfStudy(),
                 year.getSubjects()

@@ -2,6 +2,7 @@ package com.fxproject.unidashboard.repository.impl;
 
 import com.fxproject.unidashboard.model.FieldOfStudy;
 import com.fxproject.unidashboard.model.Student;
+import com.fxproject.unidashboard.model.Subject;
 import com.fxproject.unidashboard.model.Year;
 import com.fxproject.unidashboard.repository.YearRepository;
 import com.fxproject.unidashboard.utils.HibernateUtils;
@@ -77,22 +78,7 @@ public class YearRepositoryImpl implements YearRepository {
     }
 
     @Override
-    public List<Year> findYearsByStudent(Student student) {
-        var transaction = em.getTransaction();
-        try {
-            transaction.begin();
-            TypedQuery<Year> query = em.createQuery(DEFAULT_QUERY + " JOIN Student s WHERE s = :student", Year.class);
-            query.setParameter("student", student);
-            transaction.commit();
-            return query.getResultList();
-        } catch (Exception e) {
-            transaction.rollback();
-            return List.of();
-        }
-    }
-
-    @Override
-    public List<Year> findYearByFieldOfStudy(FieldOfStudy fieldOfStudy) {
+    public List<Year> findYearsByFieldOfStudy(FieldOfStudy fieldOfStudy) {
         var transaction = em.getTransaction();
         try {
             transaction.begin();
@@ -120,5 +106,10 @@ public class YearRepositoryImpl implements YearRepository {
             transaction.rollback();
             return List.of();
         }
+    }
+
+    @Override
+    public List<Subject> findAllYearSubjects(Long id) {
+        return null; // TODO: 17.11.2022 implementation
     }
 }

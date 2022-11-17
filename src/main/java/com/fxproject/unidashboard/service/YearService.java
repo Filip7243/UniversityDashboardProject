@@ -1,17 +1,13 @@
 package com.fxproject.unidashboard.service;
 
 import com.fxproject.unidashboard.dto.YearDto;
-import com.fxproject.unidashboard.mapper.YearMapper;
 import com.fxproject.unidashboard.model.*;
 import com.fxproject.unidashboard.repository.*;
 import com.fxproject.unidashboard.repository.impl.*;
 
 import java.time.LocalDateTime;
-import java.time.Month;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.fxproject.unidashboard.mapper.YearMapper.mapToYearDto;
 import static com.fxproject.unidashboard.mapper.YearMapper.mapToYearDtos;
@@ -48,14 +44,15 @@ public class YearService {
 
     public List<YearDto> findYearsByStudent(String universityEmail) {
         UniversityAccount account = accountRepository.findAccountByUniversityEmail(universityEmail).orElseThrow();// todo: custom excpetion
-        Student student = (Student) account.getMember(); //todo: catch exception when trying to cast other model than stuent
-        List<Year> all = yearRepository.findYearsByStudent(student);
-        return mapToYearDtos(all);
+//        Student student = (Student) account.getMember(); //todo: catch exception when trying to cast other model than stuent
+//        List<Year> all = yearRepository.findYearsByStudent(student);
+//        return mapToYearDtos(all);
+        return null;
     }
 
     public List<YearDto> findYearByFieldOfStudy(String fieldOfStudyName) {
         FieldOfStudy fieldOfStudy = fieldOfStudyRepository.findFieldOfStudyByName(fieldOfStudyName).orElseThrow(); // todo: custom excpetion
-        List<Year> all = yearRepository.findYearByFieldOfStudy(fieldOfStudy);
+        List<Year> all = yearRepository.findYearsByFieldOfStudy(fieldOfStudy);
         return mapToYearDtos(all);
     }
 
@@ -68,7 +65,6 @@ public class YearService {
         FieldOfStudy fieldOfStudy = fieldOfStudyRepository.findFieldOfStudyByName(fieldOfStudyName).orElseThrow();
         Year year = new Year();
         year.setName(yearDto.getName());
-        year.setStudents(new HashSet<>());
         year.setFieldOfStudy(fieldOfStudy); // todo: field of study should be enum maybe
         year.setYearOfStudy(yearDto.getYearOfStudy());
         year.setStartedStudies(LocalDateTime.of(now().getYear(), OCTOBER, 1, 8, 0));
@@ -80,9 +76,6 @@ public class YearService {
     public void addStudentToYear(Long yearId, Long studentId) {
         Year year = yearRepository.findWithId(yearId).orElseThrow();// todo: custom excpetion
         Student student = studentRepository.findWithId(studentId).orElseThrow();
-
-        year.getStudents().add(student);
-        yearRepository.save(year);
 
         student.getYears().add(year);
         studentRepository.save(student);

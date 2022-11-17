@@ -12,12 +12,12 @@ public class Student extends UniversityMember {
 
     private String albumId; // this is id that student uses (generate value)
     @ManyToMany
-    private Set<Year> years; // many students can attend to many years
+    private Set<Year> years;
 
     public Student() {
     }
 
-    public Student(Boolean isEnabled, Set<Year> years) {
+    public Student(String albumId, Set<Year> years) {
         this.albumId = albumId;
         this.years = years;
     }
@@ -37,5 +37,4 @@ public class Student extends UniversityMember {
     public void setYears(Set<Year> years) {
         this.years = years;
     }
-
 }

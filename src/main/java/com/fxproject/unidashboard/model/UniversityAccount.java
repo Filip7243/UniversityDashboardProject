@@ -14,8 +14,6 @@ public class UniversityAccount {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
-    @OneToOne
-    private UniversityMember member;
     private String universityEmail;
     private String password;
     @Enumerated(EnumType.STRING)
@@ -26,9 +24,8 @@ public class UniversityAccount {
     public UniversityAccount() {
     }
 
-    public UniversityAccount(Long id, UniversityMember member, String universityEmail, Role role, String password, LocalDateTime createdAt, Boolean isEnabled) {
+    public UniversityAccount(Long id, String universityEmail, Role role, String password, LocalDateTime createdAt, Boolean isEnabled) {
         this.id = id;
-        this.member = member;
         this.universityEmail = universityEmail;
         this.role = role;
         this.password = password;
@@ -50,14 +47,6 @@ public class UniversityAccount {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public UniversityMember getMember() {
-        return member;
-    }
-
-    public void setMember(UniversityMember member) {
-        this.member = member;
     }
 
     public String getUniversityEmail() {
