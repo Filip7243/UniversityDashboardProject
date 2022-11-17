@@ -39,11 +39,7 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
 
         allProfessorSubjects.forEach(subject -> {
             Set<Professor> professors = subject.getProfessors();
-            professors.forEach(foundProfessor -> {
-                if (Objects.equals(foundProfessor.getId(), id)) {
-                    professors.remove(foundProfessor);
-                }
-            });
+            professors.removeIf(professor -> Objects.equals(professor.getId(), id));
         });
     }
 
