@@ -2,10 +2,11 @@ package com.fxproject.unidashboard.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-public class Professor extends UniversityMember {
+public class Professor extends UniversityMember implements Serializable {
     @Enumerated(EnumType.STRING)
     private AcademicTitle academicTitle;
 

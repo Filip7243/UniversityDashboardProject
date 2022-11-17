@@ -3,16 +3,20 @@ package com.fxproject.unidashboard.repository.impl;
 import com.fxproject.unidashboard.dto.ProfessorDto;
 import com.fxproject.unidashboard.model.*;
 import com.fxproject.unidashboard.repository.ProfessorRepository;
+import com.fxproject.unidashboard.repository.SubjectRepository;
 import com.fxproject.unidashboard.utils.HibernateUtils;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
 public class ProfessorRepositoryImpl implements ProfessorRepository {
 
     private final EntityManager em = HibernateUtils.getEntityManager();
+    private final SubjectRepository subjectRepository = new SubjectRepositoryImpl();
     private static final String DEFAULT_QUERY = "SELECT p FROM Professor p";
 
     @Override
@@ -20,12 +24,27 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
         var transaction = em.getTransaction();
         Professor professor = findWithId(id).orElseThrow();//todo: exception
         try {
+            deleteAllProfessorSubject(id);
             transaction.begin();
             em.remove(professor);
             transaction.commit();
         } catch (Exception e) {
+            e.printStackTrace();
             transaction.rollback();
         }
+    }
+
+    private void deleteAllProfessorSubject(Long id) {
+        List<Subject> allProfessorSubjects = findProfessorSubjects(id);
+
+        allProfessorSubjects.forEach(subject -> {
+            Set<Professor> professors = subject.getProfessors();
+            professors.forEach(foundProfessor -> {
+                if (Objects.equals(foundProfessor.getId(), id)) {
+                    professors.remove(foundProfessor);
+                }
+            });
+        });
     }
 
     @Override
