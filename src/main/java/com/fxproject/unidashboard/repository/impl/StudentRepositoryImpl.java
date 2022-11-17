@@ -1,6 +1,7 @@
 package com.fxproject.unidashboard.repository.impl;
 
 import com.fxproject.unidashboard.model.Student;
+import com.fxproject.unidashboard.model.Wage;
 import com.fxproject.unidashboard.model.Year;
 import com.fxproject.unidashboard.repository.StudentRepository;
 import com.fxproject.unidashboard.utils.HibernateUtils;
@@ -25,6 +26,7 @@ public class StudentRepositoryImpl implements StudentRepository {
             em.remove(student);
             transaction.commit();
         } catch (Exception e) {
+            e.printStackTrace();
             transaction.rollback();
         }
     }
