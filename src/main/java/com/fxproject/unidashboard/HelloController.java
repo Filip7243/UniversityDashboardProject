@@ -38,8 +38,8 @@ public class HelloController {
 
 
     public void initialize() {
-        YearRepositoryImpl y = new YearRepositoryImpl();
-        y.removeWithId(1L);
+        ProfessorRepositoryImpl p = new ProfessorRepositoryImpl();
+        p.removeWithId(12L);
     }
 
 }

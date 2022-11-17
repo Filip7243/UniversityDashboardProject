@@ -4,6 +4,7 @@ import com.fxproject.unidashboard.dto.ProfessorDto;
 import com.fxproject.unidashboard.model.*;
 import com.fxproject.unidashboard.repository.ProfessorRepository;
 import com.fxproject.unidashboard.repository.SubjectRepository;
+import com.fxproject.unidashboard.repository.WageRepository;
 import com.fxproject.unidashboard.utils.HibernateUtils;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -16,13 +17,14 @@ import java.util.Set;
 public class ProfessorRepositoryImpl implements ProfessorRepository {
 
     private final EntityManager em = HibernateUtils.getEntityManager();
-    private final SubjectRepository subjectRepository = new SubjectRepositoryImpl();
+    private final WageRepository wageRepository = new WageRepositoryImpl();
     private static final String DEFAULT_QUERY = "SELECT p FROM Professor p";
 
     @Override
     public void removeWithId(Long id) {
         var transaction = em.getTransaction();
         Professor professor = findWithId(id).orElseThrow();//todo: exception
+        deleteAllProfessorWages(id);
         try {
             deleteAllProfessorSubject(id);
             transaction.begin();
@@ -31,6 +33,39 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
         } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();
+        }
+    }
+
+    private void deleteAllProfessorWages(Long id) {
+        List<Wage> professorWages = findProfessorWages(id);
+
+        if(!professorWages.isEmpty()) {
+            var transaction = em.getTransaction();
+            try {
+                transaction.begin();
+                professorWages.forEach(wage -> wageRepository.removeWithId(wage.getId()));
+                transaction.commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+                transaction.rollback();
+            }
+        }
+
+    }
+
+    private List<Wage> findProfessorWages(Long id) {
+        var transaction = em.getTransaction();
+        try {
+            transaction.begin();
+            TypedQuery<Wage> query =
+                    em.createQuery("SELECT w FROM Wage w JOIN w.employee p WHERE p.id = :id", Wage.class);
+            query.setParameter("id", id);
+            transaction.commit();
+            return query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+            return List.of();
         }
     }
 
