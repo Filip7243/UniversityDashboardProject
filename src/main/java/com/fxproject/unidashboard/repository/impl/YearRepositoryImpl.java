@@ -10,7 +10,9 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
 public class YearRepositoryImpl implements YearRepository {
 
@@ -20,6 +22,7 @@ public class YearRepositoryImpl implements YearRepository {
     @Override
     public void removeWithId(Long id) {
         Year year = findWithId(id).orElseThrow();// todo: custom exception
+        deleteYearFromStudents(id);
 
         var transaction = em.getTransaction();
         try {
@@ -28,6 +31,29 @@ public class YearRepositoryImpl implements YearRepository {
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
+        }
+    }
+
+    private void deleteYearFromStudents(Long id) {
+        List<Student> yearStudents = findYearStudents(id);
+        yearStudents.forEach(student -> {
+            Set<Year> years = student.getYears();
+            years.removeIf(year -> Objects.equals(year.getId(), id));
+        });
+    }
+    private List<Student> findYearStudents(Long id) {
+        var transaction = em.getTransaction();
+        try {
+            transaction.begin();
+            TypedQuery<Student> query =
+                    em.createQuery("SELECT s FROM Student s JOIN s.years y WHERE y.id = :id", Student.class);
+            query.setParameter("id", id);
+            transaction.commit();
+            return query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            transaction.rollback();
+            return List.of();
         }
     }
 
