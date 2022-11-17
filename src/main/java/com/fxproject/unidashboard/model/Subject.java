@@ -1,9 +1,6 @@
 package com.fxproject.unidashboard.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
 import java.util.Set;
 
@@ -16,7 +13,7 @@ public class Subject {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     private String name;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Professor> professors;
 
     public Subject() {
