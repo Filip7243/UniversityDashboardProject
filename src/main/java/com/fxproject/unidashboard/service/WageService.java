@@ -24,7 +24,7 @@ public class WageService {
     private static final DecimalFormat df = new DecimalFormat("0.000");
 
     public void addWage(UniversityMember member, Integer hoursWorked) {
-        UniversityAccount account = accountRepository.findUniversityAccountByMember(member).orElseThrow();
+        UniversityAccount account = member.getUniversityAccount();
         double hourlyRate;
         switch (account.getRole()) {
             case ROLE_PROFESSOR -> hourlyRate = 40.20;
