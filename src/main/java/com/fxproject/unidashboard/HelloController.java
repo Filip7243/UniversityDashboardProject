@@ -36,10 +36,10 @@ public class HelloController {
     @FXML
     private Button addButton;
 
-
+    //todo: when removing student remove grades first similar to profesor and subject
     public void initialize() {
-        ProfessorRepositoryImpl p = new ProfessorRepositoryImpl();
-        p.removeWithId(12L);
+        GradeRepositoryImpl g = new GradeRepositoryImpl();
+        g.gradeStudent(new GradeStudentDto("Exam - esa", 4.5, 51L, 68L, 15L));
     }
 
 }
