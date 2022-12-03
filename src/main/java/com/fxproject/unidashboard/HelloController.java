@@ -38,8 +38,8 @@ public class HelloController {
 
     //todo: when removing student remove grades first similar to profesor and subject
     public void initialize() {
-        GradeRepositoryImpl g = new GradeRepositoryImpl();
-        g.gradeStudent(new GradeStudentDto("Exam - esa", 4.5, 51L, 68L, 15L));
+        ProfessorRepositoryImpl p = new ProfessorRepositoryImpl();
+        p.removeWithId(15L);
     }
 
 }

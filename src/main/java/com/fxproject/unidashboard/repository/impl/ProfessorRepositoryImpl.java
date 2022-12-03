@@ -2,6 +2,7 @@ package com.fxproject.unidashboard.repository.impl;
 
 import com.fxproject.unidashboard.dto.ProfessorDto;
 import com.fxproject.unidashboard.model.*;
+import com.fxproject.unidashboard.repository.GradeRepository;
 import com.fxproject.unidashboard.repository.ProfessorRepository;
 import com.fxproject.unidashboard.repository.SubjectRepository;
 import com.fxproject.unidashboard.repository.WageRepository;
@@ -18,6 +19,7 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
 
     private final EntityManager em = HibernateUtils.getEntityManager();
     private final WageRepository wageRepository = new WageRepositoryImpl();
+    private GradeRepository gradeRepository = new GradeRepositoryImpl(); //todo
     private static final String DEFAULT_QUERY = "SELECT p FROM Professor p";
 
     @Override
@@ -25,8 +27,9 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
         var transaction = em.getTransaction();
         Professor professor = findWithId(id).orElseThrow();//todo: exception
         deleteAllProfessorWages(id);
+        deleteAllProfessorSubject(id);
+//        deleteAllProfessorGrades(id);
         try {
-            deleteAllProfessorSubject(id);
             transaction.begin();
             em.remove(professor);
             transaction.commit();
@@ -35,6 +38,14 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
             transaction.rollback();
         }
     }
+
+    private void deleteAllProfessorGrades(Long id) {
+        Professor professor = findWithId(id).orElseThrow();
+//        List<Grade> professorGrades = gradeRepository.findProfessorGrades(professor);
+//        professorGrades.forEach(grade -> gradeRepository.removeWithId(grade.getId()));
+//        professorGrades.clear();
+    }
+
 
     private void deleteAllProfessorWages(Long id) {
         List<Wage> professorWages = findProfessorWages(id);
