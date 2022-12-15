@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #486cf0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.AdminController">
+   <children>
+      <Pane prefHeight="768.0" prefWidth="206.0">
+         <children>
+            <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="206.0" style="-fx-background-color: #2b55ee;">
+               <children>
+                  <JFXButton onAction="#showStudentsList" prefHeight="40.0" prefWidth="206.0" text="Students List" />
+                  <JFXButton prefHeight="40.0" prefWidth="206.0" text="Professors List" />
+                  <JFXButton prefHeight="40.0" prefWidth="206.0" text="Add Student" />
+                  <JFXButton prefHeight="40.0" prefWidth="206.0" text="Add Professor" />
+                  <JFXButton prefHeight="40.0" prefWidth="206.0" text="Lectures" />
+                  <JFXButton prefHeight="40.0" prefWidth="206.0" text="Settings" />
+                  <JFXButton prefHeight="40.0" prefWidth="206.0" text="Sign Out" />
+               </children>
+            </VBox>
+            <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="141.0" prefWidth="206.0">
+               <children>
+                  <Label layoutX="32.0" layoutY="55.0" prefWidth="142.0" text="ADMIN PANEL" textAlignment="CENTER">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <VBox layoutX="206.0" prefHeight="768.0" prefWidth="818.0">
+         <children>
+            <Pane prefHeight="45.0" prefWidth="818.0">
+               <children>
+                  <JFXButton fx:id="closeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="788.0" layoutY="5.0" onAction="#closeWindow" prefHeight="20.0" prefWidth="28.0" text=" ">
+                     <effect>
+                        <Shadow />
+                     </effect>
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/close-button.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <VBox prefHeight="168.0" prefWidth="656.0">
+               <children>
+                  <HBox alignment="CENTER" minWidth="-Infinity" prefHeight="76.0" prefWidth="656.0" spacing="300.0">
+                     <children>
+                        <Label prefHeight="40.0" prefWidth="132.0" text="Users List">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="28.0" />
+                           </font>
+                        </Label>
+                        <TextField prefWidth="132.0" promptText="Search..." />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="76.0" prefWidth="656.0" spacing="20.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="76.0" prefWidth="143.0">
+                           <children>
+                              <Label text="10000">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="27.0" prefWidth="136.0" text="Total Students/Professors">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="76.0" prefWidth="143.0">
+                           <children>
+                              <Label text="10000">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="27.0" prefWidth="99.0" text="Active Accounts">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <TableView fx:id="people" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="533.0">
+              <columns>
+<!--                <TableColumn prefWidth="75.0" text="First Name" />-->
+<!--                <TableColumn prefWidth="75.0" text="Last Name" />-->
+<!--                  <TableColumn prefWidth="75.0" text="Email" />-->
+<!--                  <TableColumn minWidth="105.0" prefWidth="75.0" text="University Email" />-->
+<!--                  <TableColumn prefWidth="75.0" text="Album" />-->
+<!--                  <TableColumn minWidth="95.0" prefWidth="75.0" text="Phone Number" />-->
+<!--                  <TableColumn prefWidth="75.0" text="Pesel" />-->
+<!--                  <TableColumn prefWidth="75.0" text="Role" />-->
+<!--                  <TableColumn prefWidth="75.0" text="Enable" />-->
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@../../css/table-styling.css" />
+      <URL value="@../../css/search-bar.css" />
+   </stylesheets>
+</AnchorPane>

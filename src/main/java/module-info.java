@@ -9,8 +9,13 @@ module com.fxproject.unidashboard {
     requires org.kordamp.bootstrapfx.core;
     requires jakarta.persistence;
     requires org.hibernate.orm.core;
+    requires com.jfoenix;
+    requires fontawesomefx;
 
     opens com.fxproject.unidashboard to javafx.fxml, org.hibernate.orm.core;
+    opens com.fxproject.unidashboard.controller to javafx.fxml;
     opens com.fxproject.unidashboard.model to org.hibernate.orm.core;
     exports com.fxproject.unidashboard;
+    exports com.fxproject.unidashboard.controller;
+    exports com.fxproject.unidashboard.dto;
 }

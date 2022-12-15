@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>-->
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #486cf0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.HelloController">
+    <children>
+        <VBox alignment="CENTER" opacity="0.9" prefHeight="450.0" prefWidth="100.0" spacing="5.0" style="-fx-background-color: #2b55ee;">
+            <children>
+            <JFXButton onAction="#openSite" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" text=" ">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/www-button.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" text=" ">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/reset-pw-bold.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            </children>
+        </VBox>
+        <VBox alignment="CENTER" layoutX="282.0" layoutY="87.0" prefHeight="250.0" prefWidth="194.0" spacing="27.0">
+            <children>
+                <Label style="-fx-font-size: 20px;" text="Sign In" />
+<!--                            <JFXTextField promptText="someone@example.com"/>-->
+                <!--                            <JFXPasswordField promptText="Password" />-->
+                <JFXButton prefHeight="26.0" prefWidth="144.0" text="Sign In" />
+            </children>
+        </VBox>
+        <JFXButton fx:id="closeButton" buttonType="RAISED" contentDisplay="CENTER" layoutX="656.0" layoutY="14.0" onAction="#closeWindow" prefHeight="28.0" prefWidth="29.0" text=" ">
+            <graphic>
+                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../img/close-button.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </JFXButton>
+    </children>
+</AnchorPane>

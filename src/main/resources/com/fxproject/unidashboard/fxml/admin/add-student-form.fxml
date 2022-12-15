@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="383.0" prefWidth="725.0" stylesheets="@scroll-pane-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <content>
+        <VBox alignment="TOP_CENTER" prefHeight="914.0" prefWidth="706.0" spacing="10.0">
+         <children>
+            <Pane prefHeight="46.0" prefWidth="706.0" style="-fx-background-color: #191c24;">
+               <children>
+                  <Label layoutX="304.0" layoutY="8.0" text="ADD USER" textFill="#a9a9a9">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+               <children>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <Label layoutX="82.0" layoutY="8.0" text="First Name" textFill="#a9a8a8">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <TextField layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+               <children>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <Label layoutX="82.0" layoutY="8.0" text="Second Name" textFill="#a9a8a8">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <TextField layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+               <children>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <Label layoutX="82.0" layoutY="8.0" text="Last Name" textFill="#a9a8a8">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <TextField layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+               <children>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <Label layoutX="82.0" layoutY="8.0" text="Email" textFill="#a9a8a8">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <TextField layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+               <children>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <Label layoutX="82.0" layoutY="8.0" text="Date Of Birth" textFill="#a9a8a8">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <TextField layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+               <children>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <Label layoutX="82.0" layoutY="8.0" text="Place Of Birth" textFill="#a9a8a8">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <TextField layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+               <children>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <Label layoutX="82.0" layoutY="8.0" text="Pesel" textFill="#a9a8a8">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <TextField layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+               <children>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <Label layoutX="82.0" layoutY="8.0" text="Phone Number" textFill="#a9a8a8">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <TextField layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+               <children>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <Label layoutX="82.0" layoutY="8.0" text="Gender" textFill="#a9a8a8">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <TextField layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+               <children>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <Label layoutX="82.0" layoutY="8.0" text="Country" textFill="#a9a8a8">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <TextField layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+               <children>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <Label layoutX="82.0" layoutY="8.0" text="City" textFill="#a9a8a8">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <TextField layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+               <children>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <Label layoutX="82.0" layoutY="8.0" text="Postal Code" textFill="#a9a8a8">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <TextField layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+               <children>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <Label layoutX="82.0" layoutY="8.0" text="Street" textFill="#a9a8a8">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <TextField layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+               <children>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <Label layoutX="82.0" layoutY="8.0" text="House Number" textFill="#a9a8a8">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <TextField layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+               <children>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <Label layoutX="82.0" layoutY="8.0" text="Flat Number" textFill="#a9a8a8">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <TextField layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" spacing="50.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+               <children>
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-border-radius: 2em; -fx-text-fill: #a9a8a8;" text="Cancel" />
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-border-radius: 2em; -fx-text-fill: #a9a8a8;" text="Add" />
+               </children>
+            </HBox>
+         </children></VBox>
+    </content>
+</ScrollPane>
