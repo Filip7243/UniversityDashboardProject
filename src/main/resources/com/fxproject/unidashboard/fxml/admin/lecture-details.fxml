@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="414.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.LectureDetailsController">
+   <children>
+      <Accordion fx:id="details" prefHeight="414.0" prefWidth="790.0">
+        <panes>
+          <TitledPane animated="false" onMousePressed="#loadLectureData" text="Details">
+               <content>
+                  <VBox alignment="TOP_CENTER" prefHeight="368.0" prefWidth="788.0" spacing="10.0" style="-fx-background-color: black;">
+                     <children>
+                        <BorderPane prefHeight="58.0" prefWidth="734.0" style="-fx-background-color: #191c24;">
+                           <center>
+                              <Label text="Lecture Details" textFill="#c9c9c9" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </center>
+                        </BorderPane>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="250.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label text="Id" textFill="#c9c9c9">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Label" textFill="#c9c9c9">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="250.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label text="Topic" textFill="#c9c9c9">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Label" textFill="#c9c9c9">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="250.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label text="Date" textFill="#c9c9c9">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Label" textFill="#c9c9c9">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="250.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label text="Group" textFill="#c9c9c9">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Label" textFill="#c9c9c9">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="250.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label text="Subject" textFill="#c9c9c9">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Label" textFill="#c9c9c9">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="250.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label text="Classroom" textFill="#c9c9c9">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Label" textFill="#c9c9c9">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </TitledPane>
+        </panes>
+      </Accordion>
+   </children>
+</AnchorPane>

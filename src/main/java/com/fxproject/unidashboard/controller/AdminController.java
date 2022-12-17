@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -114,7 +115,6 @@ public class AdminController {
                 albumId.setText(list.get(i).getAlbumId());
                 role.setText(list.get(i).getRole());
                 isActive.setText(String.valueOf(list.get(i).isIsEnable()));
-                System.out.println(isActive);
                 items.getChildren().addAll(nodes[i]);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -129,6 +129,8 @@ public class AdminController {
                 URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/lecture-item.fxml").toURI().toURL();
                 nodes[i] = FXMLLoader.load(url);
                 HBox v = (HBox) nodes[i];
+                v.getChildren().remove(6); // modify button
+                v.setPrefWidth(720.0);
                 v.setId("lectureItem");
                 // lectures
                 Label topic = (Label) v.getChildren().get(0);
@@ -247,6 +249,16 @@ public class AdminController {
             e.printStackTrace();
         }
     }
+
+
+
+
+
+
+
+
+
+
 
 
     public void closeWindow() {
