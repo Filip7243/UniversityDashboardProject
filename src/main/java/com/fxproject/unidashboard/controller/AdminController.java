@@ -21,6 +21,10 @@ import java.net.URL;
 
 public class AdminController {
     @FXML
+    private Label activeLabel;
+    @FXML
+    private Label totalLabel;
+    @FXML
     private Label totalUsers;
     @FXML
     private Label activeAccounts;
@@ -50,15 +54,15 @@ public class AdminController {
     private VBox items;
     private ObservableList<PersonDto> obs = FXCollections.observableArrayList(
             new PersonDto("Jack", "Snow", "mail@mail.com",
-                    "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                    "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Student", true),
             new PersonDto("Jack", "Snow", "mail@mail.com",
-                    "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", false),
+                    "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Student", false),
             new PersonDto("Jack", "Snow", "mail@mail.com",
-                    "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                    "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Student", true),
             new PersonDto("Jack", "Snow", "mail@mail.com",
-                    "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                    "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Student", true),
             new PersonDto("Jack", "Snow", "mail@mail.com",
-                    "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true)
+                    "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Student", true)
     );
 
     public void initialize() {
@@ -94,35 +98,49 @@ public class AdminController {
         for (int i = 0; i < list.toArray().length; i++) {
             try {
                 String path = new File("").getAbsolutePath();
-                URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/item.fxml").toURI().toURL();
+                URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/user-item.fxml").toURI().toURL();
                 nodes[i] = FXMLLoader.load(url);
                 HBox v = (HBox) nodes[i];
+                v.setId("userItem");
                 Label firstName = (Label) v.getChildren().get(0);
                 Label secondName = (Label) v.getChildren().get(1);
                 Label email = (Label) v.getChildren().get(2);
                 Label albumId = (Label) v.getChildren().get(3);
-                Label isActive = (Label) v.getChildren().get(4);
+                Label role = (Label) v.getChildren().get(4);
+                Label isActive = (Label) v.getChildren().get(5);
                 firstName.setText(list.get(i).getFirstName());
                 secondName.setText(list.get(i).getLastName());
                 email.setText(list.get(i).getEmail());
                 albumId.setText(list.get(i).getAlbumId());
-                isActive.setText(list.get(i).isEnableProperty().getName());
-
+                role.setText(list.get(i).getRole());
+                isActive.setText(String.valueOf(list.get(i).isIsEnable()));
+                System.out.println(isActive);
                 items.getChildren().addAll(nodes[i]);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
-    private void loadLecturesNodes(ObservableList<PersonDto> list) {//todo: dokonczyc to
-        Node[] nodes = new Node[list.toArray().length];
-        for (int i = 0; i < list.toArray().length; i++) {
+    private void loadLecturesNodes() {//todo: dokonczyc to, zmienic na lectures
+        Node[] nodes = new Node[10];
+        for (int i = 0; i < 10; i++) {
             try {
                 String path = new File("").getAbsolutePath();
-                URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/item.fxml").toURI().toURL();
+                URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/lecture-item.fxml").toURI().toURL();
                 nodes[i] = FXMLLoader.load(url);
                 HBox v = (HBox) nodes[i];
+                v.setId("lectureItem");
                 // lectures
+                Label topic = (Label) v.getChildren().get(0);
+                Label date = (Label) v.getChildren().get(1);
+                Label group = (Label) v.getChildren().get(2);
+                Label subject = (Label) v.getChildren().get(3);
+                Label classroom = (Label) v.getChildren().get(4);
+                topic.setText("Topic of the lecture");
+                date.setText("20-02-2001");
+                group.setText("Informatyka II, Lab2");
+                subject.setText("Programming");
+                classroom.setText("204");
 
                 items.getChildren().addAll(nodes[i]);
             } catch (IOException e) {
@@ -146,12 +164,14 @@ public class AdminController {
         // load all students from db
         ObservableList<PersonDto> p = FXCollections.observableArrayList(
                 new PersonDto("John", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Student", true),
                 new PersonDto("Mike", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", false)
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Student", false)
         );
         totalUsers.setText(String.valueOf(p.toArray().length));
         activeAccounts.setText(String.valueOf(countActiveAccounts(p)));
+        totalLabel.setText("Total Users");
+        activeLabel.setText("Active Accounts");
         items.getChildren().clear();
         loadUsersNodes(p);
     }
@@ -160,46 +180,57 @@ public class AdminController {
         // load all professors from db
         ObservableList<PersonDto> p = FXCollections.observableArrayList(
                 new PersonDto("Joe", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Professor", true),
                 new PersonDto("Silvester", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Professor", true),
                 new PersonDto("Silvester", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Professor", true),
                 new PersonDto("Silvester", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Professor", true),
                 new PersonDto("Silvester", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Professor", true),
                 new PersonDto("Silvester", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Professor", true),
                 new PersonDto("Silvester", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Professor", true),
                 new PersonDto("Silvester", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Professor", true),
                 new PersonDto("Silvester", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Professor", true),
                 new PersonDto("Silvester", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Professor", true),
                 new PersonDto("Silvester", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Professor", true),
                 new PersonDto("Silvester", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Professor", true),
                 new PersonDto("Silvester", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Professor", true),
                 new PersonDto("Silvester", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Professor", true),
                 new PersonDto("Silvester", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Professor", true),
                 new PersonDto("Silvester", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true),
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Professor", true),
                 new PersonDto("Silvester", "Snow", "mail@mail.com",
-                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true)
+                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "Professor", true)
         );
         totalUsers.setText(String.valueOf(p.toArray().length));
         activeAccounts.setText(String.valueOf(countActiveAccounts(p)));
+        totalLabel.setText("Total Users");
+        activeLabel.setText("Active Accounts");
         items.getChildren().clear();
         loadUsersNodes(p);
     }
 
+    public void showLectures() {
+        System.out.println("dupa");
+        totalUsers.setText("10"); // total lectures
+        activeAccounts.setText("7"); // 7 done 3 in progress right now todo: method
+        totalLabel.setText("All lectures");
+        activeLabel.setText("Now Lessons");
+        items.getChildren().clear();
+        loadLecturesNodes();
+    }
     public void showAddingForm(ActionEvent event) {
         Parent root;
         try {

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <HBox prefHeight="200.0" prefWidth="600.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="206.0" prefWidth="300.0" text="Personal Data" />
+                  <Button mnemonicParsing="false" prefHeight="200.0" prefWidth="300.0" text="Add Teaching Groups" />
+               </children>
+            </HBox>
+            <HBox prefHeight="201.0" prefWidth="600.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="203.0" prefWidth="300.0" text="Account Data" />
+                  <Button mnemonicParsing="false" prefHeight="201.0" prefWidth="300.0" text="Add Wage" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
