@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="personalDetails" prefHeight="393.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.ModifyPersonController">
+    <children>
+        <Accordion prefHeight="393.0" prefWidth="802.0">
+            <panes>
+                <TitledPane fx:id="personalData" animated="false" onMousePressed="#loadPersonalData" text="Personal Data">
+                    <content>
+                        <ScrollPane prefHeight="200.0" prefWidth="200.0" stylesheets="@scroll-pane-style.css">
+                            <content>
+                                <VBox prefHeight="824.0" prefWidth="783.0" spacing="10.0" style="-fx-background-color: black;">
+                                    <children>
+                                        <BorderPane prefHeight="42.0" prefWidth="718.0">
+                                            <center>
+                                                <Label text="Filip Kaczmarczyk" textFill="#c9c9c9" BorderPane.alignment="CENTER">
+                                                    <graphic>
+                                                        <Label text="Modify" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </graphic>
+                                                    <font>
+                                                        <Font name="System Bold" size="24.0" />
+                                                    </font>
+                                                </Label>
+                                            </center>
+                                        </BorderPane>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="598.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <Label layoutX="73.0" layoutY="3.0" text="First Name" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </Pane>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <TextField fx:id="firstName" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="598.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <Label layoutX="73.0" layoutY="3.0" text="Second Name" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </Pane>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <TextField fx:id="secondName" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="598.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <Label layoutX="73.0" layoutY="3.0" text="Last Name" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </Pane>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <TextField fx:id="lastName" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="598.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <Label layoutX="73.0" layoutY="3.0" text="Email" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </Pane>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <TextField fx:id="email" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="598.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <Label layoutX="73.0" layoutY="3.0" text="Date Of Birth" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </Pane>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <TextField fx:id="dateOfBirth" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="598.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <Label layoutX="73.0" layoutY="3.0" text="Place Of Birth" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </Pane>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <TextField fx:id="placeOfBirth" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="598.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <Label layoutX="73.0" layoutY="3.0" text="Pesel" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </Pane>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <TextField fx:id="pesel" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="598.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <Label layoutX="73.0" layoutY="3.0" text="Phone Number" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </Pane>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="598.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <Label layoutX="73.0" layoutY="3.0" text="Gender" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </Pane>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="598.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <Label layoutX="73.0" layoutY="3.0" text="Country" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </Pane>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="598.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <Label layoutX="73.0" layoutY="3.0" text="City" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </Pane>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="598.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <Label layoutX="73.0" layoutY="3.0" text="Postal Code" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </Pane>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="598.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <Label layoutX="73.0" layoutY="3.0" text="Street" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </Pane>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="598.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <Label layoutX="73.0" layoutY="3.0" text="Flat Number" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </Pane>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="718.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Cancel" />
+                                                <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Modify" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </content>
+                        </ScrollPane>
+                    </content>
+                </TitledPane>
+                <TitledPane animated="false" onMousePressed="#loadAccountData" text="Account ">
+                    <content>
+                        <ScrollPane prefHeight="200.0" prefWidth="200.0" stylesheets="@scroll-pane-style.css">
+                            <content>
+                                <VBox prefHeight="346.0" prefWidth="784.0" spacing="10.0">
+                                    <children>
+                                        <BorderPane prefHeight="43.0" prefWidth="784.0">
+                                            <center>
+                                                <Label text="fk122941@stud.ur.edu.pl" textFill="#c9c9c9" BorderPane.alignment="CENTER">
+                                                    <graphic>
+                                                        <Label text="Modify" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="18.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </graphic>
+                                                    <font>
+                                                        <Font name="System Bold" size="18.0" />
+                                                    </font>
+                                                </Label>
+                                            </center>
+                                        </BorderPane>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="598.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <Label layoutX="73.0" layoutY="3.0" text="University Email" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </Pane>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <TextField fx:id="universityEmail" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="598.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <Label layoutX="94.0" layoutY="5.0" text="Password" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </Pane>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="598.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <Label layoutX="125.0" layoutY="4.0" text="Role" textFill="#c9c9c9">
+                                                            <font>
+                                                                <Font name="System Bold" size="24.0" />
+                                                            </font>
+                                                        </Label>
+                                                    </children>
+                                                </Pane>
+                                                <Pane prefHeight="35.0" prefWidth="299.0">
+                                                    <children>
+                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                    </children>
+                                                </Pane>
+                                            </children>
+                                        </HBox>
+                                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="718.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                                            <children>
+                                                <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Cancel" />
+                                                <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Modify" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </content>
+                        </ScrollPane>
+                    </content>
+                </TitledPane>
+            </panes>
+        </Accordion>
+    </children>
+</AnchorPane>

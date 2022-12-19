@@ -1,6 +1,7 @@
 package com.fxproject.unidashboard.controller;
 
 import com.fxproject.unidashboard.dto.PersonDto;
+import com.fxproject.unidashboard.dto.ProfessorDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -26,20 +27,27 @@ public class ItemController {
             Label roleLabel = (Label) lookup.getChildren().get(4);
             String role = roleLabel.getText();
             switch (role) {
-                case "Student" -> loadFXML(event, "modify-student-view.fxml");
-                case "Professor" -> loadFXML(event, "modify-professor-view.fxml");
+                case "Student" -> {
+                    Stage stage = loadFXML(event, "modify-student.fxml");
+                    PersonDto p = new PersonDto();
+                    p.setFirstName("ABCD");
+                    p.setLastName("SJAHGDSA");
+                    stage.setUserData(p);
+                }
+                case "Professor" -> {
+                    Stage stage = loadFXML(event, "modify-professor.fxml");
+                    PersonDto p = new PersonDto();
+                    p.setFirstName("ESSA");
+                    p.setLastName("SJAHGDSA");
+                    stage.setUserData(p);
+                }
             }
         } catch (NullPointerException e) { // it means that this is lecture node
-            try {
-                lookup = (HBox) scene.lookup("#lectureItem");
-                loadFXML(event, "modify-lecture-view.fxml");
-            } catch (NullPointerException exc) {
-                e.printStackTrace(); // todo: better catch load main window
-            }
+
         }
     }
 
-    public void showDetails(ActionEvent event) throws IOException {
+    public void showDetails(ActionEvent event) {
         Button btn = ((Button) (event.getSource()));
         Scene scene = btn.getScene();
         HBox lookup;
@@ -77,7 +85,7 @@ public class ItemController {
             // find from db lecture with id and create LectureDto
 
             // load fxml
-            Stage stage = stage = loadFXML(event, "lecture-details.fxml");
+            Stage stage = loadFXML(event, "lecture-details.fxml");
             assert stage != null;
             stage.setWidth(1004);
             stage.setHeight(636);

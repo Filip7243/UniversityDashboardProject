@@ -14,7 +14,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
 //        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fxml/user-item.fxml"));
 //        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fxml/admin/add-student-form.fxml"));
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fxml/admin/admin-menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fxml/student/sudent-main.fxml"));
         stage.initStyle(StageStyle.UNDECORATED);
         Scene scene = new Scene(fxmlLoader.load(), 870, 600);
         stage.setTitle("University Dashboard");
