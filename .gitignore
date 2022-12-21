@@ -38,4 +38,4 @@ build/
 .DS_Store
 
 ### db ###
-.mv.db
+uni-db.mv.db
