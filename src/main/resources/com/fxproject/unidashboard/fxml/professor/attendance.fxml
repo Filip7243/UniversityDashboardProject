@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.TreeTableColumn?>
+
+
+<JFXTreeTableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="668.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <columns>
+      <TreeTableColumn prefWidth="334.0" text="Student" />
+      <TreeTableColumn prefWidth="334.0" text="Present" />
+   </columns>
+</JFXTreeTableView>

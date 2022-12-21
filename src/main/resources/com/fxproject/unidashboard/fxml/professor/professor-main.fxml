@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="870.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.StudentController">
+<AnchorPane prefHeight="600.0" prefWidth="870.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.ProfessorController">
     <children>
-        <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="202.0" spacing="10.0" style="-fx-background-color: #191c24;">
+        <VBox alignment="TOP_CENTER" layoutY="1.0" prefHeight="600.0" prefWidth="202.0" spacing="10.0" style="-fx-background-color: #191c24;">
             <children>
                 <Pane prefHeight="174.0" prefWidth="202.0">
                     <children>
-                        <Label layoutX="36.0" layoutY="72.0" text="Student Panel" textFill="#cfcece">
+                        <Label layoutX="33.0" layoutY="72.0" text="Professor Panel" textFill="#cfcece">
                             <font>
                                 <Font size="20.0" />
                             </font>
@@ -27,10 +27,10 @@
                     </children>
                 </Pane>
                 <Button mnemonicParsing="false" onAction="#showPersonalInfo" text="My Personal Info" textFill="#c9c9c9" />
-                <Button mnemonicParsing="false" onAction="#showMarks" text="My Marks" textFill="#c9c9c9" />
-                <Button mnemonicParsing="false" onAction="#showAttendance" text="My Attendance" textFill="#c9c9c9" />
-                <Button mnemonicParsing="false" onAction="#showFieldsOfStudies" text="My Fields Of Studies" textFill="#c9c9c9" />
-                <Button mnemonicParsing="false" onAction="#showExams" text="My Exams" textFill="#c9c9c9" />
+                <Button mnemonicParsing="false" onAction="#showGradeStudentForm" text="Grade Student" textFill="#c9c9c9" />
+                <Button mnemonicParsing="false" onAction="#showStartLectureForm" text="Start Lecture" textFill="#c9c9c9" />
+                <Button mnemonicParsing="false" onAction="#showCheckAttendanceForm" text="Attendance" textFill="#c9c9c9" />
+                <Button mnemonicParsing="false" onAction="#showAddExamForm" text="Add Exams" textFill="#c9c9c9" />
                 <Button mnemonicParsing="false" text="Settings" textFill="#c9c9c9" />
                 <Button mnemonicParsing="false" text="Sign Out" textFill="#c9c9c9" />
             </children>
@@ -42,7 +42,7 @@
                 <Insets />
             </opaqueInsets>
         </VBox>
-        <HBox alignment="CENTER_LEFT" layoutX="202.0" prefHeight="59.0" prefWidth="668.0" spacing="50.0" style="-fx-background-color: #191c24;" stylesheets="@../../css/search-bar.css">
+        <HBox alignment="CENTER_LEFT" layoutX="202.0" layoutY="1.0" prefHeight="59.0" prefWidth="668.0" spacing="50.0" style="-fx-background-color: #191c24;" stylesheets="@../../css/search-bar.css">
             <children>
                 <Pane prefHeight="59.0" prefWidth="166.0">
                     <children>
@@ -52,27 +52,27 @@
                 <TextField promptText="search" />
                 <Pane prefHeight="59.0" prefWidth="166.0">
                     <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="113.0" layoutY="16.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="45.0" style="-fx-background-color: transparent;">
-                            <graphic>
-                                <ImageView fitHeight="19.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="126.0" layoutY="16.0" maxHeight="29.0" maxWidth="29.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="17.0" prefWidth="24.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../../img/close-button.png" />
                                     </image>
                                 </ImageView>
-                            </graphic>
+                     </graphic>
                         </Button>
                     </children>
                 </Pane>
             </children>
         </HBox>
-      <Pane fx:id="contentPane" layoutX="202.0" layoutY="59.0" prefHeight="542.0" prefWidth="668.0">
-         <children>
-              <Label layoutX="10.0" layoutY="254.0" text="WELCOME IN YOUR UNIVERSITY DASHBOARD ACCOUNT">
-                  <font>
-                      <Font name="System Bold" size="24.0" />
-                  </font>
-              </Label>
-         </children>
-      </Pane>
+        <Pane fx:id="contentPane" layoutX="202.0" layoutY="60.0" prefHeight="542.0" prefWidth="668.0">
+            <children>
+                <Label layoutX="10.0" layoutY="254.0" text="WELCOME IN YOUR UNIVERSITY DASHBOARD ACCOUNT">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
     </children>
 </AnchorPane>

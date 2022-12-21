@@ -6,25 +6,26 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.Accordion;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TitledPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
+import javafx.scene.control.skin.DatePickerSkin;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
+import javafx.util.Callback;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.MonthDay;
+import java.time.Year;
 
 public class StudentController {
 
     @FXML
     private Pane contentPane;
+    private static final FXMLLoader loader = new FXMLLoader();
 
     public void showPersonalInfo() throws IOException {
         contentPane.getChildren().clear();
@@ -75,41 +76,78 @@ public class StudentController {
 //        accordion.setPrefHeight(contentPane.getPrefHeight());
         String path = new File("").getAbsolutePath();
         URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/student/student-marks.fxml").toURI().toURL();
-        Accordion accordion = FXMLLoader.load(url);
+        Accordion accordion = loader.load(url);
         contentPane.getChildren().add(accordion);
 
-        for (int i = 0; i < 10; i++) { // i < count(student's subjects)
-            VBox marksBox = new VBox();
-            for (int j = 0; j < 10; j++) { // j < count(student's marks in current subject(i))
-                HBox markInfoBox = loadFXMLItem();
-                marksBox.getChildren().add(markInfoBox);
-                StackPane sP = (StackPane) markInfoBox.lookup("#pane");
-                Label markInfoLabel = (Label) markInfoBox.lookup("#label");
-                markInfoLabel.setText("KOLOKWIUM/EXAM");
-                Label mark = new Label();
-                mark.setText("5.0");
-                mark.setFont(new Font(18));
-                mark.setTextFill(Color.color(0.5, 0, 1));
-                StackPane.setAlignment(mark, Pos.CENTER);
-                sP.getChildren().add(mark);
-            }
-            TitledPane t = new TitledPane("Subject Name - Professor Name", marksBox);
-            accordion.getPanes().add(t);
-        }
 
     }
 
     public void showAttendance() throws IOException {
         contentPane.getChildren().clear();
         String path = new File("").getAbsolutePath();
+        // todo: it should be in fxml's controller
         URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/student/student-attendance.fxml").toURI().toURL();
         JFXTreeTableView<?> table = FXMLLoader.load(url);
         contentPane.getChildren().add(table);
         // load student's attendance from db
-        
     }
 
-    private static HBox loadFXMLItem() throws IOException {
+    public void showExams() throws IOException {
+        contentPane.getChildren().clear();
+        String path = new File("").getAbsolutePath();
+        URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/student/calendar.fxml").toURI().toURL();
+        AnchorPane anchor = FXMLLoader.load(url);
+
+        contentPane.getChildren().add(anchor);
+
+        final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
+            public DateCell call(final DatePicker datePicker) {
+                return new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (MonthDay.from(item).equals(MonthDay.of(3, 15)) &&
+                                !(getStyleClass().contains("next-month") || getStyleClass().contains("previous-month")) &&
+                                Year.from(item).equals(Year.of(2022))
+                        ) {
+                            setTooltip(new Tooltip("Beware the Ides of March!"));
+                            setStyle("-fx-background-color: #ff4444;");
+                            setText("Exam Algebra");
+                            setWrapText(true);
+                            setTextAlignment(TextAlignment.CENTER);
+                        } else {
+                            setTooltip(null);
+                            setStyle(null);
+                        }
+                    }
+                };
+            }
+        };
+
+        DatePicker dp = new DatePicker();
+        dp.setDayCellFactory(dayCellFactory);
+        DatePickerSkin dpSkin = new DatePickerSkin(dp);
+        Node popupContent = dpSkin.getPopupContent();
+        anchor.getChildren().add(popupContent);
+    }
+
+    public void showFieldsOfStudies() throws IOException {
+        contentPane.getChildren().clear();
+        VBox box = new VBox();
+        box.setPrefWidth(contentPane.getPrefWidth());
+        box.setPrefHeight(contentPane.getPrefHeight());
+        box.setAlignment(Pos.CENTER);
+        box.setSpacing(10);
+        for (int i = 0; i < 3; i++) { // i < number of student's fields of studies
+            HBox hBox = loadFXMLItem();
+            Label label = (Label) hBox.lookup("#label");
+            label.setText("FIELD OF STUDY NAME");
+            box.getChildren().add(hBox);
+        }
+        contentPane.getChildren().add(box);
+    }
+
+    static HBox loadFXMLItem() throws IOException {
         String path = new File("").getAbsolutePath();
         URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/student/student-info.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);

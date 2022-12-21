@@ -67,6 +67,7 @@ public class AdminController {
     );
 
     public void initialize() {
+
         totalUsers.setText(String.valueOf(obs.toArray().length));
         activeAccounts.setText(String.valueOf(countActiveAccounts(obs)));
         loadUsersNodes(obs);

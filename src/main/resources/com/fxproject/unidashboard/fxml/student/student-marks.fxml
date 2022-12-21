@@ -2,4 +2,5 @@
 
 <?import javafx.scene.control.Accordion?>
 
-<Accordion maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="668.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" />
+<Accordion fx:id="accordion" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0"
+           prefWidth="668.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="com.fxproject.unidashboard.controller.StudentMarksController"/>
