@@ -12,6 +12,7 @@ module com.fxproject.unidashboard {
     requires com.jfoenix;
     requires fontawesomefx;
     requires com.h2database;
+    requires java.naming;
 
 
     opens com.fxproject.unidashboard to javafx.fxml, org.hibernate.orm.core;

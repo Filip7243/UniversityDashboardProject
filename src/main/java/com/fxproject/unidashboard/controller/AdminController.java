@@ -1,6 +1,7 @@
 package com.fxproject.unidashboard.controller;
 
 import com.fxproject.unidashboard.dto.PersonDto;
+import com.fxproject.unidashboard.utils.HibernateConnect;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -67,7 +68,7 @@ public class AdminController {
     );
 
     public void initialize() {
-
+        HibernateConnect.openSession();
         totalUsers.setText(String.valueOf(obs.toArray().length));
         activeAccounts.setText(String.valueOf(countActiveAccounts(obs)));
         loadUsersNodes(obs);
