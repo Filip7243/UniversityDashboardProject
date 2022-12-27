@@ -1,10 +1,8 @@
 package com.fxproject.unidashboard.controller;
 
-import com.fxproject.unidashboard.dto.PersonDto;
 import javafx.fxml.FXML;
 import javafx.scene.control.Accordion;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class LectureDetailsController {
 

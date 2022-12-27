@@ -28,7 +28,21 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">create-drop</property>
 
-        <mapping class="com.fxproject.unidashboard.model.UniversityDepartment"/>
+        <mapping class="com.fxproject.unidashboard.model.Person"/>
+        <mapping class="com.fxproject.unidashboard.model.Addresses"/>
+        <mapping class="com.fxproject.unidashboard.model.Students"/>
+        <mapping class="com.fxproject.unidashboard.model.Professors"/>
+        <mapping class="com.fxproject.unidashboard.model.UniversityAccounts"/>
+        <mapping class="com.fxproject.unidashboard.model.Departments"/>
+        <mapping class="com.fxproject.unidashboard.model.FieldsOfStudy"/>
+        <mapping class="com.fxproject.unidashboard.model.Groups"/>
+        <mapping class="com.fxproject.unidashboard.model.Subjects"/>
+        <mapping class="com.fxproject.unidashboard.model.Wages"/>
+        <mapping class="com.fxproject.unidashboard.model.Marks"/>
+        <mapping class="com.fxproject.unidashboard.model.Attendances"/>
+        <mapping class="com.fxproject.unidashboard.model.Exams"/>
+        <mapping class="com.fxproject.unidashboard.model.Lectures"/>
+        <mapping class="com.fxproject.unidashboard.model.ProfessorsSubjectsInGroups"/>
 
     </session-factory>
 

@@ -113,7 +113,7 @@
                         <Insets />
                     </VBox.margin>
                     <content>
-                        <VBox fx:id="items" alignment="TOP_CENTER" prefHeight="338.0" prefWidth="667.0" spacing="8.0" />
+                        <VBox fx:id="itemsContainer" alignment="TOP_CENTER" prefHeight="338.0" prefWidth="667.0" spacing="8.0" />
                     </content>
                 </ScrollPane>
             </children>

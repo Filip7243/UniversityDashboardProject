@@ -12,7 +12,7 @@
         <class>com.fxproject.unidashboard.model.UniversityAccount</class>
         <class>com.fxproject.unidashboard.model.FieldOfStudy</class>
         <class>com.fxproject.unidashboard.model.Professor</class>
-        <class>com.fxproject.unidashboard.model.Student</class>
+        <class>com.fxproject.unidashboard.model.Students</class>
         <class>com.fxproject.unidashboard.model.Subject</class>
         <class>com.fxproject.unidashboard.model.Wage</class>
         <class>com.fxproject.unidashboard.model.Year</class>

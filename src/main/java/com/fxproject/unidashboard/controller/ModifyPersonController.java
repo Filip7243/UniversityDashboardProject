@@ -1,13 +1,10 @@
 package com.fxproject.unidashboard.controller;
 
 import com.fxproject.unidashboard.dto.PersonDto;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class ModifyPersonController {
 
@@ -22,12 +19,12 @@ public class ModifyPersonController {
 
     public void loadPersonalData() {
         PersonDto user = getDataFromStage();
-        firstName.setText(user.getFirstName());
+//        firstName.setText(user.getFirstName());
     }
 
     public void loadAccountData() {
         PersonDto user = getDataFromStage();
-        universityEmail.setText(user.getLastName());
+//        universityEmail.setText(user.getLastName());
     }
 
     public void loadStudentFieldsOfStudy() {

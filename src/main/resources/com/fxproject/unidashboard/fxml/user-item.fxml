@@ -11,7 +11,7 @@
         <Label fx:id="secondName" text="Doe" textFill="#c1bfbf" />
         <Label fx:id="email" text="john@mail.com" textFill="#c1bfbf" />
         <Label fx:id="albumId" text="122888" textFill="#c1bfbf" />
-      <Label fx:id="role" prefHeight="18.0" prefWidth="52.0" text="Student" textFill="#c1bfbf" />
+      <Label fx:id="roles" prefHeight="18.0" prefWidth="52.0" text="Student" textFill="#c1bfbf" />
         <Label fx:id="isActive" text="active" textFill="#c1bfbf" />
         <Separator opacity="0.11" orientation="VERTICAL" prefHeight="52.0" prefWidth="0.0" />
         <Button fx:id="modifyButton" mnemonicParsing="false" onAction="#modifyItem" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #c1bfbf; -fx-text-fill: #c1bfbf;" text="Modify" />

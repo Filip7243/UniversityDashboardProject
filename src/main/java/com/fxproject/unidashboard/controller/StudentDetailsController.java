@@ -4,14 +4,12 @@ import com.fxproject.unidashboard.dto.PersonDto;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class StudentDetailsController {
 
@@ -40,7 +38,7 @@ public class StudentDetailsController {
             switch (label.getText()) {
                 case "First Name" -> {
                     Label firstName = (Label) i.getChildren().get(1);
-                    firstName.setText(userData.getFirstName());
+//                    firstName.setText(userData.getFirstName());
                 } //todo: end this
                 case "Second Name" -> ((Label) i.getChildren().get(1)).setText("ABCD");
             }

@@ -1,50 +1,25 @@
 package com.fxproject.unidashboard.dto;
 
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import javafx.beans.property.SimpleBooleanProperty;
-
-public class PersonDto extends RecursiveTreeObject<PersonDto> {
+public class PersonDto {
 
     private String firstName;
     private String lastName;
     private String email;
-    private String universityEmail;
     private String albumId;
-    private String phoneNumber;
-    private String pesel;
     private String role;
-    private SimpleBooleanProperty isEnable;
-    // more info in PersonDetailsDto
+    private boolean isActive;
 
-
-    public PersonDto() {
-    }
-
-    public PersonDto(String firstName, String lastName, String email, String universityEmail, String albumId, String phoneNumber, String pesel, String role,
-                     Boolean isEnable) {
+    public PersonDto(String firstName, String lastName, String email, String albumId, String role, boolean isActive) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.universityEmail = universityEmail;
         this.albumId = albumId;
-        this.phoneNumber = phoneNumber;
-        this.pesel = pesel;
         this.role = role;
-        this.isEnable = new SimpleBooleanProperty(isEnable);
+        this.isActive = isActive;
     }
 
-    public boolean isIsEnable() {
-        return isEnable.get();
+    public PersonDto() {
     }
-
-    public SimpleBooleanProperty isEnableProperty() {
-        return isEnable;
-    }
-
-    public void setIsEnable(boolean isEnable) {
-        this.isEnable.set(isEnable);
-    }
-
 
     public String getFirstName() {
         return firstName;
@@ -70,14 +45,6 @@ public class PersonDto extends RecursiveTreeObject<PersonDto> {
         this.email = email;
     }
 
-    public String getUniversityEmail() {
-        return universityEmail;
-    }
-
-    public void setUniversityEmail(String universityEmail) {
-        this.universityEmail = universityEmail;
-    }
-
     public String getAlbumId() {
         return albumId;
     }
@@ -86,27 +53,19 @@ public class PersonDto extends RecursiveTreeObject<PersonDto> {
         this.albumId = albumId;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getPesel() {
-        return pesel;
-    }
-
-    public void setPesel(String pesel) {
-        this.pesel = pesel;
-    }
-
     public String getRole() {
         return role;
     }
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }

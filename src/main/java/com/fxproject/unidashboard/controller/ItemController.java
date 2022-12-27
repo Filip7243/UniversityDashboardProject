@@ -1,7 +1,6 @@
 package com.fxproject.unidashboard.controller;
 
 import com.fxproject.unidashboard.dto.PersonDto;
-import com.fxproject.unidashboard.dto.ProfessorDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -30,15 +29,15 @@ public class ItemController {
                 case "Student" -> {
                     Stage stage = loadFXML(event, "modify-student.fxml");
                     PersonDto p = new PersonDto();
-                    p.setFirstName("ABCD");
-                    p.setLastName("SJAHGDSA");
+//                    p.setFirstName("ABCD");
+//                    p.setLastName("SJAHGDSA");
                     stage.setUserData(p);
                 }
                 case "Professor" -> {
                     Stage stage = loadFXML(event, "modify-professor.fxml");
                     PersonDto p = new PersonDto();
-                    p.setFirstName("ESSA");
-                    p.setLastName("SJAHGDSA");
+//                    p.setFirstName("ESSA");
+//                    p.setLastName("SJAHGDSA");
                     stage.setUserData(p);
                 }
             }

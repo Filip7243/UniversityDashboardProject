@@ -9,6 +9,7 @@ module com.fxproject.unidashboard {
     requires org.kordamp.bootstrapfx.core;
     requires jakarta.persistence;
     requires org.hibernate.orm.core;
+    requires org.hibernate.validator;
     requires com.jfoenix;
     requires fontawesomefx;
     requires com.h2database;
