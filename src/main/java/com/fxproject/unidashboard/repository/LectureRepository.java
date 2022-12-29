@@ -4,9 +4,11 @@ import com.fxproject.unidashboard.model.Lectures;
 import com.fxproject.unidashboard.model.Person;
 import com.fxproject.unidashboard.utils.HibernateConnect;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public class LectureRepository {
 
@@ -16,6 +18,36 @@ public class LectureRepository {
             return lectures.getResultList();
         } catch (Exception e) {
             return List.of();
+        }
+    }
+
+    public Optional<Lectures> findLectureWithId(Long id) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            Query<Lectures> query =
+                    session.createQuery("SELECT l FROM Lectures l WHERE l.id = : id", Lectures.class);
+            query.setParameter("id", id);
+            tx.commit();
+            return Optional.ofNullable(query.getSingleResult());
+        } catch (Exception e) {
+            if(tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+            return Optional.empty();
+        }
+    }
+
+    public void removeLecture(Lectures lectures) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            session.remove(lectures);
+            tx.commit();
+        } catch (Exception e) {
+            if(tx != null && tx.isActive()) {
+                tx.rollback();
+            }
         }
     }
 

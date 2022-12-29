@@ -1,8 +1,10 @@
 package com.fxproject.unidashboard.controller;
 
 import com.fxproject.unidashboard.dto.PersonDto;
+import com.fxproject.unidashboard.model.Lectures;
 import com.fxproject.unidashboard.model.Professors;
 import com.fxproject.unidashboard.model.Students;
+import com.fxproject.unidashboard.repository.LectureRepository;
 import com.fxproject.unidashboard.repository.PersonRepository;
 import com.fxproject.unidashboard.repository.ProfessorRepository;
 import com.fxproject.unidashboard.repository.StudentRepository;
@@ -14,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -27,8 +30,13 @@ public class ItemController {
 
     private StudentRepository sr = new StudentRepository();
     private ProfessorRepository pr = new ProfessorRepository();
+    private LectureRepository lr = new LectureRepository();
 
     private PersonRepository personRepository = new PersonRepository();
+
+    public void initialize() {
+        System.out.println("ESSA");
+    }
 
     public void modifyItem(ActionEvent event) {
         Button btn = ((Button) (event.getSource()));
@@ -92,18 +100,17 @@ public class ItemController {
             }
         } catch (NullPointerException e) { // it means that this is lecture node
             lookup = (HBox) scene.lookup("#lectureItem");
-            System.out.println("ESSA");
-            Label idLabel = (Label) lookup.getChildren().get(0);
-            String id = idLabel.getText();
+            BorderPane idPane = (BorderPane) lookup.getChildren().get(0);
+            Label idLabel = (Label) idPane.getChildren().get(0);
             // find from db lecture with id and create LectureDto
-
+            Lectures lectures = lr.findLectureWithId(Long.parseLong(idLabel.getText())).orElseThrow();
             // load fxml
             Stage stage = loadFXML(event, "lecture-details.fxml");
             assert stage != null;
             stage.setWidth(1004);
             stage.setHeight(636);
             stage.setX(300);
-//            stage.setUserData(); lecture dto pass here
+            stage.setUserData(lectures);
         }
     }
 
@@ -130,7 +137,13 @@ public class ItemController {
             }
             vbox.getChildren().remove(lookup);
         } catch (NullPointerException e) {
-
+            lookup = (HBox) scene.lookup("#lectureItem");
+            VBox vbox = (VBox) scene.lookup("#itemsContainer");
+            BorderPane idPane = (BorderPane) lookup.getChildren().get(0);
+            Label idLabel = (Label) idPane.getChildren().get(0);
+            Lectures lectures = lr.findLectureWithId(Long.parseLong(idLabel.getText())).orElseThrow();
+            lr.removeLecture(lectures);
+            vbox.getChildren().remove(lookup);
         }
     }
 

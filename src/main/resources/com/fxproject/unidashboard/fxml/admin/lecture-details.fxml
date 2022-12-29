@@ -33,7 +33,7 @@
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <Label text="Label" textFill="#c9c9c9">
+                              <Label fx:id="idLabel" text="Label" textFill="#c9c9c9">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
@@ -47,7 +47,7 @@
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <Label text="Label" textFill="#c9c9c9">
+                              <Label fx:id="topicLabel" text="Label" textFill="#c9c9c9">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
@@ -61,7 +61,7 @@
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <Label text="Label" textFill="#c9c9c9">
+                              <Label fx:id="dateLabel" text="Label" textFill="#c9c9c9">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
@@ -75,7 +75,7 @@
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <Label text="Label" textFill="#c9c9c9">
+                              <Label fx:id="groupLabel" text="Label" textFill="#c9c9c9">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
@@ -89,21 +89,7 @@
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <Label text="Label" textFill="#c9c9c9">
-                                 <font>
-                                    <Font name="System Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="250.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                           <children>
-                              <Label text="Classroom" textFill="#c9c9c9">
-                                 <font>
-                                    <Font name="System Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Label" textFill="#c9c9c9">
+                              <Label fx:id="subjectLabel" text="Label" textFill="#c9c9c9">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>

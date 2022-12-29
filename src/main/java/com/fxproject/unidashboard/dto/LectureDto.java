@@ -1,22 +1,33 @@
 package com.fxproject.unidashboard.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class LectureDto {
 
+    private Long id;
     private String topic;
-    private LocalDateTime date;
+    private LocalDate date;
     private String groupName;
     private String subjectName;
 
     public LectureDto() {
     }
 
-    public LectureDto(String topic, LocalDateTime date, String groupName, String subjectName) {
+    public LectureDto(Long id, String topic, LocalDate date, String groupName, String subjectName) {
+        this.id = id;
         this.topic = topic;
         this.date = date;
         this.groupName = groupName;
         this.subjectName = subjectName;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTopic() {
@@ -27,11 +38,11 @@ public class LectureDto {
         this.topic = topic;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

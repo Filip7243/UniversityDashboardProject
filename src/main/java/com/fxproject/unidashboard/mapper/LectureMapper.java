@@ -13,7 +13,7 @@ public class LectureMapper {
 
     public static List<LectureDto> mapToLectureDtos(List<Lectures> allLectures) {
         return allLectures.stream()
-                .map(l -> new LectureDto(l.getLectureTopic(), l.getLectureDate(), l.getGroup().getName(), l.getSubject().getName()))
+                .map(l -> new LectureDto(l.getId(), l.getLectureTopic(), l.getLectureDate().toLocalDate(), l.getGroup().getName(), l.getSubject().getName()))
                 .toList();
     }
 }

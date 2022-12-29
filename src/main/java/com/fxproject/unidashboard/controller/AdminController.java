@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -106,7 +107,9 @@ public class AdminController {
             session.persist(acc2);
 
             Lectures l = new Lectures(null, "DUPA", LocalDateTime.now(), g, subjects);
+            Lectures l2 = new Lectures(null, "SRAKA", LocalDateTime.now(), g, subjects);
             session.persist(l);
+            session.persist(l2);
 
             Marks m = new Marks(null, 3.5, LocalDateTime.now(), "ESSUNIA", s, subjects);
             Marks m1 = new Marks(null, 5.0, LocalDateTime.now(), "DCXZ", s, subjects);
@@ -156,7 +159,7 @@ public class AdminController {
         }
     }
 
-    private void loadLecturesNodes(List<LectureDto> list) {//todo: dokonczyc to, zmienic na lectures
+    private void loadLecturesNodes(List<LectureDto> list) {
         Node[] nodes = new Node[10];
         for (int i = 0; i < list.size(); i++) {
             try {
@@ -164,16 +167,21 @@ public class AdminController {
                 URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/lecture-item.fxml").toURI().toURL();
                 nodes[i] = FXMLLoader.load(url);
                 HBox v = (HBox) nodes[i];
-                v.getChildren().remove(6); // modify button
-                v.setPrefWidth(720.0);
+                BorderPane idPane = (BorderPane) v.getChildren().get(0);
+                BorderPane topicPan = (BorderPane) v.getChildren().get(1);
+                BorderPane datePane = (BorderPane) v.getChildren().get(2);
+                BorderPane groupPane = (BorderPane) v.getChildren().get(3);
+                BorderPane subjectPane = (BorderPane) v.getChildren().get(4);
+                v.setPrefWidth(800.0);
                 v.setId("lectureItem");
                 // lectures
                 LectureDto lectureDto = list.get(i);
-                Label topic = (Label) v.getChildren().get(0);
-                Label date = (Label) v.getChildren().get(1);
-                Label group = (Label) v.getChildren().get(2);
-                Label subject = (Label) v.getChildren().get(3);
-                v.getChildren().remove(v.getChildren().get(4));
+                Label id = (Label) idPane.getChildren().get(0);
+                Label topic = (Label) topicPan.getChildren().get(0);
+                Label date = (Label) datePane.getChildren().get(0);
+                Label group = (Label) groupPane.getChildren().get(0);
+                Label subject = (Label) subjectPane.getChildren().get(0);
+                id.setText(String.valueOf(lectureDto.getId()));
                 topic.setText(lectureDto.getTopic());
                 date.setText(lectureDto.getDate().toString());
                 group.setText(lectureDto.getGroupName());

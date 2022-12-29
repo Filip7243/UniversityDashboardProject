@@ -1,19 +1,40 @@
 package com.fxproject.unidashboard.controller;
 
+import com.fxproject.unidashboard.model.Lectures;
 import javafx.fxml.FXML;
 import javafx.scene.control.Accordion;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class LectureDetailsController {
 
     @FXML
+    private Label dateLabel;
+
+    @FXML
     private Accordion details;
+
+    @FXML
+    private Label groupLabel;
+
+    @FXML
+    private Label idLabel;
+
+    @FXML
+    private Label subjectLabel;
+
+    @FXML
+    private Label topicLabel;
+
 
     public void loadLectureData() {
         Stage stage = (Stage) details.getScene().getWindow();
-//        PersonDto lectureDataDTO = (PersonDto) stage.getUserData();
-//        System.out.println(userData.getFirstName());
-        // populate data from lectureDataDTO
+        Lectures lecture = (Lectures) stage.getUserData();
+        idLabel.setText(String.valueOf(lecture.getId()));
+        topicLabel.setText(lecture.getLectureTopic());
+        dateLabel.setText(String.valueOf(lecture.getLectureDate().toLocalDate()));
+        groupLabel.setText(lecture.getGroup().getName());
+        subjectLabel.setText(lecture.getSubject().getName());
     }
 
 
