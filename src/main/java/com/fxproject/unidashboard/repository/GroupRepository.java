@@ -2,6 +2,7 @@ package com.fxproject.unidashboard.repository;
 
 import com.fxproject.unidashboard.model.FieldsOfStudy;
 import com.fxproject.unidashboard.model.Groups;
+import com.fxproject.unidashboard.model.Person;
 import com.fxproject.unidashboard.utils.HibernateConnect;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -21,9 +22,18 @@ public class GroupRepository {
             tx.commit();
             return query.getResultList();
         } catch (Exception e) {
-            if(tx != null && tx.isActive()) {
+            if (tx != null && tx.isActive()) {
                 tx.rollback();
             }
+            return List.of();
+        }
+    }
+
+    public List<Groups> findAllGroups() {
+        try (Session session = HibernateConnect.openSession()) {
+            Query<Groups> groups = session.createQuery("SELECT g FROM Groups g", Groups.class);
+            return groups.getResultList();
+        } catch (Exception e) {
             return List.of();
         }
     }

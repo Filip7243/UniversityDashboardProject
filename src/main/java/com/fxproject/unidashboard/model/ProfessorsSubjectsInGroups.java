@@ -46,6 +46,22 @@ public class ProfessorsSubjectsInGroups {
         return group;
     }
 
+    public void setId(PSIGID id) {
+        this.id = id;
+    }
+
+    public void setProfessor(Professors professor) {
+        this.professor = professor;
+    }
+
+    public void setSubject(Subjects subject) {
+        this.subject = subject;
+    }
+
+    public void setGroup(Groups group) {
+        this.group = group;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

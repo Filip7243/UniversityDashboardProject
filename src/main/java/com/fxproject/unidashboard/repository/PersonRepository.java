@@ -16,6 +16,7 @@ import java.util.Optional;
 public class PersonRepository {
 
     private MarkRepository mr = new MarkRepository();
+    private WageRepository wr = new WageRepository();
 
     public List<Person> findAllPeople() {
         try (Session session = HibernateConnect.openSession()) {
@@ -53,11 +54,15 @@ public class PersonRepository {
         Transaction tx = null;
         Person p = null;
         List<Marks> studentsMarks = null;
+        List<Wages> professorsWages = null;
         Optional<Person> personWithId = findPersonWithId(id);
         if (personWithId.isPresent()) {
             p = personWithId.get();
             if (p instanceof Students s) {
                 studentsMarks = mr.findStudentMarks(s.getAlbumId());
+            }
+            if (p instanceof Professors prof) {
+                professorsWages = wr.findProfessorWages(prof);
             }
         }
 
@@ -67,6 +72,11 @@ public class PersonRepository {
                 if (studentsMarks != null) {
                     for (Marks studentMark : studentsMarks) {
                         session.remove(studentMark);
+                    }
+                }
+                if (professorsWages != null) {
+                    for (Wages wage : professorsWages) {
+                        session.remove(wage);
                     }
                 }
                 session.remove(p.getAcc());

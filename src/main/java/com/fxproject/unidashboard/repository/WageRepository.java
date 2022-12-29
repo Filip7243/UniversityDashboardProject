@@ -28,4 +28,21 @@ public class WageRepository {
             return List.of();
         }
     }
+
+    public void addWage(Wages wage) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            if(wage.getId() == null) {
+                session.persist(wage);
+            } else {
+                session.merge(wage);
+            }
+            tx.commit();
+        } catch (Exception e) {
+            if(tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+        }
+    }
 }
