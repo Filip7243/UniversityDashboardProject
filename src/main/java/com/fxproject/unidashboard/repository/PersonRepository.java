@@ -1,7 +1,6 @@
 package com.fxproject.unidashboard.repository;
 
-import com.fxproject.unidashboard.model.Person;
-import com.fxproject.unidashboard.model.UniversityAccounts;
+import com.fxproject.unidashboard.model.*;
 import com.fxproject.unidashboard.utils.HibernateConnect;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -16,6 +15,7 @@ import java.util.Optional;
 
 public class PersonRepository {
 
+    private MarkRepository mr = new MarkRepository();
 
     public List<Person> findAllPeople() {
         try (Session session = HibernateConnect.openSession()) {
@@ -52,20 +52,28 @@ public class PersonRepository {
     public void removePersonWithId(Long id) {
         Transaction tx = null;
         Person p = null;
+        List<Marks> studentsMarks = null;
         Optional<Person> personWithId = findPersonWithId(id);
-        if(personWithId.isPresent()) {
+        if (personWithId.isPresent()) {
             p = personWithId.get();
+            if (p instanceof Students s) {
+                studentsMarks = mr.findStudentMarks(s.getAlbumId());
+            }
         }
 
-        if(p != null) {
+        if (p != null) {
             try (Session session = HibernateConnect.openSession()) {
                 tx = session.beginTransaction();
-                System.out.println("DUPA");
+                if (studentsMarks != null) {
+                    for (Marks studentMark : studentsMarks) {
+                        session.remove(studentMark);
+                    }
+                }
                 session.remove(p.getAcc());
                 session.remove(p);
                 tx.commit();
             } catch (Exception e) {
-                if(tx != null && tx.isActive()) {
+                if (tx != null && tx.isActive()) {
                     tx.rollback();
                     System.out.println(e.getMessage());
                 }
@@ -73,7 +81,33 @@ public class PersonRepository {
         }
     }
 
-    public void updatePerson() {
-        //todo: update person
+    public void updatePersonWithId(Person updatedPerson, Long id) {
+        Person person = findPersonWithId(id).orElseThrow();
+
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            person.setFirstName(updatedPerson.getFirstName());
+            person.setLastName(updatedPerson.getLastName());
+            person.setEmail(updatedPerson.getEmail());
+            person.setPhoneNumber(updatedPerson.getPhoneNumber());
+            person.setBirthday(updatedPerson.getBirthday());
+            person.setPlaceOfBirth(updatedPerson.getPlaceOfBirth());
+            person.setGender(updatedPerson.getGender());
+            person.setAge(updatedPerson.getAge());
+            Addresses address = person.getAddress();
+            address.setCountry(updatedPerson.getAddress().getCountry());
+            address.setCity(updatedPerson.getAddress().getCity());
+            address.setStreet(updatedPerson.getAddress().getStreet());
+            address.setFlatNumber(updatedPerson.getAddress().getFlatNumber());
+            address.setPostalCode(updatedPerson.getAddress().getPostalCode());
+            session.merge(person);
+            tx.commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+        }
     }
 }

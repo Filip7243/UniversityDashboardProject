@@ -21,7 +21,7 @@
                     <content>
                         <ScrollPane prefHeight="200.0" prefWidth="200.0" stylesheets="@scroll-pane-style.css">
                             <content>
-                                <VBox prefHeight="824.0" prefWidth="783.0" spacing="10.0" style="-fx-background-color: black;">
+                                <VBox fx:id="personalDataVbox" prefHeight="824.0" prefWidth="783.0" spacing="10.0" style="-fx-background-color: black;">
                                     <children>
                                         <BorderPane prefHeight="42.0" prefWidth="718.0">
                                             <center>
@@ -178,7 +178,7 @@
                                                 </Pane>
                                                 <Pane prefHeight="35.0" prefWidth="299.0">
                                                     <children>
-                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                        <TextField fx:id="phoneNumber" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" text="phoneNumber" />
                                                     </children>
                                                 </Pane>
                                             </children>
@@ -196,7 +196,7 @@
                                                 </Pane>
                                                 <Pane prefHeight="35.0" prefWidth="299.0">
                                                     <children>
-                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                        <TextField fx:id="gender" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
                                                     </children>
                                                 </Pane>
                                             </children>
@@ -214,7 +214,7 @@
                                                 </Pane>
                                                 <Pane prefHeight="35.0" prefWidth="299.0">
                                                     <children>
-                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                        <TextField fx:id="country" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
                                                     </children>
                                                 </Pane>
                                             </children>
@@ -232,7 +232,7 @@
                                                 </Pane>
                                                 <Pane prefHeight="35.0" prefWidth="299.0">
                                                     <children>
-                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                        <TextField fx:id="city" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
                                                     </children>
                                                 </Pane>
                                             </children>
@@ -250,7 +250,7 @@
                                                 </Pane>
                                                 <Pane prefHeight="35.0" prefWidth="299.0">
                                                     <children>
-                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                        <TextField fx:id="postalCode" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
                                                     </children>
                                                 </Pane>
                                             </children>
@@ -268,7 +268,7 @@
                                                 </Pane>
                                                 <Pane prefHeight="35.0" prefWidth="299.0">
                                                     <children>
-                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                        <TextField fx:id="street" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
                                                     </children>
                                                 </Pane>
                                             </children>
@@ -286,7 +286,7 @@
                                                 </Pane>
                                                 <Pane prefHeight="35.0" prefWidth="299.0">
                                                     <children>
-                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                        <TextField fx:id="flatNumber" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
                                                     </children>
                                                 </Pane>
                                             </children>
@@ -294,7 +294,7 @@
                                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="718.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                                             <children>
                                                 <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Cancel" />
-                                                <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Modify" />
+                                                <Button mnemonicParsing="false" onAction="#modifyPersonalData" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Modify" />
                                             </children>
                                         </HBox>
                                     </children>
@@ -307,7 +307,7 @@
                     <content>
                         <ScrollPane prefHeight="200.0" prefWidth="200.0" stylesheets="@scroll-pane-style.css">
                             <content>
-                                <VBox prefHeight="346.0" prefWidth="784.0" spacing="10.0">
+                                <VBox fx:id="accountDataVbox" prefHeight="346.0" prefWidth="784.0" spacing="10.0">
                                     <children>
                                         <BorderPane prefHeight="43.0" prefWidth="784.0">
                                             <center>
@@ -356,7 +356,7 @@
                                                 </Pane>
                                                 <Pane prefHeight="35.0" prefWidth="299.0">
                                                     <children>
-                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                        <TextField fx:id="password" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
                                                     </children>
                                                 </Pane>
                                             </children>
@@ -374,7 +374,7 @@
                                                 </Pane>
                                                 <Pane prefHeight="35.0" prefWidth="299.0">
                                                     <children>
-                                                        <TextField layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                        <TextField fx:id="role" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
                                                     </children>
                                                 </Pane>
                                             </children>
@@ -382,7 +382,7 @@
                                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="718.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                                             <children>
                                                 <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Cancel" />
-                                                <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Modify" />
+                                                <Button mnemonicParsing="false" onAction="#modifyAccountData" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Modify" />
                                             </children>
                                         </HBox>
                                     </children>

@@ -1,6 +1,11 @@
 package com.fxproject.unidashboard.controller;
 
 import com.fxproject.unidashboard.dto.PersonDto;
+import com.fxproject.unidashboard.model.Professors;
+import com.fxproject.unidashboard.model.Students;
+import com.fxproject.unidashboard.repository.PersonRepository;
+import com.fxproject.unidashboard.repository.ProfessorRepository;
+import com.fxproject.unidashboard.repository.StudentRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -8,7 +13,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -17,28 +24,34 @@ import java.io.IOException;
 import java.net.URL;
 
 public class ItemController {
+
+    private StudentRepository sr = new StudentRepository();
+    private ProfessorRepository pr = new ProfessorRepository();
+
+    private PersonRepository personRepository = new PersonRepository();
+
     public void modifyItem(ActionEvent event) {
         Button btn = ((Button) (event.getSource()));
         Scene scene = btn.getScene();
         HBox lookup;
         try {
             lookup = (HBox) scene.lookup("#userItem");
+            Label albumIdLabel = (Label) lookup.getChildren().get(3);
+            String albumId = albumIdLabel.getText();
             Label roleLabel = (Label) lookup.getChildren().get(4);
             String role = roleLabel.getText();
-            switch (role) {
-                case "Student" -> {
+            switch (role.toLowerCase()) {
+                case "student" -> {
                     Stage stage = loadFXML(event, "modify-student.fxml");
-                    PersonDto p = new PersonDto();
-//                    p.setFirstName("ABCD");
-//                    p.setLastName("SJAHGDSA");
-                    stage.setUserData(p);
+                    Students student = sr.findStudentByAlbumId(Long.parseLong(albumId)).orElseThrow();
+                    assert stage != null;
+                    stage.setUserData(student);
                 }
-                case "Professor" -> {
+                case "professor" -> {
                     Stage stage = loadFXML(event, "modify-professor.fxml");
-                    PersonDto p = new PersonDto();
-//                    p.setFirstName("ESSA");
-//                    p.setLastName("SJAHGDSA");
-                    stage.setUserData(p);
+                    Professors professor = pr.findProfessorByAlbumId(Long.parseLong(albumId)).orElseThrow();
+                    assert stage != null;
+                    stage.setUserData(professor);
                 }
             }
         } catch (NullPointerException e) { // it means that this is lecture node
@@ -54,26 +67,27 @@ public class ItemController {
             lookup = (HBox) scene.lookup("#userItem");
             Label albumIdLabel = (Label) lookup.getChildren().get(3);
             String albumId = albumIdLabel.getText();
-            PersonDto personDto = new PersonDto(); // todo: find from db by albumId
             Label roleLabel = (Label) lookup.getChildren().get(4);
             String role = roleLabel.getText();
             Stage stage;
-            switch (role) {
-                case "Student" -> {
+            switch (role.toLowerCase()) {
+                case "student" -> {
+                    Students student = sr.findStudentByAlbumId(Long.parseLong(albumId)).orElseThrow();
                     stage = loadFXML(event, "student-details.fxml");
+                    System.out.println(stage);
                     assert stage != null;
                     stage.setWidth(1004);
                     stage.setHeight(636);
                     stage.setX(300);
-                    stage.setUserData(personDto);
+                    stage.setUserData(student);
                 }
-                case "Professor" -> {
+                case "professor" -> {
+                    Professors professor = pr.findProfessorByAlbumId(Long.parseLong(albumId)).orElseThrow();
                     stage = loadFXML(event, "professor-details.fxml");
                     assert stage != null;
                     stage.setWidth(1004);
                     stage.setHeight(636);
-                    stage.setUserData(personDto);
-
+                    stage.setUserData(professor);
                 }
             }
         } catch (NullPointerException e) { // it means that this is lecture node
@@ -90,6 +104,33 @@ public class ItemController {
             stage.setHeight(636);
             stage.setX(300);
 //            stage.setUserData(); lecture dto pass here
+        }
+    }
+
+    public void deleteItem(ActionEvent event) {
+        Button btn = ((Button) (event.getSource()));
+        Scene scene = btn.getScene();
+        HBox lookup;
+        try {
+            lookup = (HBox) scene.lookup("#userItem");
+            Label albumIdLabel = (Label) lookup.getChildren().get(3);
+            String albumId = albumIdLabel.getText();
+            Label roleLabel = (Label) lookup.getChildren().get(4);
+            String role = roleLabel.getText();
+            VBox vbox = (VBox) scene.lookup("#itemsContainer");
+            switch (role.toLowerCase()) {
+                case "student" -> {
+                    Students student = sr.findStudentByAlbumId(Long.parseLong(albumId)).orElseThrow();
+                    personRepository.removePersonWithId(student.getId());
+                }
+                case "professor" -> {
+                    Professors professor = pr.findProfessorByAlbumId(Long.parseLong(albumId)).orElseThrow();
+                    personRepository.removePersonWithId(professor.getId());
+                }
+            }
+            vbox.getChildren().remove(lookup);
+        } catch (NullPointerException e) {
+
         }
     }
 

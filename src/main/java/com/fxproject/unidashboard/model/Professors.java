@@ -1,9 +1,6 @@
 package com.fxproject.unidashboard.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,13 +11,14 @@ import static jakarta.persistence.EnumType.STRING;
 @Entity
 public class Professors extends Person {
 
-    private String albumId;
+    private Long albumId;
     @Enumerated(STRING)
     private AcademicTitles academicTitles;
     @OneToMany(
             mappedBy = "professor",
             cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
     )
     private List<ProfessorsSubjectsInGroups> psig = new ArrayList<>();
 
@@ -62,11 +60,11 @@ public class Professors extends Person {
         this.psig = psig;
     }
 
-    public String getAlbumId() {
+    public Long getAlbumId() {
         return albumId;
     }
 
-    public void setAlbumId(String albumId) {
+    public void setAlbumId(Long albumId) {
         this.albumId = albumId;
     }
 }

@@ -59,4 +59,9 @@ public class FieldsOfStudy {
     public void setDepartment(Departments department) {
         this.department = department;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

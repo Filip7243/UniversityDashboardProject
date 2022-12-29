@@ -63,8 +63,6 @@ public class ProfessorController {
         ObservableList<String> studentsGroupB = FXCollections.observableArrayList(List.of("P", "O"));
         ObservableList<String> studentsGroupC = FXCollections.observableArrayList(List.of("K"));
 
-
-
         ComboBox<String> comboGroups = (ComboBox<String>) anchorPane.lookup("#comboGroups");
         ComboBox<String> comboSubjects = (ComboBox<String>) anchorPane.lookup("#comboSubjects");
         ComboBox<String> comboStudents = (ComboBox<String>) anchorPane.lookup("#comboStudents");

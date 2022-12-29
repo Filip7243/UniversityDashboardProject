@@ -45,7 +45,7 @@
          <children>
             <Pane prefHeight="45.0" prefWidth="818.0">
                <children>
-                  <JFXButton fx:id="closeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="788.0" layoutY="5.0" onAction="#closeWindow" prefHeight="20.0" prefWidth="28.0" text=" ">
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="788.0" layoutY="5.0" onAction="#closeWindow" prefHeight="20.0" prefWidth="28.0" text=" ">
                      <effect>
                         <Shadow />
                      </effect>

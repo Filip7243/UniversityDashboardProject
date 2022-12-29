@@ -18,7 +18,7 @@ module com.fxproject.unidashboard {
 
     opens com.fxproject.unidashboard to javafx.fxml, org.hibernate.orm.core;
     opens com.fxproject.unidashboard.controller to javafx.fxml;
-    opens com.fxproject.unidashboard.model to org.hibernate.orm.core;
+    opens com.fxproject.unidashboard.model to org.hibernate.orm.core, javafx.base;
     exports com.fxproject.unidashboard;
     exports com.fxproject.unidashboard.controller;
     exports com.fxproject.unidashboard.dto;

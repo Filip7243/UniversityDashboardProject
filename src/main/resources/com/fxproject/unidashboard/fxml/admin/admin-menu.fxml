@@ -55,7 +55,7 @@
                         <TextField promptText="search" />
                         <Pane prefHeight="59.0" prefWidth="166.0">
                             <children>
-                                <Button alignment="CENTER" contentDisplay="CENTER" layoutX="113.0" layoutY="16.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="45.0" style="-fx-background-color: transparent;">
+                                <Button fx:id="closeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="113.0" layoutY="16.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="45.0" style="-fx-background-color: transparent;">
                                     <graphic>
                                         <ImageView fitHeight="19.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -108,7 +108,7 @@
                   </Pane>
                     </children>
                 </HBox>
-                <ScrollPane prefHeight="338.0" prefWidth="668.0" stylesheets="@scroll-pane-style.css">
+                <ScrollPane fx:id="scrollPane" prefHeight="338.0" prefWidth="668.0" stylesheets="@scroll-pane-style.css">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>

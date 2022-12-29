@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+import static jakarta.persistence.FetchType.EAGER;
 import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -16,9 +17,9 @@ public class Lectures {
     private Long id;
     private String lectureTopic;
     private LocalDateTime lectureDate;
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = EAGER)
     private Groups group;
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = EAGER)
     private Subjects subject;
 
     public Lectures() {

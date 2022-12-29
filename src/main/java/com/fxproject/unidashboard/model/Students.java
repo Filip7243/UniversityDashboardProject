@@ -2,6 +2,7 @@ package com.fxproject.unidashboard.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToMany;
 
 import java.math.BigInteger;
@@ -14,7 +15,7 @@ import java.util.UUID;
 public class Students extends Person {
 
     private Long albumId;
-    @ManyToMany()
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Groups> groups;
 
     public Students() {

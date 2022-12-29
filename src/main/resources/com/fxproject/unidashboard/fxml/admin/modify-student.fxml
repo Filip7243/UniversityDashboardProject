@@ -1,21 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.ModifyPersonController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.ModifyStudentController">
     <children>
         <VBox prefHeight="400.0" prefWidth="802.0">
             <children>
                 <Accordion>
                     <panes>
-                        <TitledPane animated="false" onMousePressed="#loadStudentFieldsOfStudy" text="Add Field Of Study" />
-                        <TitledPane animated="false" onMousePressed="#loadStudentFieldsOfStudy" text="Remove Field Of Study" />
+                        <TitledPane fx:id="addFieldOfStudyPane" animated="false" onMousePressed="#loadStudentFieldsOfStudy" text="Add Field Of Study">
+                     <content>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <ComboBox fx:id="fieldOfStudies" prefWidth="150.0" />
+                              <ComboBox fx:id="groups" prefWidth="150.0" visible="false" />
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#cancelAdding" text="Cancel" />
+                                    <Button mnemonicParsing="false" onAction="#addFieldOfStudy" text="Add" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content></TitledPane>
+                        <TitledPane fx:id="removeGroupPane" animated="false" onMousePressed="#loadRemoveStudentFieldsOfStudy" text="Remove Field Of Study">
+                     <content>
+                        <VBox fx:id="removeFieldOfStudyPane" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                           <children>
+                              <ComboBox fx:id="removingGroups" prefWidth="150.0" />
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#cancelRemoving" text="Cancel" />
+                                    <Button mnemonicParsing="false" onAction="#removeGroup" text="Remove" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content></TitledPane>
                     </panes>
                 </Accordion>
-                <fx:include source="modify-person.fxml" />
+                <fx:include fx:id="personalData" source="modify-person.fxml" />
             </children>
         </VBox>
     </children>

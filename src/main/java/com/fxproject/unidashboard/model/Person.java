@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+import static jakarta.persistence.FetchType.EAGER;
 import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -33,7 +34,7 @@ public class Person {
     private Character gender;
     @Column(name = "age")
     private Integer age;
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = EAGER)
     private Addresses address;
     @OneToOne(mappedBy = "person")
     private UniversityAccounts acc;

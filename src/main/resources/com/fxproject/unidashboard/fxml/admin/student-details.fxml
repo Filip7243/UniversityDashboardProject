@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -301,22 +301,22 @@
                 </VBox>
             </content>
         </TitledPane>
-        <TitledPane prefHeight="200.0" prefWidth="1006.0" text="Student Data">
+        <TitledPane fx:id="studentData" onMousePressed="#loadStudentData" prefHeight="200.0" prefWidth="1006.0" text="Student Data">
          <content>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <JFXTreeTableView>
-                     <columns>
-                        <TreeTableColumn prefWidth="491.5" text="FieldOfStudy" />
-                        <TreeTableColumn prefWidth="491.5" text="Group" />
-                     </columns>
-                  </JFXTreeTableView>
-                  <JFXTreeTableView>
-                     <columns>
-                        <TreeTableColumn prefWidth="491.5" text="Subject" />
-                        <TreeTableColumn prefWidth="491.5" text="Mark" />
-                     </columns>
-                  </JFXTreeTableView>
+                  <TableView prefHeight="266.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn prefWidth="501.0" text="Field Of Study" />
+                      <TableColumn minWidth="0.0" prefWidth="501.0" text="Group" />
+                    </columns>
+                  </TableView>
+                  <TableView prefHeight="266.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn prefWidth="501.0" text="Subject" />
+                      <TableColumn prefWidth="501.0" text="Mark" />
+                    </columns>
+                  </TableView>
                </children>
             </VBox>
          </content></TitledPane>

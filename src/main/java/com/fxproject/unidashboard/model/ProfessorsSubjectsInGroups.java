@@ -10,13 +10,13 @@ public class ProfessorsSubjectsInGroups {
 
     @EmbeddedId
     private PSIGID id;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("professorId")
     private Professors professor;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("subjectId")
     private Subjects subject;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("groupId")
     private Groups group;
 

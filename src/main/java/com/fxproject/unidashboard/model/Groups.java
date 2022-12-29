@@ -17,7 +17,7 @@ public class Groups {
     @Column(name = "group_id")
     private Long id;
     private String name;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private FieldsOfStudy fieldOfStudy;
     @OneToMany(
             mappedBy = "group",
@@ -78,5 +78,10 @@ public class Groups {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, fieldOfStudy, psig);
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

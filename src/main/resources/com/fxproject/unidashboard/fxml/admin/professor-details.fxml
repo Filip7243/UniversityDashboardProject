@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -305,20 +305,20 @@
          <content>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: black;">
                <children>
-                  <JFXTreeTableView prefHeight="279.0" prefWidth="983.0" style="-fx-background-color: #191c24;">
-                     <columns>
-                      <TreeTableColumn minWidth="8.00000250339508" prefWidth="460.7999597787857" text="Subject" />
-                      <TreeTableColumn minWidth="0.0" prefWidth="520.8001098632812" text="Group" />
-                     </columns>
-                  </JFXTreeTableView>
-                  <JFXTreeTableView prefHeight="279.0" prefWidth="983.0" style="-fx-background-color: #191c24;">
-                     <columns>
-                        <TreeTableColumn prefWidth="245.75" text="Salary" />
-                        <TreeTableColumn prefWidth="245.75" text="Hourly Rate" />
-                        <TreeTableColumn prefWidth="245.75" text="Hours Worked" />
-                        <TreeTableColumn prefWidth="245.75" text="Payday" />
-                     </columns>
-                  </JFXTreeTableView>
+                  <TableView prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Subject" />
+                      <TableColumn prefWidth="75.0" text="Group" />
+                    </columns>
+                  </TableView>
+                  <TableView prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Salary" />
+                      <TableColumn prefWidth="75.0" text="Horly Rate" />
+                        <TableColumn prefWidth="75.0" text="Hours Worked" />
+                        <TableColumn prefWidth="75.0" text="Payday" />
+                    </columns>
+                  </TableView>
                </children>
             </VBox>
          </content></TitledPane>

@@ -16,9 +16,9 @@ public class Marks {
     private Double mark;
     private LocalDateTime markDate;
     private String description;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Students student;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Subjects subject;
 
     public Marks() {
