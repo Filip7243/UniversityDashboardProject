@@ -18,6 +18,18 @@ public class PersonRepository {
     private MarkRepository mr = new MarkRepository();
     private WageRepository wr = new WageRepository();
 
+    public void save(Person person) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()){
+            tx = session.beginTransaction();;
+            session.persist(person);
+            tx.commit();
+        } catch (Exception e) {
+            if(tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+        }
+    }
     public List<Person> findAllPeople() {
         try (Session session = HibernateConnect.openSession()) {
             Query<Person> people = session.createQuery("SELECT p FROM Person p", Person.class);

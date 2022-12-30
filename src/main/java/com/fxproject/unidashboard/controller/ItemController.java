@@ -72,7 +72,8 @@ public class ItemController {
         Scene scene = btn.getScene();
         HBox lookup;
         try {
-            lookup = (HBox) scene.lookup("#userItem");
+            String nodeId = btn.getId().substring(btn.getId().length() - 1);
+            lookup = (HBox) scene.lookup("#userItem" + nodeId);
             Label albumIdLabel = (Label) lookup.getChildren().get(3);
             String albumId = albumIdLabel.getText();
             Label roleLabel = (Label) lookup.getChildren().get(4);
@@ -99,10 +100,12 @@ public class ItemController {
                 }
             }
         } catch (NullPointerException e) { // it means that this is lecture node
-            lookup = (HBox) scene.lookup("#lectureItem");
+            String nodeId = btn.getId().substring(btn.getId().length() - 1);
+            lookup = (HBox) scene.lookup("#lectureItem" + nodeId);
             BorderPane idPane = (BorderPane) lookup.getChildren().get(0);
             Label idLabel = (Label) idPane.getChildren().get(0);
             // find from db lecture with id and create LectureDto
+            System.out.println(idLabel.getText());
             Lectures lectures = lr.findLectureWithId(Long.parseLong(idLabel.getText())).orElseThrow();
             // load fxml
             Stage stage = loadFXML(event, "lecture-details.fxml");
@@ -119,7 +122,8 @@ public class ItemController {
         Scene scene = btn.getScene();
         HBox lookup;
         try {
-            lookup = (HBox) scene.lookup("#userItem");
+            String nodeId = btn.getId().substring(btn.getId().length() - 1);
+            lookup = (HBox) scene.lookup("#userItem" + nodeId);
             Label albumIdLabel = (Label) lookup.getChildren().get(3);
             String albumId = albumIdLabel.getText();
             Label roleLabel = (Label) lookup.getChildren().get(4);
@@ -137,7 +141,9 @@ public class ItemController {
             }
             vbox.getChildren().remove(lookup);
         } catch (NullPointerException e) {
-            lookup = (HBox) scene.lookup("#lectureItem");
+            String nodeId = btn.getId().substring(btn.getId().length() - 1);
+            System.out.println("NODE" + nodeId);
+            lookup = (HBox) scene.lookup("#lectureItem" + nodeId);
             VBox vbox = (VBox) scene.lookup("#itemsContainer");
             BorderPane idPane = (BorderPane) lookup.getChildren().get(0);
             Label idLabel = (Label) idPane.getChildren().get(0);

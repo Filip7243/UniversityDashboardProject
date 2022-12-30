@@ -87,7 +87,10 @@ public class AdminController {
 
             Students s = new Students(null, "Mike", "Markulla", "mike@mail.com", "+48726513912", LocalDateTime.now(), "New York", "82777331923",
                     'M', 22, addresses);
+            Students s1 = new Students(null, "Mikdsadase", "Markdsadasulla", "mcxzike@mail.com", "+48726543213912", LocalDateTime.now(), "Ndasvcxk", "123654756",
+                    'F', 99, addresses);
             session.persist(s);
+            session.persist(s1);
 
             Subjects subjects = new Subjects(null, "Algebra");
             Subjects subjects2 = new Subjects(null, "Analiza Matematyczna");
@@ -103,8 +106,10 @@ public class AdminController {
 
             UniversityAccounts acc = new UniversityAccounts("dsadas@mail.com", "jhadsgjhdsa", LocalDateTime.now(), true, s, Roles.ROLE_STUDENT);
             UniversityAccounts acc2 = new UniversityAccounts("dsadas@mail.com", "jhadsgjhdsa", LocalDateTime.now(), false, p, Roles.ROLE_PROFESSOR);
+            UniversityAccounts acc3 = new UniversityAccounts("dfgfdgdf@mail.com", "dacxzx", LocalDateTime.now(), true, s1, Roles.ROLE_STUDENT);
             session.persist(acc);
             session.persist(acc2);
+            session.persist(acc3);
 
             Lectures l = new Lectures(null, "DUPA", LocalDateTime.now(), g, subjects);
             Lectures l2 = new Lectures(null, "SRAKA", LocalDateTime.now(), g, subjects);
@@ -115,10 +120,18 @@ public class AdminController {
             Marks m1 = new Marks(null, 5.0, LocalDateTime.now(), "DCXZ", s, subjects);
             Marks m2 = new Marks(null, 4.5, LocalDateTime.now(), "dsa", s, subjects2);
             Marks m3 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s, subjects);
+            Marks m4 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects);
+            Marks m5 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects);
+            Marks m6 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects);
+            Marks m7 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects);
             session.persist(m);
             session.persist(m1);
             session.persist(m2);
             session.persist(m3);
+            session.persist(m4);
+            session.persist(m5);
+            session.persist(m6);
+            session.persist(m7);
 
             Wages w = new Wages(null, 2000.20, 200.1, 14.7, LocalDateTime.now(), p);
             session.persist(w);
@@ -137,15 +150,20 @@ public class AdminController {
                 URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/user-item.fxml").toURI().toURL();
                 nodes[i] = FXMLLoader.load(url);
                 HBox v = (HBox) nodes[i];
-                v.setId("userItem");
+                v.setId("userItem" + i);
                 PersonDto p = list.get(i);
-//                UniversityAccounts pAcc = p.getAcc();
                 Label firstName = (Label) v.getChildren().get(0);
                 Label lastName = (Label) v.getChildren().get(1);
                 Label email = (Label) v.getChildren().get(2);
                 Label albumId = (Label) v.getChildren().get(3);
                 Label role = (Label) v.getChildren().get(4);
                 Label isActive = (Label) v.getChildren().get(5);
+                Button modifyBtn = (Button) v.getChildren().get(7);
+                Button deleteBtn = (Button) v.getChildren().get(8);
+                Button detailsBtn = (Button) v.getChildren().get(9);
+                modifyBtn.setId("modifyButton" + i);
+                deleteBtn.setId("deleteButton" + i);
+                detailsBtn.setId("detailsButton" + i);
                 firstName.setText(p.getFirstName());
                 lastName.setText(p.getLastName());
                 email.setText(p.getEmail());
@@ -172,8 +190,13 @@ public class AdminController {
                 BorderPane datePane = (BorderPane) v.getChildren().get(2);
                 BorderPane groupPane = (BorderPane) v.getChildren().get(3);
                 BorderPane subjectPane = (BorderPane) v.getChildren().get(4);
+                HBox buttonsContainer = (HBox) v.getChildren().get(6);
+                Button deleteButton = (Button) buttonsContainer.getChildren().get(0);
+                Button modifyButton = (Button) buttonsContainer.getChildren().get(1);
+                deleteButton.setId("deleteButton" + i);
+                modifyButton.setId("modifyButton" + i);
                 v.setPrefWidth(800.0);
-                v.setId("lectureItem");
+                v.setId("lectureItem" + i);
                 // lectures
                 LectureDto lectureDto = list.get(i);
                 Label id = (Label) idPane.getChildren().get(0);
@@ -242,13 +265,23 @@ public class AdminController {
         Parent root;
         try {
             String path = new File("").getAbsolutePath();
-            URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/admin/add-student-form.fxml").toURI().toURL();
-            root = FXMLLoader.load(url);
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(new Scene(root, 725, 383));
-            stage.show();
-            ((Node) (event.getSource())).getScene().getWindow().hide();
+            Button btn = (Button) event.getSource();
+            URL url = null;
+            switch (btn.getId()) {
+                case "addProfessorButton" ->
+                        url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/admin/add-professor-form.fxml").toURI().toURL();
+                case "addStudentButton" ->
+                        url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/admin/add-student-form.fxml").toURI().toURL();
+            }
+
+            if (url != null) {
+                root = FXMLLoader.load(url);
+                Stage stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.setScene(new Scene(root, 725, 383));
+                stage.show();
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

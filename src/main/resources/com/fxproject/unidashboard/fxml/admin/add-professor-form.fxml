@@ -12,8 +12,8 @@
 <?import javafx.scene.text.Font?>
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="907.0" prefWidth="725.0" stylesheets="@scroll-pane-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.AddFormController">
-    <content>
-        <VBox alignment="TOP_CENTER" prefHeight="914.0" prefWidth="706.0" spacing="10.0">
+   <content>
+      <VBox alignment="TOP_CENTER" prefHeight="914.0" prefWidth="706.0" spacing="10.0">
          <children>
             <Pane prefHeight="46.0" prefWidth="706.0" style="-fx-background-color: #191c24;">
                <children>
@@ -294,12 +294,31 @@
                   </Pane>
                </children>
             </HBox>
+            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+               <children>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <Label layoutX="82.0" layoutY="8.0" prefHeight="27.0" prefWidth="125.0" text="Academic Title" textFill="#a9a8a8">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="250.0">
+                     <children>
+                        <ComboBox fx:id="academicTitleCombo" layoutX="50.0" layoutY="8.0" prefWidth="150.0" />
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
             <HBox alignment="CENTER" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" spacing="50.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                <children>
                   <Button mnemonicParsing="false" onAction="#cancelAdding" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-border-radius: 2em; -fx-text-fill: #a9a8a8;" text="Cancel" />
                   <Button mnemonicParsing="false" onAction="#addUser" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-border-radius: 2em; -fx-text-fill: #a9a8a8;" text="Add" />
                </children>
             </HBox>
-         </children></VBox>
-    </content>
+         </children>
+      </VBox>
+   </content>
 </ScrollPane>

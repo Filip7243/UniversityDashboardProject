@@ -1,5 +1,6 @@
 package com.fxproject.unidashboard.repository;
 
+import com.fxproject.unidashboard.model.Person;
 import com.fxproject.unidashboard.model.UniversityAccounts;
 import com.fxproject.unidashboard.utils.HibernateConnect;
 import org.hibernate.Session;
@@ -10,6 +11,18 @@ import java.util.Optional;
 
 public class AccountRepository {
 
+    public void save(UniversityAccounts account) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()){
+            tx = session.beginTransaction();
+            session.persist(account);
+            tx.commit();
+        } catch (Exception e) {
+            if(tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+        }
+    }
     public Optional<UniversityAccounts> findAccountWithPersonId(Long personId) {
         Transaction tx = null;
         try (Session session = HibernateConnect.openSession()) {

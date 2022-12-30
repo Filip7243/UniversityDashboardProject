@@ -29,8 +29,8 @@
                 </Pane>
                 <Button mnemonicParsing="false" onAction="#showStudents" text="Students" />
                 <Button mnemonicParsing="false" onAction="#showProfessors" text="Professors" />
-                <Button mnemonicParsing="false" onAction="#showAddingForm" text="Add Student" />
-                <Button mnemonicParsing="false" onAction="#showAddingForm" text="Add Professor" />
+                <Button fx:id="addStudentButton" mnemonicParsing="false" onAction="#showAddingForm" text="Add Student" />
+                <Button fx:id="addProfessorButton" mnemonicParsing="false" onAction="#showAddingForm" text="Add Professor" />
                 <Button mnemonicParsing="false" onAction="#showLectures" text="Lectures" />
                 <Button mnemonicParsing="false" text="Settings" />
                 <Button mnemonicParsing="false" text="Sign Out" />
