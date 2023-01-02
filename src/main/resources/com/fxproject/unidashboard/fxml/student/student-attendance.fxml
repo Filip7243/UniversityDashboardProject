@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTreeTableView?>
-<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 
-
-<JFXTreeTableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="668.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <columns>
-      <TreeTableColumn prefWidth="222.666667" text="Subject" />
-      <TreeTableColumn prefWidth="222.666667" text="Date" />
-      <TreeTableColumn prefWidth="222.666667" text="Present" />
-   </columns>
-</JFXTreeTableView>
+<TableView fx:id="table" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           prefHeight="542.0" prefWidth="668.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.fxproject.unidashboard.controller.StudentAttendanceController">
+    <columns>
+        <TableColumn fx:id="subjectColumn" prefWidth="222.0" text="Subject"/>
+        <TableColumn fx:id="dateColumn" prefWidth="222.0" text="Date"/>
+        <TableColumn fx:id="presentColumn" prefWidth="222.0" text="Present"/>
+    </columns>
+</TableView>

@@ -4,6 +4,7 @@
 
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@calendar-style.css" xmlns="http://javafx.com/javafx/19"
-            xmlns:fx="http://javafx.com/fxml/1">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.CalendarController"
+fx:id="anchor">
 
 </AnchorPane>

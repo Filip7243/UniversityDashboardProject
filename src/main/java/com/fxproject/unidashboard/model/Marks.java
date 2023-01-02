@@ -20,18 +20,21 @@ public class Marks {
     private Students student;
     @ManyToOne(fetch = FetchType.EAGER)
     private Subjects subject;
+    @Enumerated(EnumType.STRING)
+    private ExamTypes type;
 
     public Marks() {
     }
 
     public Marks(Long id, Double mark, LocalDateTime markDate,
-                 String description, Students student, Subjects subject) {
+                 String description, Students student, Subjects subject, ExamTypes type) {
         this.id = id;
         this.mark = mark;
         this.markDate = markDate;
         this.description = description;
         this.student = student;
         this.subject = subject;
+        this.type = type;
     }
 
     public Long getId() {
@@ -80,5 +83,13 @@ public class Marks {
 
     public void setSubject(Subjects subject) {
         this.subject = subject;
+    }
+
+    public ExamTypes getType() {
+        return type;
+    }
+
+    public void setType(ExamTypes type) {
+        this.type = type;
     }
 }

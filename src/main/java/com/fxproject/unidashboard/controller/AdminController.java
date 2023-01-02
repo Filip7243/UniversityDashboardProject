@@ -116,14 +116,14 @@ public class AdminController {
             session.persist(l);
             session.persist(l2);
 
-            Marks m = new Marks(null, 3.5, LocalDateTime.now(), "ESSUNIA", s, subjects);
-            Marks m1 = new Marks(null, 5.0, LocalDateTime.now(), "DCXZ", s, subjects);
-            Marks m2 = new Marks(null, 4.5, LocalDateTime.now(), "dsa", s, subjects2);
-            Marks m3 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s, subjects);
-            Marks m4 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects);
-            Marks m5 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects);
-            Marks m6 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects);
-            Marks m7 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects);
+            Marks m = new Marks(null, 3.5, LocalDateTime.now(), "ESSUNIA", s, subjects, ExamTypes.TEST);
+            Marks m1 = new Marks(null, 5.0, LocalDateTime.now(), "DCXZ", s, subjects, ExamTypes.TEST);
+            Marks m2 = new Marks(null, 4.5, LocalDateTime.now(), "dsa", s, subjects2, ExamTypes.TEST);
+            Marks m3 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s, subjects, ExamTypes.TEST);
+            Marks m4 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects, ExamTypes.TEST);
+            Marks m5 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects, ExamTypes.TEST);
+            Marks m6 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects, ExamTypes.TEST);
+            Marks m7 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects, ExamTypes.TEST);
             session.persist(m);
             session.persist(m1);
             session.persist(m2);

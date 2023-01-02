@@ -15,9 +15,9 @@ public class Attendances {
     private Long id;
     private Boolean isPresent;
     private Boolean isLate;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Lectures lecture;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Students student;
 
     public Attendances() {
