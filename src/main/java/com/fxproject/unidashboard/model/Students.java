@@ -50,4 +50,9 @@ public class Students extends Person {
     public void setGroups(Set<Groups> groups) {
         this.groups = groups;
     }
+
+    @Override
+    public String toString() {
+        return super.getFirstName() + " " + super.getLastName() + " " + albumId;
+    }
 }

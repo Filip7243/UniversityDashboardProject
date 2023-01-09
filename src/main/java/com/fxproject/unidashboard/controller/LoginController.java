@@ -45,8 +45,12 @@ public class LoginController {
             session.persist(addresses);
             Professors p = new Professors(null, "John", "Doe", "john@mail.com", "+48664812312", LocalDateTime.now(),
                     "New York", "01994337281", 'M', 22, addresses, AcademicTitles.MASTER);
+            Professors p1 = new Professors(null, "Hikari", "Doe", "john@mail.com", "+48664812312", LocalDateTime.now(),
+                    "New York", "53264837221", 'F', 54, addresses, AcademicTitles.DOCTOR);
             p.setAlbumId(12345678L);
+            p1.setAlbumId(3278163L);
             session.persist(p);
+            session.persist(p1);
             Departments department = new Departments(null, "IT DEPARTMENT");
             session.persist(department);
             FieldsOfStudy fieldOfStudy = new FieldsOfStudy(
@@ -77,21 +81,42 @@ public class LoginController {
             session.persist(subjects2);
             s.getGroups().add(g);
             s.getGroups().add(g2);
+            s1.getGroups().add(g);
 
             ProfessorsSubjectsInGroups professorsSubjectsInGroups = new ProfessorsSubjectsInGroups(
                     p, subjects, g
             );
+            ProfessorsSubjectsInGroups professorsSubjectsInGroupss = new ProfessorsSubjectsInGroups(
+                    p, subjects2, g
+            );
+            ProfessorsSubjectsInGroups abc = new ProfessorsSubjectsInGroups(
+                    p, subjects, g2
+            );
+            ProfessorsSubjectsInGroups abc1 = new ProfessorsSubjectsInGroups(
+                    p1, subjects, g2
+            );
             session.persist(professorsSubjectsInGroups);
+            session.persist(professorsSubjectsInGroupss);
+            session.persist(abc);
+            session.persist(abc1);
 
             UniversityAccounts acc = new UniversityAccounts("s", "1234", LocalDateTime.now(), true, s, Roles.ROLE_STUDENT);
             UniversityAccounts acc2 = new UniversityAccounts("p", "1", LocalDateTime.now(), true, p, Roles.ROLE_PROFESSOR);
-            UniversityAccounts acc3 = new UniversityAccounts("dfgfdgdf@mail.com", "dacxzx", LocalDateTime.now(), true, s1, Roles.ROLE_STUDENT);
+            UniversityAccounts acc3 = new UniversityAccounts("p1", "1", LocalDateTime.now(), true, p1, Roles.ROLE_PROFESSOR);
+            UniversityAccounts acc4 = new UniversityAccounts("s1", "1", LocalDateTime.now(), true, s1, Roles.ROLE_STUDENT);
             session.persist(acc);
             session.persist(acc2);
             session.persist(acc3);
+            session.persist(acc4);
 
-            Lectures l = new Lectures(null, "DUPA", LocalDateTime.now(), g, subjects);
-            Lectures l2 = new Lectures(null, "SRAKA", LocalDateTime.now(), g, subjects);
+            Person admin = new Person(null, "dsadas", "dsacxz", "dsanca", "283916941", LocalDateTime.now(),
+                    "dsadas", "89371321", 'M', 62, null);
+            UniversityAccounts accAdmin = new UniversityAccounts("admin", "admin", LocalDateTime.now(), true, admin, Roles.ROLE_ADMIN);
+            session.persist(admin);
+            session.persist(accAdmin);
+
+            Lectures l = new Lectures(null, "DUPA", LocalDateTime.now(), g, subjects, p);
+            Lectures l2 = new Lectures(null, "SRAKA", LocalDateTime.now(), g, subjects, p);
             session.persist(l);
             session.persist(l2);
 
@@ -134,6 +159,7 @@ public class LoginController {
             session.persist(e1);
             session.persist(e2);
             session.persist(e3);
+            session.persist(e4);
             transaction.commit();
 
         }

@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="668.0" spacing="10.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <TextField maxWidth="250.0" />
-      <ComboBox prefWidth="150.0" />
-      <ComboBox prefWidth="150.0" />
-      <ComboBox prefWidth="150.0" />
-      <DatePicker />
-   </children>
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="668.0" spacing="10.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.AddExamController">
+    <children>
+        <TextField fx:id="examNameField" maxWidth="250.0" promptText="Name" />
+        <ComboBox fx:id="comboGroups" prefWidth="150.0" promptText="Group" />
+        <ComboBox fx:id="comboSubjects" prefWidth="150.0" promptText="Subject" />
+        <ComboBox fx:id="comboTypes" prefWidth="150.0" promptText="Exam Type" />
+        <DatePicker fx:id="examDatePicker" promptText="Date" />
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#cancelAdding" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#addExam" text="Add" />
+         </children>
+      </HBox>
+    </children>
 </VBox>

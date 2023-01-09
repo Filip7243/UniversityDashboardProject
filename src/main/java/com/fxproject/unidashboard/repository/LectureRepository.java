@@ -2,6 +2,7 @@ package com.fxproject.unidashboard.repository;
 
 import com.fxproject.unidashboard.model.Lectures;
 import com.fxproject.unidashboard.model.Person;
+import com.fxproject.unidashboard.model.Professors;
 import com.fxproject.unidashboard.utils.HibernateConnect;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -48,6 +49,36 @@ public class LectureRepository {
             if(tx != null && tx.isActive()) {
                 tx.rollback();
             }
+        }
+    }
+
+    public void save(Lectures lecture) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            session.persist(lecture);
+            tx.commit();
+        } catch (Exception e) {
+            if(tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+        }
+    }
+
+    public List<Lectures> findProfessorLectures(Professors professor) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            Query<Lectures> query =
+                    session.createQuery("SELECT l FROM Lectures l WHERE l.professor = :professor", Lectures.class);
+            query.setParameter("professor", professor);
+            tx.commit();
+            return query.getResultList();
+        } catch (Exception e) {
+            if(tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+            return List.of();
         }
     }
 

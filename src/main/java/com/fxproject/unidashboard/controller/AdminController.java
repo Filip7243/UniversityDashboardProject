@@ -57,87 +57,87 @@ public class AdminController {
     private LectureRepository lr = new LectureRepository();
 
     public void initialize() {
-        try (Session session = HibernateConnect.openSession()) {
-            Transaction transaction = session.beginTransaction();
-
-            Addresses addresses = new Addresses(
-                    null, "Poland", "Cracow", "Street", 24, 12, "21-133"
-            );
-            session.persist(addresses);
-            Professors p = new Professors(null, "John", "Doe", "john@mail.com", "+48664812312", LocalDateTime.now(),
-                    "New York", "01994337281", 'M', 22, addresses, AcademicTitles.MASTER);
-            p.setAlbumId(12345678L);
-            session.persist(p);
-            Departments department = new Departments(null, "IT DEPARTMENT");
-            session.persist(department);
-            FieldsOfStudy fieldOfStudy = new FieldsOfStudy(
-                    null, "IT", TypesOfStudy.ENGINEERING, department
-            );
-            FieldsOfStudy fieldOfStudy2 = new FieldsOfStudy(
-                    null, "MATH", TypesOfStudy.BACHELOR, department
-            );
-            session.persist(fieldOfStudy);
-            session.persist(fieldOfStudy2);
-            Groups g = new Groups(null, "Lab2 - IT", fieldOfStudy);
-            Groups g2 = new Groups(null, "Lab1 - MATH", fieldOfStudy2);
-            Groups g3 = new Groups(null, "Lab1 - IT", fieldOfStudy);
-            session.persist(g);
-            session.persist(g2);
-            session.persist(g3);
-
-            Students s = new Students(null, "Mike", "Markulla", "mike@mail.com", "+48726513912", LocalDateTime.now(), "New York", "82777331923",
-                    'M', 22, addresses);
-            Students s1 = new Students(null, "Mikdsadase", "Markdsadasulla", "mcxzike@mail.com", "+48726543213912", LocalDateTime.now(), "Ndasvcxk", "123654756",
-                    'F', 99, addresses);
-            session.persist(s);
-            session.persist(s1);
-
-            Subjects subjects = new Subjects(null, "Algebra");
-            Subjects subjects2 = new Subjects(null, "Analiza Matematyczna");
-            session.persist(subjects);
-            session.persist(subjects2);
-            s.getGroups().add(g);
-            s.getGroups().add(g2);
-
-            ProfessorsSubjectsInGroups professorsSubjectsInGroups = new ProfessorsSubjectsInGroups(
-                    p, subjects, g
-            );
-            session.persist(professorsSubjectsInGroups);
-
-            UniversityAccounts acc = new UniversityAccounts("dsadas@mail.com", "jhadsgjhdsa", LocalDateTime.now(), true, s, Roles.ROLE_STUDENT);
-            UniversityAccounts acc2 = new UniversityAccounts("dsadas@mail.com", "jhadsgjhdsa", LocalDateTime.now(), false, p, Roles.ROLE_PROFESSOR);
-            UniversityAccounts acc3 = new UniversityAccounts("dfgfdgdf@mail.com", "dacxzx", LocalDateTime.now(), true, s1, Roles.ROLE_STUDENT);
-            session.persist(acc);
-            session.persist(acc2);
-            session.persist(acc3);
-
-            Lectures l = new Lectures(null, "DUPA", LocalDateTime.now(), g, subjects);
-            Lectures l2 = new Lectures(null, "SRAKA", LocalDateTime.now(), g, subjects);
-            session.persist(l);
-            session.persist(l2);
-
-            Marks m = new Marks(null, 3.5, LocalDateTime.now(), "ESSUNIA", s, subjects, ExamTypes.TEST);
-            Marks m1 = new Marks(null, 5.0, LocalDateTime.now(), "DCXZ", s, subjects, ExamTypes.TEST);
-            Marks m2 = new Marks(null, 4.5, LocalDateTime.now(), "dsa", s, subjects2, ExamTypes.TEST);
-            Marks m3 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s, subjects, ExamTypes.TEST);
-            Marks m4 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects, ExamTypes.TEST);
-            Marks m5 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects, ExamTypes.TEST);
-            Marks m6 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects, ExamTypes.TEST);
-            Marks m7 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects, ExamTypes.TEST);
-            session.persist(m);
-            session.persist(m1);
-            session.persist(m2);
-            session.persist(m3);
-            session.persist(m4);
-            session.persist(m5);
-            session.persist(m6);
-            session.persist(m7);
-
-            Wages w = new Wages(null, 2000.20, 200.1, 14.7, LocalDateTime.now(), p);
-            session.persist(w);
-            transaction.commit();
-            System.out.println(profR.findProfessorByAlbumId(432L));
-        }
+//        try (Session session = HibernateConnect.openSession()) {
+//            Transaction transaction = session.beginTransaction();
+//
+//            Addresses addresses = new Addresses(
+//                    null, "Poland", "Cracow", "Street", 24, 12, "21-133"
+//            );
+//            session.persist(addresses);
+//            Professors p = new Professors(null, "John", "Doe", "john@mail.com", "+48664812312", LocalDateTime.now(),
+//                    "New York", "01994337281", 'M', 22, addresses, AcademicTitles.MASTER);
+//            p.setAlbumId(12345678L);
+//            session.persist(p);
+//            Departments department = new Departments(null, "IT DEPARTMENT");
+//            session.persist(department);
+//            FieldsOfStudy fieldOfStudy = new FieldsOfStudy(
+//                    null, "IT", TypesOfStudy.ENGINEERING, department
+//            );
+//            FieldsOfStudy fieldOfStudy2 = new FieldsOfStudy(
+//                    null, "MATH", TypesOfStudy.BACHELOR, department
+//            );
+//            session.persist(fieldOfStudy);
+//            session.persist(fieldOfStudy2);
+//            Groups g = new Groups(null, "Lab2 - IT", fieldOfStudy);
+//            Groups g2 = new Groups(null, "Lab1 - MATH", fieldOfStudy2);
+//            Groups g3 = new Groups(null, "Lab1 - IT", fieldOfStudy);
+//            session.persist(g);
+//            session.persist(g2);
+//            session.persist(g3);
+//
+//            Students s = new Students(null, "Mike", "Markulla", "mike@mail.com", "+48726513912", LocalDateTime.now(), "New York", "82777331923",
+//                    'M', 22, addresses);
+//            Students s1 = new Students(null, "Mikdsadase", "Markdsadasulla", "mcxzike@mail.com", "+48726543213912", LocalDateTime.now(), "Ndasvcxk", "123654756",
+//                    'F', 99, addresses);
+//            session.persist(s);
+//            session.persist(s1);
+//
+//            Subjects subjects = new Subjects(null, "Algebra");
+//            Subjects subjects2 = new Subjects(null, "Analiza Matematyczna");
+//            session.persist(subjects);
+//            session.persist(subjects2);
+//            s.getGroups().add(g);
+//            s.getGroups().add(g2);
+//
+//            ProfessorsSubjectsInGroups professorsSubjectsInGroups = new ProfessorsSubjectsInGroups(
+//                    p, subjects, g
+//            );
+//            session.persist(professorsSubjectsInGroups);
+//
+//            UniversityAccounts acc = new UniversityAccounts("dsadas@mail.com", "jhadsgjhdsa", LocalDateTime.now(), true, s, Roles.ROLE_STUDENT);
+//            UniversityAccounts acc2 = new UniversityAccounts("dsadas@mail.com", "jhadsgjhdsa", LocalDateTime.now(), false, p, Roles.ROLE_PROFESSOR);
+//            UniversityAccounts acc3 = new UniversityAccounts("dfgfdgdf@mail.com", "dacxzx", LocalDateTime.now(), true, s1, Roles.ROLE_STUDENT);
+//            session.persist(acc);
+//            session.persist(acc2);
+//            session.persist(acc3);
+//
+//            Lectures l = new Lectures(null, "DUPA", LocalDateTime.now(), g, subjects);
+//            Lectures l2 = new Lectures(null, "SRAKA", LocalDateTime.now(), g, subjects);
+//            session.persist(l);
+//            session.persist(l2);
+//
+//            Marks m = new Marks(null, 3.5, LocalDateTime.now(), "ESSUNIA", s, subjects, ExamTypes.TEST);
+//            Marks m1 = new Marks(null, 5.0, LocalDateTime.now(), "DCXZ", s, subjects, ExamTypes.TEST);
+//            Marks m2 = new Marks(null, 4.5, LocalDateTime.now(), "dsa", s, subjects2, ExamTypes.TEST);
+//            Marks m3 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s, subjects, ExamTypes.TEST);
+//            Marks m4 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects, ExamTypes.TEST);
+//            Marks m5 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects, ExamTypes.TEST);
+//            Marks m6 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects, ExamTypes.TEST);
+//            Marks m7 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects, ExamTypes.TEST);
+//            session.persist(m);
+//            session.persist(m1);
+//            session.persist(m2);
+//            session.persist(m3);
+//            session.persist(m4);
+//            session.persist(m5);
+//            session.persist(m6);
+//            session.persist(m7);
+//
+//            Wages w = new Wages(null, 2000.20, 200.1, 14.7, LocalDateTime.now(), p);
+//            session.persist(w);
+//            transaction.commit();
+//            System.out.println(profR.findProfessorByAlbumId(432L));
+//        }
 
 
     }

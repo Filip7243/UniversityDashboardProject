@@ -148,7 +148,7 @@ public class StudentController {
                     pane.getChildren().add(l);
                 }
                 case 11 -> {
-                    label.setText("City");
+                    label.setText("Streey");
                     Label l = new Label(loggedInUser.getAddress().getStreet());
                     l.setFont(new Font(18));
                     l.setTextFill(Color.color(1, 1, 1));
@@ -156,7 +156,7 @@ public class StudentController {
                     pane.getChildren().add(l);
                 }
                 case 12 -> {
-                    label.setText("City");
+                    label.setText("House Number");
                     Label l = new Label(loggedInUser.getAddress().getHouseNumber().toString());
                     l.setFont(new Font(18));
                     l.setTextFill(Color.color(1, 1, 1));
@@ -164,7 +164,7 @@ public class StudentController {
                     pane.getChildren().add(l);
                 }
                 case 13 -> {
-                    label.setText("City");
+                    label.setText("Flat Number");
                     Label l = new Label(loggedInUser.getAddress().getFlatNumber().toString());
                     l.setFont(new Font(18));
                     l.setTextFill(Color.color(1, 1, 1));

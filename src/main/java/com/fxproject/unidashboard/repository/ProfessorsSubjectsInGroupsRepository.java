@@ -7,7 +7,9 @@ import com.fxproject.unidashboard.model.Subjects;
 import com.fxproject.unidashboard.utils.HibernateConnect;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
+import java.util.List;
 import java.util.Optional;
 
 public class ProfessorsSubjectsInGroupsRepository {
@@ -31,9 +33,9 @@ public class ProfessorsSubjectsInGroupsRepository {
         Professors professor = psig.getProfessor();
         try (Session session = HibernateConnect.openSession()) {
             tx = session.beginTransaction();
-            session.remove(psig);
             professor.getPsig().remove(psig);
-            session.merge(professor);
+            session.remove(psig);
+//            session.merge(professor);
             tx.commit();
         } catch (Exception e) {
             if (tx != null && tx.isActive()) {
@@ -43,19 +45,22 @@ public class ProfessorsSubjectsInGroupsRepository {
         }
     }
 
-//    public Optional<ProfessorsSubjectsInGroups> findPsigWithSubjectAndGroup(Subjects subject, Groups group) {
-//        Transaction tx = null;
-//        try (Session session = HibernateConnect.openSession()) {
-//            tx = session.beginTransaction();
-//            session.c
-//            tx.commit();
-//            return Optional.ofNullable();
-//        } catch (Exception e) {
-//            if (tx != null && tx.isActive()) {
-//                System.out.println(e.getMessage());
-//                tx.rollback();
-//            }
-//            return Optional.empty();
-//        }
-//    }
+    public List<Subjects> findProfessorSubjectInGroup(Groups group, Professors professor) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            Query<Subjects> query = session.
+                    createQuery("SELECT psig.subject from ProfessorsSubjectsInGroups psig WHERE psig.group = :group AND psig.professor = :professor", Subjects.class);
+            query.setParameter("professor", professor);
+            query.setParameter("group", group);
+            tx.commit();
+            return query.getResultList();
+        } catch (Exception e) {
+            if (tx != null && tx.isActive()) {
+                System.out.println(e.getMessage());
+                tx.rollback();
+            }
+            return List.of();
+        }
+    }
 }

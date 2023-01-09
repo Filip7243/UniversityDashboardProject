@@ -56,4 +56,20 @@ public class StudentRepository {
         }
     }
 
+    public List<Students> getStudentsFromGroup(Groups group) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            Query<Students> query = session.createQuery("SELECT s FROM Students s JOIN s.groups g WHERE g = :group", Students.class);
+            query.setParameter("group", group);
+            tx.commit();
+            return query.getResultList();
+        } catch (Exception e) {
+            if(tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+            return List.of();
+        }
+    }
+
 }

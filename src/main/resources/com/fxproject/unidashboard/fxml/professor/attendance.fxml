@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTreeTableView?>
-<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
 
-
-<JFXTreeTableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="668.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <columns>
-      <TreeTableColumn prefWidth="334.0" text="Student" />
-      <TreeTableColumn prefWidth="334.0" text="Present" />
-   </columns>
-</JFXTreeTableView>
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="668.0" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.AttendanceController">
+    <children>
+        <ComboBox fx:id="professorLectures" prefWidth="668.0" />
+        <TableView fx:id="attendanceList" prefHeight="508.0" prefWidth="668.0">
+            <columns>
+                <TableColumn fx:id="studentCol" prefWidth="222.68" text="Student" />
+                <TableColumn fx:id="presentCol" prefWidth="222.68" text="Present" />
+                <TableColumn fx:id="lateCol" prefWidth="222.68" text="Late" />
+            </columns>
+        </TableView>
+        <Button mnemonicParsing="false" onAction="#checkAttendance" prefWidth="668.0" text="Ok" />
+        <Button fx:id="cancelAttendance" mnemonicParsing="false" onAction="#cancelAttendance" prefWidth="668.0" text="Cancel" />
+    </children>
+</VBox>

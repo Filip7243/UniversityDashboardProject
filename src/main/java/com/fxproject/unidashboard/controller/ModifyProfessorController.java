@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ModifyProfessorController {
     @FXML
@@ -37,7 +38,6 @@ public class ModifyProfessorController {
     private WageRepository wr = new WageRepository();
     private GroupRepository gr = new GroupRepository();
     private SubjectRepository sr = new SubjectRepository();
-    private ProfessorRepository pr = new ProfessorRepository();
     private ProfessorsSubjectsInGroupsRepository psigr = new ProfessorsSubjectsInGroupsRepository();
 
     public void initialize() {
@@ -49,15 +49,10 @@ public class ModifyProfessorController {
         comboSubjects.setItems(FXCollections.observableArrayList(sr.findAllSubjects()));
         Professors userData = getUserData();
         List<ProfessorsSubjectsInGroups> psig = userData.getPsig();
-        List<Groups> professorGroups = new ArrayList<>();
-        for (ProfessorsSubjectsInGroups professorSubjectsInGroups : psig) {
-            Groups group = professorSubjectsInGroups.getGroup();
-            professorGroups.add(group);
-        }
-        comboRemoveGroup.setItems(FXCollections.observableArrayList(professorGroups));
-        comboRemoveGroup.valueProperty().addListener((o, oldValue, newValue) -> {
-            comboRemoveSubject.setItems(FXCollections.observableArrayList(pr.findProfessorSubjectsInGroup(newValue)));
-        });
+        List<Groups> g = psig.stream().map(ProfessorsSubjectsInGroups::getGroup).toList(); //todo: ogarnac te duplikaty zjebane
+        comboRemoveGroup.setItems(FXCollections.observableArrayList(g));
+        comboRemoveGroup.valueProperty().addListener((o, oldValue, newValue) ->
+                comboRemoveSubject.setItems(FXCollections.observableArrayList(psigr.findProfessorSubjectInGroup(newValue, userData))));
     }
 
     public void addWage() {
@@ -100,9 +95,6 @@ public class ModifyProfessorController {
                 psigr.remove(professorsSubjectsInGroups);
                 break;
             }
-        }
-        for (ProfessorsSubjectsInGroups professorsSubjectsInGroups : psig) {
-            System.out.println(professorsSubjectsInGroups);
         }
         addRemoveSubject.expandedProperty().set(false);
     }

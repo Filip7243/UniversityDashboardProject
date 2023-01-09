@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AttendanceRepository {
@@ -25,6 +26,21 @@ public class AttendanceRepository {
                 tx.rollback();
             }
             return List.of();
+        }
+    }
+
+    public void save(List<Attendances> attendances) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()){
+            tx = session.beginTransaction();
+            for (Attendances attendance : attendances) {
+                session.persist(attendance);
+            }
+            tx.commit();
+        } catch (Exception e) {
+            if(tx != null && tx.isActive()) {
+                tx.rollback();
+            }
         }
     }
 }

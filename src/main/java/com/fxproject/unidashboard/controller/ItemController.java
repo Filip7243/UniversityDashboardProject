@@ -39,15 +39,18 @@ public class ItemController {
     }
 
     public void modifyItem(ActionEvent event) {
+        System.out.println("DSAJDNSAK");
         Button btn = ((Button) (event.getSource()));
         Scene scene = btn.getScene();
         HBox lookup;
         try {
-            lookup = (HBox) scene.lookup("#userItem");
+            String nodeId = btn.getId().substring(btn.getId().length() - 1);
+            lookup = (HBox) scene.lookup("#userItem" + nodeId);
             Label albumIdLabel = (Label) lookup.getChildren().get(3);
             String albumId = albumIdLabel.getText();
             Label roleLabel = (Label) lookup.getChildren().get(4);
             String role = roleLabel.getText();
+            System.out.println(role);
             switch (role.toLowerCase()) {
                 case "student" -> {
                     Stage stage = loadFXML(event, "modify-student.fxml");
@@ -156,7 +159,7 @@ public class ItemController {
     private static Stage loadFXML(ActionEvent event, String file) {
         Parent root;
         try {
-            String path = new File("").getAbsolutePath();// todo: switch od roli i zaladowac wlasciwy fxml dla prof i stud osobny
+            String path = new File("").getAbsolutePath();
             URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/admin/" + file).toURI().toURL();
             root = FXMLLoader.load(url);
             Stage stage = new Stage();

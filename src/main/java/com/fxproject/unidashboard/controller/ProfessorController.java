@@ -1,20 +1,22 @@
 package com.fxproject.unidashboard.controller;
 
+import com.fxproject.unidashboard.model.Lectures;
+import com.fxproject.unidashboard.model.Person;
+import com.fxproject.unidashboard.utils.UserSession;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.JFXTreeView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,25 +28,167 @@ import static com.fxproject.unidashboard.controller.StudentController.loadFXMLIt
 public class ProfessorController {
 
     @FXML
+    private Button attendanceButton;
+    @FXML
     private Pane contentPane;
+    @FXML
+    private AnchorPane professorPanelPane;
+    private static Person loggedInUser;
+
     private static final FXMLLoader loader = new FXMLLoader();
 
     public void showPersonalInfo() throws IOException {
+        Stage stage = (Stage) professorPanelPane.getScene().getWindow();
+        loggedInUser = UserSession.getSession((Person) stage.getUserData()).getPerson();
         contentPane.getChildren().clear();
-
-        String path = new File("").getAbsolutePath();
-        URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/personal-info.fxml").toURI().toURL();
-        ScrollPane scrollPane = loader.load(url);
-        VBox box = (VBox) scrollPane.getContent();
-
-        for(int i = 0; i < 19; i++) {
-            HBox hBox = loadFXMLItem();
-            Label label = (Label) hBox.lookup("#label");
-            label.setText("FIRST NAME, LAST NAME etc.");
-            box.getChildren().add(hBox);
-        }
-
+        Node[] nodes = new Node[16];
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setPrefWidth(contentPane.getPrefWidth());
+        scrollPane.setPrefHeight(contentPane.getPrefHeight());
+        VBox vbox = new VBox();
+        vbox.setStyle("-fx-background-color: black");
+        vbox.setSpacing(10);
+        vbox.setAlignment(Pos.CENTER);
+        vbox.setPrefWidth(contentPane.getPrefWidth());
+        vbox.setPrefHeight(contentPane.getPrefHeight());
+        scrollPane.setContent(vbox);
         contentPane.getChildren().add(scrollPane);
+        for (int i = 0; i < nodes.length; i++) {
+            HBox box = loadFXMLItem();
+            Label label = (Label) box.lookup("#label");
+            StackPane pane = (StackPane) box.lookup("#pane");
+            switch (i) {
+                case 0 -> {
+                    label.setText("First Name");
+                    Label l = new Label(loggedInUser.getFirstName());
+                    l.setFont(new Font(18));
+                    l.setTextFill(Color.color(1, 1, 1));
+                    StackPane.setAlignment(l, Pos.CENTER);
+                    pane.getChildren().add(l);
+                }
+                case 1 -> {
+                    label.setText("Second Name");
+                    Label l = new Label("DO USUNIECIA");
+                    l.setFont(new Font(18));
+                    l.setTextFill(Color.color(1, 1, 1));
+                    StackPane.setAlignment(l, Pos.CENTER);
+                    pane.getChildren().add(l);
+                }
+                case 2 -> {
+                    label.setText("Last Name");
+                    Label l = new Label(loggedInUser.getLastName());
+                    l.setFont(new Font(18));
+                    l.setTextFill(Color.color(1, 1, 1));
+                    StackPane.setAlignment(l, Pos.CENTER);
+                    pane.getChildren().add(l);
+                }
+                case 3 -> {
+                    label.setText("Email");
+                    Label l = new Label(loggedInUser.getEmail());
+                    l.setFont(new Font(18));
+                    l.setTextFill(Color.color(1, 1, 1));
+                    StackPane.setAlignment(l, Pos.CENTER);
+                    pane.getChildren().add(l);
+                }
+                case 4 -> {
+                    label.setText("Phone Number");
+                    Label l = new Label(loggedInUser.getPhoneNumber());
+                    l.setFont(new Font(18));
+                    l.setTextFill(Color.color(1, 1, 1));
+                    StackPane.setAlignment(l, Pos.CENTER);
+                    pane.getChildren().add(l);
+                }
+                case 5 -> {
+                    label.setText("Date Of Birth");
+                    Label l = new Label(String.valueOf(loggedInUser.getBirthday().toLocalDate()));
+                    l.setFont(new Font(18));
+                    l.setTextFill(Color.color(1, 1, 1));
+                    StackPane.setAlignment(l, Pos.CENTER);
+                    pane.getChildren().add(l);
+                }
+                case 6 -> {
+                    label.setText("Place Of Birth");
+                    Label l = new Label(loggedInUser.getPlaceOfBirth());
+                    l.setFont(new Font(18));
+                    l.setTextFill(Color.color(1, 1, 1));
+                    StackPane.setAlignment(l, Pos.CENTER);
+                    pane.getChildren().add(l);
+                }
+                case 7 -> {
+                    label.setText("Pesel");
+                    Label l = new Label(loggedInUser.getPesel());
+                    l.setFont(new Font(18));
+                    l.setTextFill(Color.color(1, 1, 1));
+                    StackPane.setAlignment(l, Pos.CENTER);
+                    pane.getChildren().add(l);
+                }
+                case 8 -> {
+                    label.setText("Gender");
+                    Label l = new Label(loggedInUser.getGender().toString());
+                    l.setFont(new Font(18));
+                    l.setTextFill(Color.color(1, 1, 1));
+                    StackPane.setAlignment(l, Pos.CENTER);
+                    pane.getChildren().add(l);
+                }
+                case 9 -> {
+                    label.setText("Country");
+                    Label l = new Label(loggedInUser.getAddress().getCountry());
+                    l.setFont(new Font(18));
+                    l.setTextFill(Color.color(1, 1, 1));
+                    StackPane.setAlignment(l, Pos.CENTER);
+                    pane.getChildren().add(l);
+                }
+                case 10 -> {
+                    label.setText("City");
+                    Label l = new Label(loggedInUser.getAddress().getCity());
+                    l.setFont(new Font(18));
+                    l.setTextFill(Color.color(1, 1, 1));
+                    StackPane.setAlignment(l, Pos.CENTER);
+                    pane.getChildren().add(l);
+                }
+                case 11 -> {
+                    label.setText("Streey");
+                    Label l = new Label(loggedInUser.getAddress().getStreet());
+                    l.setFont(new Font(18));
+                    l.setTextFill(Color.color(1, 1, 1));
+                    StackPane.setAlignment(l, Pos.CENTER);
+                    pane.getChildren().add(l);
+                }
+                case 12 -> {
+                    label.setText("House Number");
+                    Label l = new Label(loggedInUser.getAddress().getHouseNumber().toString());
+                    l.setFont(new Font(18));
+                    l.setTextFill(Color.color(1, 1, 1));
+                    StackPane.setAlignment(l, Pos.CENTER);
+                    pane.getChildren().add(l);
+                }
+                case 13 -> {
+                    label.setText("Flat Number");
+                    Label l = new Label(loggedInUser.getAddress().getFlatNumber().toString());
+                    l.setFont(new Font(18));
+                    l.setTextFill(Color.color(1, 1, 1));
+                    StackPane.setAlignment(l, Pos.CENTER);
+                    pane.getChildren().add(l);
+                }
+                case 14 -> {
+                    label.setText("Postal Code");
+                    Label l = new Label(loggedInUser.getAddress().getPostalCode());
+                    l.setFont(new Font(18));
+                    l.setTextFill(Color.color(1, 1, 1));
+                    StackPane.setAlignment(l, Pos.CENTER);
+                    pane.getChildren().add(l);
+                }
+                case 15 -> {
+                    label.setText("University Email");
+                    Label l = new Label(loggedInUser.getAcc().getUniversityEmail());
+                    l.setFont(new Font(18));
+                    l.setTextFill(Color.color(1, 1, 1));
+                    StackPane.setAlignment(l, Pos.CENTER);
+                    pane.getChildren().add(l);
+                }
+            }
+            vbox.getChildren().add(box);
+        }
     }
 
     public void showGradeStudentForm() throws IOException {
@@ -52,50 +196,7 @@ public class ProfessorController {
         String path = new File("").getAbsolutePath();
         URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/professor/grade-student-form.fxml").toURI().toURL();
         AnchorPane anchorPane = loader.load(url);
-        // test data
-        ObservableList<String> groups = FXCollections.observableArrayList(List.of("A", "B", "C"));
-
-        ObservableList<String> subjectsGroupA = FXCollections.observableArrayList(List.of("z", "x"));
-        ObservableList<String> subjectsGroupB = FXCollections.observableArrayList(List.of("z", "m"));
-        ObservableList<String> subjectsGroupC = FXCollections.observableArrayList(List.of("z"));
-
-        ObservableList<String> studentsGroupA = FXCollections.observableArrayList(List.of("L", "M", "N"));
-        ObservableList<String> studentsGroupB = FXCollections.observableArrayList(List.of("P", "O"));
-        ObservableList<String> studentsGroupC = FXCollections.observableArrayList(List.of("K"));
-
-        ComboBox<String> comboGroups = (ComboBox<String>) anchorPane.lookup("#comboGroups");
-        ComboBox<String> comboSubjects = (ComboBox<String>) anchorPane.lookup("#comboSubjects");
-        ComboBox<String> comboStudents = (ComboBox<String>) anchorPane.lookup("#comboStudents");
-        comboGroups.setItems(groups);
-
-        comboSubjects.setVisible(false);
-        comboStudents.setVisible(false);
-
-        comboGroups.valueProperty().addListener((e, oldValue, newValue) -> {
-            switch (newValue) {
-                case "A" -> {
-                    comboSubjects.setVisible(true);
-                    comboStudents.setVisible(true);
-                    comboSubjects.setItems(subjectsGroupA);
-                    comboStudents.setItems(studentsGroupA);
-                }
-                case "B" -> {
-                    comboSubjects.setVisible(true);
-                    comboStudents.setVisible(true);
-                    comboSubjects.setItems(subjectsGroupB);
-                    comboStudents.setItems(studentsGroupB);
-                }
-                case "C" -> {
-                    comboSubjects.setVisible(true);
-                    comboStudents.setVisible(true);
-                    comboSubjects.setItems(subjectsGroupC);
-                    comboStudents.setItems(studentsGroupC);
-                }
-            }
-        });
-
         contentPane.getChildren().add(anchorPane);
-        // text field for grade etc...
     }
 
     public void showStartLectureForm() throws IOException {
@@ -111,8 +212,8 @@ public class ProfessorController {
         contentPane.getChildren().clear();
         String path = new File("").getAbsolutePath();
         URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/professor/attendance.fxml").toURI().toURL();
-        JFXTreeTableView<?> attendanceList = loader.load(url);
-        contentPane.getChildren().add(attendanceList);
+        VBox vbox = loader.load(url);
+        contentPane.getChildren().add(vbox);
     }
 
     public void showAddExamForm() throws IOException {
@@ -122,12 +223,6 @@ public class ProfessorController {
         URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/professor/add-exam.fxml").toURI().toURL();
         VBox vbox = loader.load(url);
         contentPane.getChildren().add(vbox);
-        //todo: dodac tabele exam
-        // name
-        // group
-        // subject
-        // type
-        // date
     }
 
     public void closeWindow() {

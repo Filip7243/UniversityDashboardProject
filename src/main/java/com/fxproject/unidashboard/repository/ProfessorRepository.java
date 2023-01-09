@@ -41,21 +41,4 @@ public class ProfessorRepository {
         }
     }
 
-    public List<Subjects> findProfessorSubjectsInGroup(Groups group) {
-        Transaction tx = null;
-        try (Session session = HibernateConnect.openSession()) {
-            tx = session.beginTransaction();
-            Query<Subjects> query = session.createQuery("SELECT psig.subject FROM " +
-                    "ProfessorsSubjectsInGroups psig WHERE psig.group = :group", Subjects.class);
-            query.setParameter("group", group);
-            tx.commit();
-            return query.getResultList();
-        } catch (Exception e) {
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-            return List.of();
-        }
-    }
-
 }

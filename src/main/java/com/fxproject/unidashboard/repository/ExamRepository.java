@@ -30,4 +30,17 @@ public class ExamRepository {
         }
     }
 
+    public void save(Exams exam) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()){
+            tx = session.beginTransaction();
+            session.persist(exam);
+            tx.commit();
+        } catch (Exception e) {
+            if(tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+        }
+    }
+
 }
