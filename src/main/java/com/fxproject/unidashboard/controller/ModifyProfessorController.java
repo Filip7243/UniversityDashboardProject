@@ -3,7 +3,9 @@ package com.fxproject.unidashboard.controller;
 import com.fxproject.unidashboard.model.*;
 import com.fxproject.unidashboard.repository.*;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -102,5 +104,9 @@ public class ModifyProfessorController {
     private Professors getUserData() {
         Stage stage = (Stage) personalData.getScene().getWindow();
         return (Professors) stage.getUserData();
+    }
+
+    public void closeWindow(ActionEvent event) {
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 }

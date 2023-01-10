@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="870.0" style="-fx-background-color: black;" stylesheets="@admin-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.AdminController">
+<AnchorPane prefHeight="650.0" prefWidth="1150.0" style="-fx-background-color: black;" stylesheets="@admin-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.AdminController">
     <children>
-        <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="202.0" spacing="10.0" style="-fx-background-color: #191c24;">
+        <VBox alignment="TOP_CENTER" prefHeight="651.0" prefWidth="202.0" spacing="10.0" style="-fx-background-color: #191c24;">
             <children>
                 <Pane prefHeight="174.0" prefWidth="202.0">
                     <children>
@@ -43,13 +43,13 @@
                 <Insets />
             </opaqueInsets>
         </VBox>
-        <VBox layoutX="202.0" prefHeight="600.0" prefWidth="668.0" spacing="20.0">
+        <VBox layoutX="202.0" prefHeight="650.0" prefWidth="950.0" spacing="20.0">
             <children>
-                <HBox alignment="CENTER_LEFT" prefHeight="59.0" prefWidth="668.0" spacing="50.0" style="-fx-background-color: #191c24;" stylesheets="@../../css/search-bar.css">
+                <HBox alignment="CENTER" prefHeight="59.0" prefWidth="668.0" spacing="180.0" style="-fx-background-color: #191c24;" stylesheets="@../../css/search-bar.css">
                     <children>
                         <Pane prefHeight="59.0" prefWidth="166.0">
                             <children>
-                                <Label layoutX="33.0" layoutY="21.0" text="Filip Kaczmarczyk" textFill="#dcd8d8" />
+                                <Label fx:id="loggedInUserName" layoutX="33.0" layoutY="21.0" text="Filip Kaczmarczyk" textFill="#dcd8d8" />
                             </children>
                         </Pane>
                         <TextField promptText="search" />
@@ -68,7 +68,7 @@
                         </Pane>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER" prefHeight="164.0" prefWidth="668.0" spacing="50.0">
+                <HBox alignment="CENTER" prefHeight="164.0" prefWidth="668.0" spacing="100.0">
                     <children>
                         <Pane prefHeight="164.0" prefWidth="262.0" style="-fx-background-radius: 1em; -fx-background-color: #191c24;">
                             <children>
@@ -108,12 +108,12 @@
                   </Pane>
                     </children>
                 </HBox>
-                <ScrollPane fx:id="scrollPane" prefHeight="338.0" prefWidth="668.0" stylesheets="@scroll-pane-style.css">
+                <ScrollPane fx:id="scrollPane" prefHeight="390.0" prefWidth="950.0" stylesheets="@scroll-pane-style.css">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
                     <content>
-                        <VBox fx:id="itemsContainer" alignment="TOP_CENTER" prefHeight="338.0" prefWidth="667.0" spacing="8.0" />
+                        <VBox fx:id="itemsContainer" alignment="TOP_CENTER" prefHeight="388.0" prefWidth="947.0" spacing="8.0" />
                     </content>
                 </ScrollPane>
             </children>

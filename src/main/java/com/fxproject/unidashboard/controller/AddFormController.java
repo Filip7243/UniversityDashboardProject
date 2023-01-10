@@ -1,9 +1,12 @@
 package com.fxproject.unidashboard.controller;
 
+import com.fxproject.unidashboard.email.EmailAddressGenerator;
+import com.fxproject.unidashboard.email.PasswordGenerator;
 import com.fxproject.unidashboard.model.*;
 import com.fxproject.unidashboard.repository.AccountRepository;
 import com.fxproject.unidashboard.repository.AddressRepository;
-import com.fxproject.unidashboard.repository.PersonRepository;
+import com.fxproject.unidashboard.repository.ProfessorRepository;
+import com.fxproject.unidashboard.repository.StudentRepository;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +14,6 @@ import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -67,19 +69,20 @@ public class AddFormController {
     private TextField street;
 
     private AddressRepository ar = new AddressRepository();
-    private PersonRepository pr = new PersonRepository();
     private AccountRepository accr = new AccountRepository();
+    private StudentRepository sr = new StudentRepository();
+    private ProfessorRepository professorRepository = new ProfessorRepository();
 
     public void initialize() {
         gender.setItems(FXCollections.observableArrayList(List.of("Male", "Female")));
-        if(academicTitleCombo != null) {
+        if (academicTitleCombo != null) {
             academicTitleCombo.setItems(
                     FXCollections.observableArrayList(List.of(AcademicTitles.DOCTOR, AcademicTitles.MASTER, AcademicTitles.ENGINEER))
             );
         }
     }
+
     public void addUser() {
-        System.out.println();
         Person person = new Person();
         person.setFirstName(firstName.getText());
         person.setLastName(lastName.getText());
@@ -90,32 +93,60 @@ public class AddFormController {
         person.setPhoneNumber(phoneNumber.getText());
         person.setGender(gender.getValue().charAt(0));
         person.setAge(LocalDateTime.now().getYear() - person.getBirthday().getYear());
-        Addresses address = new Addresses();
-        address.setCountry(country.getText());
-        address.setCity(city.getText());
-        address.setPostalCode(postalCode.getText());
-        address.setStreet(street.getText());
-        address.setHouseNumber(Integer.parseInt(houseNumber.getText()));
-        address.setFlatNumber(Integer.parseInt(flatNumber.getText()));
-        person.setAddress(address);
-        ar.save(address);
-        pr.save(person);
+
         UniversityAccounts acc = new UniversityAccounts();
-        acc.setUniversityEmail("dsab@unimail.com"); //todo: email generator
-        acc.setPassword("khdsajdgaJSDAHMC6713SAJDHnjskadn"); //todo: password generator
-        acc.setCreatedAt(LocalDateTime.now());
-        acc.setEnabled(false);
-        acc.setPerson(person);
-        if(academicTitleCombo != null) { // it means we are adding professor
+        Addresses address = new Addresses();
+        if (academicTitleCombo != null) { // it means we are adding professor
+            address.setCountry(country.getText());
+            address.setCity(city.getText());
+            address.setPostalCode(postalCode.getText());
+            address.setStreet(street.getText());
+            address.setHouseNumber(Integer.parseInt(houseNumber.getText()));
+            address.setFlatNumber(Integer.parseInt(flatNumber.getText()));
+            person.setAddress(address);
+            ar.save(address);
+            Professors p = new Professors(null, person.getFirstName(), person.getLastName(), person.getEmail(),
+                    person.getPhoneNumber(), person.getBirthday(), person.getPlaceOfBirth(), person.getPesel(),
+                    person.getGender(), person.getAge(), person.getAddress(), academicTitleCombo.getValue());
+            professorRepository.save(p);
             acc.setRole(Roles.ROLE_PROFESSOR);
+            acc.setUniversityEmail(EmailAddressGenerator.generateMailForProfessor(p));
+            acc.setPassword(PasswordGenerator.generatePassword());
+            acc.setCreatedAt(LocalDateTime.now());
+            acc.setEnabled(false);
+            acc.setPerson(p);
+            accr.save(acc);
+            p.setAcc(acc);
         } else {
+            address.setCountry(country.getText());
+            address.setCity(city.getText());
+            address.setPostalCode(postalCode.getText());
+            address.setStreet(street.getText());
+            address.setHouseNumber(Integer.parseInt(houseNumber.getText()));
+            address.setFlatNumber(Integer.parseInt(flatNumber.getText()));
+            person.setAddress(address);
+            ar.save(address);
             acc.setRole(Roles.ROLE_STUDENT);
+            Students s = new Students(null, person.getFirstName(), person.getLastName(), person.getEmail(),
+                    person.getPhoneNumber(), person.getBirthday(), person.getPlaceOfBirth(), person.getPesel(),
+                    person.getGender(), person.getAge(), person.getAddress());
+            sr.save(s);
+            acc.setRole(Roles.ROLE_PROFESSOR);
+            acc.setUniversityEmail(EmailAddressGenerator.generateMailForStudent(s));
+            acc.setPassword(PasswordGenerator.generatePassword());
+            acc.setCreatedAt(LocalDateTime.now());
+            acc.setEnabled(false);
+            acc.setPerson(s);
+            accr.save(acc);
+            s.setAcc(acc);
         }
-        accr.save(acc);
-        person.setAcc(acc);
     }
 
-    public void cancelAdding() {
-        System.out.println("ESSUNIA");
+    public void closeWindow(ActionEvent event) {
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    }
+
+    public void cancelAdding(ActionEvent event) {
+        closeWindow(event);
     }
 }

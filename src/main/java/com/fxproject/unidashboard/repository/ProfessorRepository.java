@@ -41,4 +41,17 @@ public class ProfessorRepository {
         }
     }
 
+    public void save(Professors p) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            session.persist(p);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+        }
+    }
+
 }

@@ -72,4 +72,17 @@ public class StudentRepository {
         }
     }
 
+    public void save(Students s) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            session.persist(s);
+            tx.commit();
+        } catch (Exception e) {
+            if(tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+        }
+    }
+
 }

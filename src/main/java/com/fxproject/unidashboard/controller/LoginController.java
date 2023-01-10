@@ -115,8 +115,8 @@ public class LoginController {
             session.persist(admin);
             session.persist(accAdmin);
 
-            Lectures l = new Lectures(null, "DUPA", LocalDateTime.now(), g, subjects, p);
-            Lectures l2 = new Lectures(null, "SRAKA", LocalDateTime.now(), g, subjects, p);
+            Lectures l = new Lectures(null, "Bardzo Fajny wykład", LocalDateTime.now(), g, subjects, p);
+            Lectures l2 = new Lectures(null, "Jak ugotować jajka w 5 minut", LocalDateTime.now(), g, subjects, p);
             session.persist(l);
             session.persist(l2);
 
@@ -166,7 +166,6 @@ public class LoginController {
 
 
     }
-
     public void logIn(ActionEvent event) {
         UniversityAccounts accounts = ar.checkIfUserExists(loginField.getText(), passwordField.getText());
         if (accounts != null) {
@@ -190,7 +189,7 @@ public class LoginController {
                     root = FXMLLoader.load(url);
                     Stage stage = new Stage();
                     stage.initStyle(StageStyle.UNDECORATED);
-                    stage.setScene(new Scene(root, 870, 600));
+                    stage.setScene(new Scene(root, 1150, 650));
                     stage.setUserData(accounts.getPerson());
                     UserSession.getSession(accounts.getPerson());
                     stage.show();

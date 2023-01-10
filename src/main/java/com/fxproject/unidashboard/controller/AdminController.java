@@ -2,14 +2,14 @@ package com.fxproject.unidashboard.controller;
 
 import com.fxproject.unidashboard.dto.LectureDto;
 import com.fxproject.unidashboard.dto.PersonDto;
-import com.fxproject.unidashboard.model.*;
+import com.fxproject.unidashboard.model.Lectures;
+import com.fxproject.unidashboard.model.Person;
+import com.fxproject.unidashboard.model.Professors;
+import com.fxproject.unidashboard.model.Students;
 import com.fxproject.unidashboard.repository.LectureRepository;
-import com.fxproject.unidashboard.repository.PersonRepository;
 import com.fxproject.unidashboard.repository.ProfessorRepository;
 import com.fxproject.unidashboard.repository.StudentRepository;
-import com.fxproject.unidashboard.utils.HibernateConnect;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.fxproject.unidashboard.utils.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,22 +23,17 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Stream;
 
 import static com.fxproject.unidashboard.mapper.LectureMapper.mapToLectureDtos;
 import static com.fxproject.unidashboard.mapper.PersonMapper.mapToPersonDtos;
 
 public class AdminController {
-    @FXML
-    private Button closeButton;
     @FXML
     private Label activeLabel;
     @FXML
@@ -49,97 +44,16 @@ public class AdminController {
     private Label activeAccounts;
     @FXML
     private VBox itemsContainer; // contains students/professors/lectures etc.
+    @FXML
+    private Label loggedInUserName;
 
-
-    private PersonRepository pr = new PersonRepository();
     private StudentRepository sr = new StudentRepository();
     private ProfessorRepository profR = new ProfessorRepository();
     private LectureRepository lr = new LectureRepository();
 
     public void initialize() {
-//        try (Session session = HibernateConnect.openSession()) {
-//            Transaction transaction = session.beginTransaction();
-//
-//            Addresses addresses = new Addresses(
-//                    null, "Poland", "Cracow", "Street", 24, 12, "21-133"
-//            );
-//            session.persist(addresses);
-//            Professors p = new Professors(null, "John", "Doe", "john@mail.com", "+48664812312", LocalDateTime.now(),
-//                    "New York", "01994337281", 'M', 22, addresses, AcademicTitles.MASTER);
-//            p.setAlbumId(12345678L);
-//            session.persist(p);
-//            Departments department = new Departments(null, "IT DEPARTMENT");
-//            session.persist(department);
-//            FieldsOfStudy fieldOfStudy = new FieldsOfStudy(
-//                    null, "IT", TypesOfStudy.ENGINEERING, department
-//            );
-//            FieldsOfStudy fieldOfStudy2 = new FieldsOfStudy(
-//                    null, "MATH", TypesOfStudy.BACHELOR, department
-//            );
-//            session.persist(fieldOfStudy);
-//            session.persist(fieldOfStudy2);
-//            Groups g = new Groups(null, "Lab2 - IT", fieldOfStudy);
-//            Groups g2 = new Groups(null, "Lab1 - MATH", fieldOfStudy2);
-//            Groups g3 = new Groups(null, "Lab1 - IT", fieldOfStudy);
-//            session.persist(g);
-//            session.persist(g2);
-//            session.persist(g3);
-//
-//            Students s = new Students(null, "Mike", "Markulla", "mike@mail.com", "+48726513912", LocalDateTime.now(), "New York", "82777331923",
-//                    'M', 22, addresses);
-//            Students s1 = new Students(null, "Mikdsadase", "Markdsadasulla", "mcxzike@mail.com", "+48726543213912", LocalDateTime.now(), "Ndasvcxk", "123654756",
-//                    'F', 99, addresses);
-//            session.persist(s);
-//            session.persist(s1);
-//
-//            Subjects subjects = new Subjects(null, "Algebra");
-//            Subjects subjects2 = new Subjects(null, "Analiza Matematyczna");
-//            session.persist(subjects);
-//            session.persist(subjects2);
-//            s.getGroups().add(g);
-//            s.getGroups().add(g2);
-//
-//            ProfessorsSubjectsInGroups professorsSubjectsInGroups = new ProfessorsSubjectsInGroups(
-//                    p, subjects, g
-//            );
-//            session.persist(professorsSubjectsInGroups);
-//
-//            UniversityAccounts acc = new UniversityAccounts("dsadas@mail.com", "jhadsgjhdsa", LocalDateTime.now(), true, s, Roles.ROLE_STUDENT);
-//            UniversityAccounts acc2 = new UniversityAccounts("dsadas@mail.com", "jhadsgjhdsa", LocalDateTime.now(), false, p, Roles.ROLE_PROFESSOR);
-//            UniversityAccounts acc3 = new UniversityAccounts("dfgfdgdf@mail.com", "dacxzx", LocalDateTime.now(), true, s1, Roles.ROLE_STUDENT);
-//            session.persist(acc);
-//            session.persist(acc2);
-//            session.persist(acc3);
-//
-//            Lectures l = new Lectures(null, "DUPA", LocalDateTime.now(), g, subjects);
-//            Lectures l2 = new Lectures(null, "SRAKA", LocalDateTime.now(), g, subjects);
-//            session.persist(l);
-//            session.persist(l2);
-//
-//            Marks m = new Marks(null, 3.5, LocalDateTime.now(), "ESSUNIA", s, subjects, ExamTypes.TEST);
-//            Marks m1 = new Marks(null, 5.0, LocalDateTime.now(), "DCXZ", s, subjects, ExamTypes.TEST);
-//            Marks m2 = new Marks(null, 4.5, LocalDateTime.now(), "dsa", s, subjects2, ExamTypes.TEST);
-//            Marks m3 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s, subjects, ExamTypes.TEST);
-//            Marks m4 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects, ExamTypes.TEST);
-//            Marks m5 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects, ExamTypes.TEST);
-//            Marks m6 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects, ExamTypes.TEST);
-//            Marks m7 = new Marks(null, 2.5, LocalDateTime.now(), "vxSSS", s1, subjects, ExamTypes.TEST);
-//            session.persist(m);
-//            session.persist(m1);
-//            session.persist(m2);
-//            session.persist(m3);
-//            session.persist(m4);
-//            session.persist(m5);
-//            session.persist(m6);
-//            session.persist(m7);
-//
-//            Wages w = new Wages(null, 2000.20, 200.1, 14.7, LocalDateTime.now(), p);
-//            session.persist(w);
-//            transaction.commit();
-//            System.out.println(profR.findProfessorByAlbumId(432L));
-//        }
-
-
+//        Person person = UserSession.getSession().getPerson();
+//        loggedInUserName.setText(person.getFirstName() + " " + person.getLastName());
     }
 
     private void loadUsersNodes(List<PersonDto> list) {
@@ -150,17 +64,24 @@ public class AdminController {
                 URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/user-item.fxml").toURI().toURL();
                 nodes[i] = FXMLLoader.load(url);
                 HBox v = (HBox) nodes[i];
+                BorderPane namePane = (BorderPane) v.getChildren().get(0);
+                BorderPane lastNamePane = (BorderPane) v.getChildren().get(1);
+                BorderPane emailPane = (BorderPane) v.getChildren().get(2);
+                BorderPane albumIdPane = (BorderPane) v.getChildren().get(3);
+                BorderPane rolePane = (BorderPane) v.getChildren().get(4);
+                BorderPane isActivePane = (BorderPane) v.getChildren().get(5);
+                HBox buttonsContainer = (HBox) v.getChildren().get(7);
                 v.setId("userItem" + i);
                 PersonDto p = list.get(i);
-                Label firstName = (Label) v.getChildren().get(0);
-                Label lastName = (Label) v.getChildren().get(1);
-                Label email = (Label) v.getChildren().get(2);
-                Label albumId = (Label) v.getChildren().get(3);
-                Label role = (Label) v.getChildren().get(4);
-                Label isActive = (Label) v.getChildren().get(5);
-                Button modifyBtn = (Button) v.getChildren().get(7);
-                Button deleteBtn = (Button) v.getChildren().get(8);
-                Button detailsBtn = (Button) v.getChildren().get(9);
+                Label firstName = (Label) namePane.getChildren().get(0);
+                Label lastName = (Label) lastNamePane.getChildren().get(0);
+                Label email = (Label) emailPane.getChildren().get(0);
+                Label albumId = (Label) albumIdPane.getChildren().get(0);
+                Label role = (Label) rolePane.getChildren().get(0);
+                Label isActive = (Label) isActivePane.getChildren().get(0);
+                Button modifyBtn = (Button) buttonsContainer.getChildren().get(0);
+                Button deleteBtn = (Button) buttonsContainer.getChildren().get(1);
+                Button detailsBtn = (Button) buttonsContainer.getChildren().get(2);
                 modifyBtn.setId("modifyButton" + i);
                 deleteBtn.setId("deleteButton" + i);
                 detailsBtn.setId("detailsButton" + i);
@@ -178,7 +99,7 @@ public class AdminController {
     }
 
     private void loadLecturesNodes(List<LectureDto> list) {
-        Node[] nodes = new Node[10];
+        Node[] nodes = new Node[list.size()];
         for (int i = 0; i < list.size(); i++) {
             try {
                 String path = new File("").getAbsolutePath();
@@ -253,13 +174,24 @@ public class AdminController {
         List<Lectures> allLectures = lr.findAllLectures();
         List<LectureDto> lectureDtos = mapToLectureDtos(allLectures);
         totalUsers.setText(String.valueOf(lectureDtos.size())); // total lectures
-        activeAccounts.setText("7"); // todo: method that checks "alive" lessons
-        totalLabel.setText("All lectures");
+        activeAccounts.setText(String.valueOf(countCurrentLessons(allLectures)));
+        totalLabel.setText("All Lectures");
         activeLabel.setText("Now Lessons");
         itemsContainer.getChildren().clear();
         loadLecturesNodes(lectureDtos);
     }
 
+    private int countCurrentLessons(List<Lectures> lectures) {
+        int counter = 0;
+        for (Lectures lecture : lectures) {
+            LocalDateTime lectureDate = lecture.getLectureDate();
+            if (lectureDate.isAfter(LocalDateTime.now().minusMinutes(90))) {
+                counter++;
+            }
+        }
+
+        return counter;
+    }
 
     public void showAddingForm(ActionEvent event) {
         Parent root;
@@ -280,7 +212,6 @@ public class AdminController {
                 stage.initStyle(StageStyle.UNDECORATED);
                 stage.setScene(new Scene(root, 725, 383));
                 stage.show();
-                ((Node) (event.getSource())).getScene().getWindow().hide();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -290,16 +221,5 @@ public class AdminController {
     public void closeWindow(ActionEvent event) {
         Stage stage = ((Stage) event.getSource());
         stage.close();
-    }
-
-
-    public void showStudentsList() {
-        // temoprary symulate students list:
-//        ObservableList<PersonDto> st = FXCollections.observableArrayList(
-//                new PersonDto("Mark", "Essa", "mail@mail.com",
-//                        "uni@mail.com", "122311", "+48 663-281-492", "01277449281", "USER", true)
-//        );
-//
-//        people.setItems(st);
     }
 }

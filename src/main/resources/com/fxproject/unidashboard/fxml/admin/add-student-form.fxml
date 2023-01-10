@@ -15,13 +15,14 @@
     <content>
         <VBox alignment="TOP_CENTER" prefHeight="914.0" prefWidth="706.0" spacing="10.0">
          <children>
-            <Pane prefHeight="46.0" prefWidth="706.0" style="-fx-background-color: #191c24;">
+            <Pane prefHeight="54.0" prefWidth="706.0">
                <children>
-                  <Label layoutX="304.0" layoutY="8.0" text="ADD USER" textFill="#a9a9a9">
+                  <Label layoutX="283.0" layoutY="13.0" text="ADD STUDENT" textFill="#a9a9a9">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
+                  <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeWindow" text="BACK" />
                </children>
             </Pane>
             <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">

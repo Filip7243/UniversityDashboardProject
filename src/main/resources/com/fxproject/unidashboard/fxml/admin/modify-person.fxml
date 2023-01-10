@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="personalDetails" prefHeight="393.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.ModifyPersonController">
+<AnchorPane fx:id="personalDetails" prefHeight="393.0" prefWidth="802.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.ModifyPersonController">
     <children>
-        <Accordion prefHeight="393.0" prefWidth="802.0">
+        <Accordion prefHeight="393.0" prefWidth="802.0" stylesheets="@../../css/texfield-style.css">
             <panes>
                 <TitledPane fx:id="personalData" animated="false" onMousePressed="#loadPersonalData" text="Personal Data">
                     <content>
@@ -52,7 +52,7 @@
                                                 </Pane>
                                                 <Pane prefHeight="35.0" prefWidth="299.0">
                                                     <children>
-                                                        <TextField fx:id="firstName" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                        <TextField fx:id="firstName" layoutX="56.0" layoutY="6.0" style="-fx-text-fill: blue; -fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
                                                     </children>
                                                 </Pane>
                                             </children>

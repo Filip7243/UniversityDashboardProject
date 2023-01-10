@@ -39,18 +39,16 @@ public class ItemController {
     }
 
     public void modifyItem(ActionEvent event) {
-        System.out.println("DSAJDNSAK");
         Button btn = ((Button) (event.getSource()));
         Scene scene = btn.getScene();
         HBox lookup;
         try {
             String nodeId = btn.getId().substring(btn.getId().length() - 1);
             lookup = (HBox) scene.lookup("#userItem" + nodeId);
-            Label albumIdLabel = (Label) lookup.getChildren().get(3);
-            String albumId = albumIdLabel.getText();
-            Label roleLabel = (Label) lookup.getChildren().get(4);
-            String role = roleLabel.getText();
-            System.out.println(role);
+            BorderPane albumIdLabelPane = (BorderPane) lookup.getChildren().get(3);
+            String albumId = ((Label)albumIdLabelPane.getChildren().get(0)).getText();
+            BorderPane roleLabelPane = (BorderPane) lookup.getChildren().get(4);
+            String role = ((Label)roleLabelPane.getChildren().get(0)).getText();
             switch (role.toLowerCase()) {
                 case "student" -> {
                     Stage stage = loadFXML(event, "modify-student.fxml");
@@ -77,10 +75,10 @@ public class ItemController {
         try {
             String nodeId = btn.getId().substring(btn.getId().length() - 1);
             lookup = (HBox) scene.lookup("#userItem" + nodeId);
-            Label albumIdLabel = (Label) lookup.getChildren().get(3);
-            String albumId = albumIdLabel.getText();
-            Label roleLabel = (Label) lookup.getChildren().get(4);
-            String role = roleLabel.getText();
+            BorderPane albumIdLabelPane = (BorderPane) lookup.getChildren().get(3);
+            String albumId = ((Label)albumIdLabelPane.getChildren().get(0)).getText();
+            BorderPane roleLabelPane = (BorderPane) lookup.getChildren().get(4);
+            String role = ((Label)roleLabelPane.getChildren().get(0)).getText();
             Stage stage;
             switch (role.toLowerCase()) {
                 case "student" -> {
@@ -127,10 +125,10 @@ public class ItemController {
         try {
             String nodeId = btn.getId().substring(btn.getId().length() - 1);
             lookup = (HBox) scene.lookup("#userItem" + nodeId);
-            Label albumIdLabel = (Label) lookup.getChildren().get(3);
-            String albumId = albumIdLabel.getText();
-            Label roleLabel = (Label) lookup.getChildren().get(4);
-            String role = roleLabel.getText();
+            BorderPane albumIdLabelPane = (BorderPane) lookup.getChildren().get(3);
+            String albumId = ((Label)albumIdLabelPane.getChildren().get(0)).getText();
+            BorderPane roleLabelPane = (BorderPane) lookup.getChildren().get(4);
+            String role = ((Label)roleLabelPane.getChildren().get(0)).getText();
             VBox vbox = (VBox) scene.lookup("#itemsContainer");
             switch (role.toLowerCase()) {
                 case "student" -> {
@@ -163,10 +161,10 @@ public class ItemController {
             URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/admin/" + file).toURI().toURL();
             root = FXMLLoader.load(url);
             Stage stage = new Stage();
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setScene(new Scene(root, 802.4, 400));
+//            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setScene(new Scene(root, 802.4, 610));
             stage.show();
-            ((Node) (event.getSource())).getScene().getWindow().hide();
+//            ((Node) (event.getSource())).getScene().getWindow().hide();
             return stage;
         } catch (IOException e) {
             e.printStackTrace();

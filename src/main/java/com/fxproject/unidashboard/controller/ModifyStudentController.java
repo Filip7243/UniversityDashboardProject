@@ -7,7 +7,10 @@ import com.fxproject.unidashboard.repository.FieldOfStudyRepository;
 import com.fxproject.unidashboard.repository.GroupRepository;
 import com.fxproject.unidashboard.repository.StudentRepository;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TitledPane;
@@ -93,6 +96,10 @@ public class ModifyStudentController {
 
     public void cancelAdding() {
         addFieldOfStudyPane.expandedProperty().set(false);
+    }
+
+    public void closeWindow(ActionEvent event) {
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
 }

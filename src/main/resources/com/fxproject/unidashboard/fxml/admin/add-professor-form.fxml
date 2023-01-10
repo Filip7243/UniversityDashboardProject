@@ -17,11 +17,12 @@
          <children>
             <Pane prefHeight="46.0" prefWidth="706.0" style="-fx-background-color: #191c24;">
                <children>
-                  <Label layoutX="304.0" layoutY="8.0" text="ADD USER" textFill="#a9a9a9">
+                  <Label layoutX="272.0" layoutY="8.0" text="ADD PROFESSOR" textFill="#a9a9a9">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
+                  <Button layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#closeWindow" text="Button" />
                </children>
             </Pane>
             <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
