@@ -22,6 +22,7 @@ import org.hibernate.Transaction;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class LoginController {
@@ -137,7 +138,7 @@ public class LoginController {
             session.persist(m6);
             session.persist(m7);
 
-            Wages w = new Wages(null, 2000.20, 200.1, 14.7, LocalDateTime.now(), p);
+            Wages w = new Wages(null, 2000.20, 200.1, 14.7, LocalDate.now(), p);
             session.persist(w);
             Attendances a = new Attendances(null, true, false, l2, s);
             Attendances a1 = new Attendances(null, true, false, l, s);

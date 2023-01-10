@@ -13,6 +13,7 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -59,7 +60,7 @@ public class ModifyProfessorController {
 
     public void addWage() {
         Wages wage = new Wages(null, Double.parseDouble(salary.getText()), Double.parseDouble(hourlyRate.getText()),
-                Double.parseDouble(hoursWorked.getText()), LocalDateTime.now(), getUserData());
+                Double.parseDouble(hoursWorked.getText()), LocalDate.now(), getUserData());
         wr.addWage(wage);
     }
 

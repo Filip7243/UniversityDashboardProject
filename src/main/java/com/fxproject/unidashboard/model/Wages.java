@@ -2,6 +2,7 @@ package com.fxproject.unidashboard.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -16,7 +17,7 @@ public class Wages {
     private Double salary;
     private Double hourlyRate;
     private Double hoursWorked;
-    private LocalDateTime payday;
+    private LocalDate payday;
     @ManyToOne(fetch = FetchType.LAZY)
     private Professors professor;
 
@@ -24,7 +25,7 @@ public class Wages {
     }
 
     public Wages(Long id, Double salary, Double hourlyRate,
-                 Double hoursWorked, LocalDateTime payday, Professors professor) {
+                 Double hoursWorked, LocalDate payday, Professors professor) {
         this.id = id;
         this.salary = salary;
         this.hourlyRate = hourlyRate;
@@ -65,11 +66,11 @@ public class Wages {
         this.hoursWorked = hoursWorked;
     }
 
-    public LocalDateTime getPayday() {
+    public LocalDate getPayday() {
         return payday;
     }
 
-    public void setPayday(LocalDateTime payday) {
+    public void setPayday(LocalDate payday) {
         this.payday = payday;
     }
 

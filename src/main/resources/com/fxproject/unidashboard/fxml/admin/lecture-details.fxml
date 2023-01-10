@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="414.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.LectureDetailsController">
+<AnchorPane prefHeight="636.0" prefWidth="1004.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.LectureDetailsController">
    <children>
-      <Accordion fx:id="details" prefHeight="414.0" prefWidth="790.0">
+      <Accordion fx:id="details" layoutX="-6.0" prefHeight="638.0" prefWidth="1008.0" style="-fx-background-color: black;">
         <panes>
-          <TitledPane animated="false" onMousePressed="#loadLectureData" text="Details">
+          <TitledPane alignment="TOP_LEFT" animated="false" onMousePressed="#loadLectureData" prefHeight="612.0" prefWidth="1002.0" text="Details">
                <content>
-                  <VBox alignment="TOP_CENTER" prefHeight="368.0" prefWidth="788.0" spacing="10.0" style="-fx-background-color: black;">
+                  <VBox alignment="TOP_CENTER" prefHeight="612.0" prefWidth="995.0" spacing="10.0" style="-fx-background-color: black;">
                      <children>
                         <BorderPane prefHeight="58.0" prefWidth="734.0" style="-fx-background-color: #191c24;">
                            <center>
@@ -28,26 +28,12 @@
                         </BorderPane>
                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="250.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                            <children>
-                              <Label text="Id" textFill="#c9c9c9">
+                              <Label alignment="CENTER" prefWidth="491.6" text="Id" textFill="#c9c9c9" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="idLabel" text="Label" textFill="#c9c9c9">
-                                 <font>
-                                    <Font name="System Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="250.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                           <children>
-                              <Label text="Topic" textFill="#c9c9c9">
-                                 <font>
-                                    <Font name="System Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="topicLabel" text="Label" textFill="#c9c9c9">
+                              <Label fx:id="idLabel" alignment="CENTER" prefWidth="491.6" text="Label" textFill="#c9c9c9" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
@@ -56,26 +42,12 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="250.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                            <children>
-                              <Label text="Date" textFill="#c9c9c9">
+                              <Label alignment="CENTER" prefWidth="491.6" text="Topic" textFill="#c9c9c9" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="dateLabel" text="Label" textFill="#c9c9c9">
-                                 <font>
-                                    <Font name="System Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="250.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                           <children>
-                              <Label text="Group" textFill="#c9c9c9">
-                                 <font>
-                                    <Font name="System Bold" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="groupLabel" text="Label" textFill="#c9c9c9">
+                              <Label fx:id="topicLabel" alignment="CENTER" prefWidth="491.6" text="Label" textFill="#c9c9c9" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
@@ -84,12 +56,40 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="250.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                            <children>
-                              <Label text="Subject" textFill="#c9c9c9">
+                              <Label alignment="CENTER" prefWidth="491.6" text="Date" textFill="#c9c9c9" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="subjectLabel" text="Label" textFill="#c9c9c9">
+                              <Label fx:id="dateLabel" alignment="CENTER" prefWidth="491.6" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="250.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="491.6" text="Group" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="groupLabel" alignment="CENTER" prefWidth="491.6" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="250.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="491.6" text="Subject" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="subjectLabel" alignment="CENTER" prefWidth="491.6" text="Label" textFill="#c9c9c9" wrapText="true">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>

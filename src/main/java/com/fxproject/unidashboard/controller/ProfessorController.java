@@ -47,7 +47,7 @@ public class ProfessorController {
         scrollPane.setPrefHeight(contentPane.getPrefHeight());
         VBox vbox = new VBox();
         vbox.setStyle("-fx-background-color: black");
-        vbox.setSpacing(10);
+        vbox.setSpacing(15);
         vbox.setAlignment(Pos.CENTER);
         vbox.setPrefWidth(contentPane.getPrefWidth());
         vbox.setPrefHeight(contentPane.getPrefHeight());
@@ -55,6 +55,7 @@ public class ProfessorController {
         contentPane.getChildren().add(scrollPane);
         for (int i = 0; i < nodes.length; i++) {
             HBox box = loadFXMLItem();
+            box.setPrefWidth(700.0);
             Label label = (Label) box.lookup("#label");
             StackPane pane = (StackPane) box.lookup("#pane");
             switch (i) {

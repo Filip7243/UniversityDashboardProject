@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.GradeStudentController">
+<AnchorPane prefHeight="590.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.GradeStudentController">
     <children>
-        <ComboBox fx:id="comboGroups" layoutX="225.0" layoutY="114.0" prefWidth="150.0" />
-        <ComboBox fx:id="comboStudents" layoutX="225.0" layoutY="197.0" prefWidth="150.0" />
-        <ComboBox fx:id="comboSubjects" layoutX="225.0" layoutY="155.0" prefWidth="150.0" />
-      <Button fx:id="cancelButton" layoutX="225.0" layoutY="327.0" mnemonicParsing="false" onAction="#cancelGrade" text="Cancel" />
-      <Button fx:id="submitButton" layoutX="321.0" layoutY="327.0" mnemonicParsing="false" onAction="#submitGrade" text="Submit" />
-      <Spinner fx:id="markSpinner" editable="true" layoutX="226.0" layoutY="229.0" />
-      <TextField fx:id="description" layoutX="226.0" layoutY="263.0" promptText="Description" />
-      <ComboBox fx:id="comboTypes" layoutX="225.0" layoutY="295.0" prefWidth="150.0" />
+      <VBox alignment="CENTER" prefHeight="590.0" prefWidth="950.0" spacing="15.0">
+         <children>
+              <ComboBox fx:id="comboGroups" prefWidth="150.0" promptText="Choose Group" />
+              <ComboBox fx:id="comboStudents" prefWidth="150.0" promptText="Choose Student" />
+              <ComboBox fx:id="comboSubjects" prefWidth="150.0" promptText="Choose Subject" />
+            <Spinner fx:id="markSpinner" editable="true" />
+            <TextField fx:id="description" maxWidth="149.6" prefWidth="149.6" promptText="Description" />
+            <ComboBox fx:id="comboTypes" prefWidth="150.0" promptText="Choose Type" />
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="950.0" spacing="45.0">
+               <children>
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelGrade" text="Cancel" />
+                  <Button fx:id="submitButton" mnemonicParsing="false" onAction="#submitGrade" text="Submit" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
     </children>
+   <stylesheets>
+      <URL value="@../../css/texfield-style.css" />
+      <URL value="@../../css/combobox-style.css" />
+      <URL value="@../../css/button-style.css" />
+   </stylesheets>
 </AnchorPane>

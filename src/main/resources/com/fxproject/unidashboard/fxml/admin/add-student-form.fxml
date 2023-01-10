@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -15,21 +16,21 @@
     <content>
         <VBox alignment="TOP_CENTER" prefHeight="914.0" prefWidth="706.0" spacing="10.0">
          <children>
-            <Pane prefHeight="54.0" prefWidth="706.0">
+            <Pane prefHeight="54.0" prefWidth="706.0" style="-fx-background-color: #191c24;" stylesheets="@../../css/button-style.css">
                <children>
                   <Label layoutX="283.0" layoutY="13.0" text="ADD STUDENT" textFill="#a9a9a9">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeWindow" text="BACK" />
+                  <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeWindow" prefWidth="100.0" text="BACK" />
                </children>
             </Pane>
-            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+            <HBox alignment="CENTER_LEFT" maxWidth="600.0" prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                <children>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <Label layoutX="82.0" layoutY="8.0" text="First Name" textFill="#a9a8a8">
+                        <Label layoutX="82.0" layoutY="8.0" prefWidth="300.0" text="First Name" textFill="#a9a8a8">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -38,16 +39,16 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="firstName" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="firstName" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
                      </children>
                   </Pane>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+            <HBox alignment="CENTER_LEFT" maxWidth="600.0" prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                <children>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <Label layoutX="82.0" layoutY="8.0" text="Second Name" textFill="#a9a8a8">
+                        <Label layoutX="82.0" layoutY="8.0" prefWidth="300.0" text="Second Name" textFill="#a9a8a8">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -56,16 +57,16 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="secondName" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="secondName" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
                      </children>
                   </Pane>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+            <HBox alignment="CENTER_LEFT" maxWidth="600.0" prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                <children>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <Label layoutX="82.0" layoutY="8.0" text="Last Name" textFill="#a9a8a8">
+                        <Label layoutX="82.0" layoutY="8.0" prefWidth="300.0" text="Last Name" textFill="#a9a8a8">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -74,16 +75,16 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="lastName" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="lastName" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
                      </children>
                   </Pane>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+            <HBox alignment="CENTER_LEFT" maxWidth="600.0" prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                <children>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <Label layoutX="82.0" layoutY="8.0" text="Email" textFill="#a9a8a8">
+                        <Label layoutX="82.0" layoutY="8.0" prefWidth="300.0" text="Email" textFill="#a9a8a8">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -92,16 +93,16 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="email" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="email" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
                      </children>
                   </Pane>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+            <HBox alignment="CENTER_LEFT" maxWidth="600.0" prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                <children>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <Label layoutX="82.0" layoutY="8.0" text="Date Of Birth" textFill="#a9a8a8">
+                        <Label layoutX="82.0" layoutY="8.0" prefWidth="300.0" text="Date Of Birth" textFill="#a9a8a8">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -110,16 +111,16 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <DatePicker fx:id="birthday" layoutX="38.0" layoutY="9.0" />
+                        <DatePicker fx:id="birthday" layoutX="38.0" layoutY="9.0" prefWidth="300.0" />
                      </children>
                   </Pane>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+            <HBox alignment="CENTER_LEFT" maxWidth="600.0" prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                <children>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <Label layoutX="82.0" layoutY="8.0" text="Place Of Birth" textFill="#a9a8a8">
+                        <Label layoutX="82.0" layoutY="8.0" prefWidth="300.0" text="Place Of Birth" textFill="#a9a8a8">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -128,16 +129,16 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="placeBirth" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="placeBirth" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
                      </children>
                   </Pane>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+            <HBox alignment="CENTER_LEFT" maxWidth="600.0" prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                <children>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <Label layoutX="82.0" layoutY="8.0" text="Pesel" textFill="#a9a8a8">
+                        <Label layoutX="82.0" layoutY="8.0" prefWidth="300.0" text="Pesel" textFill="#a9a8a8">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -146,16 +147,16 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="pesel" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="pesel" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
                      </children>
                   </Pane>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+            <HBox alignment="CENTER_LEFT" maxWidth="600.0" prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                <children>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <Label layoutX="82.0" layoutY="8.0" text="Phone Number" textFill="#a9a8a8">
+                        <Label layoutX="82.0" layoutY="8.0" prefWidth="300.0" text="Phone Number" textFill="#a9a8a8">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -164,16 +165,16 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="phoneNumber" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="phoneNumber" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
                      </children>
                   </Pane>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+            <HBox alignment="CENTER_LEFT" maxWidth="600.0" prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                <children>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <Label layoutX="82.0" layoutY="8.0" text="Gender" textFill="#a9a8a8">
+                        <Label layoutX="82.0" layoutY="8.0" prefWidth="300.0" text="Gender" textFill="#a9a8a8">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -182,16 +183,16 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <ComboBox fx:id="gender" layoutX="50.0" layoutY="9.0" prefWidth="150.0" />
+                        <ComboBox fx:id="gender" layoutX="50.0" layoutY="9.0" prefWidth="300.0" promptText="Gender" />
                      </children>
                   </Pane>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+            <HBox alignment="CENTER_LEFT" maxWidth="600.0" prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                <children>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <Label layoutX="82.0" layoutY="8.0" text="Country" textFill="#a9a8a8">
+                        <Label layoutX="82.0" layoutY="8.0" prefHeight="27.0" prefWidth="300.0" text="Country" textFill="#a9a8a8">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -200,16 +201,16 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="country" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="country" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
                      </children>
                   </Pane>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+            <HBox alignment="CENTER_LEFT" maxWidth="600.0" prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                <children>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <Label layoutX="82.0" layoutY="8.0" text="City" textFill="#a9a8a8">
+                        <Label layoutX="82.0" layoutY="8.0" prefWidth="300.0" text="City" textFill="#a9a8a8">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -218,16 +219,16 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="city" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="city" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
                      </children>
                   </Pane>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+            <HBox alignment="CENTER_LEFT" maxWidth="600.0" prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                <children>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <Label layoutX="82.0" layoutY="8.0" text="Postal Code" textFill="#a9a8a8">
+                        <Label layoutX="82.0" layoutY="8.0" prefWidth="300.0" text="Postal Code" textFill="#a9a8a8">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -236,16 +237,16 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="postalCode" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="postalCode" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
                      </children>
                   </Pane>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+            <HBox alignment="CENTER_LEFT" maxWidth="600.0" prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                <children>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <Label layoutX="82.0" layoutY="8.0" text="Street" textFill="#a9a8a8">
+                        <Label layoutX="82.0" layoutY="8.0" prefWidth="300.0" text="Street" textFill="#a9a8a8">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -254,16 +255,16 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="street" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="street" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
                      </children>
                   </Pane>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+            <HBox alignment="CENTER_LEFT" maxWidth="600.0" prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                <children>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <Label layoutX="82.0" layoutY="8.0" text="House Number" textFill="#a9a8a8">
+                        <Label layoutX="82.0" layoutY="8.0" prefWidth="300.0" text="House Number" textFill="#a9a8a8">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -272,16 +273,16 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="houseNumber" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="houseNumber" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
                      </children>
                   </Pane>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+            <HBox alignment="CENTER_LEFT" maxWidth="600.0" prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                <children>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <Label layoutX="82.0" layoutY="8.0" text="Flat Number" textFill="#a9a8a8">
+                        <Label layoutX="82.0" layoutY="8.0" prefWidth="300.0" text="Flat Number" textFill="#a9a8a8">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -290,17 +291,22 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="flatNumber" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="flatNumber" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
                      </children>
                   </Pane>
                </children>
             </HBox>
-            <HBox alignment="CENTER" maxWidth="500.0" prefHeight="42.0" prefWidth="500.0" spacing="50.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+            <HBox alignment="CENTER" maxWidth="600.0" prefHeight="42.0" prefWidth="600.0" spacing="50.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                <children>
-                  <Button mnemonicParsing="false" onAction="#cancelAdding" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-border-radius: 2em; -fx-text-fill: #a9a8a8;" text="Cancel" />
-                  <Button mnemonicParsing="false" onAction="#addUser" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-border-radius: 2em; -fx-text-fill: #a9a8a8;" text="Add" />
+                  <Button mnemonicParsing="false" onAction="#cancelAdding" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-border-radius: 2em; -fx-text-fill: #a9a8a8;" text="Cancel" />
+                  <Button mnemonicParsing="false" onAction="#addUser" prefWidth="100.0" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-border-radius: 2em; -fx-text-fill: #a9a8a8;" text="Add" />
                </children>
             </HBox>
-         </children></VBox>
+         </children>
+         <stylesheets>
+            <URL value="@../../css/combobox-style.css" />
+            <URL value="@../../css/texfield-style.css" />
+            <URL value="@../../css/datepicker-style.css" />
+         </stylesheets></VBox>
     </content>
 </ScrollPane>

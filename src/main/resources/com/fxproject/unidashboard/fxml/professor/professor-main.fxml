@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="professorPanelPane" prefHeight="600.0" prefWidth="870.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.ProfessorController">
+<AnchorPane fx:id="professorPanelPane" prefHeight="650.0" prefWidth="1150.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.ProfessorController">
     <children>
-        <VBox alignment="TOP_CENTER" layoutY="1.0" prefHeight="600.0" prefWidth="202.0" spacing="10.0" style="-fx-background-color: #191c24;">
+        <VBox alignment="TOP_CENTER" layoutY="1.0" prefHeight="651.0" prefWidth="202.0" spacing="10.0" style="-fx-background-color: #191c24;">
             <children>
                 <Pane prefHeight="174.0" prefWidth="202.0">
                     <children>
@@ -42,7 +42,7 @@
                 <Insets />
             </opaqueInsets>
         </VBox>
-        <HBox alignment="CENTER_LEFT" layoutX="202.0" layoutY="1.0" prefHeight="59.0" prefWidth="668.0" spacing="50.0" style="-fx-background-color: #191c24;" stylesheets="@../../css/search-bar.css">
+        <HBox alignment="CENTER" layoutX="202.0" layoutY="1.0" prefHeight="59.0" prefWidth="947.0" spacing="180.0" style="-fx-background-color: #191c24;" stylesheets="@../../css/search-bar.css">
             <children>
                 <Pane prefHeight="59.0" prefWidth="166.0">
                     <children>
@@ -65,9 +65,9 @@
                 </Pane>
             </children>
         </HBox>
-        <Pane fx:id="contentPane" layoutX="202.0" layoutY="60.0" prefHeight="542.0" prefWidth="668.0">
+        <Pane fx:id="contentPane" layoutX="202.0" layoutY="60.0" prefHeight="590.0" prefWidth="947.0" stylesheets="@../admin/scroll-pane-style.css">
             <children>
-                <Label layoutX="10.0" layoutY="254.0" text="WELCOME IN YOUR UNIVERSITY DASHBOARD ACCOUNT">
+                <Label layoutX="132.0" layoutY="279.0" text="WELCOME IN YOUR UNIVERSITY DASHBOARD ACCOUNT">
                     <font>
                         <Font name="System Bold" size="24.0" />
                     </font>

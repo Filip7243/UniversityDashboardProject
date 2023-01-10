@@ -31,10 +31,13 @@ public class StudentMarksController {
 
     public void initialize() throws IOException {
         List<Marks> studentMarks = mr.findStudentMarks(((Students) loggedInUser).getAlbumId());
-        System.out.println(studentMarks.size());
         VBox marksBox = new VBox();
+        marksBox.setAlignment(Pos.CENTER);
+        marksBox.setPrefWidth(borderPane.getPrefWidth());
+
         for (int j = 0; j < studentMarks.size(); j++) { // j < count(student's marks in current subject(i))
             HBox markInfoBox = loadFXMLItem();
+            markInfoBox.setPrefWidth(0.85*marksBox.getPrefWidth());
             marksBox.setSpacing(10);
             marksBox.getChildren().add(markInfoBox);
             StackPane sP = (StackPane) markInfoBox.lookup("#pane");
@@ -42,8 +45,8 @@ public class StudentMarksController {
             Marks mark = studentMarks.get(j);
             markInfoLabel.setText(
                     mark.getSubject().getName() + " | " +
-                    mark.getType().name() + " " + "| " +
-                    mark.getMarkDate().toLocalDate().toString()
+                            mark.getType().name() + " " + "| " +
+                            mark.getMarkDate().toLocalDate().toString()
             );
             Label markLabel = new Label();
             markLabel.setText(String.valueOf(mark.getMark()));
@@ -52,7 +55,7 @@ public class StudentMarksController {
             StackPane.setAlignment(markLabel, Pos.CENTER);
             sP.getChildren().add(markLabel);
         }
-        borderPane.getChildren().add(marksBox);
+        borderPane.setCenter(marksBox);
     }
 
 

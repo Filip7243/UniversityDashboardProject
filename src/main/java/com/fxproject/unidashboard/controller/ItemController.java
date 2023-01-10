@@ -111,7 +111,7 @@ public class ItemController {
             // load fxml
             Stage stage = loadFXML(event, "lecture-details.fxml");
             assert stage != null;
-            stage.setWidth(1004);
+            stage.setWidth(1012);
             stage.setHeight(636);
             stage.setX(300);
             stage.setUserData(lectures);

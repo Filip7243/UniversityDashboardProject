@@ -44,7 +44,7 @@ public class StudentController {
         contentPane.getChildren().clear();
         Node[] nodes = new Node[16];
         ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setPrefWidth(contentPane.getPrefWidth());
+        scrollPane.setBackground(Background.fill(Color.BLACK));
         scrollPane.setPrefHeight(contentPane.getPrefHeight());
         VBox vbox = new VBox();
         vbox.setStyle("-fx-background-color: black");
@@ -56,6 +56,7 @@ public class StudentController {
         contentPane.getChildren().add(scrollPane);
         for (int i = 0; i < nodes.length; i++) {
             HBox box = loadFXMLItem();
+            box.setPrefWidth(700.0);
             Label label = (Label) box.lookup("#label");
             StackPane pane = (StackPane) box.lookup("#pane");
             switch (i) {
@@ -262,7 +263,7 @@ public class StudentController {
         contentPane.getChildren().add(box);
     }
 
-    static HBox loadFXMLItem() throws IOException {
+    public static HBox loadFXMLItem() throws IOException {
         String path = new File("").getAbsolutePath();
         URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/student/student-info.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
