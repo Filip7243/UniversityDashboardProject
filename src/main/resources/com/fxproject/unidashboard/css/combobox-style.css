@@ -1,6 +1,10 @@
 .combo-box {
     -fx-background-color: transparent;
+    -fx-text-fill: #0d6efd;
+    -fx-prompt-text-fill: #0d6efd;
 }
+
 .cell .list-cell {
-    -fx-text-fill: #a9a8a8;
+    -fx-text-fill: #0d6efd;
+    -fx-prompt-text-fill: #0d6efd;
 }

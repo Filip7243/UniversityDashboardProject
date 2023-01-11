@@ -74,7 +74,6 @@ public class GradeStudentController {
     }
 
     public void submitGrade() {
-        System.out.println("GRADE");
         Marks mark = new Marks(null, markSpinner.getValue(), LocalDateTime.now(), description.getText(), comboStudents.getValue(), comboSubjects.getValue(), comboTypes.getValue());
         mr.save(mark);
     }
