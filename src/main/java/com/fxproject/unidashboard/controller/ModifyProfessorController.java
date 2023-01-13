@@ -1,7 +1,10 @@
 package com.fxproject.unidashboard.controller;
 
 import com.fxproject.unidashboard.model.*;
-import com.fxproject.unidashboard.repository.*;
+import com.fxproject.unidashboard.repository.GroupRepository;
+import com.fxproject.unidashboard.repository.ProfessorsSubjectsInGroupsRepository;
+import com.fxproject.unidashboard.repository.SubjectRepository;
+import com.fxproject.unidashboard.repository.WageRepository;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,9 +17,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.Objects;
+
+import static com.fxproject.unidashboard.validator.Validator.integerValidator;
+import static com.fxproject.unidashboard.validator.Validator.setValidator;
 
 public class ModifyProfessorController {
     @FXML
@@ -44,7 +49,9 @@ public class ModifyProfessorController {
     private ProfessorsSubjectsInGroupsRepository psigr = new ProfessorsSubjectsInGroupsRepository();
 
     public void initialize() {
-        personalData.getChildren().forEach(System.out::println);
+        setValidator(salary, integerValidator());
+        setValidator(hourlyRate, integerValidator());
+        setValidator(hoursWorked, integerValidator());
     }
 
     public void showAddRemoveForm() {

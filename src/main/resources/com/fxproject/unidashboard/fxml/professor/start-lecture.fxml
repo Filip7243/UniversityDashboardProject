@@ -3,19 +3,38 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox fx:id="container" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="950.0" spacing="30.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.StartLectureController">
+<VBox fx:id="container" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="950.0" spacing="40.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.StartLectureController">
     <children>
-        <TextField fx:id="lectureTopic" alignment="CENTER" maxWidth="250.0" promptText="Topic" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
-        <ComboBox fx:id="comboGroup" prefWidth="150.0" promptText="Choose Group" />
-        <ComboBox fx:id="comboSubject" prefWidth="150.0" promptText="Choose Subject" />
+      <Pane prefHeight="101.0" prefWidth="950.0" style="-fx-background-color: #191c24;">
+         <children>
+            <Label layoutX="324.0" layoutY="22.0" text="START LECTURE" textFill="#aeaeae">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+        <TextField fx:id="lectureTopic" alignment="CENTER" maxWidth="300.0" prefWidth="300.0" promptText="Topic" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+        <ComboBox fx:id="comboGroup" prefWidth="300.0" promptText="Choose Group">
+         <effect>
+            <Glow level="0.57" />
+         </effect></ComboBox>
+        <ComboBox fx:id="comboSubject" prefWidth="300.0" promptText="Choose Subject">
+         <effect>
+            <Glow level="0.57" />
+         </effect></ComboBox>
       <HBox alignment="CENTER" prefHeight="31.0" prefWidth="668.0" spacing="50.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#cancelStarting" text="Cancel" />
-            <Button mnemonicParsing="false" onAction="#startLecture" text="Submit" />
+            <Button mnemonicParsing="false" onAction="#cancelStarting" prefWidth="120.0" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#startLecture" prefWidth="120.0" text="Submit" />
          </children>
       </HBox>
     </children>

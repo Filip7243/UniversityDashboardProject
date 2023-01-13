@@ -5,11 +5,16 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="950.0" spacing="10.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.AttendanceController">
     <children>
-        <ComboBox fx:id="professorLectures" prefHeight="26.0" prefWidth="954.0" promptText="Choose Lesson" />
+        <ComboBox fx:id="professorLectures" prefHeight="26.0" prefWidth="954.0" promptText="Choose Lesson">
+         <effect>
+            <Glow level="0.57" />
+         </effect></ComboBox>
         <TableView fx:id="attendanceList" prefHeight="508.0" prefWidth="668.0">
             <columns>
                 <TableColumn fx:id="studentCol" prefWidth="314.0" text="Student" />
@@ -17,8 +22,12 @@
                 <TableColumn fx:id="lateCol" prefWidth="314.0" text="Late" />
             </columns>
         </TableView>
-        <Button mnemonicParsing="false" onAction="#checkAttendance" prefWidth="668.0" text="Ok" />
-        <Button fx:id="cancelAttendance" mnemonicParsing="false" onAction="#cancelAttendance" prefWidth="668.0" text="Cancel" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+         <children>
+              <Button fx:id="cancelAttendance" mnemonicParsing="false" onAction="#cancelAttendance" prefWidth="668.0" text="Cancel" />
+              <Button mnemonicParsing="false" onAction="#checkAttendance" prefWidth="668.0" text="Ok" />
+         </children>
+      </HBox>
     </children>
    <stylesheets>
       <URL value="@../../css/tableview-style.css" />

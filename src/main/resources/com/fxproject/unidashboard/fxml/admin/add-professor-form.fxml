@@ -93,7 +93,7 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="email" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="email" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" />
                      </children>
                   </Pane>
                </children>

@@ -10,10 +10,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #486cf0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1150.0" style="-fx-background-color: black;" stylesheets="@../css/search-bar.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.LoginController">
     <children>
-        <VBox alignment="CENTER" opacity="0.9" prefHeight="450.0" prefWidth="100.0" spacing="5.0" style="-fx-background-color: #2b55ee;">
+        <VBox alignment="CENTER" opacity="0.9" prefHeight="652.0" prefWidth="137.0" spacing="5.0" style="-fx-background-color: #191c24;">
             <children>
             <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" text=" ">
                <graphic>
@@ -35,17 +36,20 @@
             </JFXButton>
             </children>
         </VBox>
-        <VBox alignment="CENTER" layoutX="282.0" layoutY="87.0" prefHeight="250.0" prefWidth="194.0" spacing="27.0">
+        <VBox alignment="CENTER" layoutX="135.0" layoutY="45.0" prefHeight="605.0" prefWidth="1015.0" spacing="35.0">
             <children>
-                <Label style="-fx-font-size: 20px;" text="Sign In" />
-            <TextField fx:id="loginField" promptText="sample@uni.mail.com" />
-            <PasswordField fx:id="passwordField" promptText="Password..." />
+                <Label style="-fx-font-size: 20px;" text="Sign In" textFill="#d7d7d7">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font></Label>
+            <TextField fx:id="loginField" alignment="CENTER" maxWidth="300.0" prefHeight="27.0" prefWidth="744.0" promptText="sample@uni.mail.com" />
+            <PasswordField fx:id="passwordField" alignment="CENTER" maxWidth="300.0" prefHeight="27.0" prefWidth="789.0" promptText="Password..." />
 <!--                            <JFXTextField promptText="someone@example.com"/>-->
                 <!--                            <JFXPasswordField promptText="Password" />-->
-                <JFXButton onAction="#logIn" prefHeight="26.0" prefWidth="144.0" text="Sign In" />
+                <JFXButton onAction="#logIn" prefHeight="26.0" prefWidth="180.0" text="Sign In" textFill="#cccccc" />
             </children>
         </VBox>
-        <JFXButton fx:id="closeButton" buttonType="RAISED" contentDisplay="CENTER" layoutX="656.0" layoutY="14.0" onAction="#closeWindow" prefHeight="28.0" prefWidth="29.0" text=" ">
+        <JFXButton fx:id="closeButton" buttonType="RAISED" contentDisplay="CENTER" layoutX="1090.0" layoutY="19.0" onAction="#closeWindow" prefHeight="28.0" prefWidth="29.0" text=" ">
             <graphic>
                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                     <image>

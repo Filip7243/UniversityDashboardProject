@@ -150,6 +150,11 @@ public class ModifyPersonController {
                     TextField infoLabel = (TextField) p.getChildren().get(0);
                     infoLabel.setText(address.getStreet());
                 }
+                case "Pesel" -> {
+                    Pane p = (Pane) child.getChildren().get(1);
+                    TextField pesel = (TextField) p.getChildren().get(0);
+                    pesel.setText(userData.getPesel());
+                }
                 case "House Number" -> {
                     Pane p = (Pane) child.getChildren().get(1);
                     TextField infoLabel = (TextField) p.getChildren().get(0);

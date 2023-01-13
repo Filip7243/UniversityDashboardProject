@@ -32,9 +32,9 @@
                      <content>
                         <VBox alignment="CENTER" prefHeight="148.0" prefWidth="801.0" spacing="20.0" style="-fx-background-color: black;" stylesheets="@../../css/button-style.css">
                            <children>
-                              <TextField fx:id="salary" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #a9a8a8;" />
-                              <TextField fx:id="hourlyRate" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #a9a8a8;" />
-                              <TextField fx:id="hoursWorked" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #a9a8a8;" />
+                              <TextField fx:id="salary" promptText="Salary" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #a9a8a8;" />
+                              <TextField fx:id="hourlyRate" promptText="Hourly Rate" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #a9a8a8;" />
+                              <TextField fx:id="hoursWorked" promptText="Hours Worked" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #a9a8a8;" />
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                                  <children>
                                     <Button mnemonicParsing="false" text="Cancel" />

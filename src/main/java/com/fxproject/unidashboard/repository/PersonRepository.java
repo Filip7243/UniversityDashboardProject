@@ -118,6 +118,7 @@ public class PersonRepository {
             person.setPlaceOfBirth(updatedPerson.getPlaceOfBirth());
             person.setGender(updatedPerson.getGender());
             person.setAge(updatedPerson.getAge());
+            person.setPesel(updatedPerson.getPesel());
             Addresses address = person.getAddress();
             address.setCountry(updatedPerson.getAddress().getCountry());
             address.setCity(updatedPerson.getAddress().getCity());
