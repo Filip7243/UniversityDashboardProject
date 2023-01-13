@@ -15,7 +15,9 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -46,9 +48,17 @@ public class ProfessorController {
         scrollPane.setPrefWidth(contentPane.getPrefWidth());
         scrollPane.setPrefHeight(contentPane.getPrefHeight());
         VBox vbox = new VBox();
+        BorderPane title = new BorderPane();
+        title.setPrefHeight(110);
+        title.setBackground(Background.fill(Paint.valueOf("#191c24")));
+        Label personalInfo = new Label("Personal Info");
+        personalInfo.setFont(Font.font("System", FontWeight.BOLD, 40));
+        personalInfo.setTextFill(Paint.valueOf("#aeaeae"));
+        title.setCenter(personalInfo);
+        vbox.getChildren().add(title);
         vbox.setStyle("-fx-background-color: black");
         vbox.setSpacing(15);
-        vbox.setAlignment(Pos.CENTER);
+        vbox.setAlignment(Pos.TOP_CENTER);
         vbox.setPrefWidth(contentPane.getPrefWidth());
         vbox.setPrefHeight(contentPane.getPrefHeight());
         scrollPane.setContent(vbox);

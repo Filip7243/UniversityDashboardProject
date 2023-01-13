@@ -11,21 +11,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
-import javafx.scene.control.skin.DatePickerSkin;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
-import javafx.scene.text.TextAlignment;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.MonthDay;
-import java.time.Year;
 import java.util.List;
 
 public class StudentController {
@@ -47,9 +45,17 @@ public class StudentController {
         scrollPane.setBackground(Background.fill(Color.BLACK));
         scrollPane.setPrefHeight(contentPane.getPrefHeight());
         VBox vbox = new VBox();
+        BorderPane title = new BorderPane();
+        title.setPrefHeight(110);
+        title.setBackground(Background.fill(Paint.valueOf("#191c24")));
+        Label personalInfo = new Label("Personal Info");
+        personalInfo.setFont(Font.font("System", FontWeight.BOLD, 40));
+        personalInfo.setTextFill(Paint.valueOf("#aeaeae"));
+        title.setCenter(personalInfo);
+        vbox.getChildren().add(title);
         vbox.setStyle("-fx-background-color: black");
         vbox.setSpacing(10);
-        vbox.setAlignment(Pos.CENTER);
+        vbox.setAlignment(Pos.TOP_CENTER);
         vbox.setPrefWidth(contentPane.getPrefWidth());
         vbox.setPrefHeight(contentPane.getPrefHeight());
         scrollPane.setContent(vbox);
@@ -216,32 +222,6 @@ public class StudentController {
         AnchorPane anchor = FXMLLoader.load(url);
 
         contentPane.getChildren().add(anchor);
-
-//        final Callback<DatePicker, DateCell> dayCellFactory = new Callback<>() {
-//            public DateCell call(final DatePicker datePicker) {
-//                return new DateCell() {
-//                    @Override
-//                    public void updateItem(LocalDate item, boolean empty) {
-//                        super.updateItem(item, empty);
-//                        if (MonthDay.from(item).equals(MonthDay.of(3, 15)) &&
-//                                !(getStyleClass().contains("next-month") || getStyleClass().contains("previous-month")) &&
-//                                Year.from(item).equals(Year.of(2022))
-//                        ) {
-//                            setTooltip(new Tooltip("Beware the Ides of March!"));
-//                            setStyle("-fx-background-color: #ff4444;");
-//                            setText("Exam Algebra");
-//                            setWrapText(true);
-//                            setTextAlignment(TextAlignment.CENTER);
-//                        } else {
-//                            setTooltip(null);
-//                            setStyle(null);
-//                        }
-//                    }
-//                };
-//            }
-//        };
-
-
     }
 
     public void showFieldsOfStudies() throws IOException {
@@ -250,10 +230,18 @@ public class StudentController {
         Students s = (Students) UserSession.getSession((Person) stage.getUserData()).getPerson();
         List<Groups> studentGroups = gr.findStudentGroups(s.getAlbumId());
         VBox box = new VBox();
+        BorderPane title = new BorderPane();
+        title.setPrefHeight(110);
+        title.setBackground(Background.fill(Paint.valueOf("#191c24")));
+        Label fieldsOfStudy = new Label("FIELDS OF STUDY");
+        fieldsOfStudy.setFont(Font.font("System", FontWeight.BOLD, 40));
+        fieldsOfStudy.setTextFill(Paint.valueOf("#aeaeae"));
+        title.setCenter(fieldsOfStudy);
+        box.getChildren().add(title);
         box.setPrefWidth(contentPane.getPrefWidth());
         box.setPrefHeight(contentPane.getPrefHeight());
-        box.setAlignment(Pos.CENTER);
-        box.setSpacing(10);
+        box.setAlignment(Pos.TOP_CENTER);
+        box.setSpacing(20);
         for (Groups studentGroup : studentGroups) {
             HBox hBox = loadFXMLItem();
             Label label = (Label) hBox.lookup("#label");
