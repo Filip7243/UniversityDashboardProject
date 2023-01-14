@@ -78,7 +78,7 @@ public class AddFormController {
     private ProfessorRepository professorRepository = new ProfessorRepository();
 
     public void initialize() {
-        setValidator(pesel, stringValidator());
+        setValidator(pesel, integerValidator());
         setValidator(firstName, stringValidator());
         setValidator(secondName, stringValidator());
         setValidator(lastName, stringValidator());
@@ -93,7 +93,7 @@ public class AddFormController {
 
         lengthValidator(pesel, 11);
         lengthValidator(phoneNumber, 9);
-        lengthValidator(postalCode, 6);
+        lengthValidator(postalCode, 5);
         emailValidator(email);
 
         gender.setItems(FXCollections.observableArrayList(List.of("Male", "Female")));
@@ -157,7 +157,6 @@ public class AddFormController {
                         person.getPhoneNumber(), person.getBirthday(), person.getPlaceOfBirth(), person.getPesel(),
                         person.getGender(), person.getAge(), person.getAddress());
                 sr.save(s);
-                acc.setRole(Roles.ROLE_PROFESSOR);
                 acc.setUniversityEmail(EmailAddressGenerator.generateMailForStudent(s));
                 acc.setPassword(PasswordGenerator.generatePassword());
                 acc.setCreatedAt(LocalDateTime.now());

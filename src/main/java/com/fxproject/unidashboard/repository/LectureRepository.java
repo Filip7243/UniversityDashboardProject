@@ -1,7 +1,7 @@
 package com.fxproject.unidashboard.repository;
 
+import com.fxproject.unidashboard.model.Attendances;
 import com.fxproject.unidashboard.model.Lectures;
-import com.fxproject.unidashboard.model.Person;
 import com.fxproject.unidashboard.model.Professors;
 import com.fxproject.unidashboard.utils.HibernateConnect;
 import org.hibernate.Session;
@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class LectureRepository {
+
+    private AttendanceRepository ar = new AttendanceRepository();
 
     public List<Lectures> findAllLectures() {
         try (Session session = HibernateConnect.openSession()) {
@@ -32,7 +34,7 @@ public class LectureRepository {
             tx.commit();
             return Optional.ofNullable(query.getSingleResult());
         } catch (Exception e) {
-            if(tx != null && tx.isActive()) {
+            if (tx != null && tx.isActive()) {
                 tx.rollback();
             }
             return Optional.empty();
@@ -41,12 +43,18 @@ public class LectureRepository {
 
     public void removeLecture(Lectures lectures) {
         Transaction tx = null;
+        List<Attendances> lectureAttendances = ar.findLectureAttendances(lectures);
         try (Session session = HibernateConnect.openSession()) {
             tx = session.beginTransaction();
+            if(!lectureAttendances.isEmpty()) {
+                for (Attendances attendance : lectureAttendances) {
+                    session.remove(attendance);
+                }
+            }
             session.remove(lectures);
             tx.commit();
         } catch (Exception e) {
-            if(tx != null && tx.isActive()) {
+            if (tx != null && tx.isActive()) {
                 tx.rollback();
             }
         }
@@ -59,7 +67,7 @@ public class LectureRepository {
             session.persist(lecture);
             tx.commit();
         } catch (Exception e) {
-            if(tx != null && tx.isActive()) {
+            if (tx != null && tx.isActive()) {
                 tx.rollback();
             }
         }
@@ -75,7 +83,7 @@ public class LectureRepository {
             tx.commit();
             return query.getResultList();
         } catch (Exception e) {
-            if(tx != null && tx.isActive()) {
+            if (tx != null && tx.isActive()) {
                 tx.rollback();
             }
             return List.of();

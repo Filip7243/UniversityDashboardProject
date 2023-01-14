@@ -16,7 +16,8 @@ public class PersonRepository {
 
     private MarkRepository mr = new MarkRepository();
     private WageRepository wr = new WageRepository();
-
+    private AttendanceRepository ar = new AttendanceRepository();
+    private LectureRepository lr = new LectureRepository();
     public void save(Person person) {
         Transaction tx = null;
         try (Session session = HibernateConnect.openSession()) {
@@ -68,14 +69,18 @@ public class PersonRepository {
         Person p = null;
         List<Marks> studentsMarks = null;
         List<Wages> professorsWages = null;
+        List<Attendances> studentAttendances = null;
+        List<Lectures> professorLectures = null;
         Optional<Person> personWithId = findPersonWithId(id);
         if (personWithId.isPresent()) {
             p = personWithId.get();
             if (p instanceof Students s) {
                 studentsMarks = mr.findStudentMarks(s.getAlbumId());
+                studentAttendances = ar.findStudentAttendances(s);
             }
             if (p instanceof Professors prof) {
                 professorsWages = wr.findProfessorWages(prof);
+                professorLectures = lr.findProfessorLectures(prof);
             }
         }
 
@@ -83,9 +88,19 @@ public class PersonRepository {
             try (Session session = HibernateConnect.openSession()) {
                 tx = session.beginTransaction();
                 //todo: remove student attendances
+                if(studentAttendances != null) {
+                    for (Attendances attendance : studentAttendances) {
+                        session.remove(attendance);
+                    }
+                }
                 if (studentsMarks != null) {
                     for (Marks studentMark : studentsMarks) {
                         session.remove(studentMark);
+                    }
+                }
+                if(professorLectures != null) {
+                    for (Lectures lecture : professorLectures) {
+                        session.remove(lecture);
                     }
                 }
                 if (professorsWages != null) {
