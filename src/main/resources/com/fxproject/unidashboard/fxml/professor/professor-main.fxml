@@ -49,7 +49,7 @@
                         <Label layoutX="33.0" layoutY="21.0" text="Filip Kaczmarczyk" textFill="#dcd8d8" />
                     </children>
                 </Pane>
-                <TextField promptText="search" />
+                <TextField fx:id="searchBar" disable="true" promptText="search" />
                 <Pane prefHeight="59.0" prefWidth="166.0">
                     <children>
                         <Button alignment="CENTER" contentDisplay="CENTER" layoutX="126.0" layoutY="16.0" maxHeight="29.0" maxWidth="29.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="17.0" prefWidth="24.0" style="-fx-background-color: transparent;">

@@ -21,4 +21,5 @@ module com.fxproject.unidashboard {
     exports com.fxproject.unidashboard;
     exports com.fxproject.unidashboard.controller;
     exports com.fxproject.unidashboard.dto;
+    exports com.fxproject.unidashboard.model;
 }

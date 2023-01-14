@@ -1,6 +1,7 @@
 package com.fxproject.unidashboard.repository;
 
 import com.fxproject.unidashboard.model.Marks;
+import com.fxproject.unidashboard.model.Students;
 import com.fxproject.unidashboard.utils.HibernateConnect;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -36,6 +37,24 @@ public class MarkRepository {
             if (tx != null && tx.isActive()) {
                 tx.rollback();
             }
+        }
+    }
+
+    public List<Marks> findWithName(String name, Long albumId) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            Query<Marks> query = session.createQuery("SELECT m FROM Marks m WHERE lower(m.subject.name) LIKE :name AND m.student.albumId = :albumId", Marks.class);
+            query.setParameter("name", "%" + name + "%");
+            query.setParameter("albumId", albumId);
+            tx.commit();
+            return query.getResultList();
+        } catch (Exception e) {
+            if (tx != null && tx.isActive()) {
+                System.out.println(e.getMessage());
+                tx.rollback();
+            }
+            return List.of();
         }
     }
 }

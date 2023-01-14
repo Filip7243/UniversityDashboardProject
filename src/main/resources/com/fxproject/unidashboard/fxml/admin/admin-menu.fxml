@@ -52,7 +52,7 @@
                                 <Label fx:id="loggedInUserName" layoutX="33.0" layoutY="21.0" text="Filip Kaczmarczyk" textFill="#dcd8d8" />
                             </children>
                         </Pane>
-                        <TextField promptText="search" />
+                        <TextField fx:id="searchBar" disable="true" promptText="search" />
                         <Pane prefHeight="59.0" prefWidth="166.0">
                             <children>
                                 <Button fx:id="closeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="113.0" layoutY="16.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="45.0" style="-fx-background-color: transparent;">

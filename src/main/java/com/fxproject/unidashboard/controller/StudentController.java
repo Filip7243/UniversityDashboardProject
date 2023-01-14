@@ -2,9 +2,11 @@ package com.fxproject.unidashboard.controller;
 
 import com.fxproject.unidashboard.dto.StudentAttendanceOnLecture;
 import com.fxproject.unidashboard.model.Groups;
+import com.fxproject.unidashboard.model.Marks;
 import com.fxproject.unidashboard.model.Person;
 import com.fxproject.unidashboard.model.Students;
 import com.fxproject.unidashboard.repository.GroupRepository;
+import com.fxproject.unidashboard.repository.MarkRepository;
 import com.fxproject.unidashboard.utils.UserSession;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +16,9 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -24,7 +29,10 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.ListResourceBundle;
+import java.util.ResourceBundle;
 
 public class StudentController {
 
@@ -32,14 +40,18 @@ public class StudentController {
     private Pane contentPane;
     @FXML
     private AnchorPane studentPanelPane;
+    @FXML
+    private TextField searchBar;
     private static final FXMLLoader loader = new FXMLLoader();
     private static Person loggedInUser;
     private GroupRepository gr = new GroupRepository();
+    private MarkRepository mr = new MarkRepository();
 
     public void showPersonalInfo() throws IOException {
         Stage stage = (Stage) studentPanelPane.getScene().getWindow();
         loggedInUser = UserSession.getSession((Person) stage.getUserData()).getPerson();
         contentPane.getChildren().clear();
+        searchBar.setDisable(true);
         Node[] nodes = new Node[16];
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setBackground(Background.fill(Color.BLACK));
@@ -201,14 +213,77 @@ public class StudentController {
 
     public void showMarks() throws IOException {
         contentPane.getChildren().clear();
+        searchBar.setDisable(false);
         String path = new File("").getAbsolutePath();
         URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/student/student-marks.fxml").toURI().toURL();
         BorderPane borderPane = loader.load(url);
         contentPane.getChildren().add(borderPane);
     }
 
+    public void searchMarks(KeyEvent keyEvent) throws IOException {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            Stage stage = (Stage) studentPanelPane.getScene().getWindow();
+            loggedInUser = UserSession.getSession((Person) stage.getUserData()).getPerson();
+            List<Marks> marks = mr.findWithName(searchBar.getText().trim().toLowerCase(),
+                    ((Students) loggedInUser).getAlbumId());
+            showSearchResult(marks);
+        }
+    }
+
+    private void showSearchResult(List<Marks> marks) throws IOException {
+        contentPane.getChildren().clear();
+        if(!marks.isEmpty()) {
+            BorderPane header = new BorderPane();
+            header.setPrefHeight(110);
+            header.setBackground(Background.fill(Paint.valueOf("#191c24")));
+            Label marksLabel = new Label("MARKS");
+            marksLabel.setFont(Font.font("System", FontWeight.BOLD, 40));
+            marksLabel.setTextFill(Paint.valueOf("#aeaeae"));
+            header.setCenter(marksLabel);
+            BorderPane borderPane = new BorderPane();
+            borderPane.setTop(header);
+            borderPane.setPrefWidth(contentPane.getPrefWidth());
+            borderPane.setPrefHeight(contentPane.getPrefHeight());
+            VBox marksBox = new VBox();
+            marksBox.setAlignment(Pos.CENTER); // todo: refactor it
+            marksBox.setPrefWidth(borderPane.getPrefWidth());
+
+            for (int j = 0; j < marks.size(); j++) { // j < count(student's marks)
+                HBox markInfoBox = loadFXMLItem();
+                markInfoBox.setPrefWidth(0.9*marksBox.getPrefWidth());
+                marksBox.setSpacing(13);
+                marksBox.getChildren().add(markInfoBox);
+                StackPane sP = (StackPane) markInfoBox.lookup("#pane");
+                Label markInfoLabel = (Label) markInfoBox.lookup("#label");
+                Marks mark = marks.get(j);
+                markInfoLabel.setText(
+                        mark.getSubject().getName() + " | " +
+                                mark.getType().name() + " " + "| " +
+                                mark.getMarkDate().toLocalDate().toString()
+                );
+                Label markLabel = new Label();
+                markLabel.setText(String.valueOf(mark.getMark()));
+                markLabel.setFont(new Font(18));
+                markLabel.setTextFill(Color.color(0.5, 0, 1));
+                StackPane.setAlignment(markLabel, Pos.CENTER);
+                sP.getChildren().add(markLabel);
+            }
+            borderPane.setCenter(marksBox);
+            contentPane.getChildren().add(borderPane);
+        } else {
+            Label empty = new Label("EMPTY");
+            empty.setFont(new Font(40));
+            empty.setTextFill(Paint.valueOf("#aeaeae"));
+            empty.setPrefWidth(contentPane.getPrefWidth());
+            empty.setPrefHeight(contentPane.getPrefHeight());
+            empty.setAlignment(Pos.CENTER);
+            contentPane.getChildren().add(empty);
+        }
+    }
+
     public void showAttendance() throws IOException {
         contentPane.getChildren().clear();
+        searchBar.setDisable(true);
         String path = new File("").getAbsolutePath();
         URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/student/student-attendance.fxml").toURI().toURL();
         TableView<StudentAttendanceOnLecture> table = FXMLLoader.load(url);
@@ -217,6 +292,7 @@ public class StudentController {
 
     public void showExams() throws IOException {
         contentPane.getChildren().clear();
+        searchBar.setDisable(true);
         String path = new File("").getAbsolutePath();
         URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/student/calendar.fxml").toURI().toURL();
         AnchorPane anchor = FXMLLoader.load(url);
@@ -226,6 +302,7 @@ public class StudentController {
 
     public void showFieldsOfStudies() throws IOException {
         contentPane.getChildren().clear();
+        searchBar.setDisable(true);
         Stage stage = (Stage) studentPanelPane.getScene().getWindow();
         Students s = (Students) UserSession.getSession((Person) stage.getUserData()).getPerson();
         List<Groups> studentGroups = gr.findStudentGroups(s.getAlbumId());
