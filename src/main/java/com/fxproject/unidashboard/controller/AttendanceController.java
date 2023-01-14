@@ -51,13 +51,15 @@ public class AttendanceController {
         lateCol.setEditable(true);
 
         professorLectures.valueProperty().addListener((obs, oldValue, newValue) -> {
-            Groups group = newValue.getGroup();
-            List<Students> studentsFromGroup = sr.getStudentsFromGroup(group);
-            // map students to attendance form
-            List<AttendanceForm> attendanceForms =
-                    mapToAttendanceForm(studentsFromGroup);
-            ObservableList<AttendanceForm> data = FXCollections.observableArrayList(attendanceForms);
-            attendanceList.setItems(data);
+            if(newValue != null) {
+                Groups group = newValue.getGroup();
+                List<Students> studentsFromGroup = sr.getStudentsFromGroup(group);
+                // map students to attendance form
+                List<AttendanceForm> attendanceForms =
+                        mapToAttendanceForm(studentsFromGroup);
+                ObservableList<AttendanceForm> data = FXCollections.observableArrayList(attendanceForms);
+                attendanceList.setItems(data);
+            }
         });
     }
 
@@ -69,6 +71,7 @@ public class AttendanceController {
     }
 
     public void cancelAttendance() {
-        System.out.println("DUPUNIA");
+        professorLectures.getSelectionModel().clearSelection();
+        attendanceList.setItems(FXCollections.observableArrayList());
     }
 }
