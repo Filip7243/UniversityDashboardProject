@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">org.h2.Driver</property>
+        <property name="connection.url">jdbc:h2:~\target\classes\uni-db;DB_CLOSE_ON_EXIT=TRUE;FILE_LOCK=NO</property>
+<!--        <property name="connection.url">jdbc:h2:C:\Users\Filip\JavaProjects\UniversityDashboard\uni-db;DB_CLOSE_ON_EXIT=TRUE;FILE_LOCK=NO</property>-->
+        <property name="connection.username">sa</property>
+        <property name="connection.password"/>
+
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.H2Dialect</property>
+
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">create-drop</property>
+
+        <mapping class="com.fxproject.unidashboard.model.Person"/>
+        <mapping class="com.fxproject.unidashboard.model.Addresses"/>
+        <mapping class="com.fxproject.unidashboard.model.Students"/>
+        <mapping class="com.fxproject.unidashboard.model.Professors"/>
+        <mapping class="com.fxproject.unidashboard.model.UniversityAccounts"/>
+        <mapping class="com.fxproject.unidashboard.model.Departments"/>
+        <mapping class="com.fxproject.unidashboard.model.FieldsOfStudy"/>
+        <mapping class="com.fxproject.unidashboard.model.Groups"/>
+        <mapping class="com.fxproject.unidashboard.model.Subjects"/>
+        <mapping class="com.fxproject.unidashboard.model.Wages"/>
+        <mapping class="com.fxproject.unidashboard.model.Marks"/>
+        <mapping class="com.fxproject.unidashboard.model.Attendances"/>
+        <mapping class="com.fxproject.unidashboard.model.Exams"/>
+        <mapping class="com.fxproject.unidashboard.model.Lectures"/>
+        <mapping class="com.fxproject.unidashboard.model.ProfessorsSubjectsInGroups"/>
+
+    </session-factory>
+
+</hibernate-configuration>

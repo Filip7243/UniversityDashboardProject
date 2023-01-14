@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="610.0" prefWidth="802.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.ModifyStudentController">
+    <children>
+        <VBox prefHeight="610.0" prefWidth="802.0" style="-fx-background-color: black;">
+            <children>
+            <Pane prefHeight="60.0" prefWidth="802.0">
+               <children>
+                  <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeWindow" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="QUIT" />
+                  <Label layoutX="303.0" layoutY="10.0" text="MODIFY STUDENT" textFill="#b9b9b9">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+                <Accordion prefWidth="802.0">
+                    <panes>
+                        <TitledPane fx:id="addFieldOfStudyPane" animated="false" onMousePressed="#loadStudentFieldsOfStudy" style="-fx-background-color: black;" text="Add Field Of Study">
+                     <content>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;">
+                           <children>
+                              <ComboBox fx:id="fieldOfStudies" prefHeight="26.0" prefWidth="186.0" promptText="Choose Field Of Study..." />
+                              <ComboBox fx:id="groups" prefWidth="150.0" promptText="Choose Group..." visible="false" />
+                              <HBox alignment="CENTER" prefHeight="47.0" prefWidth="782.0" spacing="20.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#cancelAdding" text="Cancel" />
+                                    <Button mnemonicParsing="false" onAction="#addFieldOfStudy" text="Add" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                     <stylesheets>
+                        <URL value="@../../css/button-style.css" />
+                        <URL value="@../../css/combobox-style.css" />
+                     </stylesheets></TitledPane>
+                        <TitledPane fx:id="removeGroupPane" animated="false" onMousePressed="#loadRemoveStudentFieldsOfStudy" stylesheets="@../../css/combobox-style.css" text="Remove Field Of Study">
+                     <content>
+                        <VBox fx:id="removeFieldOfStudyPane" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: black;">
+                           <children>
+                              <ComboBox fx:id="removingGroups" prefHeight="26.0" prefWidth="197.0" promptText="Choose Field Of Study..." />
+                              <HBox alignment="CENTER" prefHeight="43.0" prefWidth="782.0" spacing="20.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#cancelRemoving" text="Cancel" />
+                                    <Button mnemonicParsing="false" onAction="#removeGroup" text="Remove" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content></TitledPane>
+                    </panes>
+               <stylesheets>
+                  <URL value="@../../css/button-style.css" />
+                  <URL value="@../../css/texfield-style.css" />
+               </stylesheets>
+                </Accordion>
+                <fx:include fx:id="personalData" source="modify-person.fxml" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

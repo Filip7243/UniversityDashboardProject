@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="1150.0" style="-fx-background-color: black;" stylesheets="@admin-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.AdminController">
+    <children>
+        <VBox alignment="TOP_CENTER" prefHeight="651.0" prefWidth="202.0" spacing="10.0" style="-fx-background-color: #191c24;">
+            <children>
+                <Pane prefHeight="174.0" prefWidth="202.0">
+                    <children>
+                        <Label layoutX="36.0" layoutY="72.0" text="ADMIN PANEL" textFill="#cfcece">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+                <Button mnemonicParsing="false" onAction="#showStudents" text="Students" />
+                <Button mnemonicParsing="false" onAction="#showProfessors" text="Professors" />
+                <Button fx:id="addStudentButton" mnemonicParsing="false" onAction="#showAddingForm" text="Add Student" />
+                <Button fx:id="addProfessorButton" mnemonicParsing="false" onAction="#showAddingForm" text="Add Professor" />
+                <Button mnemonicParsing="false" onAction="#showLectures" text="Lectures" />
+                <Button mnemonicParsing="false" text="Settings" />
+                <Button mnemonicParsing="false" text="Sign Out" />
+            </children>
+            <stylesheets>
+                <URL value="@buttons-style.css" />
+                <URL value="@admin-menu-style.css" />
+            </stylesheets>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </VBox>
+        <VBox layoutX="202.0" prefHeight="650.0" prefWidth="950.0" spacing="20.0">
+            <children>
+                <HBox alignment="CENTER" prefHeight="59.0" prefWidth="668.0" spacing="180.0" style="-fx-background-color: #191c24;" stylesheets="@../../css/search-bar.css">
+                    <children>
+                        <Pane prefHeight="59.0" prefWidth="166.0">
+                            <children>
+                                <Label fx:id="loggedInUserName" layoutX="33.0" layoutY="21.0" text="Filip Kaczmarczyk" textFill="#dcd8d8" />
+                            </children>
+                        </Pane>
+                        <TextField fx:id="searchBar" disable="true" onKeyPressed="#search" promptText="search" />
+                        <Pane prefHeight="59.0" prefWidth="166.0">
+                            <children>
+                                <Button fx:id="closeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="113.0" layoutY="16.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="27.0" prefWidth="45.0" style="-fx-background-color: transparent;">
+                                    <graphic>
+                                        <ImageView fitHeight="19.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../img/close-button.png" />
+                                            </image>
+                                        </ImageView>
+                                    </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                                </Button>
+                            </children>
+                        </Pane>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="164.0" prefWidth="668.0" spacing="100.0">
+                    <children>
+                        <Pane prefHeight="164.0" prefWidth="262.0" style="-fx-background-radius: 1em; -fx-background-color: #191c24;">
+                            <children>
+                        <VBox alignment="CENTER" layoutX="52.0" layoutY="10.0" prefHeight="145.0" prefWidth="158.0">
+                           <children>
+                                      <Label fx:id="totalUsers" alignment="CENTER" prefHeight="74.0" prefWidth="110.0" text="9999" textFill="#b9b9b9">
+                                          <font>
+                                              <Font size="50.0" />
+                                          </font>
+                                      </Label>
+                                      <Label fx:id="totalLabel" text="Total Users" textFill="#0d6efd">
+                                          <font>
+                                              <Font size="20.0" />
+                                          </font>
+                                      </Label>
+                           </children>
+                        </VBox>
+                            </children>
+                        </Pane>
+                  <Pane prefHeight="164.0" prefWidth="262.0" style="-fx-background-radius: 1em; -fx-background-color: #191c24;">
+                     <children>
+                        <VBox alignment="CENTER" layoutX="52.0" layoutY="10.0" prefHeight="145.0" prefWidth="158.0">
+                           <children>
+                              <Label fx:id="activeAccounts" alignment="CENTER" prefHeight="74.0" prefWidth="110.0" text="9999" textFill="#b9b9b9">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="activeLabel" text="Active Accounts" textFill="#0d6efd">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
+                    </children>
+                </HBox>
+                <ScrollPane fx:id="scrollPane" prefHeight="390.0" prefWidth="950.0" stylesheets="@scroll-pane-style.css">
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <content>
+                        <VBox fx:id="itemsContainer" alignment="TOP_CENTER" prefHeight="388.0" prefWidth="947.0" spacing="8.0" />
+                    </content>
+                </ScrollPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

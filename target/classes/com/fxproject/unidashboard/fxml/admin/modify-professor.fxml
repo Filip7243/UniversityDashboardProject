@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="610.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.ModifyProfessorController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="610.0" prefWidth="800.0" style="-fx-background-color: black;">
+         <children>
+            <Pane prefHeight="100.0" prefWidth="802.0" stylesheets="@../../css/button-style.css">
+               <children>
+                  <Label layoutX="266.0" layoutY="3.0" text="Modify Professor">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#closeWindow" text="QUIT" />
+               </children>
+            </Pane>
+            <Accordion prefWidth="871.0" style="-fx-background-color: black;" stylesheets="@../../css/texfield-style.css">
+              <panes>
+                <TitledPane fx:id="addWageTab" animated="false" prefHeight="100.0" prefWidth="802.0" style="-fx-background-color: black;" text="Add Wage">
+                     <content>
+                        <VBox alignment="CENTER" prefHeight="148.0" prefWidth="801.0" spacing="20.0" style="-fx-background-color: black;" stylesheets="@../../css/button-style.css">
+                           <children>
+                              <TextField fx:id="salary" promptText="Salary" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #a9a8a8;" />
+                              <TextField fx:id="hourlyRate" promptText="Hourly Rate" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #a9a8a8;" />
+                              <TextField fx:id="hoursWorked" promptText="Hours Worked" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #a9a8a8;" />
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#cancelAddWageTab" text="Cancel" />
+                                    <Button mnemonicParsing="false" onAction="#addWage" text="Add" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content></TitledPane>
+                <TitledPane fx:id="addRemoveSubject" animated="false" onMousePressed="#showAddRemoveForm" prefHeight="100.0" prefWidth="802.0" style="-fx-background-color: black;" stylesheets="@../../css/combobox-style.css" text="Add/Remove Teaching Subjects">
+                     <content>
+                        <HBox prefHeight="126.0" prefWidth="801.0" style="-fx-background-color: black; -fx-text-fill: #a9a8a8;" stylesheets="@../../css/button-style.css">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" spacing="10.0">
+                                 <children>
+                                    <Label style="-fx-text-fill: #a9a8a8;" text="Add Subject" />
+                                    <ComboBox fx:id="comboGroups" prefWidth="150.0" promptText="Choose Group" style="-fx-text-fill: #a9a8a8;" />
+                                    <ComboBox fx:id="comboSubjects" prefWidth="150.0" promptText="Choose Subject" style="-fx-text-fill: #a9a8a8;" />
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#cancelAddRemoveTab" text="Cancel" />
+                                          <Button mnemonicParsing="false" onAction="#addSubject" text="Add" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" spacing="10.0">
+                                 <children>
+                                    <Label style="-fx-text-fill: #a9a8a8;" text="Remove Subject" />
+                                    <ComboBox fx:id="comboRemoveGroup" prefWidth="150.0" promptText="Choose Group" style="-fx-text-fill: #a9a8a8;" />
+                                    <ComboBox fx:id="comboRemoveSubject" prefWidth="150.0" promptText="Choose Subject" style="-fx-text-fill: #a9a8a8;" />
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#cancelAddRemoveTab" text="Cancel" />
+                                          <Button mnemonicParsing="false" onAction="#removeSubject" text="Remove" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </content></TitledPane>
+              </panes>
+            </Accordion>
+            <fx:include fx:id="personalData" source="modify-person.fxml" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

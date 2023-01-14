@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+
+<HBox fx:id="infoItem" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="551.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="275.5">
+         <children>
+            <Label fx:id="label" layoutX="72.0" layoutY="10.0" text="LABEL WITH NAME " textFill="#c9c9c9">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <StackPane fx:id="pane" prefHeight="150.0" prefWidth="275.5" />
+   </children>
+</HBox>

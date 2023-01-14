@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="590.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.GradeStudentController">
+    <children>
+      <VBox alignment="TOP_CENTER" prefHeight="590.0" prefWidth="950.0" spacing="20.0">
+         <children>
+            <Pane prefHeight="101.0" prefWidth="950.0" style="-fx-background-color: #191c24;">
+               <children>
+                  <Label layoutX="312.0" layoutY="22.0" text="GRADE STUDENT" textFill="#aeaeae">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+              <ComboBox fx:id="comboGroups" prefWidth="300.0" promptText="Choose Group">
+               <effect>
+                  <Glow level="0.57" />
+               </effect></ComboBox>
+              <ComboBox fx:id="comboStudents" prefWidth="300.0" promptText="Choose Student">
+               <effect>
+                  <Glow level="0.57" />
+               </effect></ComboBox>
+              <ComboBox fx:id="comboSubjects" prefWidth="300.0" promptText="Choose Subject">
+               <effect>
+                  <Glow level="0.57" />
+               </effect></ComboBox>
+            <Spinner fx:id="markSpinner" editable="true" prefWidth="300.0" />
+            <TextField fx:id="description" maxWidth="300.0" prefWidth="300.0" promptText="Description" />
+            <ComboBox fx:id="comboTypes" prefWidth="300.0" promptText="Choose Type">
+               <effect>
+                  <Glow level="0.57" />
+               </effect></ComboBox>
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="950.0" spacing="45.0">
+               <children>
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelGrade" prefWidth="120.0" text="Cancel" />
+                  <Button fx:id="submitButton" mnemonicParsing="false" onAction="#submitGrade" prefWidth="120.0" text="Submit" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+    </children>
+   <stylesheets>
+      <URL value="@../../css/texfield-style.css" />
+      <URL value="@../../css/combobox-style.css" />
+      <URL value="@../../css/button-style.css" />
+   </stylesheets>
+</AnchorPane>
