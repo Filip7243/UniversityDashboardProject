@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.VBox?>
 
-<TableView fx:id="table" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="950.0" stylesheets="@../../css/tableview-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.StudentAttendanceController">
-    <columns>
-        <TableColumn fx:id="subjectColumn" prefWidth="316.666667" text="Subject" />
-        <TableColumn fx:id="dateColumn" prefWidth="316.666667" text="Date" />
-        <TableColumn fx:id="presentColumn" prefWidth="316.666667" text="Present" />
-    </columns>
-</TableView>
+
+<VBox stylesheets="@../../css/combobox-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.StudentAttendanceController">
+   <children>
+      <ComboBox fx:id="comboSubject" prefWidth="950.0" promptText="Choose Subject">
+         <effect>
+            <Glow level="0.57" />
+         </effect>
+      </ComboBox>
+      <TableView fx:id="table" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="950.0" stylesheets="@../../css/tableview-style.css">
+          <columns>
+              <TableColumn fx:id="subjectColumn" prefWidth="316.666667" text="Subject" />
+              <TableColumn fx:id="dateColumn" prefWidth="316.666667" text="Date" />
+              <TableColumn fx:id="presentColumn" prefWidth="316.666667" text="Present" />
+          </columns>
+      </TableView>
+   </children>
+</VBox>

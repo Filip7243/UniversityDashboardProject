@@ -117,7 +117,8 @@ public class LoginController {
             session.persist(accAdmin);
 
             Lectures l = new Lectures(null, "Bardzo Fajny wykład", LocalDateTime.now(), g, subjects, p);
-            Lectures l2 = new Lectures(null, "Jak ugotować jajka w 5 minut", LocalDateTime.now(), g, subjects, p);
+            Lectures l2 = new Lectures(null, "Jak ugotować jajka w 5 minut", LocalDateTime.now(), g, subjects2, p);
+            Lectures l3 = new Lectures(null, "Jak ugotować jajka w 5 minut", LocalDateTime.now(), g, subjects2, p);
             session.persist(l);
             session.persist(l2);
 
@@ -142,8 +143,10 @@ public class LoginController {
             session.persist(w);
             Attendances a = new Attendances(null, true, false, l2, s);
             Attendances a1 = new Attendances(null, true, false, l, s);
+            Attendances a2 = new Attendances(null, true, false, l, s);
             session.persist(a);
             session.persist(a1);
+            session.persist(a2);
 
             Exams e = new Exams(null, "EGZAMIN", LocalDateTime.of(2022, 12, 21, 21, 37),
                     ExamTypes.SEMESTER_EXAM, g, subjects);

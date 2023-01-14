@@ -286,7 +286,7 @@ public class StudentController {
         searchBar.setDisable(true);
         String path = new File("").getAbsolutePath();
         URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/student/student-attendance.fxml").toURI().toURL();
-        TableView<StudentAttendanceOnLecture> table = FXMLLoader.load(url);
+        VBox table = FXMLLoader.load(url);
         contentPane.getChildren().add(table);
     }
 
