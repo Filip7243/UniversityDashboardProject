@@ -3,10 +3,13 @@ package com.fxproject.unidashboard.controller;
 import com.fxproject.unidashboard.HelloApplication;
 import com.fxproject.unidashboard.model.Person;
 import com.fxproject.unidashboard.utils.UserSession;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -16,6 +19,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -226,6 +230,21 @@ public class ProfessorController {
         URL url = HelloApplication.class.getResource("fxml/professor/add-exam.fxml");
         VBox vbox = loader.load(url);
         contentPane.getChildren().add(vbox);
+    }
+
+    public void signOut(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("fxml/login-view.fxml"));
+        Parent root = loader.load();
+        Stage loginStage = new Stage();
+        loginStage.initStyle(StageStyle.UNDECORATED);
+        loginStage.setScene(new Scene(root, 1150, 650));
+        loginStage.show();
+        Stage stage = (Stage) (((Button) event.getSource()).getScene().getWindow());
+        UserSession session = UserSession.getSession();
+        if (session != null) {
+            session.cancelSession();
+        }
+        stage.close();
     }
 
     public void closeWindow() {

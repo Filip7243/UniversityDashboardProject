@@ -33,7 +33,7 @@
                 <Button fx:id="attendanceButton" mnemonicParsing="false" onAction="#showCheckAttendanceForm" text="Attendance" textFill="#c9c9c9" />
                 <Button mnemonicParsing="false" onAction="#showAddExamForm" text="Add Exams" textFill="#c9c9c9" />
                 <Button mnemonicParsing="false" text="Settings" textFill="#c9c9c9" />
-                <Button mnemonicParsing="false" text="Sign Out" textFill="#c9c9c9" />
+                <Button mnemonicParsing="false" onAction="#signOut" text="Sign Out" textFill="#c9c9c9" />
             </children>
             <stylesheets>
                 <URL value="@../admin/buttons-style.css" />

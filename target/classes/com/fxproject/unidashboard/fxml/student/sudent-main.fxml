@@ -33,7 +33,7 @@
                 <Button mnemonicParsing="false" onAction="#showFieldsOfStudies" text="My Fields Of Studies" textFill="#c9c9c9" />
                 <Button mnemonicParsing="false" onAction="#showExams" text="My Exams" textFill="#c9c9c9" />
                 <Button mnemonicParsing="false" text="Settings" textFill="#c9c9c9" />
-                <Button mnemonicParsing="false" text="Sign Out" textFill="#c9c9c9" />
+                <Button mnemonicParsing="false" onAction="#signOut" text="Sign Out" textFill="#c9c9c9" />
             </children>
             <stylesheets>
                 <URL value="@../admin/buttons-style.css" />

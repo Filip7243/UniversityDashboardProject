@@ -9,6 +9,7 @@ import com.fxproject.unidashboard.model.Students;
 import com.fxproject.unidashboard.repository.LectureRepository;
 import com.fxproject.unidashboard.repository.ProfessorRepository;
 import com.fxproject.unidashboard.repository.StudentRepository;
+import com.fxproject.unidashboard.utils.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +26,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.Window;
 
 import java.io.IOException;
 import java.net.URL;
@@ -245,6 +245,21 @@ public class AdminController {
                 }
             }
         }
+    }
+
+    public void signOut(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("fxml/login-view.fxml"));
+        Parent root = loader.load();
+        Stage loginStage = new Stage();
+        loginStage.initStyle(StageStyle.UNDECORATED);
+        loginStage.setScene(new Scene(root, 1150, 650));
+        loginStage.show();
+        Stage stage = (Stage) (((Button) event.getSource()).getScene().getWindow());
+        UserSession session = UserSession.getSession();
+        if (session != null) {
+            session.cancelSession();
+        }
+        stage.close();
     }
 
     public void closeWindow() {

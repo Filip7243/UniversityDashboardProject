@@ -34,7 +34,7 @@
                 <Button fx:id="addProfessorButton" mnemonicParsing="false" onAction="#showAddingForm" text="Add Professor" />
                 <Button mnemonicParsing="false" onAction="#showLectures" text="Lectures" />
                 <Button mnemonicParsing="false" text="Settings" />
-                <Button mnemonicParsing="false" text="Sign Out" />
+                <Button mnemonicParsing="false" onAction="#signOut" text="Sign Out" />
             </children>
             <stylesheets>
                 <URL value="@buttons-style.css" />
