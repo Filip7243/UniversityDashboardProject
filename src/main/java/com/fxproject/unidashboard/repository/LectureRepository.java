@@ -82,4 +82,20 @@ public class LectureRepository {
         }
     }
 
+    public List<Lectures> findLectureWithTopic(String topic) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            Query<Lectures> query = session.createQuery("SELECT l FROM Lectures l WHERE lower(l.lectureTopic) LIKE :topic", Lectures.class);
+            query.setParameter("topic", "%" + topic + "%");
+            tx.commit();
+            return query.getResultList();
+        } catch (Exception e) {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+            return List.of();
+        }
+    }
+
 }

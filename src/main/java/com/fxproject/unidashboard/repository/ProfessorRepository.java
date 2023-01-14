@@ -54,4 +54,20 @@ public class ProfessorRepository {
         }
     }
 
+    public List<Professors> findStudentWithName(String name) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            Query<Professors> query = session.createQuery("SELECT p FROM Professors p WHERE lower(p.firstName) LIKE :name", Professors.class);
+            query.setParameter("name", "%" + name + "%");
+            tx.commit();
+            return query.getResultList();
+        } catch (Exception e) {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+            return List.of();
+        }
+    }
+
 }

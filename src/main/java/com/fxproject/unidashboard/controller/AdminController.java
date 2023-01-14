@@ -18,6 +18,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -46,10 +49,14 @@ public class AdminController {
     private VBox itemsContainer; // contains students/professors/lectures etc.
     @FXML
     private Label loggedInUserName;
+    @FXML
+    private TextField searchBar;
 
     private StudentRepository sr = new StudentRepository();
     private ProfessorRepository profR = new ProfessorRepository();
     private LectureRepository lr = new LectureRepository();
+
+    private Button clickedButton;
 
     public void initialize() {
 //        Person person = UserSession.getSession().getPerson();
@@ -57,6 +64,7 @@ public class AdminController {
     }
 
     private void loadUsersNodes(List<PersonDto> list) {
+        searchBar.setDisable(false);
         Node[] nodes = new Node[list.size()];
         for (int i = 0; i < list.size(); i++) {
             try {
@@ -99,6 +107,7 @@ public class AdminController {
     }
 
     private void loadLecturesNodes(List<LectureDto> list) {
+        searchBar.setDisable(false);
         Node[] nodes = new Node[list.size()];
         for (int i = 0; i < list.size(); i++) {
             try {
@@ -139,6 +148,7 @@ public class AdminController {
     }
 
     private int countActiveAccounts(List<PersonDto> list) {
+
         int counter = 0;
         for (PersonDto personDto : list) {
             if (personDto.isActive()) {
@@ -149,13 +159,15 @@ public class AdminController {
         return counter;
     }
 
-    public void showStudents() {
+    public void showStudents(ActionEvent event) {
+        clickedButton = (Button) event.getSource();
         // load all students from db
         List<Students> allStudents = sr.findAllStudents();
         loadDtos(mapToPersonDtos(allStudents));
     }
 
-    public void showProfessors() {
+    public void showProfessors(ActionEvent event) {
+        clickedButton = (Button) event.getSource();
         // load all professors from db
         List<Professors> allProfessors = profR.findAllProfessors();
         loadDtos(mapToPersonDtos(allProfessors));
@@ -170,11 +182,16 @@ public class AdminController {
         loadUsersNodes(personDtos);
     }
 
-    public void showLectures() {
+    public void showLectures(ActionEvent event) {
+        clickedButton = (Button) event.getSource();
+        System.out.println(clickedButton.getText());
         List<Lectures> allLectures = lr.findAllLectures();
-        List<LectureDto> lectureDtos = mapToLectureDtos(allLectures);
+        loadLecturesDtos(mapToLectureDtos(allLectures));
+    }
+
+    private void loadLecturesDtos(List<LectureDto> lectureDtos) {
         totalUsers.setText(String.valueOf(lectureDtos.size())); // total lectures
-        activeAccounts.setText(String.valueOf(countCurrentLessons(allLectures)));
+        activeAccounts.setText(String.valueOf(countCurrentLessons(lr.findAllLectures())));
         totalLabel.setText("All Lectures");
         activeLabel.setText("Now Lessons");
         itemsContainer.getChildren().clear();
@@ -194,6 +211,7 @@ public class AdminController {
     }
 
     public void showAddingForm(ActionEvent event) {
+        searchBar.setDisable(true);
         Parent root;
         try {
             String path = new File("").getAbsolutePath();
@@ -215,6 +233,25 @@ public class AdminController {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void search(KeyEvent keyEvent) {
+        if(keyEvent.getCode().equals(KeyCode.ENTER)) {
+            if(clickedButton != null) {
+                switch (clickedButton.getText()) {
+                    case "Students" -> {
+                        List<Students> studentWithName = sr.findStudentWithName(searchBar.getText().trim().toLowerCase());
+                        loadDtos(mapToPersonDtos(studentWithName));
+                    }
+                    case "Professors" -> {
+                        loadDtos(mapToPersonDtos(profR.findStudentWithName(searchBar.getText())));
+                    }
+                    case "Lectures" -> {
+                        loadLecturesDtos(mapToLectureDtos(lr.findLectureWithTopic(searchBar.getText())));
+                    }
+                }
+            }
         }
     }
 

@@ -85,4 +85,22 @@ public class StudentRepository {
         }
     }
 
+
+    public List<Students> findStudentWithName(String name) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            Query<Students> query = session.createQuery("SELECT s FROM Students s WHERE lower(s.firstName) LIKE :name", Students.class);
+            query.setParameter("name", "%" + name + "%");
+            tx.commit();
+            return query.getResultList();
+        } catch (Exception e) {
+            if (tx != null && tx.isActive()) {
+                System.out.println(e.getMessage());
+                tx.rollback();
+            }
+            return List.of();
+        }
+    }
+
 }

@@ -4,7 +4,6 @@ import com.fxproject.unidashboard.model.*;
 import com.fxproject.unidashboard.utils.HibernateConnect;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -20,16 +19,18 @@ public class PersonRepository {
 
     public void save(Person person) {
         Transaction tx = null;
-        try (Session session = HibernateConnect.openSession()){
-            tx = session.beginTransaction();;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            ;
             session.persist(person);
             tx.commit();
         } catch (Exception e) {
-            if(tx != null && tx.isActive()) {
+            if (tx != null && tx.isActive()) {
                 tx.rollback();
             }
         }
     }
+
     public List<Person> findAllPeople() {
         try (Session session = HibernateConnect.openSession()) {
             Query<Person> people = session.createQuery("SELECT p FROM Person p", Person.class);
