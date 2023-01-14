@@ -1,5 +1,6 @@
 package com.fxproject.unidashboard.controller;
 
+import com.fxproject.unidashboard.HelloApplication;
 import com.fxproject.unidashboard.dto.StudentAttendanceOnLecture;
 import com.fxproject.unidashboard.model.Groups;
 import com.fxproject.unidashboard.model.Marks;
@@ -214,8 +215,7 @@ public class StudentController {
     public void showMarks() throws IOException {
         contentPane.getChildren().clear();
         searchBar.setDisable(false);
-        String path = new File("").getAbsolutePath();
-        URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/student/student-marks.fxml").toURI().toURL();
+        URL url = HelloApplication.class.getResource("fxml/student/student-marks.fxml");
         BorderPane borderPane = loader.load(url);
         contentPane.getChildren().add(borderPane);
     }
@@ -284,8 +284,7 @@ public class StudentController {
     public void showAttendance() throws IOException {
         contentPane.getChildren().clear();
         searchBar.setDisable(true);
-        String path = new File("").getAbsolutePath();
-        URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/student/student-attendance.fxml").toURI().toURL();
+        URL url = HelloApplication.class.getResource("fxml/student/student-attendance.fxml");
         VBox table = FXMLLoader.load(url);
         contentPane.getChildren().add(table);
     }
@@ -293,10 +292,8 @@ public class StudentController {
     public void showExams() throws IOException {
         contentPane.getChildren().clear();
         searchBar.setDisable(true);
-        String path = new File("").getAbsolutePath();
-        URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/student/calendar.fxml").toURI().toURL();
+        URL url = HelloApplication.class.getResource("fxml/student/calendar.fxml");
         AnchorPane anchor = FXMLLoader.load(url);
-
         contentPane.getChildren().add(anchor);
     }
 
@@ -329,8 +326,7 @@ public class StudentController {
     }
 
     public static HBox loadFXMLItem() throws IOException {
-        String path = new File("").getAbsolutePath();
-        URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/student/student-info.fxml").toURI().toURL();
+        URL url = HelloApplication.class.getResource("fxml/student/student-info.fxml");
         Parent root = FXMLLoader.load(url);
         return (HBox) root.lookup("#infoItem");
     }

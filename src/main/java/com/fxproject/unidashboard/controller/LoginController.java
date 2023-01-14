@@ -1,5 +1,6 @@
 package com.fxproject.unidashboard.controller;
 
+import com.fxproject.unidashboard.HelloApplication;
 import com.fxproject.unidashboard.model.*;
 import com.fxproject.unidashboard.repository.AccountRepository;
 import com.fxproject.unidashboard.utils.HibernateConnect;
@@ -174,23 +175,19 @@ public class LoginController {
         UniversityAccounts accounts = ar.checkIfUserExists(loginField.getText(), passwordField.getText());
         if (accounts != null) {
             Parent root;
+            FXMLLoader loader = null;
             try {
                 String role = accounts.getRole().name();
-                String path = new File("").getAbsolutePath();
-                URL url = null;
                 switch (role) {
                     case "ROLE_ADMIN" ->
-                            url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/admin/admin-menu.fxml")
-                                    .toURI().toURL();
+                            loader = new FXMLLoader(HelloApplication.class.getResource("fxml/admin/admin-menu.fxml"));
                     case "ROLE_PROFESSOR" ->
-                            url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/professor/professor-main.fxml")
-                                    .toURI().toURL();
+                            loader = new FXMLLoader(HelloApplication.class.getResource("fxml/professor/professor-main.fxml"));
                     case "ROLE_STUDENT" ->
-                            url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/student/sudent-main.fxml")
-                                    .toURI().toURL();
+                            loader = new FXMLLoader(HelloApplication.class.getResource("fxml/student/sudent-main.fxml"));
                 }
-                if (url != null) {
-                    root = FXMLLoader.load(url);
+                if (loader != null) {
+                    root = loader.load();
                     Stage stage = new Stage();
                     stage.initStyle(StageStyle.UNDECORATED);
                     stage.setScene(new Scene(root, 1150, 650));

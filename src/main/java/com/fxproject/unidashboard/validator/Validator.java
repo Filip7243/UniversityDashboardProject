@@ -1,9 +1,7 @@
 package com.fxproject.unidashboard.validator;
 
 import javafx.css.PseudoClass;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
 
 import java.util.List;
 import java.util.function.UnaryOperator;
@@ -22,7 +20,7 @@ public class Validator {
 
     public static boolean checkIfEmpty(List<TextField> tfs) {
         for (TextField tf : tfs) {
-            if(isEmpty(tf)) {
+            if (isEmpty(tf)) {
                 showAlert(Alert.AlertType.WARNING, tf.getId().toUpperCase() + " is Empty");
                 return false;
             }
@@ -69,4 +67,24 @@ public class Validator {
     public static void setValidator(TextField tf, UnaryOperator<TextFormatter.Change> change) {
         tf.setTextFormatter(new TextFormatter<>(change));
     }
+
+    public static boolean checkIfValueInComboSelected(List<ComboBox<?>> cbs) {
+        for (ComboBox<?> cb : cbs) {
+            if(cb.getSelectionModel().isEmpty()) {
+                showAlert(Alert.AlertType.WARNING, cb.getId().toUpperCase() + " is empty");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean checkIfDateWasPicked(DatePicker datePicker) {
+        if(datePicker.getValue() == null) {
+            showAlert(Alert.AlertType.WARNING, "Date was not picked!");
+            return false;
+        }
+        return true;
+    }
+
+
 }

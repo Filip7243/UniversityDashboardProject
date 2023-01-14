@@ -160,7 +160,7 @@
                               <Label contentDisplay="RIGHT" graphicTextGap="49.0" style="-fx-font-size: 12px; -fx-font-weight: bold;" text="City" GridPane.rowIndex="1" />
                               <TextField prefColumnCount="14" promptText="New York City" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Label contentDisplay="RIGHT" graphicTextGap="72.0" style="-fx-font-size: 12px; -fx-font-weight: bold;" text="Street" GridPane.rowIndex="2" />
-                              <TextField prefColumnCount="14" promptText="Main Street" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField prefColumnCount="14" promptText="com.fxproject.unidashboard.Main Street" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <Label contentDisplay="RIGHT" graphicTextGap="98.0" style="-fx-font-size: 12px; -fx-font-weight: bold;" text="House Number" GridPane.rowIndex="3" />
                               <TextField prefColumnCount="14" promptText="99" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                               <Label contentDisplay="RIGHT" graphicTextGap="60.0" prefHeight="27.0" prefWidth="307.0" style="-fx-font-size: 12px; -fx-font-weight: bold;" text="Flat Number" GridPane.rowIndex="4" />

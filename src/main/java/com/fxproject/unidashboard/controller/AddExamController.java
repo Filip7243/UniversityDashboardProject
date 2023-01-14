@@ -6,12 +6,14 @@ import com.fxproject.unidashboard.repository.ProfessorsSubjectsInGroupsRepositor
 import com.fxproject.unidashboard.utils.UserSession;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
-import java.time.LocalDateTime;
 import java.util.List;
+
+import static com.fxproject.unidashboard.validator.Validator.*;
 
 public class AddExamController {
 
@@ -47,16 +49,44 @@ public class AddExamController {
     }
 
     public void addExam() {
-        Exams exam = new Exams();
-        exam.setExamName(examNameField.getText());
-        exam.setGroup(comboGroups.getValue());
-        exam.setSubject(comboSubjects.getValue());
-        exam.setExamType(comboTypes.getValue());
-        exam.setExamDate(examDatePicker.getValue().atStartOfDay());
-        er.save(exam);
+        if (!validateTextFields()) {
+        } else if (!validateComboBoxes()) {
+        } else if (!validateDatePicker()) {
+        } else {
+            Exams exam = new Exams();
+            exam.setExamName(examNameField.getText());
+            exam.setGroup(comboGroups.getValue());
+            exam.setSubject(comboSubjects.getValue());
+            exam.setExamType(comboTypes.getValue());
+            exam.setExamDate(examDatePicker.getValue().atStartOfDay());
+            er.save(exam);
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Added!");
+            a.show();
+            clearFields();
+        }
+    }
+
+    private boolean validateComboBoxes() {
+        return checkIfValueInComboSelected(List.of(comboGroups, comboSubjects, comboTypes));
+    }
+
+    private boolean validateTextFields() {
+        return checkIfEmpty(List.of(examNameField));
+    }
+
+    private boolean validateDatePicker() {
+        return checkIfDateWasPicked(examDatePicker);
     }
 
     public void cancelAdding() {
-        System.out.println("NZXJIDSA");
+        clearFields();
+    }
+
+    private void clearFields() {
+        comboTypes.getSelectionModel().clearSelection();
+        comboSubjects.getSelectionModel().clearSelection();
+        comboGroups.getSelectionModel().clearSelection();
+        examNameField.clear();
+        examDatePicker.getEditor().clear();
     }
 }

@@ -1,5 +1,6 @@
 package com.fxproject.unidashboard.controller;
 
+import com.fxproject.unidashboard.HelloApplication;
 import com.fxproject.unidashboard.dto.LectureDto;
 import com.fxproject.unidashboard.dto.PersonDto;
 import com.fxproject.unidashboard.model.Lectures;
@@ -68,8 +69,7 @@ public class AdminController {
         Node[] nodes = new Node[list.size()];
         for (int i = 0; i < list.size(); i++) {
             try {
-                String path = new File("").getAbsolutePath();
-                URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/user-item.fxml").toURI().toURL();
+                URL url = HelloApplication.class.getResource("fxml/user-item.fxml");
                 nodes[i] = FXMLLoader.load(url);
                 HBox v = (HBox) nodes[i];
                 BorderPane namePane = (BorderPane) v.getChildren().get(0);
@@ -111,8 +111,7 @@ public class AdminController {
         Node[] nodes = new Node[list.size()];
         for (int i = 0; i < list.size(); i++) {
             try {
-                String path = new File("").getAbsolutePath();
-                URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/lecture-item.fxml").toURI().toURL();
+                URL url = HelloApplication.class.getResource("fxml/lecture-item.fxml");
                 nodes[i] = FXMLLoader.load(url);
                 HBox v = (HBox) nodes[i];
                 BorderPane idPane = (BorderPane) v.getChildren().get(0);
@@ -148,14 +147,12 @@ public class AdminController {
     }
 
     private int countActiveAccounts(List<PersonDto> list) {
-
         int counter = 0;
         for (PersonDto personDto : list) {
             if (personDto.isActive()) {
                 counter++;
             }
         }
-
         return counter;
     }
 
@@ -213,19 +210,18 @@ public class AdminController {
     public void showAddingForm(ActionEvent event) {
         searchBar.setDisable(true);
         Parent root;
+        FXMLLoader loader = null;
         try {
-            String path = new File("").getAbsolutePath();
             Button btn = (Button) event.getSource();
-            URL url = null;
             switch (btn.getId()) {
                 case "addProfessorButton" ->
-                        url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/admin/add-professor-form.fxml").toURI().toURL();
+                        loader = new FXMLLoader(HelloApplication.class.getResource("fxml/admin/add-professor-form.fxml"));
                 case "addStudentButton" ->
-                        url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/admin/add-student-form.fxml").toURI().toURL();
+                        loader = new FXMLLoader(HelloApplication.class.getResource("fxml/admin/add-student-form.fxml"));
             }
 
-            if (url != null) {
-                root = FXMLLoader.load(url);
+            if (loader != null) {
+                root = loader.load();
                 Stage stage = new Stage();
                 stage.initStyle(StageStyle.UNDECORATED);
                 stage.setScene(new Scene(root, 725, 383));

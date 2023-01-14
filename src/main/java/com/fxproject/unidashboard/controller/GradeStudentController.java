@@ -6,16 +6,16 @@ import com.fxproject.unidashboard.repository.ProfessorsSubjectsInGroupsRepositor
 import com.fxproject.unidashboard.repository.StudentRepository;
 import com.fxproject.unidashboard.utils.UserSession;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static com.fxproject.unidashboard.validator.Validator.checkIfEmpty;
+import static com.fxproject.unidashboard.validator.Validator.checkIfValueInComboSelected;
 
 public class GradeStudentController {
 
@@ -54,11 +54,11 @@ public class GradeStudentController {
         Professors professor = (Professors) UserSession.getSession().getPerson();
         Set<Groups> groups = professor.getPsig().stream().map(ProfessorsSubjectsInGroups::getGroup).collect(Collectors.toSet());
         comboGroups.setItems(FXCollections.observableArrayList(groups));
+        comboTypes.getItems().addAll(ExamTypes.values());
 
         comboGroups.valueProperty().addListener((obs, oldValue, newValue) -> {
             comboStudents.setItems(FXCollections.observableArrayList(sr.getStudentsFromGroup(newValue)));
             comboSubjects.setItems(FXCollections.observableArrayList(psigr.findProfessorSubjectInGroup(newValue, professor)));
-            comboTypes.getItems().addAll(ExamTypes.values());
             comboSubjects.setVisible(true);
             comboStudents.setVisible(true);
             cancelButton.setVisible(true);
@@ -67,14 +67,46 @@ public class GradeStudentController {
             description.setVisible(true);
             comboTypes.setVisible(true);
         });
+
     }
 
     public void cancelGrade() {
-        System.out.println("CANCEL");
+        comboGroups.getSelectionModel().clearSelection();
+        comboSubjects.setVisible(false);
+        comboStudents.setVisible(false);
+        cancelButton.setVisible(false);
+        submitButton.setVisible(false);
+        markSpinner.setVisible(false);
+        description.setVisible(false);
+        comboTypes.setVisible(false);
     }
 
     public void submitGrade() {
-        Marks mark = new Marks(null, markSpinner.getValue(), LocalDateTime.now(), description.getText(), comboStudents.getValue(), comboSubjects.getValue(), comboTypes.getValue());
-        mr.save(mark);
+        if (!validateTextFields()) {
+        } else if (!validateCombos()) {
+        } else {
+            Marks mark = new Marks(null, markSpinner.getValue(), LocalDateTime.now(), description.getText(), comboStudents.getValue(), comboSubjects.getValue(), comboTypes.getValue());
+            mr.save(mark);
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Added!");
+            a.show();
+            clearFields();
+        }
+    }
+
+    private boolean validateCombos() {
+        return checkIfValueInComboSelected(List.of(comboStudents, comboGroups, comboSubjects, comboTypes));
+    }
+
+    private boolean validateTextFields() {
+        return checkIfEmpty(List.of(description));
+    }
+
+    private void clearFields() {
+        comboGroups.getSelectionModel().clearSelection();
+        comboSubjects.getSelectionModel().clearSelection();
+        comboTypes.getSelectionModel().clearSelection();
+        comboStudents.getSelectionModel().clearSelection();
+        markSpinner.getValueFactory().setValue(2.0);
+        description.clear();
     }
 }

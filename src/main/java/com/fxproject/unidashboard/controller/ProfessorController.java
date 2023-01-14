@@ -1,5 +1,6 @@
 package com.fxproject.unidashboard.controller;
 
+import com.fxproject.unidashboard.HelloApplication;
 import com.fxproject.unidashboard.model.Lectures;
 import com.fxproject.unidashboard.model.Person;
 import com.fxproject.unidashboard.utils.UserSession;
@@ -204,25 +205,21 @@ public class ProfessorController {
 
     public void showGradeStudentForm() throws IOException {
         contentPane.getChildren().clear();
-        String path = new File("").getAbsolutePath();
-        URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/professor/grade-student-form.fxml").toURI().toURL();
+        URL url = HelloApplication.class.getResource("fxml/professor/grade-student-form.fxml");
         AnchorPane anchorPane = loader.load(url);
         contentPane.getChildren().add(anchorPane);
     }
 
     public void showStartLectureForm() throws IOException {
         contentPane.getChildren().clear();
-        String path = new File("").getAbsolutePath();
-        URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/professor/start-lecture.fxml")
-                .toURI().toURL();
+        URL url = HelloApplication.class.getResource("fxml/professor/start-lecture.fxml");
         VBox vbox = loader.load(url);
         contentPane.getChildren().add(vbox);
     }
 
     public void showCheckAttendanceForm() throws IOException {
         contentPane.getChildren().clear();
-        String path = new File("").getAbsolutePath();
-        URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/professor/attendance.fxml").toURI().toURL();
+        URL url = HelloApplication.class.getResource("fxml/professor/attendance.fxml");
         VBox vbox = loader.load(url);
         contentPane.getChildren().add(vbox);
     }
@@ -230,8 +227,7 @@ public class ProfessorController {
     public void showAddExamForm() throws IOException {
         // load fxml
         contentPane.getChildren().clear();
-        String path = new File("").getAbsolutePath();
-        URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/professor/add-exam.fxml").toURI().toURL();
+        URL url = HelloApplication.class.getResource("fxml/professor/add-exam.fxml");
         VBox vbox = loader.load(url);
         contentPane.getChildren().add(vbox);
     }

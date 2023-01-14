@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="907.0" prefWidth="725.0" stylesheets="@scroll-pane-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.AddFormController">
     <content>
         <VBox alignment="TOP_CENTER" prefHeight="914.0" prefWidth="706.0" spacing="10.0">
@@ -307,6 +308,7 @@
             <URL value="@../../css/combobox-style.css" />
             <URL value="@../../css/texfield-style.css" />
             <URL value="@../../css/datepicker-style.css" />
-         </stylesheets></VBox>
+         </stylesheets>
+      </VBox>
     </content>
 </ScrollPane>
