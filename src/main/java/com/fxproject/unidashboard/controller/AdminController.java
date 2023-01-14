@@ -4,13 +4,11 @@ import com.fxproject.unidashboard.HelloApplication;
 import com.fxproject.unidashboard.dto.LectureDto;
 import com.fxproject.unidashboard.dto.PersonDto;
 import com.fxproject.unidashboard.model.Lectures;
-import com.fxproject.unidashboard.model.Person;
 import com.fxproject.unidashboard.model.Professors;
 import com.fxproject.unidashboard.model.Students;
 import com.fxproject.unidashboard.repository.LectureRepository;
 import com.fxproject.unidashboard.repository.ProfessorRepository;
 import com.fxproject.unidashboard.repository.StudentRepository;
-import com.fxproject.unidashboard.utils.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,8 +25,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.Window;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -52,6 +50,8 @@ public class AdminController {
     private Label loggedInUserName;
     @FXML
     private TextField searchBar;
+    @FXML
+    private Button closeButton;
 
     private StudentRepository sr = new StudentRepository();
     private ProfessorRepository profR = new ProfessorRepository();
@@ -233,26 +233,22 @@ public class AdminController {
     }
 
     public void search(KeyEvent keyEvent) {
-        if(keyEvent.getCode().equals(KeyCode.ENTER)) {
-            if(clickedButton != null) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            if (clickedButton != null) {
                 switch (clickedButton.getText()) {
                     case "Students" -> {
                         List<Students> studentWithName = sr.findStudentWithName(searchBar.getText().trim().toLowerCase());
                         loadDtos(mapToPersonDtos(studentWithName));
                     }
-                    case "Professors" -> {
-                        loadDtos(mapToPersonDtos(profR.findStudentWithName(searchBar.getText())));
-                    }
-                    case "Lectures" -> {
-                        loadLecturesDtos(mapToLectureDtos(lr.findLectureWithTopic(searchBar.getText())));
-                    }
+                    case "Professors" -> loadDtos(mapToPersonDtos(profR.findStudentWithName(searchBar.getText())));
+                    case "Lectures" -> loadLecturesDtos(mapToLectureDtos(lr.findLectureWithTopic(searchBar.getText())));
                 }
             }
         }
     }
 
-    public void closeWindow(ActionEvent event) {
-        Stage stage = ((Stage) event.getSource());
+    public void closeWindow() {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
 }

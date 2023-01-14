@@ -1,7 +1,6 @@
 package com.fxproject.unidashboard.controller;
 
 import com.fxproject.unidashboard.HelloApplication;
-import com.fxproject.unidashboard.dto.StudentAttendanceOnLecture;
 import com.fxproject.unidashboard.model.Groups;
 import com.fxproject.unidashboard.model.Marks;
 import com.fxproject.unidashboard.model.Person;
@@ -14,9 +13,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -27,13 +26,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.ListResourceBundle;
-import java.util.ResourceBundle;
 
 public class StudentController {
 
@@ -43,6 +38,8 @@ public class StudentController {
     private AnchorPane studentPanelPane;
     @FXML
     private TextField searchBar;
+    @FXML
+    private Button closeButton;
     private static final FXMLLoader loader = new FXMLLoader();
     private static Person loggedInUser;
     private GroupRepository gr = new GroupRepository();
@@ -232,7 +229,7 @@ public class StudentController {
 
     private void showSearchResult(List<Marks> marks) throws IOException {
         contentPane.getChildren().clear();
-        if(!marks.isEmpty()) {
+        if (!marks.isEmpty()) {
             BorderPane header = new BorderPane();
             header.setPrefHeight(110);
             header.setBackground(Background.fill(Paint.valueOf("#191c24")));
@@ -250,7 +247,7 @@ public class StudentController {
 
             for (int j = 0; j < marks.size(); j++) { // j < count(student's marks)
                 HBox markInfoBox = loadFXMLItem();
-                markInfoBox.setPrefWidth(0.9*marksBox.getPrefWidth());
+                markInfoBox.setPrefWidth(0.9 * marksBox.getPrefWidth());
                 marksBox.setSpacing(13);
                 marksBox.getChildren().add(markInfoBox);
                 StackPane sP = (StackPane) markInfoBox.lookup("#pane");
@@ -329,5 +326,10 @@ public class StudentController {
         URL url = HelloApplication.class.getResource("fxml/student/student-info.fxml");
         Parent root = FXMLLoader.load(url);
         return (HBox) root.lookup("#infoItem");
+    }
+
+    public void closeWindow() {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
     }
 }

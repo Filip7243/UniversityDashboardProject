@@ -1,19 +1,15 @@
 package com.fxproject.unidashboard.controller;
 
 import com.fxproject.unidashboard.HelloApplication;
-import com.fxproject.unidashboard.model.Lectures;
 import com.fxproject.unidashboard.model.Person;
 import com.fxproject.unidashboard.utils.UserSession;
-import com.jfoenix.controls.JFXTreeTableView;
-import com.jfoenix.controls.JFXTreeView;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -21,10 +17,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 
 import static com.fxproject.unidashboard.controller.StudentController.loadFXMLItem;
 
@@ -36,6 +30,8 @@ public class ProfessorController {
     private Pane contentPane;
     @FXML
     private AnchorPane professorPanelPane;
+    @FXML
+    private Button closeButton;
     private static Person loggedInUser;
 
     private static final FXMLLoader loader = new FXMLLoader();
@@ -233,6 +229,7 @@ public class ProfessorController {
     }
 
     public void closeWindow() {
-        System.out.println("close");
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
     }
 }
