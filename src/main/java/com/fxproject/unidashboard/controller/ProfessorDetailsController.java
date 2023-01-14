@@ -1,11 +1,8 @@
 package com.fxproject.unidashboard.controller;
 
 import com.fxproject.unidashboard.dto.FieldOfStudyGroupDto;
-import com.fxproject.unidashboard.dto.PersonDto;
-import com.fxproject.unidashboard.dto.SubjectMarkDto;
 import com.fxproject.unidashboard.model.*;
 import com.fxproject.unidashboard.repository.WageRepository;
-import com.jfoenix.controls.JFXTreeTableView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,13 +12,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.List;
-import java.util.Set;
 
 public class ProfessorDetailsController {
     @FXML
@@ -66,7 +61,7 @@ public class ProfessorDetailsController {
         return (Professors) stage.getUserData();
     }
 
-    public void loadPersonalData(MouseEvent event) {
+    public void loadPersonalData() {
         Professors userData = getDataFromStage();
         // get personal data from db
         VBox content = (VBox) personalData.getContent();
@@ -113,7 +108,7 @@ public class ProfessorDetailsController {
         }
     }
 
-    public void loadAccountData(MouseEvent event) {
+    public void loadAccountData() {
         Professors userData = getDataFromStage();
         UniversityAccounts acc = userData.getAcc();
         VBox content = (VBox) accountData.getContent();
@@ -130,7 +125,7 @@ public class ProfessorDetailsController {
         }
     }
 
-    public void loadAddressData(MouseEvent event) {
+    public void loadAddressData() {
         Professors userData = getDataFromStage();
         Addresses address = userData.getAddress();
         VBox content = (VBox) addressData.getContent();

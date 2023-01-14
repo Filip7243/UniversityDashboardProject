@@ -2,10 +2,12 @@
 
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -13,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="personalDetails" prefHeight="393.0" prefWidth="802.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.ModifyPersonController">
+<AnchorPane fx:id="personalDetails" prefHeight="393.0" prefWidth="802.0" style="-fx-background-color: black;" stylesheets="@../../css/combobox-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.ModifyPersonController">
     <children>
         <Accordion prefHeight="393.0" prefWidth="802.0" stylesheets="@../../css/texfield-style.css">
             <panes>
@@ -293,7 +295,7 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="718.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                                             <children>
-                                                <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Cancel" />
+                                                <Button mnemonicParsing="false" onAction="#cancelPersonalDataTab" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Cancel" />
                                                 <Button mnemonicParsing="false" onAction="#modifyPersonalData" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Modify" />
                                             </children>
                                         </HBox>
@@ -303,7 +305,7 @@
                         </ScrollPane>
                     </content>
                 </TitledPane>
-                <TitledPane animated="false" onMousePressed="#loadAccountData" text="Account ">
+                <TitledPane fx:id="accData" animated="false" onMousePressed="#loadAccountData" text="Account ">
                     <content>
                         <ScrollPane prefHeight="200.0" prefWidth="200.0" stylesheets="@scroll-pane-style.css">
                             <content>
@@ -338,7 +340,7 @@
                                                 </Pane>
                                                 <Pane prefHeight="35.0" prefWidth="299.0">
                                                     <children>
-                                                        <TextField fx:id="universityEmail" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                        <TextField fx:id="universityEmail" layoutX="56.0" layoutY="6.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
                                                     </children>
                                                 </Pane>
                                             </children>
@@ -356,7 +358,7 @@
                                                 </Pane>
                                                 <Pane prefHeight="35.0" prefWidth="299.0">
                                                     <children>
-                                                        <TextField fx:id="password" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+                                                        <TextField fx:id="password" layoutX="56.0" layoutY="6.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
                                                     </children>
                                                 </Pane>
                                             </children>
@@ -373,15 +375,18 @@
                                                     </children>
                                                 </Pane>
                                                 <Pane prefHeight="35.0" prefWidth="299.0">
-                                                    <children>
-                                                        <TextField fx:id="role" layoutX="56.0" layoutY="6.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
-                                                    </children>
+                                       <children>
+                                          <ComboBox fx:id="role" layoutX="50.0" layoutY="8.0" prefWidth="200.0" promptText="Choose Role...">
+                                             <effect>
+                                                <Glow level="0.57" />
+                                             </effect></ComboBox>
+                                       </children>
                                                 </Pane>
                                             </children>
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="718.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                                             <children>
-                                                <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Cancel" />
+                                                <Button mnemonicParsing="false" onAction="#cancelAccountTab" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Cancel" />
                                                 <Button mnemonicParsing="false" onAction="#modifyAccountData" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Modify" />
                                             </children>
                                         </HBox>

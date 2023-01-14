@@ -101,5 +101,4 @@ public class ModifyStudentController {
     public void closeWindow(ActionEvent event) {
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
-
 }

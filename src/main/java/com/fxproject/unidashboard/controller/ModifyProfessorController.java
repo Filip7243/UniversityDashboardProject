@@ -35,6 +35,8 @@ public class ModifyProfessorController {
     @FXML
     private TitledPane addRemoveSubject;
     @FXML
+    private TitledPane addWageTab;
+    @FXML
     private ComboBox<Groups> comboGroups;
     @FXML
     private ComboBox<Subjects> comboSubjects;
@@ -112,6 +114,14 @@ public class ModifyProfessorController {
     private Professors getUserData() {
         Stage stage = (Stage) personalData.getScene().getWindow();
         return (Professors) stage.getUserData();
+    }
+
+    public void cancelAddRemoveTab() {
+        addRemoveSubject.expandedProperty().set(false);
+    }
+
+    public void cancelAddWageTab() {
+        addWageTab.expandedProperty().set(false);
     }
 
     public void closeWindow(ActionEvent event) {

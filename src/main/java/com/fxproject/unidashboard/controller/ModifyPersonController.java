@@ -1,20 +1,26 @@
 package com.fxproject.unidashboard.controller;
 
-import com.fxproject.unidashboard.dto.PersonDto;
-import com.fxproject.unidashboard.model.*;
+import com.fxproject.unidashboard.model.Addresses;
+import com.fxproject.unidashboard.model.Person;
+import com.fxproject.unidashboard.model.Roles;
+import com.fxproject.unidashboard.model.UniversityAccounts;
 import com.fxproject.unidashboard.repository.AccountRepository;
 import com.fxproject.unidashboard.repository.PersonRepository;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TitledPane;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.time.LocalDateTime;
-
-import static com.fxproject.unidashboard.model.Roles.ROLE_ADMIN;
 
 public class ModifyPersonController {
     @FXML
@@ -48,6 +54,9 @@ public class ModifyPersonController {
     private TitledPane personalData;
 
     @FXML
+    private TitledPane accData;
+
+    @FXML
     private VBox personalDataVbox;
 
     @FXML
@@ -76,14 +85,15 @@ public class ModifyPersonController {
     @FXML
     private TextField password;
     @FXML
-    private TextField role;
+    private ComboBox<Roles> role;
 
     private PersonRepository pr = new PersonRepository();
     private AccountRepository ar = new AccountRepository();
 
 
     public void initialize() {
-        System.out.println("TUTAJ TEZ SIE WLACZA?");
+        role.setItems(FXCollections.observableArrayList(Roles.values()));
+        role.setDisable(true);
     }
 
     public void loadPersonalData() {
@@ -195,8 +205,8 @@ public class ModifyPersonController {
                 }
                 case "Role" -> {
                     Pane p = (Pane) child.getChildren().get(1);
-                    TextField infoLabel = (TextField) p.getChildren().get(0);
-                    infoLabel.setText(acc.getRole().name());
+                    ComboBox<Roles> roleCombo = (ComboBox<Roles>) p.getChildren().get(0);
+                    roleCombo.getSelectionModel().select(acc.getRole());
                 }
             }
         }
@@ -220,7 +230,15 @@ public class ModifyPersonController {
         Person userData = getPersonDataFromStage();
         UniversityAccounts acc = userData.getAcc();
         ar.updateAccountWithPersonId(new UniversityAccounts(
-                universityEmail.getText(), password.getText(), acc.getCreatedAt(), acc.getEnabled(), acc.getPerson(), ROLE_ADMIN
+                universityEmail.getText(), password.getText(), acc.getCreatedAt(), acc.getEnabled(), acc.getPerson(), acc.getRole()
         ), userData.getId());
+    }
+
+    public void cancelAccountTab() {
+        accData.expandedProperty().set(false);
+    }
+
+    public void cancelPersonalDataTab() {
+        personalData.expandedProperty().set(false);
     }
 }

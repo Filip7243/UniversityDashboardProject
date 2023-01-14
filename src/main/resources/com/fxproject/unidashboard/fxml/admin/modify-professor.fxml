@@ -28,7 +28,7 @@
             </Pane>
             <Accordion prefWidth="871.0" style="-fx-background-color: black;" stylesheets="@../../css/texfield-style.css">
               <panes>
-                <TitledPane animated="false" prefHeight="100.0" prefWidth="802.0" style="-fx-background-color: black;" text="Add Wage">
+                <TitledPane fx:id="addWageTab" animated="false" prefHeight="100.0" prefWidth="802.0" style="-fx-background-color: black;" text="Add Wage">
                      <content>
                         <VBox alignment="CENTER" prefHeight="148.0" prefWidth="801.0" spacing="20.0" style="-fx-background-color: black;" stylesheets="@../../css/button-style.css">
                            <children>
@@ -37,7 +37,7 @@
                               <TextField fx:id="hoursWorked" promptText="Hours Worked" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #a9a8a8;" />
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Cancel" />
+                                    <Button mnemonicParsing="false" onAction="#cancelAddWageTab" text="Cancel" />
                                     <Button mnemonicParsing="false" onAction="#addWage" text="Add" />
                                  </children>
                               </HBox>
@@ -55,7 +55,7 @@
                                     <ComboBox fx:id="comboSubjects" prefWidth="150.0" promptText="Choose Subject" style="-fx-text-fill: #a9a8a8;" />
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                                        <children>
-                                          <Button mnemonicParsing="false" text="Cancel" />
+                                          <Button mnemonicParsing="false" onAction="#cancelAddRemoveTab" text="Cancel" />
                                           <Button mnemonicParsing="false" onAction="#addSubject" text="Add" />
                                        </children>
                                     </HBox>
@@ -68,7 +68,7 @@
                                     <ComboBox fx:id="comboRemoveSubject" prefWidth="150.0" promptText="Choose Subject" style="-fx-text-fill: #a9a8a8;" />
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                                        <children>
-                                          <Button mnemonicParsing="false" text="Cancel" />
+                                          <Button mnemonicParsing="false" onAction="#cancelAddRemoveTab" text="Cancel" />
                                           <Button mnemonicParsing="false" onAction="#removeSubject" text="Remove" />
                                        </children>
                                     </HBox>
