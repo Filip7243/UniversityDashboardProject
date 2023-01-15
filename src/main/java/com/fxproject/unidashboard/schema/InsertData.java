@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 public class InsertData {
@@ -193,7 +194,8 @@ public class InsertData {
             }
 
             // !!! ADMIN !!!
-            if(pr.findPersonWithFirstName("admin").isEmpty()) {
+            Optional<Person> admin1 = pr.findPersonWithFirstName("admin");
+            if(admin1.isEmpty()) {
                 Person admin = new Person(null, "admin", "admin", "admin@mail.com", "12345678", LocalDateTime.now(),
                         "Rzeszow", "22222123212", 'M', 22, null);
                 UniversityAccounts accAdmin = new UniversityAccounts("admin", "admin", LocalDateTime.now(), true, admin, Roles.ROLE_ADMIN);

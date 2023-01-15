@@ -160,6 +160,7 @@ public class PersonRepository {
             tx.commit();
             return Optional.ofNullable(query.getSingleResult());
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             if (tx != null && tx.isActive()) {
                 tx.rollback();
             }

@@ -10,6 +10,7 @@ com\fxproject\unidashboard\model\ExamTypes.class
 com\fxproject\unidashboard\model\Students.class
 com\fxproject\unidashboard\repository\PersonRepository.class
 com\fxproject\unidashboard\repository\AddressRepository.class
+com\fxproject\unidashboard\schema\InsertData.class
 com\fxproject\unidashboard\mapper\PersonMapper.class
 com\fxproject\unidashboard\controller\StudentAttendanceController.class
 com\fxproject\unidashboard\repository\MarkRepository.class
