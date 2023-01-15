@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -295,8 +296,14 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="718.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                                             <children>
-                                                <Button mnemonicParsing="false" onAction="#cancelPersonalDataTab" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Cancel" />
-                                                <Button mnemonicParsing="false" onAction="#modifyPersonalData" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Modify" />
+                                                <Button mnemonicParsing="false" onAction="#cancelPersonalDataTab" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Cancel">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
+                                                <Button mnemonicParsing="false" onAction="#modifyPersonalData" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Modify">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
                                             </children>
                                         </HBox>
                                     </children>
@@ -386,8 +393,14 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="718.0" spacing="100.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                                             <children>
-                                                <Button mnemonicParsing="false" onAction="#cancelAccountTab" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Cancel" />
-                                                <Button mnemonicParsing="false" onAction="#modifyAccountData" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Modify" />
+                                                <Button mnemonicParsing="false" onAction="#cancelAccountTab" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Cancel">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
+                                                <Button mnemonicParsing="false" onAction="#modifyAccountData" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="Modify">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
                                             </children>
                                         </HBox>
                                     </children>

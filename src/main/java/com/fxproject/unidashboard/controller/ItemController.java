@@ -1,5 +1,6 @@
 package com.fxproject.unidashboard.controller;
 
+import com.fxproject.unidashboard.HelloApplication;
 import com.fxproject.unidashboard.dto.PersonDto;
 import com.fxproject.unidashboard.model.Lectures;
 import com.fxproject.unidashboard.model.Professors;
@@ -35,7 +36,6 @@ public class ItemController {
     private PersonRepository personRepository = new PersonRepository();
 
     public void initialize() {
-        System.out.println("ESSA");
     }
 
     public void modifyItem(ActionEvent event) {
@@ -157,11 +157,10 @@ public class ItemController {
     private static Stage loadFXML(ActionEvent event, String file) {
         Parent root;
         try {
-            String path = new File("").getAbsolutePath();
-            URL url = new File(path + "/src/main/resources/com/fxproject/unidashboard/fxml/admin/" + file).toURI().toURL();
+            URL url = HelloApplication.class.getResource("fxml/admin/" + file);
             root = FXMLLoader.load(url);
             Stage stage = new Stage();
-//            stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 802.4, 610));
             stage.show();
 //            ((Node) (event.getSource())).getScene().getWindow().hide();

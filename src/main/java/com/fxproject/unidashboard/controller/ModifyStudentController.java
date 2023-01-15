@@ -6,11 +6,11 @@ import com.fxproject.unidashboard.model.Students;
 import com.fxproject.unidashboard.repository.FieldOfStudyRepository;
 import com.fxproject.unidashboard.repository.GroupRepository;
 import com.fxproject.unidashboard.repository.StudentRepository;
+import com.fxproject.unidashboard.validator.Validator;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TitledPane;
@@ -55,21 +55,24 @@ public class ModifyStudentController {
 
     public void addFieldOfStudy() {
         // check if students already in fieldOfStudy
-        Students userData = getUserData();
-        AtomicBoolean flag = new AtomicBoolean(false);
-        userData.getGroups().forEach(grp -> {
-            if (grp.getName().trim().equalsIgnoreCase(groups.valueProperty().get().getName().trim().toLowerCase())) {
-                flag.set(true);
-            }
-        });
-        if (flag.get()) {
-            Alert a = new Alert(Alert.AlertType.WARNING);
-            a.setTitle("WARNING");
-            a.setHeaderText("Student already attends on this group");
-            a.show();
+        if (!validateComboBoxes()) {
         } else {
-            userData.getGroups().add(groups.valueProperty().get());
-            sr.updateStudent(userData);
+            Students userData = getUserData();
+            AtomicBoolean flag = new AtomicBoolean(false);
+            userData.getGroups().forEach(grp -> {
+                if (grp.getName().trim().equalsIgnoreCase(groups.valueProperty().get().getName().trim().toLowerCase())) {
+                    flag.set(true);
+                }
+            });
+            if (flag.get()) {
+                Alert a = new Alert(Alert.AlertType.WARNING);
+                a.setTitle("WARNING");
+                a.setHeaderText("Student already attends on this group");
+                a.show();
+            } else {
+                userData.getGroups().add(groups.valueProperty().get());
+                sr.updateStudent(userData);
+            }
         }
     }
 
@@ -101,4 +104,9 @@ public class ModifyStudentController {
     public void closeWindow(ActionEvent event) {
         ((Node) (event.getSource())).getScene().getWindow().hide();
     }
+
+    private boolean validateComboBoxes() {
+        return Validator.checkIfValueInComboSelected(List.of(groups, fieldOfStudies));
+    }
+
 }

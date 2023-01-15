@@ -13,6 +13,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1150.0" style="-fx-background-color: black;" stylesheets="@../css/search-bar.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.LoginController">
@@ -25,6 +27,13 @@
                      <image>
                         <Image url="@../img/www-button.png" />
                      </image>
+                     <effect>
+                        <DropShadow radius="5.905" width="4.62">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </ImageView>
                </graphic>
             </JFXButton>
@@ -34,6 +43,13 @@
                      <image>
                         <Image url="@../img/reset-pw-bold.png" />
                      </image>
+                     <effect>
+                        <DropShadow radius="5.905" width="4.62">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </ImageView>
                </graphic>
             </JFXButton>
@@ -68,7 +84,23 @@
             <PasswordField fx:id="passwordField" alignment="CENTER" maxWidth="300.0" prefHeight="27.0" prefWidth="789.0" promptText="Password..." />
 <!--                            <JFXTextField promptText="someone@example.com"/>-->
                 <!--                            <JFXPasswordField promptText="Password" />-->
-                <JFXButton alignment="CENTER" onAction="#logIn" prefHeight="26.0" prefWidth="180.0" ripplerFill="BLACK" text="Sign In" textFill="#cccccc" />
+                <JFXButton alignment="CENTER" buttonType="RAISED" onAction="#logIn" prefHeight="26.0" prefWidth="180.0" style="-fx-border-color: white; -fx-border-radius: 2em;" text="Sign In" textFill="#cccccc">
+               <ripplerFill>
+                  <LinearGradient cycleMethod="REFLECT" endX="1.0" endY="1.0" startX="0.10227272907892863" startY="0.15530304475264117">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.031578946858644485" blue="0.9473684430122375" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill></JFXButton>
             </children>
         </VBox>
     </children>

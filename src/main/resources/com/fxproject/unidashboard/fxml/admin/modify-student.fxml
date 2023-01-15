@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -30,14 +31,20 @@
                     <panes>
                         <TitledPane fx:id="addFieldOfStudyPane" animated="false" onMousePressed="#loadStudentFieldsOfStudy" style="-fx-background-color: black;" text="Add Field Of Study">
                      <content>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;">
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: black;">
                            <children>
                               <ComboBox fx:id="fieldOfStudies" prefHeight="26.0" prefWidth="186.0" promptText="Choose Field Of Study..." />
                               <ComboBox fx:id="groups" prefWidth="150.0" promptText="Choose Group..." visible="false" />
-                              <HBox alignment="CENTER" prefHeight="47.0" prefWidth="782.0" spacing="20.0">
+                              <HBox alignment="CENTER" prefHeight="26.0" prefWidth="782.0" spacing="20.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#cancelAdding" text="Cancel" />
-                                    <Button mnemonicParsing="false" onAction="#addFieldOfStudy" text="Add" />
+                                    <Button mnemonicParsing="false" onAction="#cancelAdding" text="Cancel">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
+                                    <Button mnemonicParsing="false" onAction="#addFieldOfStudy" text="Add">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
                                  </children>
                               </HBox>
                            </children>
@@ -54,8 +61,14 @@
                               <ComboBox fx:id="removingGroups" prefHeight="26.0" prefWidth="197.0" promptText="Choose Field Of Study..." />
                               <HBox alignment="CENTER" prefHeight="43.0" prefWidth="782.0" spacing="20.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#cancelRemoving" text="Cancel" />
-                                    <Button mnemonicParsing="false" onAction="#removeGroup" text="Remove" />
+                                    <Button mnemonicParsing="false" onAction="#cancelRemoving" text="Cancel">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
+                                    <Button mnemonicParsing="false" onAction="#removeGroup" text="Remove">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
                                  </children>
                               </HBox>
                            </children>
