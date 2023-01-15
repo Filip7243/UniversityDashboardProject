@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -22,19 +23,34 @@
             </Label>
          </children>
       </Pane>
-        <TextField fx:id="lectureTopic" alignment="CENTER" maxWidth="300.0" prefWidth="300.0" promptText="Topic" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;" />
+        <TextField fx:id="lectureTopic" alignment="CENTER" maxWidth="300.0" prefWidth="300.0" promptText="Topic" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 2em;">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
         <ComboBox fx:id="comboGroup" prefWidth="300.0" promptText="Choose Group">
          <effect>
             <Glow level="0.57" />
-         </effect></ComboBox>
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ComboBox>
         <ComboBox fx:id="comboSubject" prefWidth="300.0" promptText="Choose Subject">
          <effect>
             <Glow level="0.57" />
-         </effect></ComboBox>
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ComboBox>
       <HBox alignment="CENTER" prefHeight="31.0" prefWidth="668.0" spacing="50.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#cancelStarting" prefWidth="120.0" text="Cancel" />
-            <Button mnemonicParsing="false" onAction="#startLecture" prefWidth="120.0" text="Submit" />
+            <Button mnemonicParsing="false" onAction="#cancelStarting" prefWidth="120.0" text="Cancel">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button mnemonicParsing="false" onAction="#startLecture" prefWidth="120.0" text="Submit">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
       </HBox>
     </children>

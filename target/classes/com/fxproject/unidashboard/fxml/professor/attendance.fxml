@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
@@ -24,8 +25,14 @@
         </TableView>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
-              <Button fx:id="cancelAttendance" mnemonicParsing="false" onAction="#cancelAttendance" prefWidth="668.0" text="Cancel" />
-              <Button mnemonicParsing="false" onAction="#checkAttendance" prefWidth="668.0" text="Ok" />
+              <Button fx:id="cancelAttendance" mnemonicParsing="false" onAction="#cancelAttendance" prefWidth="668.0" text="Cancel">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+              <Button mnemonicParsing="false" onAction="#checkAttendance" prefWidth="668.0" text="Ok">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
       </HBox>
     </children>

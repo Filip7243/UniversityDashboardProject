@@ -36,7 +36,8 @@ public class ProfessorDetailsController {
         List<FieldOfStudyGroupDto> fieldOfStudyGroupDtos = psig.stream().
                 map(e -> {
                     Groups group = e.getGroup();
-                    return new FieldOfStudyGroupDto(group.getFieldOfStudy().getName(), group.getName());
+                    Subjects subject = e.getSubject();
+                    return new FieldOfStudyGroupDto(subject.getName(), group.getName());
                 }).toList();
         List<Wages> professorWages = wg.findProfessorWages(userData);
 
