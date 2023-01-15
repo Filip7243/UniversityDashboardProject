@@ -70,5 +70,4 @@ com\fxproject\unidashboard\controller\ItemController.class
 com\fxproject\unidashboard\repository\StudentRepository.class
 com\fxproject\unidashboard\repository\ProfessorRepository.class
 com\fxproject\unidashboard\model\Groups.class
-com\fxproject\unidashboard\HelloController.class
 com\fxproject\unidashboard\repository\WageRepository.class

@@ -4,6 +4,7 @@ import com.fxproject.unidashboard.HelloApplication;
 import com.fxproject.unidashboard.dto.LectureDto;
 import com.fxproject.unidashboard.dto.PersonDto;
 import com.fxproject.unidashboard.model.Lectures;
+import com.fxproject.unidashboard.model.Person;
 import com.fxproject.unidashboard.model.Professors;
 import com.fxproject.unidashboard.model.Students;
 import com.fxproject.unidashboard.repository.LectureRepository;
@@ -53,6 +54,8 @@ public class AdminController {
     @FXML
     private Button closeButton;
 
+    private static Person loggedInUser;
+
     private StudentRepository sr = new StudentRepository();
     private ProfessorRepository profR = new ProfessorRepository();
     private LectureRepository lr = new LectureRepository();
@@ -60,8 +63,9 @@ public class AdminController {
     private Button clickedButton;
 
     public void initialize() {
-//        Person person = UserSession.getSession().getPerson();
-//        loggedInUserName.setText(person.getFirstName() + " " + person.getLastName());
+        UserSession session = UserSession.getSession();
+        loggedInUser = session.getPerson();
+        loggedInUserName.setText(loggedInUser.getFirstName() + " " + loggedInUser.getLastName());
     }
 
     private void loadUsersNodes(List<PersonDto> list) {

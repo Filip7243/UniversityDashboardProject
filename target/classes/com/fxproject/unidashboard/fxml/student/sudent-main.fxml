@@ -27,13 +27,34 @@
                         </Label>
                     </children>
                 </Pane>
-                <Button mnemonicParsing="false" onAction="#showPersonalInfo" text="My Personal Info" textFill="#c9c9c9" />
-                <Button mnemonicParsing="false" onAction="#showMarks" text="My Marks" textFill="#c9c9c9" />
-                <Button mnemonicParsing="false" onAction="#showAttendance" text="My Attendance" textFill="#c9c9c9" />
-                <Button mnemonicParsing="false" onAction="#showFieldsOfStudies" text="My Fields Of Studies" textFill="#c9c9c9" />
-                <Button mnemonicParsing="false" onAction="#showExams" text="My Exams" textFill="#c9c9c9" />
-                <Button mnemonicParsing="false" text="Settings" textFill="#c9c9c9" />
-                <Button mnemonicParsing="false" onAction="#signOut" text="Sign Out" textFill="#c9c9c9" />
+                <Button mnemonicParsing="false" onAction="#showPersonalInfo" text="My Personal Info" textFill="#c9c9c9">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+                <Button mnemonicParsing="false" onAction="#showMarks" text="My Marks" textFill="#c9c9c9">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+                <Button mnemonicParsing="false" onAction="#showAttendance" text="My Attendance" textFill="#c9c9c9">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+                <Button mnemonicParsing="false" onAction="#showFieldsOfStudies" text="My Fields Of Studies" textFill="#c9c9c9">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+                <Button mnemonicParsing="false" onAction="#showExams" text="My Exams" textFill="#c9c9c9">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+                <Button mnemonicParsing="false" text="Settings" textFill="#c9c9c9">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+                <Button mnemonicParsing="false" onAction="#signOut" text="Sign Out" textFill="#c9c9c9">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             </children>
             <stylesheets>
                 <URL value="@../admin/buttons-style.css" />
@@ -47,10 +68,13 @@
             <children>
                 <Pane prefHeight="59.0" prefWidth="166.0">
                     <children>
-                        <Label layoutX="33.0" layoutY="21.0" text="Filip Kaczmarczyk" textFill="#dcd8d8" />
+                        <Label fx:id="userInfoLabel" layoutX="33.0" layoutY="21.0" text="Filip Kaczmarczyk" textFill="#dcd8d8" />
                     </children>
                 </Pane>
-                <TextField fx:id="searchBar" disable="true" onKeyPressed="#searchMarks" promptText="search" />
+                <TextField fx:id="searchBar" disable="true" onKeyPressed="#searchMarks" promptText="search">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
                 <Pane prefHeight="59.0" prefWidth="166.0">
                     <children>
                         <Button fx:id="closeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="113.0" layoutY="16.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="27.0" prefWidth="45.0" style="-fx-background-color: transparent;">

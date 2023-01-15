@@ -1,326 +1,360 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Accordion fx:id="details" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.ProfessorDetailsController">
-   <panes>
-      <TitledPane fx:id="personalData" animated="false" onMousePressed="#loadPersonalData" text="Personal Data">
-         <content>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: BLACK;">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+<VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.ProfessorDetailsController">
+   <children>
+      <Pane prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #191c24;" stylesheets="@../../css/button-style.css">
+         <children>
+            <Button layoutX="14.0" layoutY="30.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="27.0" prefWidth="72.0" text="QUIT">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="353.0" layoutY="11.0" text="PROFESSOR DETAILS" textFill="#aeaeae">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Accordion fx:id="details" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: BLACK;">
+         <panes>
+            <TitledPane fx:id="personalData" animated="false" onMousePressed="#loadPersonalData" text="Personal Data">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: BLACK;">
                      <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="First Name" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="First Name" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Second Name" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Last Name" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Email" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Phone Number" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Date Of Birth" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Place Of Birth" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Gender" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Age" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                  </VBox>
+               </content>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TitledPane>
+            <TitledPane fx:id="accountData" animated="false" onMousePressed="#loadAccountData" prefHeight="240.0" prefWidth="1004.0" text="Account Data">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: black;">
                      <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Second Name" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="University Email" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Created At" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Active" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Role" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                  </VBox>
+               </content>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TitledPane>
+            <TitledPane fx:id="addressData" animated="false" onMousePressed="#loadAddressData" text="Address Data">
+               <content>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: black;">
                      <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Last Name" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Country" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="City" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Street" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="House Number" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Flat Number" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                           <children>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Postal Code" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
+                  </VBox>
+               </content>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TitledPane>
+            <TitledPane fx:id="professorData" onMousePressed="#loadProfessorData" prefHeight="200.0" prefWidth="1006.0" text="Professor Data">
+               <content>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: black;" stylesheets="@../../css/tableview-style.css">
                      <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Email" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
+                        <TableView maxWidth="1060.0" prefHeight="291.0" prefWidth="1049.0">
+                          <columns>
+                            <TableColumn prefWidth="530.0" text="Subject" />
+                            <TableColumn prefWidth="530.0" text="Group" />
+                          </columns>
+                        </TableView>
+                        <TableView maxWidth="1060.0" prefHeight="284.0" prefWidth="1064.0">
+                          <columns>
+                            <TableColumn prefWidth="250.0" text="Salary" />
+                            <TableColumn prefWidth="250.0" text="Horly Rate" />
+                              <TableColumn prefWidth="250.0" text="Hours Worked" />
+                              <TableColumn maxWidth="270.0" prefWidth="250.0" text="Payday" />
+                          </columns>
+                        </TableView>
                      </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                     <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Phone Number" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                     <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Date Of Birth" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                     <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Place Of Birth" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                     <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Gender" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                     <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Age" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </content>
-      </TitledPane>
-      <TitledPane fx:id="accountData" animated="false" onMousePressed="#loadAccountData" prefHeight="240.0" prefWidth="1004.0" text="Account Data">
-         <content>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: black;">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                     <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="University Email" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                     <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Created At" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                     <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Active" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                     <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Role" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </content>
-      </TitledPane>
-      <TitledPane fx:id="addressData" animated="false" onMousePressed="#loadAddressData" text="Address Data">
-         <content>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: black;">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                     <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Country" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                     <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="City" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                     <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Street" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                     <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="House Number" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                     <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Flat Number" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                     <children>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Postal Code" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </content>
-      </TitledPane>
-      <TitledPane fx:id="professorData" onMousePressed="#loadProfessorData" prefHeight="200.0" prefWidth="1006.0" text="Professor Data">
-         <content>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: black;" stylesheets="@../../css/tableview-style.css">
-               <children>
-                  <TableView maxWidth="1060.0" prefHeight="291.0" prefWidth="1049.0">
-                    <columns>
-                      <TableColumn prefWidth="530.0" text="Subject" />
-                      <TableColumn prefWidth="530.0" text="Group" />
-                    </columns>
-                  </TableView>
-                  <TableView maxWidth="1060.0" prefHeight="284.0" prefWidth="1064.0">
-                    <columns>
-                      <TableColumn prefWidth="250.0" text="Salary" />
-                      <TableColumn prefWidth="250.0" text="Horly Rate" />
-                        <TableColumn prefWidth="250.0" text="Hours Worked" />
-                        <TableColumn maxWidth="270.0" prefWidth="250.0" text="Payday" />
-                    </columns>
-                  </TableView>
-               </children>
-            </VBox>
-         </content></TitledPane>
-   </panes>
-</Accordion>
+                  </VBox>
+               </content>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TitledPane>
+         </panes>
+      </Accordion>
+   </children>
+</VBox>

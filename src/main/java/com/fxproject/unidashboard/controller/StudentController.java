@@ -43,14 +43,20 @@ public class StudentController {
     private TextField searchBar;
     @FXML
     private Button closeButton;
+    @FXML
+    private Label userInfoLabel;
     private static final FXMLLoader loader = new FXMLLoader();
     private static Person loggedInUser;
     private GroupRepository gr = new GroupRepository();
     private MarkRepository mr = new MarkRepository();
 
+    public void initialize() {
+        UserSession session = UserSession.getSession();
+        loggedInUser = session.getPerson();
+        userInfoLabel.setText(loggedInUser.getFirstName() + " " + loggedInUser.getLastName());
+    }
+
     public void showPersonalInfo() throws IOException {
-        Stage stage = (Stage) studentPanelPane.getScene().getWindow();
-        loggedInUser = UserSession.getSession((Person) stage.getUserData()).getPerson();
         contentPane.getChildren().clear();
         searchBar.setDisable(true);
         Node[] nodes = new Node[16];

@@ -311,6 +311,9 @@
                             </content>
                         </ScrollPane>
                     </content>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </TitledPane>
                 <TitledPane fx:id="accData" animated="false" onMousePressed="#loadAccountData" text="Account ">
                     <content>
@@ -408,6 +411,9 @@
                             </content>
                         </ScrollPane>
                     </content>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </TitledPane>
             </panes>
         </Accordion>

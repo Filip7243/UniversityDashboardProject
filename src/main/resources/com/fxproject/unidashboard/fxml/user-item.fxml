@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -60,9 +61,18 @@
         <Separator opacity="0.11" orientation="VERTICAL" prefHeight="40.0" prefWidth="0.0" />
       <HBox alignment="CENTER" prefHeight="40.0" prefWidth="287.0" spacing="7.0">
          <children>
-              <Button fx:id="modifyButton" mnemonicParsing="false" onAction="#modifyItem" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #c1bfbf; -fx-text-fill: #c1bfbf;" text="Modify" />
-              <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteItem" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #c1bfbf; -fx-text-fill: #ab2e3c;" text="Delete" />
-              <Button fx:id="detailsButton" mnemonicParsing="false" onAction="#showDetails" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #c1bfbf; -fx-text-fill: #0d6efd;" text="Details" />
+              <Button fx:id="modifyButton" mnemonicParsing="false" onAction="#modifyItem" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #c1bfbf; -fx-text-fill: #c1bfbf;" text="Modify">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+              <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteItem" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #c1bfbf; -fx-text-fill: #ab2e3c;" text="Delete">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+              <Button fx:id="detailsButton" mnemonicParsing="false" onAction="#showDetails" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #c1bfbf; -fx-text-fill: #0d6efd;" text="Details">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
       </HBox>
     </children>

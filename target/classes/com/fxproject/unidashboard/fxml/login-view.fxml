@@ -34,8 +34,14 @@
                            </color>
                         </DropShadow>
                      </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             <JFXButton alignment="CENTER" contentDisplay="CENTER" text=" ">
                <graphic>
@@ -50,8 +56,14 @@
                            </color>
                         </DropShadow>
                      </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </JFXButton>
             </children>
         </VBox>
@@ -80,8 +92,14 @@
                <font>
                   <Font name="Bodoni MT" size="14.0" />
                </font></Label>
-            <TextField fx:id="loginField" alignment="CENTER" maxWidth="300.0" prefHeight="27.0" prefWidth="744.0" promptText="sample@uni.mail.com" />
-            <PasswordField fx:id="passwordField" alignment="CENTER" maxWidth="300.0" prefHeight="27.0" prefWidth="789.0" promptText="Password..." />
+            <TextField fx:id="loginField" alignment="CENTER" maxWidth="300.0" prefHeight="27.0" prefWidth="744.0" promptText="sample@uni.mail.com">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
+            <PasswordField fx:id="passwordField" alignment="CENTER" maxWidth="300.0" prefHeight="27.0" prefWidth="789.0" promptText="Password...">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></PasswordField>
 <!--                            <JFXTextField promptText="someone@example.com"/>-->
                 <!--                            <JFXPasswordField promptText="Password" />-->
                 <JFXButton alignment="CENTER" buttonType="RAISED" onAction="#logIn" prefHeight="26.0" prefWidth="180.0" style="-fx-border-color: white; -fx-border-radius: 2em;" text="Sign In" textFill="#cccccc">
@@ -100,7 +118,10 @@
                         </Stop>
                      </stops>
                   </LinearGradient>
-               </ripplerFill></JFXButton>
+               </ripplerFill>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
             </children>
         </VBox>
     </children>

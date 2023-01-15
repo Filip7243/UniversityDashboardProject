@@ -1,7 +1,7 @@
 package com.fxproject.unidashboard.controller;
 
 import com.fxproject.unidashboard.HelloApplication;
-import com.fxproject.unidashboard.model.*;
+import com.fxproject.unidashboard.model.UniversityAccounts;
 import com.fxproject.unidashboard.repository.AccountRepository;
 import com.fxproject.unidashboard.utils.HibernateConnect;
 import com.fxproject.unidashboard.utils.UserSession;
@@ -18,13 +18,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class LoginController {
 
@@ -170,6 +165,7 @@ public class LoginController {
 //
 //        }
     }
+
     public void logIn(ActionEvent event) {
         UniversityAccounts accounts = ar.checkIfUserExists(loginField.getText(), passwordField.getText());
         if (accounts != null) {
@@ -184,14 +180,15 @@ public class LoginController {
                             loader = new FXMLLoader(HelloApplication.class.getResource("fxml/professor/professor-main.fxml"));
                     case "ROLE_STUDENT" ->
                             loader = new FXMLLoader(HelloApplication.class.getResource("fxml/student/sudent-main.fxml"));
+
                 }
                 if (loader != null) {
+                    UserSession session = UserSession.getSession(accounts.getPerson());
                     root = loader.load();
                     Stage stage = new Stage();
                     stage.initStyle(StageStyle.UNDECORATED);
                     stage.setScene(new Scene(root, 1150, 650));
                     stage.setUserData(accounts.getPerson());
-                    UserSession.getSession(accounts.getPerson());
                     stage.show();
                     ((Node) (event.getSource())).getScene().getWindow().hide();
                 }

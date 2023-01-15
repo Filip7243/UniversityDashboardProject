@@ -5,12 +5,10 @@ import com.fxproject.unidashboard.model.*;
 import com.fxproject.unidashboard.repository.WageRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Accordion;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -143,5 +141,9 @@ public class ProfessorDetailsController {
                 case "Postal Code" -> infoLabel.setText(address.getPostalCode());
             }
         }
+    }
+
+    public void closeWindow(ActionEvent event) {
+        ((Stage) ((Button) (event.getSource())).getScene().getWindow()).close();
     }
 }

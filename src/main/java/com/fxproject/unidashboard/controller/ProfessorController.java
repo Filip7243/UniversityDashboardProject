@@ -36,13 +36,19 @@ public class ProfessorController {
     private AnchorPane professorPanelPane;
     @FXML
     private Button closeButton;
+    @FXML
+    private Label userInfoLabel;
     private static Person loggedInUser;
 
     private static final FXMLLoader loader = new FXMLLoader();
 
+    public void initialize() {
+        UserSession session = UserSession.getSession();
+        loggedInUser = session.getPerson();
+        userInfoLabel.setText(loggedInUser.getFirstName() + " " + loggedInUser.getLastName());
+    }
+
     public void showPersonalInfo() throws IOException {
-        Stage stage = (Stage) professorPanelPane.getScene().getWindow();
-        loggedInUser = UserSession.getSession((Person) stage.getUserData()).getPerson();
         contentPane.getChildren().clear();
         Node[] nodes = new Node[16];
         ScrollPane scrollPane = new ScrollPane();

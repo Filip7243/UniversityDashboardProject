@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -29,25 +30,46 @@
               <ComboBox fx:id="comboGroups" prefWidth="300.0" promptText="Choose Group">
                <effect>
                   <Glow level="0.57" />
-               </effect></ComboBox>
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ComboBox>
               <ComboBox fx:id="comboStudents" prefWidth="300.0" promptText="Choose Student">
                <effect>
                   <Glow level="0.57" />
-               </effect></ComboBox>
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ComboBox>
               <ComboBox fx:id="comboSubjects" prefWidth="300.0" promptText="Choose Subject">
                <effect>
                   <Glow level="0.57" />
-               </effect></ComboBox>
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ComboBox>
             <Spinner fx:id="markSpinner" editable="true" prefWidth="300.0" />
-            <TextField fx:id="description" maxWidth="300.0" prefWidth="300.0" promptText="Description" />
+            <TextField fx:id="description" maxWidth="300.0" prefWidth="300.0" promptText="Description">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor></TextField>
             <ComboBox fx:id="comboTypes" prefWidth="300.0" promptText="Choose Type">
                <effect>
                   <Glow level="0.57" />
-               </effect></ComboBox>
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ComboBox>
             <HBox alignment="CENTER" prefHeight="32.0" prefWidth="950.0" spacing="45.0">
                <children>
-                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelGrade" prefWidth="120.0" text="Cancel" />
-                  <Button fx:id="submitButton" mnemonicParsing="false" onAction="#submitGrade" prefWidth="120.0" text="Submit" />
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelGrade" prefWidth="120.0" text="Cancel">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="submitButton" mnemonicParsing="false" onAction="#submitGrade" prefWidth="120.0" text="Submit">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
             </HBox>
          </children>

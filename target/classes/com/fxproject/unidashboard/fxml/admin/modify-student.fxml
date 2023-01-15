@@ -17,7 +17,7 @@
     <children>
         <VBox prefHeight="610.0" prefWidth="802.0" style="-fx-background-color: black;">
             <children>
-            <Pane prefHeight="60.0" prefWidth="802.0">
+            <Pane prefHeight="60.0" prefWidth="802.0" style="-fx-background-color: #191c24;">
                <children>
                   <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeWindow" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="QUIT" />
                   <Label layoutX="303.0" layoutY="10.0" text="MODIFY STUDENT" textFill="#b9b9b9">
@@ -33,7 +33,10 @@
                      <content>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: black;">
                            <children>
-                              <ComboBox fx:id="fieldOfStudies" prefHeight="26.0" prefWidth="186.0" promptText="Choose Field Of Study..." />
+                              <ComboBox fx:id="fieldOfStudies" prefHeight="26.0" prefWidth="186.0" promptText="Choose Field Of Study...">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></ComboBox>
                               <ComboBox fx:id="groups" prefWidth="150.0" promptText="Choose Group..." visible="false" />
                               <HBox alignment="CENTER" prefHeight="26.0" prefWidth="782.0" spacing="20.0">
                                  <children>
@@ -53,12 +56,18 @@
                      <stylesheets>
                         <URL value="@../../css/button-style.css" />
                         <URL value="@../../css/combobox-style.css" />
-                     </stylesheets></TitledPane>
+                     </stylesheets>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></TitledPane>
                         <TitledPane fx:id="removeGroupPane" animated="false" onMousePressed="#loadRemoveStudentFieldsOfStudy" stylesheets="@../../css/combobox-style.css" text="Remove Field Of Study">
                      <content>
                         <VBox fx:id="removeFieldOfStudyPane" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: black;">
                            <children>
-                              <ComboBox fx:id="removingGroups" prefHeight="26.0" prefWidth="197.0" promptText="Choose Field Of Study..." />
+                              <ComboBox fx:id="removingGroups" prefHeight="26.0" prefWidth="197.0" promptText="Choose Field Of Study...">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></ComboBox>
                               <HBox alignment="CENTER" prefHeight="43.0" prefWidth="782.0" spacing="20.0">
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#cancelRemoving" text="Cancel">
@@ -73,7 +82,10 @@
                               </HBox>
                            </children>
                         </VBox>
-                     </content></TitledPane>
+                     </content>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></TitledPane>
                     </panes>
                <stylesheets>
                   <URL value="@../../css/button-style.css" />

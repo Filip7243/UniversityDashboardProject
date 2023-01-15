@@ -86,17 +86,18 @@ public class ItemController {
                     stage = loadFXML(event, "student-details.fxml");
                     System.out.println(stage);
                     assert stage != null;
-                    stage.setWidth(1004);
-                    stage.setHeight(636);
-                    stage.setX(300);
+                    stage.setWidth(1100);
+                    stage.setHeight(780);
+                    stage.setY(25);
                     stage.setUserData(student);
                 }
                 case "professor" -> {
                     Professors professor = pr.findProfessorByAlbumId(Long.parseLong(albumId)).orElseThrow();
                     stage = loadFXML(event, "professor-details.fxml");
                     assert stage != null;
-                    stage.setWidth(1004);
-                    stage.setHeight(636);
+                    stage.setWidth(1100);
+                    stage.setHeight(780);
+                    stage.setY(25);
                     stage.setUserData(professor);
                 }
             }

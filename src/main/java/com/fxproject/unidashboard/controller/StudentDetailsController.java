@@ -8,6 +8,7 @@ import com.fxproject.unidashboard.repository.MarkRepository;
 import com.jfoenix.controls.JFXTreeTableView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -149,5 +150,9 @@ public class StudentDetailsController {
         subjectMark.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("subjectName"));
         subjectMark.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("mark"));
         subjectMark.setItems(FXCollections.observableArrayList(subjectMarkDtos));
+    }
+
+    public void closeWindow(ActionEvent event) {
+        ((Stage)((Button) (event.getSource())).getScene().getWindow()).close();
     }
 }

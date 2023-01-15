@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -16,11 +17,11 @@
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="610.0" prefWidth="800.0" style="-fx-background-color: black;">
          <children>
-            <Pane prefHeight="100.0" prefWidth="802.0" stylesheets="@../../css/button-style.css">
+            <Pane prefHeight="100.0" prefWidth="802.0" style="-fx-background-color: #191c24;" stylesheets="@../../css/button-style.css">
                <children>
-                  <Label layoutX="266.0" layoutY="3.0" text="Modify Professor">
+                  <Label layoutX="239.0" layoutY="1.0" text="Modify Professor">
                      <font>
-                        <Font size="36.0" />
+                        <Font name="System Bold" size="40.0" />
                      </font>
                   </Label>
                   <Button layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#closeWindow" text="QUIT" />
@@ -32,18 +33,36 @@
                      <content>
                         <VBox alignment="CENTER" prefHeight="148.0" prefWidth="801.0" spacing="20.0" style="-fx-background-color: black;" stylesheets="@../../css/button-style.css">
                            <children>
-                              <TextField fx:id="salary" promptText="Salary" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #a9a8a8;" />
-                              <TextField fx:id="hourlyRate" promptText="Hourly Rate" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #a9a8a8;" />
-                              <TextField fx:id="hoursWorked" promptText="Hours Worked" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #a9a8a8;" />
+                              <TextField fx:id="salary" promptText="Salary" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #a9a8a8;">
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor></TextField>
+                              <TextField fx:id="hourlyRate" promptText="Hourly Rate" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #a9a8a8;">
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor></TextField>
+                              <TextField fx:id="hoursWorked" promptText="Hours Worked" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #a9a8a8;">
+                                 <cursor>
+                                    <Cursor fx:constant="TEXT" />
+                                 </cursor></TextField>
                               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#cancelAddWageTab" text="Cancel" />
-                                    <Button mnemonicParsing="false" onAction="#addWage" text="Add" />
+                                    <Button mnemonicParsing="false" onAction="#cancelAddWageTab" text="Cancel">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
+                                    <Button mnemonicParsing="false" onAction="#addWage" text="Add">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></Button>
                                  </children>
                               </HBox>
                            </children>
                         </VBox>
-                     </content></TitledPane>
+                     </content>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></TitledPane>
                 <TitledPane fx:id="addRemoveSubject" animated="false" onMousePressed="#showAddRemoveForm" prefHeight="100.0" prefWidth="802.0" style="-fx-background-color: black;" stylesheets="@../../css/combobox-style.css" text="Add/Remove Teaching Subjects">
                      <content>
                         <HBox prefHeight="126.0" prefWidth="801.0" style="-fx-background-color: black; -fx-text-fill: #a9a8a8;" stylesheets="@../../css/button-style.css">
@@ -76,7 +95,10 @@
                               </VBox>
                            </children>
                         </HBox>
-                     </content></TitledPane>
+                     </content>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></TitledPane>
               </panes>
             </Accordion>
             <fx:include fx:id="personalData" source="modify-person.fxml" />
