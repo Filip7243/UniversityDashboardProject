@@ -43,7 +43,7 @@
          </cursor></ComboBox>
       <HBox alignment="CENTER" prefHeight="31.0" prefWidth="668.0" spacing="50.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#cancelStarting" prefWidth="120.0" text="Cancel">
+            <Button mnemonicParsing="false" onAction="#clearFields" prefWidth="120.0" text="Cancel">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>

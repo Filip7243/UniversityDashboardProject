@@ -4,11 +4,10 @@ import com.fxproject.unidashboard.model.*;
 import com.fxproject.unidashboard.repository.LectureRepository;
 import com.fxproject.unidashboard.repository.ProfessorsSubjectsInGroupsRepository;
 import com.fxproject.unidashboard.utils.UserSession;
-import com.fxproject.unidashboard.validator.Validator;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
@@ -50,10 +49,13 @@ public class StartLectureController {
             Lectures lecture = new Lectures(null, lectureTopic.getText(), LocalDateTime.now(), comboGroup.getValue(), comboSubject.getValue(),
                     professor);
             lr.save(lecture);
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Lecture started!");
+            a.show();
+            clearFields();
         }
     }
 
-    public void cancelStarting() {
+    public void clearFields() {
         lectureTopic.clear();
         comboGroup.getSelectionModel().clearSelection();
         comboSubject.getSelectionModel().clearSelection();
@@ -66,4 +68,5 @@ public class StartLectureController {
     private boolean validateComboBoxes() {
         return checkIfValueInComboSelected(List.of(comboGroup, comboSubject));
     }
+
 }

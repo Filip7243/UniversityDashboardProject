@@ -24,7 +24,10 @@
                         <Font name="System Bold" size="40.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#closeWindow" text="QUIT" />
+                  <Button layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#closeWindow" text="QUIT">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
             </Pane>
             <Accordion prefWidth="871.0" style="-fx-background-color: black;" stylesheets="@../../css/texfield-style.css">
@@ -70,12 +73,24 @@
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" spacing="10.0">
                                  <children>
                                     <Label style="-fx-text-fill: #a9a8a8;" text="Add Subject" />
-                                    <ComboBox fx:id="comboGroups" prefWidth="150.0" promptText="Choose Group" style="-fx-text-fill: #a9a8a8;" />
-                                    <ComboBox fx:id="comboSubjects" prefWidth="150.0" promptText="Choose Subject" style="-fx-text-fill: #a9a8a8;" />
+                                    <ComboBox fx:id="comboGroups" prefWidth="150.0" promptText="Choose Group" style="-fx-text-fill: #a9a8a8;">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></ComboBox>
+                                    <ComboBox fx:id="comboSubjects" prefWidth="150.0" promptText="Choose Subject" style="-fx-text-fill: #a9a8a8;">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></ComboBox>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                                        <children>
-                                          <Button mnemonicParsing="false" onAction="#cancelAddRemoveTab" text="Cancel" />
-                                          <Button mnemonicParsing="false" onAction="#addSubject" text="Add" />
+                                          <Button mnemonicParsing="false" onAction="#cancelAddRemoveTab" text="Cancel">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor></Button>
+                                          <Button mnemonicParsing="false" onAction="#addSubject" text="Add">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor></Button>
                                        </children>
                                     </HBox>
                                  </children>
@@ -83,12 +98,24 @@
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" spacing="10.0">
                                  <children>
                                     <Label style="-fx-text-fill: #a9a8a8;" text="Remove Subject" />
-                                    <ComboBox fx:id="comboRemoveGroup" prefWidth="150.0" promptText="Choose Group" style="-fx-text-fill: #a9a8a8;" />
-                                    <ComboBox fx:id="comboRemoveSubject" prefWidth="150.0" promptText="Choose Subject" style="-fx-text-fill: #a9a8a8;" />
+                                    <ComboBox fx:id="comboRemoveGroup" prefWidth="150.0" promptText="Choose Group" style="-fx-text-fill: #a9a8a8;">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></ComboBox>
+                                    <ComboBox fx:id="comboRemoveSubject" prefWidth="150.0" promptText="Choose Subject" style="-fx-text-fill: #a9a8a8;">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor></ComboBox>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                                        <children>
-                                          <Button mnemonicParsing="false" onAction="#cancelAddRemoveTab" text="Cancel" />
-                                          <Button mnemonicParsing="false" onAction="#removeSubject" text="Remove" />
+                                          <Button mnemonicParsing="false" onAction="#cancelAddRemoveTab" text="Cancel">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor></Button>
+                                          <Button mnemonicParsing="false" onAction="#removeSubject" text="Remove">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor></Button>
                                        </children>
                                     </HBox>
                                  </children>

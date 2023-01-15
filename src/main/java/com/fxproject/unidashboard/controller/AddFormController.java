@@ -12,10 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -165,6 +162,8 @@ public class AddFormController {
                 accr.save(acc);
                 s.setAcc(acc);
             }
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION, "User added!");
+            a.show();
         }
     }
 
