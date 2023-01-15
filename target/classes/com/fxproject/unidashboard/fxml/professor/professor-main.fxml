@@ -2,7 +2,6 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -33,7 +32,7 @@
                 <Button fx:id="attendanceButton" mnemonicParsing="false" onAction="#showCheckAttendanceForm" text="Attendance" textFill="#c9c9c9" />
                 <Button mnemonicParsing="false" onAction="#showAddExamForm" text="Add Exams" textFill="#c9c9c9" />
                 <Button mnemonicParsing="false" text="Settings" textFill="#c9c9c9" />
-                <Button mnemonicParsing="false" onAction="#signOut" text="Sign Out" textFill="#c9c9c9" />
+                <Button mnemonicParsing="false" text="Sign Out" textFill="#c9c9c9" />
             </children>
             <stylesheets>
                 <URL value="@../admin/buttons-style.css" />
@@ -53,7 +52,7 @@
                 <TextField fx:id="searchBar" disable="true" promptText="search" />
                 <Pane prefHeight="59.0" prefWidth="166.0">
                     <children>
-                        <Button fx:id="closeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="126.0" layoutY="16.0" maxHeight="29.0" maxWidth="29.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="17.0" prefWidth="24.0" style="-fx-background-color: transparent;">
+                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="126.0" layoutY="16.0" maxHeight="29.0" maxWidth="29.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="17.0" prefWidth="24.0" style="-fx-background-color: transparent;">
                      <graphic>
                                 <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -61,9 +60,6 @@
                                     </image>
                                 </ImageView>
                      </graphic>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
                         </Button>
                     </children>
                 </Pane>

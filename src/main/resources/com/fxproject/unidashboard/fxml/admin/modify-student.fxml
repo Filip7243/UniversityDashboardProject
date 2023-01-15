@@ -30,11 +30,11 @@
                     <panes>
                         <TitledPane fx:id="addFieldOfStudyPane" animated="false" onMousePressed="#loadStudentFieldsOfStudy" style="-fx-background-color: black;" text="Add Field Of Study">
                      <content>
-                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="801.0" spacing="10.0" style="-fx-background-color: black;">
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: black;">
                            <children>
                               <ComboBox fx:id="fieldOfStudies" prefHeight="26.0" prefWidth="186.0" promptText="Choose Field Of Study..." />
                               <ComboBox fx:id="groups" prefWidth="150.0" promptText="Choose Group..." visible="false" />
-                              <HBox alignment="CENTER" prefHeight="27.0" prefWidth="782.0" spacing="20.0">
+                              <HBox alignment="CENTER" prefHeight="47.0" prefWidth="782.0" spacing="20.0">
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#cancelAdding" text="Cancel" />
                                     <Button mnemonicParsing="false" onAction="#addFieldOfStudy" text="Add" />
