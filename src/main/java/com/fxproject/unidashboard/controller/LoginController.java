@@ -3,6 +3,7 @@ package com.fxproject.unidashboard.controller;
 import com.fxproject.unidashboard.HelloApplication;
 import com.fxproject.unidashboard.model.UniversityAccounts;
 import com.fxproject.unidashboard.repository.AccountRepository;
+import com.fxproject.unidashboard.schema.InsertData;
 import com.fxproject.unidashboard.utils.HibernateConnect;
 import com.fxproject.unidashboard.utils.UserSession;
 import com.jfoenix.controls.JFXButton;
@@ -33,7 +34,8 @@ public class LoginController {
     // dsadas@mail.com jhadsgjhdsa
 
     public void initialize() {
-        Session session = HibernateConnect.openSession();
+        new InsertData();
+//        Session session = HibernateConnect.openSession();
 //        try (Session session = HibernateConnect.openSession()) {
 //            Transaction transaction = session.beginTransaction();
 //

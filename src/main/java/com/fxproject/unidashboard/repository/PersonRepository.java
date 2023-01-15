@@ -150,4 +150,20 @@ public class PersonRepository {
             }
         }
     }
+
+    public Optional<Person> findPersonWithFirstName(String firstName) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            Query<Person> query = session.createQuery("SELECT p FROM Person p WHERE p.firstName = :firstName", Person.class);
+            query.setParameter("firstName", firstName);
+            tx.commit();
+            return Optional.ofNullable(query.getSingleResult());
+        } catch (Exception e) {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+            return Optional.empty();
+        }
+    }
 }

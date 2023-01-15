@@ -50,7 +50,7 @@ public class ProfessorController {
 
     public void showPersonalInfo() throws IOException {
         contentPane.getChildren().clear();
-        Node[] nodes = new Node[16];
+        Node[] nodes = new Node[15];
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setPrefWidth(contentPane.getPrefWidth());
         scrollPane.setPrefHeight(contentPane.getPrefHeight());
@@ -85,14 +85,6 @@ public class ProfessorController {
                     pane.getChildren().add(l);
                 }
                 case 1 -> {
-                    label.setText("Second Name");
-                    Label l = new Label("DO USUNIECIA");
-                    l.setFont(new Font(18));
-                    l.setTextFill(Color.color(1, 1, 1));
-                    StackPane.setAlignment(l, Pos.CENTER);
-                    pane.getChildren().add(l);
-                }
-                case 2 -> {
                     label.setText("Last Name");
                     Label l = new Label(loggedInUser.getLastName());
                     l.setFont(new Font(18));
@@ -100,7 +92,7 @@ public class ProfessorController {
                     StackPane.setAlignment(l, Pos.CENTER);
                     pane.getChildren().add(l);
                 }
-                case 3 -> {
+                case 2 -> {
                     label.setText("Email");
                     Label l = new Label(loggedInUser.getEmail());
                     l.setFont(new Font(18));
@@ -108,7 +100,7 @@ public class ProfessorController {
                     StackPane.setAlignment(l, Pos.CENTER);
                     pane.getChildren().add(l);
                 }
-                case 4 -> {
+                case 3 -> {
                     label.setText("Phone Number");
                     Label l = new Label(loggedInUser.getPhoneNumber());
                     l.setFont(new Font(18));
@@ -116,7 +108,7 @@ public class ProfessorController {
                     StackPane.setAlignment(l, Pos.CENTER);
                     pane.getChildren().add(l);
                 }
-                case 5 -> {
+                case 4 -> {
                     label.setText("Date Of Birth");
                     Label l = new Label(String.valueOf(loggedInUser.getBirthday().toLocalDate()));
                     l.setFont(new Font(18));
@@ -124,7 +116,7 @@ public class ProfessorController {
                     StackPane.setAlignment(l, Pos.CENTER);
                     pane.getChildren().add(l);
                 }
-                case 6 -> {
+                case 5 -> {
                     label.setText("Place Of Birth");
                     Label l = new Label(loggedInUser.getPlaceOfBirth());
                     l.setFont(new Font(18));
@@ -132,7 +124,7 @@ public class ProfessorController {
                     StackPane.setAlignment(l, Pos.CENTER);
                     pane.getChildren().add(l);
                 }
-                case 7 -> {
+                case 6 -> {
                     label.setText("Pesel");
                     Label l = new Label(loggedInUser.getPesel());
                     l.setFont(new Font(18));
@@ -140,7 +132,7 @@ public class ProfessorController {
                     StackPane.setAlignment(l, Pos.CENTER);
                     pane.getChildren().add(l);
                 }
-                case 8 -> {
+                case 7 -> {
                     label.setText("Gender");
                     Label l = new Label(loggedInUser.getGender().toString());
                     l.setFont(new Font(18));
@@ -148,7 +140,7 @@ public class ProfessorController {
                     StackPane.setAlignment(l, Pos.CENTER);
                     pane.getChildren().add(l);
                 }
-                case 9 -> {
+                case 8 -> {
                     label.setText("Country");
                     Label l = new Label(loggedInUser.getAddress().getCountry());
                     l.setFont(new Font(18));
@@ -156,7 +148,7 @@ public class ProfessorController {
                     StackPane.setAlignment(l, Pos.CENTER);
                     pane.getChildren().add(l);
                 }
-                case 10 -> {
+                case 9 -> {
                     label.setText("City");
                     Label l = new Label(loggedInUser.getAddress().getCity());
                     l.setFont(new Font(18));
@@ -164,7 +156,7 @@ public class ProfessorController {
                     StackPane.setAlignment(l, Pos.CENTER);
                     pane.getChildren().add(l);
                 }
-                case 11 -> {
+                case 10 -> {
                     label.setText("Streey");
                     Label l = new Label(loggedInUser.getAddress().getStreet());
                     l.setFont(new Font(18));
@@ -172,7 +164,7 @@ public class ProfessorController {
                     StackPane.setAlignment(l, Pos.CENTER);
                     pane.getChildren().add(l);
                 }
-                case 12 -> {
+                case 11 -> {
                     label.setText("House Number");
                     Label l = new Label(loggedInUser.getAddress().getHouseNumber().toString());
                     l.setFont(new Font(18));
@@ -180,7 +172,7 @@ public class ProfessorController {
                     StackPane.setAlignment(l, Pos.CENTER);
                     pane.getChildren().add(l);
                 }
-                case 13 -> {
+                case 12 -> {
                     label.setText("Flat Number");
                     Label l = new Label(loggedInUser.getAddress().getFlatNumber().toString());
                     l.setFont(new Font(18));
@@ -188,7 +180,7 @@ public class ProfessorController {
                     StackPane.setAlignment(l, Pos.CENTER);
                     pane.getChildren().add(l);
                 }
-                case 14 -> {
+                case 13 -> {
                     label.setText("Postal Code");
                     Label l = new Label(loggedInUser.getAddress().getPostalCode());
                     l.setFont(new Font(18));
@@ -196,7 +188,7 @@ public class ProfessorController {
                     StackPane.setAlignment(l, Pos.CENTER);
                     pane.getChildren().add(l);
                 }
-                case 15 -> {
+                case 14 -> {
                     label.setText("University Email");
                     Label l = new Label(loggedInUser.getAcc().getUniversityEmail());
                     l.setFont(new Font(18));
