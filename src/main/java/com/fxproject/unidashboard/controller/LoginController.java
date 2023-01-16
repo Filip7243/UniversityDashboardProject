@@ -31,9 +31,9 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
     private AccountRepository ar = new AccountRepository();
-    // dsadas@mail.com jhadsgjhdsa
 
     public void initialize() {
+//        HibernateConnect.openSession();
 //        new InsertData();
 //        Session session = HibernateConnect.openSession();
 //        try (Session session = HibernateConnect.openSession()) {

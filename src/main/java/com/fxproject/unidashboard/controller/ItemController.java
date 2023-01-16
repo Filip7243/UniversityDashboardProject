@@ -43,7 +43,7 @@ public class ItemController {
         Scene scene = btn.getScene();
         HBox lookup;
         try {
-            String nodeId = btn.getId().substring(btn.getId().length() - 1);
+            String nodeId = btn.getId().substring(12); // 12 - length of string modifyButton
             lookup = (HBox) scene.lookup("#userItem" + nodeId);
             BorderPane albumIdLabelPane = (BorderPane) lookup.getChildren().get(3);
             String albumId = ((Label)albumIdLabelPane.getChildren().get(0)).getText();
@@ -73,10 +73,12 @@ public class ItemController {
         Scene scene = btn.getScene();
         HBox lookup;
         try {
-            String nodeId = btn.getId().substring(btn.getId().length() - 1);
+            String nodeId = btn.getId().substring(13); // 13 is length of sting detailsButton
+            System.out.println(nodeId);
             lookup = (HBox) scene.lookup("#userItem" + nodeId);
             BorderPane albumIdLabelPane = (BorderPane) lookup.getChildren().get(3);
             String albumId = ((Label)albumIdLabelPane.getChildren().get(0)).getText();
+            System.out.println("ALBUM ID KUUURWY: " + albumId);
             BorderPane roleLabelPane = (BorderPane) lookup.getChildren().get(4);
             String role = ((Label)roleLabelPane.getChildren().get(0)).getText();
             Stage stage;
@@ -124,7 +126,7 @@ public class ItemController {
         Scene scene = btn.getScene();
         HBox lookup;
         try {
-            String nodeId = btn.getId().substring(btn.getId().length() - 1);
+            String nodeId = btn.getId().substring(12); // 12 length of string deleteButton
             lookup = (HBox) scene.lookup("#userItem" + nodeId);
             BorderPane albumIdLabelPane = (BorderPane) lookup.getChildren().get(3);
             String albumId = ((Label)albumIdLabelPane.getChildren().get(0)).getText();

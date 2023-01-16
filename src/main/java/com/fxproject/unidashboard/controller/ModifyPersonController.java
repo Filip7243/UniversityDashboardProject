@@ -8,12 +8,10 @@ import com.fxproject.unidashboard.repository.AccountRepository;
 import com.fxproject.unidashboard.repository.PersonRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -214,21 +212,27 @@ public class ModifyPersonController {
         return (Person) stage.getUserData();
     }
 
-    public void modifyPersonalData() {
+    public void modifyPersonalData(ActionEvent event) {
         Person userData = getPersonDataFromStage();
         pr.updatePersonWithId(new Person(userData.getId(), firstName.getText(), lastName.getText(), email.getText(), phoneNumber.getText(),
                 LocalDateTime.now(), placeOfBirth.getText(), pesel.getText(), gender.getText().charAt(0), 99,
                 new Addresses(userData.getAddress().getId(), country.getText(), city.getText(),
                         street.getText(), 12, Integer.parseInt(flatNumber.getText()), postalCode.getText())
         ), userData.getId());
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION, "User Modified");
+        a.show();
+        ((Stage)((Node) (event.getSource())).getScene().getWindow()).close();
     }
 
-    public void modifyAccountData() {
+    public void modifyAccountData(ActionEvent event) {
         Person userData = getPersonDataFromStage();
         UniversityAccounts acc = userData.getAcc();
         ar.updateAccountWithPersonId(new UniversityAccounts(
                 universityEmail.getText(), password.getText(), acc.getCreatedAt(), acc.getEnabled(), acc.getPerson(), acc.getRole()
         ), userData.getId());
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION, "User Account Modified");
+        a.show();
+        ((Stage)((Node) (event.getSource())).getScene().getWindow()).close();
     }
 
     public void cancelAccountTab() {
