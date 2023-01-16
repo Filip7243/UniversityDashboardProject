@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.StudentDetailsController">
    <children>
       <Pane prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #191c24;" stylesheets="@../../css/button-style.css">
@@ -43,20 +42,6 @@
                                           </font>
                                       </Label>
                                       <Label alignment="CENTER" prefWidth="491.5" text="Label" textFill="#c9c9c9" wrapText="true">
-                                          <font>
-                                              <Font size="24.0" />
-                                          </font>
-                                      </Label>
-                                  </children>
-                              </HBox>
-                              <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                                  <children>
-                                      <Label alignment="CENTER" prefWidth="491.5" text="Second Name" textAlignment="CENTER" textFill="#c9c9c9" wrapText="true">
-                                          <font>
-                                              <Font size="24.0" />
-                                          </font>
-                                      </Label>
-                                      <Label alignment="CENTER" prefWidth="491.5" text="Label" textAlignment="CENTER" textFill="#c9c9c9" wrapText="true">
                                           <font>
                                               <Font size="24.0" />
                                           </font>

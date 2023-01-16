@@ -50,20 +50,6 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
                            <children>
-                              <Label alignment="CENTER" prefWidth="540.0" text="Second Name" textFill="#c9c9c9" wrapText="true">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER" prefWidth="540.0" text="Label" textFill="#c9c9c9" wrapText="true">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="983.0" spacing="350.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-                           <children>
                               <Label alignment="CENTER" prefWidth="540.0" text="Last Name" textFill="#c9c9c9" wrapText="true">
                                  <font>
                                     <Font size="24.0" />

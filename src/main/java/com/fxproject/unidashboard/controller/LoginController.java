@@ -34,7 +34,7 @@ public class LoginController {
     // dsadas@mail.com jhadsgjhdsa
 
     public void initialize() {
-        new InsertData();
+//        new InsertData();
 //        Session session = HibernateConnect.openSession();
 //        try (Session session = HibernateConnect.openSession()) {
 //            Transaction transaction = session.beginTransaction();

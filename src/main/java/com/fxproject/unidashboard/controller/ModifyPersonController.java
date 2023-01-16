@@ -75,9 +75,6 @@ public class ModifyPersonController {
     private TextField postalCode;
 
     @FXML
-    private TextField secondName;
-
-    @FXML
     private TextField street;
 
     @FXML
@@ -112,8 +109,8 @@ public class ModifyPersonController {
                 }
                 case "Last Name" -> {
                     Pane p = (Pane) child.getChildren().get(1);
-                    TextField secondName = (TextField) p.getChildren().get(0);
-                    secondName.setText(userData.getLastName());
+                    TextField lastName = (TextField) p.getChildren().get(0);
+                    lastName.setText(userData.getLastName());
                 }
                 case "Email" -> {
                     Pane p = (Pane) child.getChildren().get(1);

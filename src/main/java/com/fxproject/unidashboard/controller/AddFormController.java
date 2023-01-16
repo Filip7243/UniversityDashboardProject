@@ -62,8 +62,6 @@ public class AddFormController {
     private TextField postalCode;
 
     @FXML
-    private TextField secondName;
-    @FXML
     private ComboBox<AcademicTitles> academicTitleCombo;
 
     @FXML
@@ -77,7 +75,6 @@ public class AddFormController {
     public void initialize() {
         setValidator(pesel, integerValidator());
         setValidator(firstName, stringValidator());
-        setValidator(secondName, stringValidator());
         setValidator(lastName, stringValidator());
         setValidator(placeBirth, stringValidator());
         setValidator(phoneNumber, integerValidator());
@@ -176,7 +173,7 @@ public class AddFormController {
     }
 
     private boolean validate() {
-        return Validator.checkIfEmpty(List.of(firstName, secondName, lastName, email, placeBirth, pesel, phoneNumber,
+        return Validator.checkIfEmpty(List.of(firstName, lastName, email, placeBirth, pesel, phoneNumber,
                 country, city, postalCode, street, houseNumber, flatNumber));
     }
 }

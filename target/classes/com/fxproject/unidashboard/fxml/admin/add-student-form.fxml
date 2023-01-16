@@ -52,24 +52,6 @@
                <children>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <Label layoutX="82.0" layoutY="8.0" prefWidth="300.0" text="Second Name" textFill="#a9a8a8">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="42.0" prefWidth="250.0">
-                     <children>
-                        <TextField fx:id="secondName" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
-                     </children>
-                  </Pane>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" maxWidth="600.0" prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #191c24; -fx-background-radius: 2em;">
-               <children>
-                  <Pane prefHeight="42.0" prefWidth="250.0">
-                     <children>
                         <Label layoutX="82.0" layoutY="8.0" prefWidth="300.0" text="Last Name" textFill="#a9a8a8">
                            <font>
                               <Font size="18.0" />
