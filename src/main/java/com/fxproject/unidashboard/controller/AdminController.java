@@ -11,6 +11,11 @@ import com.fxproject.unidashboard.repository.LectureRepository;
 import com.fxproject.unidashboard.repository.ProfessorRepository;
 import com.fxproject.unidashboard.repository.StudentRepository;
 import com.fxproject.unidashboard.utils.UserSession;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.IntegerBinding;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -61,7 +66,6 @@ public class AdminController {
     private LectureRepository lr = new LectureRepository();
 
     private Button clickedButton;
-
     public void initialize() {
         UserSession session = UserSession.getSession();
         loggedInUser = session.getPerson();
@@ -185,7 +189,6 @@ public class AdminController {
 
     public void showLectures(ActionEvent event) {
         clickedButton = (Button) event.getSource();
-        System.out.println(clickedButton.getText());
         List<Lectures> allLectures = lr.findAllLectures();
         loadLecturesDtos(mapToLectureDtos(allLectures));
     }
@@ -244,7 +247,7 @@ public class AdminController {
                         List<Students> studentWithName = sr.findStudentWithName(searchBar.getText().trim().toLowerCase());
                         loadDtos(mapToPersonDtos(studentWithName));
                     }
-                    case "Professors" -> loadDtos(mapToPersonDtos(profR.findStudentWithName(searchBar.getText())));
+                    case "Professors" -> loadDtos(mapToPersonDtos(profR.findProfessorWithName(searchBar.getText())));
                     case "Lectures" -> loadLecturesDtos(mapToLectureDtos(lr.findLectureWithTopic(searchBar.getText())));
                 }
             }

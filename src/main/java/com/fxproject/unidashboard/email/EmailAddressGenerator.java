@@ -15,7 +15,6 @@ public class EmailAddressGenerator {
         return student.getFirstName().substring(0, 1) + student.getLastName().substring(0, 1) +
                 student.getAlbumId() + STUDENT_SUFFIX;
     }
-
     public static String generateMailForProfessor(Professors professors) {
         return professors.getFirstName().substring(0, 1) + professors.getLastName().substring(0, 1) +
                 professors.getAlbumId() + PROFESSOR_SUFFIX;

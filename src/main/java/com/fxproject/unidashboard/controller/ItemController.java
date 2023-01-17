@@ -1,7 +1,6 @@
 package com.fxproject.unidashboard.controller;
 
 import com.fxproject.unidashboard.HelloApplication;
-import com.fxproject.unidashboard.dto.PersonDto;
 import com.fxproject.unidashboard.model.Lectures;
 import com.fxproject.unidashboard.model.Professors;
 import com.fxproject.unidashboard.model.Students;
@@ -11,21 +10,21 @@ import com.fxproject.unidashboard.repository.ProfessorRepository;
 import com.fxproject.unidashboard.repository.StudentRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 
 public class ItemController {
 
@@ -46,9 +45,9 @@ public class ItemController {
             String nodeId = btn.getId().substring(12); // 12 - length of string modifyButton
             lookup = (HBox) scene.lookup("#userItem" + nodeId);
             BorderPane albumIdLabelPane = (BorderPane) lookup.getChildren().get(3);
-            String albumId = ((Label)albumIdLabelPane.getChildren().get(0)).getText();
+            String albumId = ((Label) albumIdLabelPane.getChildren().get(0)).getText();
             BorderPane roleLabelPane = (BorderPane) lookup.getChildren().get(4);
-            String role = ((Label)roleLabelPane.getChildren().get(0)).getText();
+            String role = ((Label) roleLabelPane.getChildren().get(0)).getText();
             switch (role.toLowerCase()) {
                 case "student" -> {
                     Stage stage = loadFXML(event, "modify-student.fxml");
@@ -63,8 +62,8 @@ public class ItemController {
                     stage.setUserData(professor);
                 }
             }
-        } catch (NullPointerException e) { // it means that this is lecture node
-
+        } catch (NullPointerException e) {
+            // it means it is lecture node (future feature)
         }
     }
 
@@ -77,10 +76,10 @@ public class ItemController {
             System.out.println(nodeId);
             lookup = (HBox) scene.lookup("#userItem" + nodeId);
             BorderPane albumIdLabelPane = (BorderPane) lookup.getChildren().get(3);
-            String albumId = ((Label)albumIdLabelPane.getChildren().get(0)).getText();
+            String albumId = ((Label) albumIdLabelPane.getChildren().get(0)).getText();
             System.out.println("ALBUM ID KUUURWY: " + albumId);
             BorderPane roleLabelPane = (BorderPane) lookup.getChildren().get(4);
-            String role = ((Label)roleLabelPane.getChildren().get(0)).getText();
+            String role = ((Label) roleLabelPane.getChildren().get(0)).getText();
             Stage stage;
             switch (role.toLowerCase()) {
                 case "student" -> {
@@ -122,39 +121,53 @@ public class ItemController {
     }
 
     public void deleteItem(ActionEvent event) {
-        Button btn = ((Button) (event.getSource()));
-        Scene scene = btn.getScene();
-        HBox lookup;
-        try {
-            String nodeId = btn.getId().substring(12); // 12 length of string deleteButton
-            lookup = (HBox) scene.lookup("#userItem" + nodeId);
-            BorderPane albumIdLabelPane = (BorderPane) lookup.getChildren().get(3);
-            String albumId = ((Label)albumIdLabelPane.getChildren().get(0)).getText();
-            BorderPane roleLabelPane = (BorderPane) lookup.getChildren().get(4);
-            String role = ((Label)roleLabelPane.getChildren().get(0)).getText();
-            VBox vbox = (VBox) scene.lookup("#itemsContainer");
-            switch (role.toLowerCase()) {
-                case "student" -> {
-                    Students student = sr.findStudentByAlbumId(Long.parseLong(albumId)).orElseThrow();
-                    personRepository.removePersonWithId(student.getId());
+        Alert a = new Alert(Alert.AlertType.WARNING, "You sure you want to delete it?");
+        Optional<ButtonType> result = a.showAndWait();
+        if (!result.isPresent()) {
+            // no value returned -> no button has been pressed
+        } else if (result.get() == ButtonType.OK) {
+            // OK was pressed
+            Button btn = ((Button) (event.getSource()));
+            Scene scene = btn.getScene();
+            HBox lookup;
+            try {
+                String nodeId = btn.getId().substring(12); // 12 length of string deleteButton
+                lookup = (HBox) scene.lookup("#userItem" + nodeId);
+                BorderPane albumIdLabelPane = (BorderPane) lookup.getChildren().get(3);
+                String albumId = ((Label) albumIdLabelPane.getChildren().get(0)).getText();
+                BorderPane roleLabelPane = (BorderPane) lookup.getChildren().get(4);
+                String role = ((Label) roleLabelPane.getChildren().get(0)).getText();
+                VBox vbox = (VBox) scene.lookup("#itemsContainer");
+                switch (role.toLowerCase()) {
+                    case "student" -> {
+                        Students student = sr.findStudentByAlbumId(Long.parseLong(albumId)).orElseThrow();
+                        personRepository.removePersonWithId(student.getId());
+                    }
+                    case "professor" -> {
+                        Professors professor = pr.findProfessorByAlbumId(Long.parseLong(albumId)).orElseThrow();
+                        personRepository.removePersonWithId(professor.getId());
+                    }
                 }
-                case "professor" -> {
-                    Professors professor = pr.findProfessorByAlbumId(Long.parseLong(albumId)).orElseThrow();
-                    personRepository.removePersonWithId(professor.getId());
-                }
+                vbox.getChildren().remove(lookup);
+                a.setAlertType(Alert.AlertType.INFORMATION);
+                a.setContentText("Person Deleted");
+                a.show();
+            } catch (NullPointerException e) { // lecture node
+                String nodeId = btn.getId().substring(btn.getId().length() - 1);
+                lookup = (HBox) scene.lookup("#lectureItem" + nodeId);
+                VBox vbox = (VBox) scene.lookup("#itemsContainer");
+                BorderPane idPane = (BorderPane) lookup.getChildren().get(0);
+                Label idLabel = (Label) idPane.getChildren().get(0);
+                Lectures lectures = lr.findLectureWithId(Long.parseLong(idLabel.getText())).orElseThrow();
+                lr.removeLecture(lectures);
+                vbox.getChildren().remove(lookup);
+                a.setAlertType(Alert.AlertType.INFORMATION);
+                a.setContentText("Lecture Deleted");
+                a.show();
             }
-            vbox.getChildren().remove(lookup);
-        } catch (NullPointerException e) {
-            String nodeId = btn.getId().substring(btn.getId().length() - 1);
-            System.out.println("NODE" + nodeId);
-            lookup = (HBox) scene.lookup("#lectureItem" + nodeId);
-            VBox vbox = (VBox) scene.lookup("#itemsContainer");
-            BorderPane idPane = (BorderPane) lookup.getChildren().get(0);
-            Label idLabel = (Label) idPane.getChildren().get(0);
-            Lectures lectures = lr.findLectureWithId(Long.parseLong(idLabel.getText())).orElseThrow();
-            lr.removeLecture(lectures);
-            vbox.getChildren().remove(lookup);
         }
+
+
     }
 
     private static Stage loadFXML(ActionEvent event, String file) {

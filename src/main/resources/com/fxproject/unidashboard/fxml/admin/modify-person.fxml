@@ -8,7 +8,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -28,7 +27,7 @@
                                     <children>
                                         <BorderPane prefHeight="42.0" prefWidth="718.0">
                                             <center>
-                                                <Label text="Filip Kaczmarczyk" textFill="#c9c9c9" BorderPane.alignment="CENTER">
+                                                <Label prefHeight="35.0" prefWidth="338.0" text="Modify Personal Data" textFill="#c9c9c9" BorderPane.alignment="CENTER">
                                                     <graphic>
                                                         <Label text="Modify" textFill="#c9c9c9">
                                                             <font>
@@ -305,7 +304,7 @@
                                     <children>
                                         <BorderPane prefHeight="43.0" prefWidth="784.0">
                                             <center>
-                                                <Label text="fk122941@stud.ur.edu.pl" textFill="#c9c9c9" BorderPane.alignment="CENTER">
+                                                <Label text="Modify Account Data" textFill="#c9c9c9" BorderPane.alignment="CENTER">
                                                     <graphic>
                                                         <Label text="Modify" textFill="#c9c9c9">
                                                             <font>
@@ -369,9 +368,9 @@
                                                 <Pane prefHeight="35.0" prefWidth="299.0">
                                        <children>
                                           <ComboBox fx:id="role" layoutX="50.0" layoutY="8.0" prefWidth="200.0" promptText="Choose Role...">
-                                             <effect>
-                                                <Glow level="0.57" />
-                                             </effect></ComboBox>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor></ComboBox>
                                        </children>
                                                 </Pane>
                                             </children>

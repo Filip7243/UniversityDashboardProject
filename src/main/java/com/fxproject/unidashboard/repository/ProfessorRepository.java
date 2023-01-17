@@ -54,7 +54,7 @@ public class ProfessorRepository {
         }
     }
 
-    public List<Professors> findStudentWithName(String name) {
+    public List<Professors> findProfessorWithName(String name) {
         Transaction tx = null;
         try (Session session = HibernateConnect.openSession()) {
             tx = session.beginTransaction();

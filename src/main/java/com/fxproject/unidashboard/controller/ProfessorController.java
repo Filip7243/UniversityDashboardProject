@@ -208,6 +208,13 @@ public class ProfessorController {
         contentPane.getChildren().add(anchorPane);
     }
 
+    public void showGrades() throws IOException {
+        contentPane.getChildren().clear();
+        URL url = HelloApplication.class.getResource("fxml/professor/professor-marks.fxml");
+        AnchorPane anchorPane = loader.load(url);
+        contentPane.getChildren().add(anchorPane);
+    }
+
     public void showStartLectureForm() throws IOException {
         contentPane.getChildren().clear();
         URL url = HelloApplication.class.getResource("fxml/professor/start-lecture.fxml");

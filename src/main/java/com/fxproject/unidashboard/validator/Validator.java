@@ -70,7 +70,7 @@ public class Validator {
 
     public static boolean checkIfValueInComboSelected(List<ComboBox<?>> cbs) {
         for (ComboBox<?> cb : cbs) {
-            if(cb.getSelectionModel().isEmpty()) {
+            if (cb.getSelectionModel().isEmpty()) {
                 showAlert(Alert.AlertType.WARNING, cb.getId().toUpperCase() + " is empty");
                 return false;
             }
@@ -79,7 +79,7 @@ public class Validator {
     }
 
     public static boolean checkIfDateWasPicked(DatePicker datePicker) {
-        if(datePicker.getValue() == null) {
+        if (datePicker.getValue() == null) {
             showAlert(Alert.AlertType.WARNING, "Date was not picked!");
             return false;
         }

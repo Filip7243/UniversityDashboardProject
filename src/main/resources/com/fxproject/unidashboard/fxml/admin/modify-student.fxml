@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -36,8 +37,14 @@
                               <ComboBox fx:id="fieldOfStudies" prefHeight="26.0" prefWidth="186.0" promptText="Choose Field Of Study...">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
-                                 </cursor></ComboBox>
-                              <ComboBox fx:id="groups" prefWidth="150.0" promptText="Choose Group..." visible="false" />
+                                 </cursor>
+                                 <effect>
+                                    <InnerShadow />
+                                 </effect></ComboBox>
+                              <ComboBox fx:id="groups" prefWidth="150.0" promptText="Choose Group..." visible="false">
+                                 <effect>
+                                    <InnerShadow />
+                                 </effect></ComboBox>
                               <HBox alignment="CENTER" prefHeight="26.0" prefWidth="782.0" spacing="20.0">
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#cancelAdding" text="Cancel">
@@ -67,7 +74,10 @@
                               <ComboBox fx:id="removingGroups" prefHeight="26.0" prefWidth="197.0" promptText="Choose Field Of Study...">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
-                                 </cursor></ComboBox>
+                                 </cursor>
+                                 <effect>
+                                    <InnerShadow />
+                                 </effect></ComboBox>
                               <HBox alignment="CENTER" prefHeight="43.0" prefWidth="782.0" spacing="20.0">
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#cancelRemoving" text="Cancel">

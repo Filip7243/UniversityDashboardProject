@@ -35,6 +35,10 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
+                <Button mnemonicParsing="false" onAction="#showGrades" text="My Grades" textFill="#c9c9c9">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
                 <Button mnemonicParsing="false" onAction="#showStartLectureForm" text="Start Lecture" textFill="#c9c9c9">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -44,10 +48,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
                 <Button mnemonicParsing="false" onAction="#showAddExamForm" text="Add Exams" textFill="#c9c9c9">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-                <Button mnemonicParsing="false" text="Settings" textFill="#c9c9c9">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>

@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -15,7 +16,7 @@
 
 <AnchorPane prefHeight="610.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.ModifyProfessorController">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="610.0" prefWidth="800.0" style="-fx-background-color: black;">
+      <VBox alignment="TOP_CENTER" prefHeight="610.0" prefWidth="800.0" style="-fx-background-color: #171717;">
          <children>
             <Pane prefHeight="100.0" prefWidth="802.0" style="-fx-background-color: #191c24;" stylesheets="@../../css/button-style.css">
                <children>
@@ -34,7 +35,7 @@
               <panes>
                 <TitledPane fx:id="addWageTab" animated="false" prefHeight="100.0" prefWidth="802.0" style="-fx-background-color: black;" text="Add Wage">
                      <content>
-                        <VBox alignment="CENTER" prefHeight="148.0" prefWidth="801.0" spacing="20.0" style="-fx-background-color: black;" stylesheets="@../../css/button-style.css">
+                        <VBox alignment="CENTER" prefHeight="148.0" prefWidth="801.0" spacing="20.0" style="-fx-background-color: #171717;" stylesheets="@../../css/button-style.css">
                            <children>
                               <TextField fx:id="salary" promptText="Salary" style="-fx-border-radius: 2em; -fx-background-color: transparent; -fx-border-color: #a9a8a8;">
                                  <cursor>
@@ -68,7 +69,7 @@
                      </cursor></TitledPane>
                 <TitledPane fx:id="addRemoveSubject" animated="false" onMousePressed="#showAddRemoveForm" prefHeight="100.0" prefWidth="802.0" style="-fx-background-color: black;" stylesheets="@../../css/combobox-style.css" text="Add/Remove Teaching Subjects">
                      <content>
-                        <HBox prefHeight="126.0" prefWidth="801.0" style="-fx-background-color: black; -fx-text-fill: #a9a8a8;" stylesheets="@../../css/button-style.css">
+                        <HBox prefHeight="126.0" prefWidth="801.0" style="-fx-background-color: #171717; -fx-text-fill: #a9a8a8;" stylesheets="@../../css/button-style.css">
                            <children>
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="400.0" spacing="10.0">
                                  <children>
@@ -76,11 +77,17 @@
                                     <ComboBox fx:id="comboGroups" prefWidth="150.0" promptText="Choose Group" style="-fx-text-fill: #a9a8a8;">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
-                                       </cursor></ComboBox>
+                                       </cursor>
+                                       <effect>
+                                          <InnerShadow />
+                                       </effect></ComboBox>
                                     <ComboBox fx:id="comboSubjects" prefWidth="150.0" promptText="Choose Subject" style="-fx-text-fill: #a9a8a8;">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
-                                       </cursor></ComboBox>
+                                       </cursor>
+                                       <effect>
+                                          <InnerShadow />
+                                       </effect></ComboBox>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                                        <children>
                                           <Button mnemonicParsing="false" onAction="#cancelAddRemoveTab" text="Cancel">
@@ -101,11 +108,17 @@
                                     <ComboBox fx:id="comboRemoveGroup" prefWidth="150.0" promptText="Choose Group" style="-fx-text-fill: #a9a8a8;">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
-                                       </cursor></ComboBox>
+                                       </cursor>
+                                       <effect>
+                                          <InnerShadow />
+                                       </effect></ComboBox>
                                     <ComboBox fx:id="comboRemoveSubject" prefWidth="150.0" promptText="Choose Subject" style="-fx-text-fill: #a9a8a8;">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
-                                       </cursor></ComboBox>
+                                       </cursor>
+                                       <effect>
+                                          <InnerShadow />
+                                       </effect></ComboBox>
                                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                                        <children>
                                           <Button mnemonicParsing="false" onAction="#cancelAddRemoveTab" text="Cancel">

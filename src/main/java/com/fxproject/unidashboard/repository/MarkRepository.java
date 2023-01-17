@@ -57,4 +57,35 @@ public class MarkRepository {
             return List.of();
         }
     }
+
+    public void updateMark(Marks newMark, Marks currentMark) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            currentMark.setMark(newMark.getMark());
+            currentMark.setMarkDate(newMark.getMarkDate());
+            currentMark.setDescription(newMark.getDescription());
+            session.merge(currentMark);
+            tx.commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+        }
+    }
+
+    public void remove(Marks mark) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            session.remove(mark);
+            tx.commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+        }
+    }
 }

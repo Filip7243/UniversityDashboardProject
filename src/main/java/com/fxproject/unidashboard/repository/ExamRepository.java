@@ -14,6 +14,9 @@ import java.util.Optional;
 
 public class ExamRepository {
 
+    public ExamRepository() {
+    }
+
     public List<Exams> findStudentExamsInGroup(Groups group) {
         Transaction tx = null;
         try (Session session = HibernateConnect.openSession()){

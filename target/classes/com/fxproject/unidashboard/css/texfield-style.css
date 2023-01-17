@@ -3,6 +3,7 @@
     -fx-background-color: transparent;
     -fx-border-radius: 2em;
     -fx-border-color: white;
+    -fx-prompt-text-fill: white;
 }
 
 .text-input:error {

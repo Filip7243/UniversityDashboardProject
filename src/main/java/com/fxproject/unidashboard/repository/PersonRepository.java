@@ -32,15 +32,6 @@ public class PersonRepository {
         }
     }
 
-    public List<Person> findAllPeople() {
-        try (Session session = HibernateConnect.openSession()) {
-            Query<Person> people = session.createQuery("SELECT p FROM Person p", Person.class);
-            return people.getResultList();
-        } catch (Exception e) {
-            return List.of();
-        }
-    }
-
     public Optional<Person> findPersonWithId(Long id) {
         Transaction tx = null;
         try (Session session = HibernateConnect.openSession()) {
