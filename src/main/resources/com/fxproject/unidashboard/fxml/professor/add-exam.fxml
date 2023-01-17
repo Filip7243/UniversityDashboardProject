@@ -7,13 +7,13 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="950.0" spacing="35.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.AddExamController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="950.0" spacing="35.0" style="-fx-background-color: black;" stylesheets="@../../css/button-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.AddExamController">
     <children>
       <Pane prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: #191c24;">
          <children>
@@ -32,28 +32,28 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></TextField>
-        <ComboBox fx:id="comboGroups" prefWidth="300.0" promptText="Group">
-         <effect>
-            <Glow level="0.57" />
-         </effect>
+        <ComboBox fx:id="comboGroups" prefWidth="300.0" promptText="Group" stylesheets="@../../css/combobox-style.css">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></ComboBox>
-        <ComboBox fx:id="comboSubjects" prefWidth="300.0" promptText="Subject">
+         </cursor>
          <effect>
-            <Glow level="0.57" />
-         </effect>
+            <InnerShadow />
+         </effect></ComboBox>
+        <ComboBox fx:id="comboSubjects" prefWidth="300.0" promptText="Subject" stylesheets="@../../css/combobox-style.css">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></ComboBox>
-        <ComboBox fx:id="comboTypes" prefWidth="300.0" promptText="Exam Type">
+         </cursor>
          <effect>
-            <Glow level="0.57" />
-         </effect>
+            <InnerShadow />
+         </effect></ComboBox>
+        <ComboBox fx:id="comboTypes" prefWidth="300.0" promptText="Exam Type" stylesheets="@../../css/combobox-style.css">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></ComboBox>
-        <DatePicker fx:id="examDatePicker" prefWidth="300.0" promptText="Date">
+         </cursor>
+         <effect>
+            <InnerShadow />
+         </effect></ComboBox>
+        <DatePicker fx:id="examDatePicker" prefWidth="300.0" promptText="Date" stylesheets="@../../css/datepicker-style.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></DatePicker>
@@ -70,10 +70,4 @@
          </children>
       </HBox>
     </children>
-   <stylesheets>
-      <URL value="@../../css/combobox-style.css" />
-      <URL value="@../../css/datepicker-style.css" />
-      <URL value="@../../css/button-style.css" />
-      <URL value="@../../css/texfield-style.css" />
-   </stylesheets>
 </VBox>

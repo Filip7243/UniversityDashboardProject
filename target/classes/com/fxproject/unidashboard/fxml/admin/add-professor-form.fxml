@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -8,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -15,7 +15,7 @@
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="907.0" prefWidth="725.0" stylesheets="@scroll-pane-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.AddFormController">
    <content>
-      <VBox alignment="TOP_CENTER" prefHeight="914.0" prefWidth="706.0" spacing="10.0">
+      <VBox alignment="TOP_CENTER" prefHeight="914.0" prefWidth="706.0" spacing="10.0" stylesheets="@../../css/datepicker-style.css">
          <children>
             <Pane prefHeight="46.0" prefWidth="706.0" style="-fx-background-color: #191c24;" stylesheets="@../../css/button-style.css">
                <children>
@@ -43,7 +43,7 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="firstName" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="firstName" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" stylesheets="@../../css/texfield-style.css" />
                      </children>
                   </Pane>
                </children>
@@ -61,7 +61,7 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="lastName" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="lastName" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" stylesheets="@../../css/texfield-style.css" />
                      </children>
                   </Pane>
                </children>
@@ -79,7 +79,7 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="email" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" />
+                        <TextField fx:id="email" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" stylesheets="@../../css/texfield-style.css" />
                      </children>
                   </Pane>
                </children>
@@ -97,7 +97,7 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <DatePicker fx:id="birthday" layoutX="38.0" layoutY="9.0" prefWidth="250.0" />
+                        <DatePicker fx:id="birthday" layoutX="38.0" layoutY="9.0" prefWidth="250.0" stylesheets="@../../css/datepicker-style.css" />
                      </children>
                   </Pane>
                </children>
@@ -115,7 +115,7 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="placeBirth" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="placeBirth" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" stylesheets="@../../css/texfield-style.css" />
                      </children>
                   </Pane>
                </children>
@@ -133,7 +133,7 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="pesel" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="pesel" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" stylesheets="@../../css/texfield-style.css" />
                      </children>
                   </Pane>
                </children>
@@ -151,7 +151,7 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="phoneNumber" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="phoneNumber" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" stylesheets="@../../css/texfield-style.css" />
                      </children>
                   </Pane>
                </children>
@@ -169,10 +169,13 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <ComboBox fx:id="gender" layoutX="50.0" layoutY="9.0" prefWidth="250.0" promptText="Gender">
+                        <ComboBox fx:id="gender" layoutX="50.0" layoutY="9.0" prefWidth="250.0" promptText="Gender" stylesheets="@../../css/combobox-style.css">
                            <cursor>
                               <Cursor fx:constant="HAND" />
-                           </cursor></ComboBox>
+                           </cursor>
+                           <effect>
+                              <InnerShadow />
+                           </effect></ComboBox>
                      </children>
                   </Pane>
                </children>
@@ -190,7 +193,7 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="country" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="country" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" stylesheets="@../../css/texfield-style.css" />
                      </children>
                   </Pane>
                </children>
@@ -208,7 +211,7 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="city" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="city" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" stylesheets="@../../css/texfield-style.css" />
                      </children>
                   </Pane>
                </children>
@@ -226,7 +229,7 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="postalCode" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="postalCode" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" stylesheets="@../../css/texfield-style.css" />
                      </children>
                   </Pane>
                </children>
@@ -244,7 +247,7 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="street" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="street" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" stylesheets="@../../css/texfield-style.css" />
                      </children>
                   </Pane>
                </children>
@@ -262,7 +265,7 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="houseNumber" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="houseNumber" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" stylesheets="@../../css/texfield-style.css" />
                      </children>
                   </Pane>
                </children>
@@ -280,7 +283,7 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <TextField fx:id="flatNumber" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" />
+                        <TextField fx:id="flatNumber" layoutX="41.0" layoutY="8.0" prefColumnCount="5" prefHeight="27.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-radius: 2em; -fx-border-color: white;" stylesheets="@../../css/texfield-style.css" />
                      </children>
                   </Pane>
                </children>
@@ -298,10 +301,13 @@
                   </Pane>
                   <Pane prefHeight="42.0" prefWidth="250.0">
                      <children>
-                        <ComboBox fx:id="academicTitleCombo" layoutX="50.0" layoutY="8.0" prefWidth="250.0" promptText="Academic Title">
+                        <ComboBox fx:id="academicTitleCombo" layoutX="50.0" layoutY="8.0" prefWidth="250.0" promptText="Academic Title" stylesheets="@../../css/combobox-style.css">
                            <cursor>
                               <Cursor fx:constant="HAND" />
-                           </cursor></ComboBox>
+                           </cursor>
+                           <effect>
+                              <InnerShadow />
+                           </effect></ComboBox>
                      </children>
                   </Pane>
                </children>
@@ -319,11 +325,6 @@
                </children>
             </HBox>
          </children>
-         <stylesheets>
-            <URL value="@../../css/combobox-style.css" />
-            <URL value="@../../css/texfield-style.css" />
-            <URL value="@../../css/datepicker-style.css" />
-         </stylesheets>
       </VBox>
    </content>
 </ScrollPane>

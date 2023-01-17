@@ -6,7 +6,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
@@ -14,7 +14,7 @@
     <children>
         <ComboBox fx:id="professorLectures" prefHeight="26.0" prefWidth="954.0" promptText="Choose Lesson">
          <effect>
-            <Glow level="0.57" />
+            <InnerShadow />
          </effect></ComboBox>
         <TableView fx:id="attendanceList" prefHeight="508.0" prefWidth="668.0">
             <columns>

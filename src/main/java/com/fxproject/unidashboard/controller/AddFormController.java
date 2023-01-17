@@ -101,7 +101,6 @@ public class AddFormController {
     public void addUser() {
         // validation
         if (!validate()) {
-            return;
         } else {
             Person person = new Person();
             person.setFirstName(firstName.getText());
@@ -116,15 +115,15 @@ public class AddFormController {
 
             UniversityAccounts acc = new UniversityAccounts();
             Addresses address = new Addresses();
+            address.setCountry(country.getText());
+            address.setCity(city.getText());
+            address.setPostalCode(postalCode.getText());
+            address.setStreet(street.getText());
+            address.setHouseNumber(Integer.parseInt(houseNumber.getText()));
+            address.setFlatNumber(Integer.parseInt(flatNumber.getText()));
+            person.setAddress(address);
+            ar.save(address);
             if (academicTitleCombo != null) { // it means we are adding professor
-                address.setCountry(country.getText());
-                address.setCity(city.getText());
-                address.setPostalCode(postalCode.getText());
-                address.setStreet(street.getText());
-                address.setHouseNumber(Integer.parseInt(houseNumber.getText()));
-                address.setFlatNumber(Integer.parseInt(flatNumber.getText()));
-                person.setAddress(address);
-                ar.save(address);
                 Professors p = new Professors(null, person.getFirstName(), person.getLastName(), person.getEmail(),
                         person.getPhoneNumber(), person.getBirthday(), person.getPlaceOfBirth(), person.getPesel(),
                         person.getGender(), person.getAge(), person.getAddress(), academicTitleCombo.getValue());
@@ -138,14 +137,6 @@ public class AddFormController {
                 accr.save(acc);
                 p.setAcc(acc);
             } else {
-                address.setCountry(country.getText());
-                address.setCity(city.getText());
-                address.setPostalCode(postalCode.getText());
-                address.setStreet(street.getText());
-                address.setHouseNumber(Integer.parseInt(houseNumber.getText()));
-                address.setFlatNumber(Integer.parseInt(flatNumber.getText()));
-                person.setAddress(address);
-                ar.save(address);
                 acc.setRole(Roles.ROLE_STUDENT);
                 Students s = new Students(null, person.getFirstName(), person.getLastName(), person.getEmail(),
                         person.getPhoneNumber(), person.getBirthday(), person.getPlaceOfBirth(), person.getPesel(),

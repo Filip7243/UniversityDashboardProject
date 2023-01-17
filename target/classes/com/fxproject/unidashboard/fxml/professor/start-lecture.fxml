@@ -6,7 +6,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -28,19 +28,19 @@
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
         <ComboBox fx:id="comboGroup" prefWidth="300.0" promptText="Choose Group">
-         <effect>
-            <Glow level="0.57" />
-         </effect>
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></ComboBox>
+         </cursor>
+         <effect>
+            <InnerShadow />
+         </effect></ComboBox>
         <ComboBox fx:id="comboSubject" prefWidth="300.0" promptText="Choose Subject">
-         <effect>
-            <Glow level="0.57" />
-         </effect>
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></ComboBox>
+         </cursor>
+         <effect>
+            <InnerShadow />
+         </effect></ComboBox>
       <HBox alignment="CENTER" prefHeight="31.0" prefWidth="668.0" spacing="50.0">
          <children>
             <Button mnemonicParsing="false" onAction="#clearFields" prefWidth="120.0" text="Cancel">

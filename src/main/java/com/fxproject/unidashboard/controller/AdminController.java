@@ -230,7 +230,6 @@ public class AdminController {
             if (loader != null) {
                 root = loader.load();
                 Stage stage = new Stage();
-                stage.initStyle(StageStyle.UNDECORATED);
                 stage.setScene(new Scene(root, 725, 383));
                 stage.show();
             }

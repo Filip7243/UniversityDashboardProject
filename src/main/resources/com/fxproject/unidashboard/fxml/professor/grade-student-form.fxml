@@ -7,7 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -28,38 +28,38 @@
                </children>
             </Pane>
               <ComboBox fx:id="comboGroups" prefWidth="300.0" promptText="Choose Group">
-               <effect>
-                  <Glow level="0.57" />
-               </effect>
                <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor></ComboBox>
+               </cursor>
+               <effect>
+                  <InnerShadow />
+               </effect></ComboBox>
               <ComboBox fx:id="comboStudents" prefWidth="300.0" promptText="Choose Student">
-               <effect>
-                  <Glow level="0.57" />
-               </effect>
                <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor></ComboBox>
+               </cursor>
+               <effect>
+                  <InnerShadow />
+               </effect></ComboBox>
               <ComboBox fx:id="comboSubjects" prefWidth="300.0" promptText="Choose Subject">
-               <effect>
-                  <Glow level="0.57" />
-               </effect>
                <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor></ComboBox>
+               </cursor>
+               <effect>
+                  <InnerShadow />
+               </effect></ComboBox>
             <Spinner fx:id="markSpinner" editable="true" prefWidth="300.0" />
             <TextField fx:id="description" maxWidth="300.0" prefWidth="300.0" promptText="Description">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor></TextField>
             <ComboBox fx:id="comboTypes" prefWidth="300.0" promptText="Choose Type">
-               <effect>
-                  <Glow level="0.57" />
-               </effect>
                <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor></ComboBox>
+               </cursor>
+               <effect>
+                  <InnerShadow />
+               </effect></ComboBox>
             <HBox alignment="CENTER" prefHeight="32.0" prefWidth="950.0" spacing="45.0">
                <children>
                   <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelGrade" prefWidth="120.0" text="Cancel">
