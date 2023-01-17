@@ -96,7 +96,7 @@
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor></TextField>
-            <PasswordField fx:id="passwordField" alignment="CENTER" maxWidth="300.0" prefHeight="27.0" prefWidth="789.0" promptText="Password...">
+            <PasswordField fx:id="passwordField" alignment="CENTER" maxWidth="300.0" onAction="#logIn" prefHeight="27.0" prefWidth="789.0" promptText="Password...">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor></PasswordField>

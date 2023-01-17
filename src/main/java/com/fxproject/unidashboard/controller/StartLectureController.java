@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,8 +20,6 @@ import static com.fxproject.unidashboard.validator.Validator.checkIfValueInCombo
 
 public class StartLectureController {
 
-    @FXML
-    private VBox container;
     @FXML
     private ComboBox<Groups> comboGroup;
 

@@ -66,7 +66,7 @@ public class ProfessorDetailsController {
         VBox content = (VBox) personalData.getContent();
         ObservableList<Node> children = content.getChildren();
         for (Node child : children) {
-            // child is hbox
+            // child is HBox
             HBox i = (HBox) child;
             Label label = (Label) i.getChildren().get(0);
             switch (label.getText()) {

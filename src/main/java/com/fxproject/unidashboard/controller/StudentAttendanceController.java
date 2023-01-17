@@ -47,14 +47,12 @@ public class StudentAttendanceController {
         FilteredList<StudentAttendanceOnLecture> filteredList =
                 new FilteredList<>(FXCollections.observableArrayList(dtos), a -> true);
         // filtering by combobox choice
-        comboSubject.valueProperty().addListener((obs, oldValue, newValue) -> {
-            filteredList.setPredicate(attendance -> {
-                if (newValue == null) {
-                    return true; // displays all because any value was chosen
-                }
-                return attendance.getSubjectName().equals(newValue.getName()); // displays only chosen value in combobox
-            });
-        });
+        comboSubject.valueProperty().addListener((obs, oldValue, newValue) -> filteredList.setPredicate(attendance -> {
+            if (newValue == null) {
+                return true; // displays all because any value was chosen
+            }
+            return attendance.getSubjectName().equals(newValue.getName()); // displays only chosen value in combobox
+        }));
         table.setItems(filteredList);
     }
 

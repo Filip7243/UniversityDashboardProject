@@ -3,8 +3,6 @@ package com.fxproject.unidashboard.controller;
 import com.fxproject.unidashboard.HelloApplication;
 import com.fxproject.unidashboard.model.UniversityAccounts;
 import com.fxproject.unidashboard.repository.AccountRepository;
-import com.fxproject.unidashboard.schema.InsertData;
-import com.fxproject.unidashboard.utils.HibernateConnect;
 import com.fxproject.unidashboard.utils.UserSession;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
@@ -18,7 +16,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.hibernate.Session;
 
 import java.io.IOException;
 
@@ -33,7 +30,6 @@ public class LoginController {
     private AccountRepository ar = new AccountRepository();
 
     public void initialize() {
-        new InsertData();
     }
 
     public void logIn(ActionEvent event) {

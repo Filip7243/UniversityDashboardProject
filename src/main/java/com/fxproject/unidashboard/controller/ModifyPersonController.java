@@ -31,9 +31,6 @@ public class ModifyPersonController {
     private TextField country;
 
     @FXML
-    private TextField dateOfBirth;
-
-    @FXML
     private TextField email;
 
     @FXML

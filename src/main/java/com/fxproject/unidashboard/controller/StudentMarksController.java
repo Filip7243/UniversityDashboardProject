@@ -7,11 +7,11 @@ import com.fxproject.unidashboard.repository.MarkRepository;
 import com.fxproject.unidashboard.utils.UserSession;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
@@ -36,7 +36,7 @@ public class StudentMarksController {
 
         for (int j = 0; j < studentMarks.size(); j++) { // j < count(student's marks)
             HBox markInfoBox = loadFXMLItem();
-            markInfoBox.setPrefWidth(0.9*marksBox.getPrefWidth());
+            markInfoBox.setPrefWidth(0.9 * marksBox.getPrefWidth());
             marksBox.setSpacing(13);
             marksBox.getChildren().add(markInfoBox);
             StackPane sP = (StackPane) markInfoBox.lookup("#pane");

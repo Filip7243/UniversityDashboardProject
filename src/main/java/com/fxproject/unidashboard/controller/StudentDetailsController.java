@@ -1,11 +1,9 @@
 package com.fxproject.unidashboard.controller;
 
 import com.fxproject.unidashboard.dto.FieldOfStudyGroupDto;
-import com.fxproject.unidashboard.dto.PersonDto;
 import com.fxproject.unidashboard.dto.SubjectMarkDto;
 import com.fxproject.unidashboard.model.*;
 import com.fxproject.unidashboard.repository.MarkRepository;
-import com.jfoenix.controls.JFXTreeTableView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,12 +11,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -47,7 +43,7 @@ public class StudentDetailsController {
         VBox content = (VBox) personalData.getContent();
         ObservableList<Node> children = content.getChildren();
         for (Node child : children) {
-            // child is hbox
+            // child is HBox
             HBox i = (HBox) child;
             Label label = (Label) i.getChildren().get(0);
             switch (label.getText()) {
@@ -153,6 +149,6 @@ public class StudentDetailsController {
     }
 
     public void closeWindow(ActionEvent event) {
-        ((Stage)((Button) (event.getSource())).getScene().getWindow()).close();
+        ((Stage) ((Button) (event.getSource())).getScene().getWindow()).close();
     }
 }

@@ -61,7 +61,7 @@ public class ModifyProfessorController {
         comboSubjects.setItems(FXCollections.observableArrayList(sr.findAllSubjects()));
         Professors userData = getUserData();
         List<ProfessorsSubjectsInGroups> psig = userData.getPsig();
-        List<Groups> g = psig.stream().map(ProfessorsSubjectsInGroups::getGroup).toList(); //todo: ogarnac te duplikaty zjebane
+        List<Groups> g = psig.stream().map(ProfessorsSubjectsInGroups::getGroup).toList();
         comboRemoveGroup.setItems(FXCollections.observableArrayList(g));
         comboRemoveGroup.valueProperty().addListener((o, oldValue, newValue) ->
                 comboRemoveSubject.setItems(FXCollections.observableArrayList(psigr.findProfessorSubjectInGroup(newValue, userData))));

@@ -157,7 +157,7 @@ public class ProfessorController {
                     pane.getChildren().add(l);
                 }
                 case 10 -> {
-                    label.setText("Streey");
+                    label.setText("Street");
                     Label l = new Label(loggedInUser.getAddress().getStreet());
                     l.setFont(new Font(18));
                     l.setTextFill(Color.color(1, 1, 1));
