@@ -16,7 +16,7 @@
    <children>
       <VBox prefHeight="636.0" prefWidth="1004.0">
          <children>
-            <Pane prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: #191c24;" stylesheets="@../../css/button-style.css">
+            <Pane prefHeight="110.0" prefWidth="200.0" style="-fx-background-color: #0d6efd;" stylesheets="@../../css/button-style.css">
                <children>
                   <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeWindow" text="Cancel">
                      <cursor>

@@ -17,14 +17,14 @@
     <content>
         <VBox alignment="TOP_CENTER" prefHeight="914.0" prefWidth="706.0" spacing="10.0">
          <children>
-            <Pane prefHeight="54.0" prefWidth="706.0" style="-fx-background-color: #191c24;" stylesheets="@../../css/button-style.css">
+            <Pane prefHeight="54.0" prefWidth="706.0" style="-fx-background-color: #0d6efd;" stylesheets="@../../css/button-style.css">
                <children>
                   <Label layoutX="283.0" layoutY="13.0" text="ADD STUDENT" textFill="#a9a9a9">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeWindow" prefWidth="100.0" text="BACK">
+                  <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeWindow" prefWidth="100.0" style="-fx-border-color: black; -fx-text-fill: black;" text="BACK">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>

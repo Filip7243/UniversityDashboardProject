@@ -18,14 +18,14 @@
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="610.0" prefWidth="800.0" style="-fx-background-color: #171717;">
          <children>
-            <Pane prefHeight="100.0" prefWidth="802.0" style="-fx-background-color: #191c24;" stylesheets="@../../css/button-style.css">
+            <Pane prefHeight="57.0" prefWidth="802.0" style="-fx-background-color: #0d6efd;" stylesheets="@../../css/button-style.css">
                <children>
                   <Label layoutX="239.0" layoutY="1.0" text="Modify Professor">
                      <font>
                         <Font name="System Bold" size="40.0" />
                      </font>
                   </Label>
-                  <Button layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#closeWindow" text="QUIT">
+                  <Button layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#closeWindow" style="-fx-border-color: black; -fx-text-fill: black;" text="QUIT">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>

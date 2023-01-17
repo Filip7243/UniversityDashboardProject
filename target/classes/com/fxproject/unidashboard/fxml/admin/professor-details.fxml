@@ -14,9 +14,9 @@
 
 <VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxproject.unidashboard.controller.ProfessorDetailsController">
    <children>
-      <Pane prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #191c24;" stylesheets="@../../css/button-style.css">
+      <Pane prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #0d6efd;" stylesheets="@../../css/button-style.css">
          <children>
-            <Button layoutX="14.0" layoutY="30.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="27.0" prefWidth="72.0" text="QUIT">
+            <Button layoutX="14.0" layoutY="30.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="27.0" prefWidth="72.0" style="-fx-border-color: black; -fx-text-fill: black;" text="QUIT">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

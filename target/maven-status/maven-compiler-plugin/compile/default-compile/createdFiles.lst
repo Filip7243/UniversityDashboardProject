@@ -1,6 +1,7 @@
 com\fxproject\unidashboard\model\Roles.class
 com\fxproject\unidashboard\dto\StudentAttendanceOnLecture.class
 com\fxproject\unidashboard\repository\AccountRepository.class
+com\fxproject\unidashboard\controller\ProfessorMarksController$1.class
 com\fxproject\unidashboard\model\FieldsOfStudy.class
 com\fxproject\unidashboard\controller\CalendarController$1.class
 com\fxproject\unidashboard\controller\ProfessorController.class
@@ -63,6 +64,7 @@ com\fxproject\unidashboard\controller\CalendarController$2.class
 com\fxproject\unidashboard\utils\HibernateConnect.class
 com\fxproject\unidashboard\model\Subjects.class
 com\fxproject\unidashboard\model\Marks.class
+com\fxproject\unidashboard\controller\ProfessorMarksController.class
 com\fxproject\unidashboard\controller\StudentController.class
 com\fxproject\unidashboard\utils\UserSession.class
 com\fxproject\unidashboard\controller\AddExamController.class

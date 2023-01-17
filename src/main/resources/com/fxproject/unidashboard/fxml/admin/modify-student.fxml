@@ -18,9 +18,9 @@
     <children>
         <VBox prefHeight="610.0" prefWidth="802.0" style="-fx-background-color: black;">
             <children>
-            <Pane prefHeight="60.0" prefWidth="802.0" style="-fx-background-color: #191c24;">
+            <Pane prefHeight="60.0" prefWidth="802.0" style="-fx-background-color: #0d6efd;">
                <children>
-                  <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeWindow" style="-fx-background-color: transparent; -fx-border-color: #a9a8a8; -fx-text-fill: #a9a8a8; -fx-border-radius: 2em;" text="QUIT" />
+                  <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#closeWindow" style="-fx-background-color: transparent; -fx-border-color: black; -fx-text-fill: black; -fx-border-radius: 2em;" text="QUIT" />
                   <Label layoutX="303.0" layoutY="10.0" text="MODIFY STUDENT" textFill="#b9b9b9">
                      <font>
                         <Font size="24.0" />
