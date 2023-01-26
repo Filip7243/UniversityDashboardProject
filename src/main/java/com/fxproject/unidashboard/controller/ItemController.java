@@ -77,7 +77,6 @@ public class ItemController {
             lookup = (HBox) scene.lookup("#userItem" + nodeId);
             BorderPane albumIdLabelPane = (BorderPane) lookup.getChildren().get(3);
             String albumId = ((Label) albumIdLabelPane.getChildren().get(0)).getText();
-            System.out.println("ALBUM ID KUUURWY: " + albumId);
             BorderPane roleLabelPane = (BorderPane) lookup.getChildren().get(4);
             String role = ((Label) roleLabelPane.getChildren().get(0)).getText();
             Stage stage;
