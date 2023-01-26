@@ -243,7 +243,7 @@ public class StudentController {
             borderPane.setPrefWidth(contentPane.getPrefWidth());
             borderPane.setPrefHeight(contentPane.getPrefHeight());
             VBox marksBox = new VBox();
-            marksBox.setAlignment(Pos.CENTER); // todo: refactor it
+            marksBox.setAlignment(Pos.CENTER);
             marksBox.setPrefWidth(borderPane.getPrefWidth());
 
             for (int j = 0; j < marks.size(); j++) { // j < count(student's marks)

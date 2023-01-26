@@ -78,7 +78,7 @@ public class PersonRepository {
         if (p != null) {
             try (Session session = HibernateConnect.openSession()) {
                 tx = session.beginTransaction();
-                //todo: remove student attendances
+
                 if(studentAttendances != null) {
                     for (Attendances attendance : studentAttendances) {
                         session.remove(attendance);
