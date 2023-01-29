@@ -25,9 +25,7 @@ public class StudentRepository {
             tx.commit();
             return students.getResultList();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             e.printStackTrace();
-            System.out.println(e.getCause());
             return List.of();
         }
     }
@@ -59,7 +57,6 @@ public class StudentRepository {
             tx.commit();
         } catch (Exception e) {
             if (tx != null && tx.isActive()) {
-                System.out.println(e.getMessage());
                 tx.rollback();
             }
         }
@@ -112,7 +109,6 @@ public class StudentRepository {
             return query.getResultList();
         } catch (Exception e) {
             if (tx != null && tx.isActive()) {
-                System.out.println(e.getMessage());
                 tx.rollback();
             }
             return List.of();
@@ -129,7 +125,6 @@ public class StudentRepository {
             return query.getResultList();
         } catch (Exception e) {
             if (tx != null && tx.isActive()) {
-                System.out.println(e.getMessage());
                 tx.rollback();
             }
             return List.of();

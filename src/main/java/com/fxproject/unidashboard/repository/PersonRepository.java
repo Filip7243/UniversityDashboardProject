@@ -51,7 +51,6 @@ public class PersonRepository {
                 return Optional.empty();
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             throw e;
         }
     }
@@ -105,7 +104,6 @@ public class PersonRepository {
                 }
                 if(psigs != null) {
                     for (ProfessorsSubjectsInGroups psig : psigs) {
-                        System.out.println("USUWAM + " + psig);
                         session.remove(psig);
                     }
                 }
@@ -114,7 +112,6 @@ public class PersonRepository {
                 tx.commit();
             } catch (Exception e) {
                 if (tx != null && tx.isActive()) {
-                    System.out.println("MSG: " + e.getMessage());
                     tx.rollback();
                 }
             }
@@ -145,7 +142,6 @@ public class PersonRepository {
             session.merge(person);
             tx.commit();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             if (tx != null && tx.isActive()) {
                 tx.rollback();
             }
@@ -161,7 +157,6 @@ public class PersonRepository {
             tx.commit();
             return Optional.ofNullable(query.getSingleResult());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             if (tx != null && tx.isActive()) {
                 tx.rollback();
             }

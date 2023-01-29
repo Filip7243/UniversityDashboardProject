@@ -83,7 +83,6 @@ public class ItemController {
         HBox lookup;
         try {
             String nodeId = btn.getId().substring(13); // 13 is length of sting detailsButton
-            System.out.println(nodeId);
             lookup = (HBox) scene.lookup("#userItem" + nodeId);
             BorderPane albumIdLabelPane = (BorderPane) lookup.getChildren().get(3);
             String albumId = ((Label) albumIdLabelPane.getChildren().get(0)).getText();
@@ -99,7 +98,6 @@ public class ItemController {
                                 return new RuntimeException(alert.getContentText());
                             });
                     stage = loadFXML(event, "student-details.fxml");
-                    System.out.println(stage);
                     assert stage != null;
                     stage.setWidth(1100);
                     stage.setHeight(780);

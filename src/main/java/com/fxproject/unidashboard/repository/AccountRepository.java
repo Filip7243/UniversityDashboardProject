@@ -63,14 +63,11 @@ public class AccountRepository {
             tx = session.beginTransaction();
             Query<UniversityAccounts> query =
                     session.createQuery("SELECT a FROM UniversityAccounts a WHERE a.universityEmail = :universityEmail and a.password = :password", UniversityAccounts.class);
-            System.out.println(universityEmail);
-            System.out.println(password);
             query.setParameter("universityEmail", universityEmail);
             query.setParameter("password", password);
             tx.commit();
             return query.getSingleResult();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             if (tx != null && tx.isActive()) {
                 tx.rollback();
             }
@@ -88,7 +85,6 @@ public class AccountRepository {
             tx.commit();
             return Optional.ofNullable(query.getSingleResult());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             if (tx != null && tx.isActive()) {
                 tx.rollback();
             }

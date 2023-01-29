@@ -109,7 +109,6 @@ public class ProfessorMarksController {
                             if (result.isPresent()) {
                                 if (result.get() == ButtonType.OK) {
                                     Marks selectedItem = getTableView().getItems().get(getIndex());
-                                    System.out.println(selectedItem);
                                     mr.remove(selectedItem);
                                     getTableView().getItems().remove(getIndex());
                                     marksTable.refresh();

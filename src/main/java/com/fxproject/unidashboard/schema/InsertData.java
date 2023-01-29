@@ -183,7 +183,6 @@ public class InsertData {
             tx.commit();
         } catch (Exception e) {
             if (tx != null && tx.isActive()) {
-                System.out.println(e.getMessage());
                 tx.rollback();
             }
         }

@@ -69,7 +69,6 @@ public class MarkRepository {
             return query.getResultList();
         } catch (Exception e) {
             if (tx != null && tx.isActive()) {
-                System.out.println(e.getMessage());
                 tx.rollback();
             }
             return List.of();
@@ -86,7 +85,6 @@ public class MarkRepository {
             session.merge(currentMark);
             tx.commit();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             if (tx != null && tx.isActive()) {
                 tx.rollback();
             }
@@ -100,7 +98,6 @@ public class MarkRepository {
             session.remove(mark);
             tx.commit();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             if (tx != null && tx.isActive()) {
                 tx.rollback();
             }

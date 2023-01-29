@@ -50,9 +50,6 @@ public class ModifyProfessorController {
         hourlyRate.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(15.0, 50.0, 15.0, 0.1));
         hoursWorked.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(0.0, 250.0, 0.0, 1.0));
 
-        salary.valueProperty().addListener((obs, oldValue, newValue) -> {
-            System.out.println(validateSpinners());
-        });
 
     }
 
@@ -98,9 +95,6 @@ public class ModifyProfessorController {
             }
             if (!flag) {
                 professorPSIG.add(psig);
-                for (ProfessorsSubjectsInGroups professorsSubjectsInGroups : professorPSIG) {
-                    System.out.println(professorsSubjectsInGroups.getGroup().getName());
-                }
                 psigr.save(psig);
                 Alert a = new Alert(Alert.AlertType.CONFIRMATION);
                 a.setContentText("Added subject to professor");

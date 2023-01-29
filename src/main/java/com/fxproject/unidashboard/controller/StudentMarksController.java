@@ -29,9 +29,6 @@ public class StudentMarksController {
 
     public void initialize() throws IOException {
         List<Marks> studentMarks = mr.findStudentMarks(((Students) loggedInUser));
-        for (Marks studentMark : studentMarks) {
-            System.out.println(studentMark.getMark());
-        }
 
         VBox marksBox = new VBox();
         marksBox.setAlignment(Pos.CENTER);

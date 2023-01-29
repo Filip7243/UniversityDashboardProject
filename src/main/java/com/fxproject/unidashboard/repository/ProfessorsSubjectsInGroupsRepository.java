@@ -22,7 +22,6 @@ public class ProfessorsSubjectsInGroupsRepository {
             tx.commit();
         } catch (Exception e) {
             if (tx != null && tx.isActive()) {
-                System.out.println(e.getMessage());
                 tx.rollback();
             }
         }
@@ -43,7 +42,6 @@ public class ProfessorsSubjectsInGroupsRepository {
             tx.commit();
         } catch (Exception e) {
             if (tx != null && tx.isActive()) {
-                System.out.println(e.getMessage());
                 tx.rollback();
             }
         }
@@ -61,7 +59,6 @@ public class ProfessorsSubjectsInGroupsRepository {
             return query.getResultList();
         } catch (Exception e) {
             if (tx != null && tx.isActive()) {
-                System.out.println(e.getMessage());
                 tx.rollback();
             }
             return List.of();
@@ -79,7 +76,6 @@ public class ProfessorsSubjectsInGroupsRepository {
             return query.getResultList();
         } catch (Exception e) {
             if (tx != null && tx.isActive()) {
-                System.out.println(e.getMessage());
                 tx.rollback();
             }
             return List.of();
@@ -97,7 +93,6 @@ public class ProfessorsSubjectsInGroupsRepository {
             return Optional.ofNullable(query.getSingleResult());
         } catch (Exception e) {
             if (tx != null && tx.isActive()) {
-                System.out.println(e.getMessage());
                 tx.rollback();
             }
             return Optional.empty();

@@ -54,9 +54,7 @@ public class GradeStudentController {
 
         Professors professor = (Professors) UserSession.getSession().getPerson();
         List<ProfessorsSubjectsInGroups> professorPSIG = psigr.findProfessorPSIG(professor);
-        for (ProfessorsSubjectsInGroups professorsSubjectsInGroups : professorPSIG) {
-            System.out.println("ESSUNIA: " + professorsSubjectsInGroups);
-        }
+
         Set<Groups> groups = professorPSIG.stream().map(ProfessorsSubjectsInGroups::getGroup).collect(Collectors.toSet());
         comboGroups.setItems(FXCollections.observableArrayList(groups));
         comboTypes.getItems().addAll(ExamTypes.values());
