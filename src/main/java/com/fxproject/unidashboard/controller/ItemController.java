@@ -122,48 +122,50 @@ public class ItemController {
     public void deleteItem(ActionEvent event) {
         Alert a = new Alert(Alert.AlertType.WARNING, "You sure you want to delete it?");
         Optional<ButtonType> result = a.showAndWait();
-        if (!result.isPresent()) {
-            // no value returned -> no button has been pressed
-        } else if (result.get() == ButtonType.OK) {
-            // OK was pressed
-            Button btn = ((Button) (event.getSource()));
-            Scene scene = btn.getScene();
-            HBox lookup;
-            try {
-                String nodeId = btn.getId().substring(12); // 12 length of string deleteButton
-                lookup = (HBox) scene.lookup("#userItem" + nodeId);
-                BorderPane albumIdLabelPane = (BorderPane) lookup.getChildren().get(3);
-                String albumId = ((Label) albumIdLabelPane.getChildren().get(0)).getText();
-                BorderPane roleLabelPane = (BorderPane) lookup.getChildren().get(4);
-                String role = ((Label) roleLabelPane.getChildren().get(0)).getText();
-                VBox vbox = (VBox) scene.lookup("#itemsContainer");
-                switch (role.toLowerCase()) {
-                    case "student" -> {
-                        Students student = sr.findStudentByAlbumId(Long.parseLong(albumId)).orElseThrow();
-                        personRepository.removePersonWithId(student.getId());
+        if (result.isPresent()) {
+            if (result.get() == ButtonType.OK) {
+                // OK was pressed
+                Button btn = ((Button) (event.getSource()));
+                Scene scene = btn.getScene();
+                HBox lookup;
+                try {
+                    String nodeId = btn.getId().substring(12); // 12 length of string deleteButton
+                    lookup = (HBox) scene.lookup("#userItem" + nodeId);
+                    BorderPane albumIdLabelPane = (BorderPane) lookup.getChildren().get(3);
+                    String albumId = ((Label) albumIdLabelPane.getChildren().get(0)).getText();
+                    BorderPane roleLabelPane = (BorderPane) lookup.getChildren().get(4);
+                    String role = ((Label) roleLabelPane.getChildren().get(0)).getText();
+                    VBox vbox = (VBox) scene.lookup("#itemsContainer");
+                    switch (role.toLowerCase()) {
+                        case "student" -> {
+                            Students student = sr.findStudentByAlbumId(Long.parseLong(albumId)).orElseThrow();
+                            personRepository.removePersonWithId(student.getId());
+                        }
+                        case "professor" -> {
+                            Professors professor = pr.findProfessorByAlbumId(Long.parseLong(albumId)).orElseThrow();
+                            personRepository.removePersonWithId(professor.getId());
+                        }
                     }
-                    case "professor" -> {
-                        Professors professor = pr.findProfessorByAlbumId(Long.parseLong(albumId)).orElseThrow();
-                        personRepository.removePersonWithId(professor.getId());
-                    }
+                    vbox.getChildren().remove(lookup);
+                    a.setAlertType(Alert.AlertType.INFORMATION);
+                    a.setContentText("Person Deleted");
+                    a.show();
+                } catch (NullPointerException e) { // lecture node
+                    String nodeId = btn.getId().substring(btn.getId().length() - 1);
+                    lookup = (HBox) scene.lookup("#lectureItem" + nodeId);
+                    VBox vbox = (VBox) scene.lookup("#itemsContainer");
+                    BorderPane idPane = (BorderPane) lookup.getChildren().get(0);
+                    Label idLabel = (Label) idPane.getChildren().get(0);
+                    Lectures lectures = lr.findLectureWithId(Long.parseLong(idLabel.getText())).orElseThrow();
+                    lr.removeLecture(lectures);
+                    vbox.getChildren().remove(lookup);
+                    a.setAlertType(Alert.AlertType.INFORMATION);
+                    a.setContentText("Lecture Deleted");
+                    a.show();
                 }
-                vbox.getChildren().remove(lookup);
-                a.setAlertType(Alert.AlertType.INFORMATION);
-                a.setContentText("Person Deleted");
-                a.show();
-            } catch (NullPointerException e) { // lecture node
-                String nodeId = btn.getId().substring(btn.getId().length() - 1);
-                lookup = (HBox) scene.lookup("#lectureItem" + nodeId);
-                VBox vbox = (VBox) scene.lookup("#itemsContainer");
-                BorderPane idPane = (BorderPane) lookup.getChildren().get(0);
-                Label idLabel = (Label) idPane.getChildren().get(0);
-                Lectures lectures = lr.findLectureWithId(Long.parseLong(idLabel.getText())).orElseThrow();
-                lr.removeLecture(lectures);
-                vbox.getChildren().remove(lookup);
-                a.setAlertType(Alert.AlertType.INFORMATION);
-                a.setContentText("Lecture Deleted");
-                a.show();
             }
+        } else {
+            // no value returned -> no button has been pressed
         }
 
 

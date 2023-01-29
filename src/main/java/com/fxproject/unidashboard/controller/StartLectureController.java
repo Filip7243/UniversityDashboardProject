@@ -32,7 +32,8 @@ public class StartLectureController {
 
     public void initialize() {
         Professors professor = (Professors) UserSession.getSession().getPerson();
-        Set<Groups> groups = professor.getPsig().stream().map(ProfessorsSubjectsInGroups::getGroup).collect(Collectors.toSet());
+        List<ProfessorsSubjectsInGroups> professorPSIG = psigr.findProfessorPSIG(professor);
+        Set<Groups> groups = professorPSIG.stream().map(ProfessorsSubjectsInGroups::getGroup).collect(Collectors.toSet());
         comboGroup.setItems(FXCollections.observableArrayList(groups));
         comboGroup.valueProperty().addListener((obs, oldValue, newValue) ->
                 comboSubject.setItems(FXCollections.observableArrayList(psigr.findProfessorSubjectInGroup(newValue, professor))));

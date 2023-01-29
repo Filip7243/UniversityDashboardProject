@@ -52,7 +52,11 @@ public class GradeStudentController {
         markSpinner.setValueFactory(new SpinnerValueFactory.DoubleSpinnerValueFactory(2.0, 5.0, 2.0, 0.5));
 
         Professors professor = (Professors) UserSession.getSession().getPerson();
-        Set<Groups> groups = professor.getPsig().stream().map(ProfessorsSubjectsInGroups::getGroup).collect(Collectors.toSet());
+        List<ProfessorsSubjectsInGroups> professorPSIG = psigr.findProfessorPSIG(professor);
+        for (ProfessorsSubjectsInGroups professorsSubjectsInGroups : professorPSIG) {
+            System.out.println("ESSUNIA: " + professorsSubjectsInGroups);
+        }
+        Set<Groups> groups = professorPSIG.stream().map(ProfessorsSubjectsInGroups::getGroup).collect(Collectors.toSet());
         comboGroups.setItems(FXCollections.observableArrayList(groups));
         comboTypes.getItems().addAll(ExamTypes.values());
 

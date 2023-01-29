@@ -4,6 +4,7 @@ import com.fxproject.unidashboard.dto.FieldOfStudyGroupDto;
 import com.fxproject.unidashboard.dto.SubjectMarkDto;
 import com.fxproject.unidashboard.model.*;
 import com.fxproject.unidashboard.repository.MarkRepository;
+import com.fxproject.unidashboard.repository.StudentRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class StudentDetailsController {
 
@@ -32,6 +34,8 @@ public class StudentDetailsController {
     private TitledPane studentData;
 
     private MarkRepository mr = new MarkRepository();
+
+    private StudentRepository sr = new StudentRepository();
 
     public void initialize() {
 
@@ -123,7 +127,8 @@ public class StudentDetailsController {
 
     private Students getDataFromStage() {
         Stage stage = (Stage) details.getScene().getWindow();
-        return (Students) stage.getUserData();
+        Students userData = (Students) stage.getUserData();
+        return sr.findStudentByAlbumId(userData.getAlbumId()).orElseThrow();
     }
 
 

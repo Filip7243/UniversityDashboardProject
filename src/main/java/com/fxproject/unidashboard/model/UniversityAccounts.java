@@ -20,7 +20,7 @@ public class UniversityAccounts {
     private String password;
     private LocalDateTime createdAt;
     private Boolean isEnabled;
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, fetch = FetchType.EAGER)
     private Person person;
     @Enumerated(STRING)
     private Roles role;

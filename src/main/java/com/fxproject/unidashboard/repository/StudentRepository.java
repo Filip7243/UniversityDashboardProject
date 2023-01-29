@@ -13,14 +13,21 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public class StudentRepository {
 
     public List<Students> findAllStudents() {
+        Transaction tx = null;
         try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
             Query<Students> students = session.createQuery("SELECT s FROM Students s", Students.class);
+            tx.commit();
             return students.getResultList();
         } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            System.out.println(e.getCause());
             return List.of();
         }
     }
@@ -48,12 +55,21 @@ public class StudentRepository {
         try (Session session = HibernateConnect.openSession()) {
             tx = session.beginTransaction();
             session.merge(student);
+//            session.refresh(student);
             tx.commit();
         } catch (Exception e) {
-            if(tx != null && tx.isActive()) {
+            if (tx != null && tx.isActive()) {
+                System.out.println(e.getMessage());
                 tx.rollback();
             }
         }
+    }
+
+    public void addStudentToGroup(Long albumId, Groups group) {
+        Students student = findStudentByAlbumId(albumId).orElseThrow();
+        Set<Groups> studentGroups = student.getGroups();
+        studentGroups.add(group);
+        updateStudent(student);
     }
 
     public List<Students> getStudentsFromGroup(Groups group) {
@@ -65,7 +81,7 @@ public class StudentRepository {
             tx.commit();
             return query.getResultList();
         } catch (Exception e) {
-            if(tx != null && tx.isActive()) {
+            if (tx != null && tx.isActive()) {
                 tx.rollback();
             }
             return List.of();
@@ -79,7 +95,7 @@ public class StudentRepository {
             session.persist(s);
             tx.commit();
         } catch (Exception e) {
-            if(tx != null && tx.isActive()) {
+            if (tx != null && tx.isActive()) {
                 tx.rollback();
             }
         }
@@ -92,6 +108,23 @@ public class StudentRepository {
             tx = session.beginTransaction();
             Query<Students> query = session.createQuery("SELECT s FROM Students s WHERE lower(s.firstName) LIKE :name", Students.class);
             query.setParameter("name", "%" + name + "%");
+            tx.commit();
+            return query.getResultList();
+        } catch (Exception e) {
+            if (tx != null && tx.isActive()) {
+                System.out.println(e.getMessage());
+                tx.rollback();
+            }
+            return List.of();
+        }
+    }
+
+    public List<Groups> getStudentsGroup(Long albumId) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            Query<Groups> query = session.createQuery("SELECT s FROM Students s WHERE s.albumId = :albumId", Groups.class);
+            query.setParameter("albumId", albumId);
             tx.commit();
             return query.getResultList();
         } catch (Exception e) {

@@ -100,8 +100,7 @@ public class AddFormController {
 
     public void addUser() {
         // validation
-        if (!validate()) {
-        } else {
+        if (validate()) {
             Person person = new Person();
             person.setFirstName(firstName.getText());
             person.setLastName(lastName.getText());

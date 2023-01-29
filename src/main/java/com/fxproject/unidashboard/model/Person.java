@@ -36,7 +36,7 @@ public class Person {
     private Integer age;
     @ManyToOne(fetch = EAGER)
     private Addresses address;
-    @OneToOne(mappedBy = "person")
+    @OneToOne(mappedBy = "person", fetch = EAGER)
     private UniversityAccounts acc;
 
     public Person() {

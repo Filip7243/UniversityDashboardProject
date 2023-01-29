@@ -8,25 +8,18 @@
 
     <session-factory>
 
-        <!-- Database connection settings -->
-        <property name="connection.driver_class">org.h2.Driver</property>
-<!--        zrobic tak, ze sprobowac czy przy jarze sie utowrzy ten folder a pozniej jesli nie to czy przy exe sie utowrzy-->
-        <property name="connection.url">jdbc:h2:.\BAZA_DANYCH;DB_CLOSE_ON_EXIT=TRUE;FILE_LOCK=NO;ACCESS_MODE_DATA=rws</property>
-<!--        <property name="connection.url">jdbc:h2:C:\Users\Filip\JavaProjects\UniversityDashboard\uni-db;DB_CLOSE_ON_EXIT=TRUE;FILE_LOCK=NO</property>-->
-        <property name="connection.username">sa</property>
-        <property name="connection.password"/>
-
-        <property name="connection.pool_size">20</property>
-
-        <!-- SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.H2Dialect</property>
-
-
-        <!-- Echo all executed SQL to stdout -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/uni</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password"></property>
+        <property name="connection.pool_size">3</property>
+        <property name="current_session_context_class">thread</property>
         <property name="show_sql">true</property>
-
-        <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">update</property>
+<!--        <property name="format_sql">true</property>-->
+        <property name="hbm2ddl.auto">create-drop</property>
+        <property name="hibernate.enable_lazy_load_no_trans">true</property>
+<!--        <property name="hibernate.id.new_generator_mappings">false</property>-->
 
         <mapping class="com.fxproject.unidashboard.model.Person"/>
         <mapping class="com.fxproject.unidashboard.model.Addresses"/>

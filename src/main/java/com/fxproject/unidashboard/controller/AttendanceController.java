@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -68,6 +69,10 @@ public class AttendanceController {
         List<Attendances> attendances = attendanceList.getItems().stream().map(af ->
                 new Attendances(null, af.getPresent(), af.getLate(), professorLectures.getValue(), af.getStudent())).toList();
         ar.save(attendances);
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText("Attendance Check Done!");
+        a.show();
+        cancelAttendance();
     }
 
     public void cancelAttendance() {

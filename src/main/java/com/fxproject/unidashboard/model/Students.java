@@ -1,9 +1,9 @@
 package com.fxproject.unidashboard.model;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 
 import java.math.BigInteger;
 import java.time.LocalDateTime;
@@ -12,10 +12,11 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
+@PrimaryKeyJoinColumn(name = "person_id")
 public class Students extends Person {
 
     private Long albumId;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private Set<Groups> groups;
 
     public Students() {
@@ -42,7 +43,6 @@ public class Students extends Person {
     public void setAlbumId(Long albumId) {
         this.albumId = albumId;
     }
-
     public Set<Groups> getGroups() {
         return groups;
     }

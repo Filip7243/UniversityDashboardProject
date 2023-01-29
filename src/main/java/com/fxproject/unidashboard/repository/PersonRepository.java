@@ -18,6 +18,7 @@ public class PersonRepository {
     private WageRepository wr = new WageRepository();
     private AttendanceRepository ar = new AttendanceRepository();
     private LectureRepository lr = new LectureRepository();
+    private ProfessorsSubjectsInGroupsRepository psigr = new ProfessorsSubjectsInGroupsRepository();
     public void save(Person person) {
         Transaction tx = null;
         try (Session session = HibernateConnect.openSession()) {
@@ -62,6 +63,7 @@ public class PersonRepository {
         List<Wages> professorsWages = null;
         List<Attendances> studentAttendances = null;
         List<Lectures> professorLectures = null;
+        List<ProfessorsSubjectsInGroups> psigs = null;
         Optional<Person> personWithId = findPersonWithId(id);
         if (personWithId.isPresent()) {
             p = personWithId.get();
@@ -72,6 +74,7 @@ public class PersonRepository {
             if (p instanceof Professors prof) {
                 professorsWages = wr.findProfessorWages(prof);
                 professorLectures = lr.findProfessorLectures(prof);
+                psigs = prof.getPsig();
             }
         }
 
@@ -91,7 +94,8 @@ public class PersonRepository {
                 }
                 if(professorLectures != null) {
                     for (Lectures lecture : professorLectures) {
-                        session.remove(lecture);
+                        lecture.setProfessor(null);
+                        session.merge(lecture);
                     }
                 }
                 if (professorsWages != null) {
@@ -99,13 +103,19 @@ public class PersonRepository {
                         session.remove(wage);
                     }
                 }
+                if(psigs != null) {
+                    for (ProfessorsSubjectsInGroups psig : psigs) {
+                        System.out.println("USUWAM + " + psig);
+                        session.remove(psig);
+                    }
+                }
                 session.remove(p.getAcc());
                 session.remove(p);
                 tx.commit();
             } catch (Exception e) {
                 if (tx != null && tx.isActive()) {
+                    System.out.println("MSG: " + e.getMessage());
                     tx.rollback();
-                    System.out.println(e.getMessage());
                 }
             }
         }

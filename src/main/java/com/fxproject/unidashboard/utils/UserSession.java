@@ -1,7 +1,6 @@
 package com.fxproject.unidashboard.utils;
 
 import com.fxproject.unidashboard.model.Person;
-import org.h2.engine.Session;
 
 public final class UserSession {
 
@@ -13,13 +12,14 @@ public final class UserSession {
     }
 
     public static UserSession getSession(Person person) {
-        if(session == null) {
+        if (session == null) {
             session = new UserSession(person);
         }
         return session;
     }
+
     public static UserSession getSession() {
-        if(session != null) {
+        if (session != null) {
             return session;
         }
         return null;

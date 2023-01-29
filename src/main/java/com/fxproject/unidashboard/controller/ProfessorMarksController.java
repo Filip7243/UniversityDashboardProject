@@ -15,7 +15,10 @@ import javafx.scene.layout.Background;
 import javafx.scene.paint.Paint;
 import javafx.util.converter.DoubleStringConverter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -34,7 +37,7 @@ public class ProfessorMarksController {
     private ComboBox<Subjects> comboSubjects;
 
     @FXML
-    private TableColumn<Marks, LocalDateTime> dateCol;
+    private TableColumn<Marks, LocalDate> dateCol;
 
     @FXML
     private TableColumn<Marks, String> descriptionCol;
@@ -67,10 +70,24 @@ public class ProfessorMarksController {
         markCol.setOnEditCommit(e -> {
             Marks currentMark = e.getTableView().getItems().get(e.getTablePosition().getRow());
             Marks newMark = currentMark;
-            newMark.setMark(e.getNewValue());
-            mr.updateMark(newMark, currentMark);
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Mark Updated!");
-            alert.show();
+            if(e.getNewValue() >= 2.0 && e.getNewValue() <= 5.0) {
+                if (e.getNewValue() % 0.5 == 0) {
+                    newMark.setMark(e.getNewValue());
+                } else {
+                    double round = Math.round(e.getNewValue());
+                    newMark.setMark(round);
+                    currentMark.setMark(round);
+                    marksTable.refresh();
+                }
+                mr.updateMark(newMark, currentMark);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Mark Updated!");
+                alert.show();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Invalid Mark!");
+                alert.show();
+                marksTable.refresh();
+            }
+
         });
 
         // delete button column
@@ -87,10 +104,17 @@ public class ProfessorMarksController {
                         setGraphic(btn);
 
                         btn.setOnAction(e -> {
-                            Marks selectedItem = getTableView().getItems().get(getIndex());
-                            System.out.println(selectedItem);
-                            mr.remove(selectedItem);
-                            getTableView().getItems().remove(getIndex());
+                            Alert a = new Alert(Alert.AlertType.WARNING, "You sure you want to delete it?");
+                            Optional<ButtonType> result = a.showAndWait();
+                            if (result.isPresent()) {
+                                if (result.get() == ButtonType.OK) {
+                                    Marks selectedItem = getTableView().getItems().get(getIndex());
+                                    System.out.println(selectedItem);
+                                    mr.remove(selectedItem);
+                                    getTableView().getItems().remove(getIndex());
+                                    marksTable.refresh();
+                                }
+                            }
                         });
                     }
                 }
@@ -103,7 +127,8 @@ public class ProfessorMarksController {
         markCol.setCellValueFactory(new PropertyValueFactory<>("mark"));
         Professors professor = (Professors) UserSession.getSession().getPerson();
         // maps to set of groups
-        Set<Groups> groups = professor.getPsig().stream().map(ProfessorsSubjectsInGroups::getGroup).collect(Collectors.toSet());
+        List<ProfessorsSubjectsInGroups> professorPSIG = psigr.findProfessorPSIG(professor);
+        Set<Groups> groups = professorPSIG.stream().map(ProfessorsSubjectsInGroups::getGroup).collect(Collectors.toSet());
         comboGroups.setItems(FXCollections.observableArrayList(groups));
 
         // listener
@@ -124,7 +149,6 @@ public class ProfessorMarksController {
         }
 
         marksTable.getColumns().add(buttonCol);
-
     }
 
 

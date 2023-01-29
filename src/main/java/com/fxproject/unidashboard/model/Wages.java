@@ -18,7 +18,7 @@ public class Wages {
     private Double hourlyRate;
     private Double hoursWorked;
     private LocalDate payday;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Professors professor;
 
     public Wages() {

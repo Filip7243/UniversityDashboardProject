@@ -30,12 +30,16 @@ public class ProfessorsSubjectsInGroupsRepository {
 
     public void remove(ProfessorsSubjectsInGroups psig) {
         Transaction tx = null;
-        Professors professor = psig.getProfessor();
+        Optional<Professors> professorFromPSIG = getProfessorFromPSIG(psig);
+        Professors professor = null;
+        if(professorFromPSIG.isPresent()) {
+            professor = professorFromPSIG.get();
+        }
         try (Session session = HibernateConnect.openSession()) {
             tx = session.beginTransaction();
-            professor.getPsig().remove(psig);
+            List<ProfessorsSubjectsInGroups> professorPSIG = findProfessorPSIG(professor);
+            professorPSIG.remove(psig);
             session.remove(psig);
-//            session.merge(professor);
             tx.commit();
         } catch (Exception e) {
             if (tx != null && tx.isActive()) {
@@ -61,6 +65,42 @@ public class ProfessorsSubjectsInGroupsRepository {
                 tx.rollback();
             }
             return List.of();
+        }
+    }
+
+    public List<ProfessorsSubjectsInGroups> findProfessorPSIG(Professors professor) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            Query<ProfessorsSubjectsInGroups> query = session.
+                    createQuery("SELECT psig from ProfessorsSubjectsInGroups psig WHERE psig.professor = :professor", ProfessorsSubjectsInGroups.class);
+            query.setParameter("professor", professor);
+            tx.commit();
+            return query.getResultList();
+        } catch (Exception e) {
+            if (tx != null && tx.isActive()) {
+                System.out.println(e.getMessage());
+                tx.rollback();
+            }
+            return List.of();
+        }
+    }
+
+    public Optional<Professors> getProfessorFromPSIG(ProfessorsSubjectsInGroups psig) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            Query<Professors> query = session.
+                    createQuery("SELECT psig.professor from ProfessorsSubjectsInGroups psig WHERE psig = :psig", Professors.class);
+            query.setParameter("psig", psig);
+            tx.commit();
+            return Optional.ofNullable(query.getSingleResult());
+        } catch (Exception e) {
+            if (tx != null && tx.isActive()) {
+                System.out.println(e.getMessage());
+                tx.rollback();
+            }
+            return Optional.empty();
         }
     }
 }

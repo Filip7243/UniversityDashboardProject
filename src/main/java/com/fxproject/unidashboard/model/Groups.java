@@ -2,9 +2,7 @@ package com.fxproject.unidashboard.model;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -17,12 +15,13 @@ public class Groups {
     @Column(name = "group_id")
     private Long id;
     private String name;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private FieldsOfStudy fieldOfStudy;
     @OneToMany(
             mappedBy = "group",
             cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
     )
     private List<ProfessorsSubjectsInGroups> psig = new ArrayList<>();
 
@@ -66,6 +65,7 @@ public class Groups {
     public void setPsig(List<ProfessorsSubjectsInGroups> psig) {
         this.psig = psig;
     }
+
 
     @Override
     public boolean equals(Object o) {

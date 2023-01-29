@@ -14,7 +14,8 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        HibernateConnect.openSession();
+//        HibernateConnect.openSession();
+        new InsertData();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fxml/login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1150, 650);
         stage.initStyle(StageStyle.UNDECORATED);

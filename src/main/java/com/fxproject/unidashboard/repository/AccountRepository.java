@@ -77,4 +77,22 @@ public class AccountRepository {
             return null;
         }
     }
+
+    public Optional<UniversityAccounts> findAccWithEmail(String universityEmail) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            Query<UniversityAccounts> query =
+                    session.createQuery("SELECT a FROM UniversityAccounts a WHERE a.universityEmail = :universityEmail", UniversityAccounts.class);
+            query.setParameter("universityEmail", universityEmail);
+            tx.commit();
+            return Optional.ofNullable(query.getSingleResult());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+            return Optional.empty();
+        }
+    }
 }

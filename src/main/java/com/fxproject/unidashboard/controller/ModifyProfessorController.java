@@ -1,10 +1,7 @@
 package com.fxproject.unidashboard.controller;
 
 import com.fxproject.unidashboard.model.*;
-import com.fxproject.unidashboard.repository.GroupRepository;
-import com.fxproject.unidashboard.repository.ProfessorsSubjectsInGroupsRepository;
-import com.fxproject.unidashboard.repository.SubjectRepository;
-import com.fxproject.unidashboard.repository.WageRepository;
+import com.fxproject.unidashboard.repository.*;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,6 +46,7 @@ public class ModifyProfessorController {
     private GroupRepository gr = new GroupRepository();
     private SubjectRepository sr = new SubjectRepository();
     private ProfessorsSubjectsInGroupsRepository psigr = new ProfessorsSubjectsInGroupsRepository();
+    private ProfessorRepository pr = new ProfessorRepository();
 
     public void initialize() {
         setValidator(salary, integerValidator());
@@ -71,6 +69,9 @@ public class ModifyProfessorController {
         Wages wage = new Wages(null, Double.parseDouble(salary.getText()), Double.parseDouble(hourlyRate.getText()),
                 Double.parseDouble(hoursWorked.getText()), LocalDate.now(), getUserData());
         wr.addWage(wage);
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText("Wage added!");
+        a.show();
     }
 
     public void addSubject() {
@@ -78,7 +79,8 @@ public class ModifyProfessorController {
         ProfessorsSubjectsInGroups psig =
                 new ProfessorsSubjectsInGroups(userData, comboSubjects.getValue(), comboGroups.getValue());
         boolean flag = false;
-        for (ProfessorsSubjectsInGroups i : userData.getPsig()) {
+        List<ProfessorsSubjectsInGroups> professorPSIG = psigr.findProfessorPSIG(userData);
+        for (ProfessorsSubjectsInGroups i : professorPSIG) {
             if ((Objects.equals(i.getSubject().getId(), psig.getSubject().getId()) &&
                     Objects.equals(i.getGroup().getId(), psig.getGroup().getId()))) {
                 flag = true;
@@ -86,8 +88,14 @@ public class ModifyProfessorController {
             }
         }
         if (!flag) {
-            userData.getPsig().add(psig);
+            professorPSIG.add(psig);
+            for (ProfessorsSubjectsInGroups professorsSubjectsInGroups : professorPSIG) {
+                System.out.println(professorsSubjectsInGroups.getGroup().getName());
+            }
             psigr.save(psig);
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setContentText("Added subject to professor");
+            a.show();
         } else {
             Alert a = new Alert(Alert.AlertType.WARNING);
             a.setContentText("Professor already teaching this subject in this group!");
@@ -100,7 +108,7 @@ public class ModifyProfessorController {
         Subjects subject = comboRemoveSubject.getValue();
         Groups group = comboRemoveGroup.getValue();
         Professors userData = getUserData();
-        List<ProfessorsSubjectsInGroups> psig = userData.getPsig();
+        List<ProfessorsSubjectsInGroups> psig = psigr.findProfessorPSIG(userData);
         for (ProfessorsSubjectsInGroups professorsSubjectsInGroups : psig) {
             if (Objects.equals(professorsSubjectsInGroups.getSubject().getId(), subject.getId()) &&
                     Objects.equals(professorsSubjectsInGroups.getGroup().getId(), group.getId())) {
@@ -108,12 +116,16 @@ public class ModifyProfessorController {
                 break;
             }
         }
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText("Professor removed from group");
+        a.show();
         addRemoveSubject.expandedProperty().set(false);
     }
 
     private Professors getUserData() {
         Stage stage = (Stage) personalData.getScene().getWindow();
-        return (Professors) stage.getUserData();
+        Professors userData = (Professors) stage.getUserData();
+        return pr.findProfessorByAlbumId(userData.getAlbumId()).orElseThrow();
     }
 
     public void cancelAddRemoveTab() {

@@ -19,5 +19,12 @@ C:/Users/Filip/JavaProjects/UniversityDashboard/src/main/resources/hibernate.cfg
       <jdbc-url>jdbc:h2:C:\Users\Filip\JavaProjects\UniversityDashboard\uni-db;DB_CLOSE_ON_EXIT=TRUE;FILE_LOCK=NO</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="uni@localhost" uuid="107aedc0-e0cf-4083-8053-50b10424396f">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/uni</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

@@ -18,7 +18,8 @@ public class Subjects {
     @OneToMany(
             mappedBy = "subject",
             cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
     )
     private List<ProfessorsSubjectsInGroups> psig = new ArrayList<>();
 

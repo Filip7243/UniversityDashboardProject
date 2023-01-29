@@ -19,8 +19,7 @@ public class Professors extends Person {
     @OneToMany(
             mappedBy = "professor",
             cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.EAGER
+            orphanRemoval = true
     )
     private List<ProfessorsSubjectsInGroups> psig = new ArrayList<>();
 

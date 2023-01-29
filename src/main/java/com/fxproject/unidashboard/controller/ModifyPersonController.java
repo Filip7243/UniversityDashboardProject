@@ -19,6 +19,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
+import static com.fxproject.unidashboard.validator.Validator.*;
 
 public class ModifyPersonController {
     @FXML
@@ -84,6 +87,25 @@ public class ModifyPersonController {
 
 
     public void initialize() {
+        // personal data
+        setValidator(firstName, stringValidator());
+        setValidator(lastName, stringValidator());
+        setValidator(placeOfBirth, stringValidator());
+        setValidator(pesel, integerValidator());
+        setValidator(phoneNumber, integerValidator());
+        setValidator(gender, stringValidator());
+        setValidator(country, stringValidator());
+        setValidator(city, stringValidator());
+        setValidator(street, stringValidator());
+        setValidator(flatNumber, integerValidator());
+
+
+        emailValidator(email);
+        emailValidator(universityEmail);
+        lengthValidator(pesel, 11);
+        lengthValidator(phoneNumber, 9);
+        lengthValidator(postalCode, 6);
+        lengthValidator(gender, 1);
         role.setItems(FXCollections.observableArrayList(Roles.values()));
         role.setDisable(true);
     }
@@ -206,30 +228,51 @@ public class ModifyPersonController {
 
     private Person getPersonDataFromStage() {
         Stage stage = (Stage) personalDetails.getScene().getWindow();
-        return (Person) stage.getUserData();
+        Person userData = (Person) stage.getUserData();
+        return pr.findPersonWithId(userData.getId()).orElseThrow();
     }
 
     public void modifyPersonalData(ActionEvent event) {
-        Person userData = getPersonDataFromStage();
-        pr.updatePersonWithId(new Person(userData.getId(), firstName.getText(), lastName.getText(), email.getText(), phoneNumber.getText(),
-                LocalDateTime.now(), placeOfBirth.getText(), pesel.getText(), gender.getText().charAt(0), 99,
-                new Addresses(userData.getAddress().getId(), country.getText(), city.getText(),
-                        street.getText(), 12, Integer.parseInt(flatNumber.getText()), postalCode.getText())
-        ), userData.getId());
-        Alert a = new Alert(Alert.AlertType.CONFIRMATION, "User Modified");
-        a.show();
-        ((Stage)((Node) (event.getSource())).getScene().getWindow()).close();
+        if (validatePersonalData()) {
+            Person userData = getPersonDataFromStage();
+            pr.updatePersonWithId(new Person(userData.getId(), firstName.getText(), lastName.getText(), email.getText(), phoneNumber.getText(),
+                    LocalDateTime.now(), placeOfBirth.getText(), pesel.getText(), gender.getText().charAt(0), 99,
+                    new Addresses(userData.getAddress().getId(), country.getText(), city.getText(),
+                            street.getText(), 12, Integer.parseInt(flatNumber.getText()), postalCode.getText())
+            ), userData.getId());
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION, "User Modified");
+            a.show();
+            ((Stage) ((Node) (event.getSource())).getScene().getWindow()).close();
+        } else {
+            Alert a = new Alert(Alert.AlertType.WARNING);
+            a.setContentText("Can't modify! Try again.");
+            a.show();
+        }
     }
 
     public void modifyAccountData(ActionEvent event) {
-        Person userData = getPersonDataFromStage();
-        UniversityAccounts acc = userData.getAcc();
-        ar.updateAccountWithPersonId(new UniversityAccounts(
-                universityEmail.getText(), password.getText(), acc.getCreatedAt(), acc.getEnabled(), acc.getPerson(), acc.getRole()
-        ), userData.getId());
-        Alert a = new Alert(Alert.AlertType.CONFIRMATION, "User Account Modified");
-        a.show();
-        ((Stage)((Node) (event.getSource())).getScene().getWindow()).close();
+        if (validateAccData()) {
+            Person userData = getPersonDataFromStage();
+            UniversityAccounts acc = userData.getAcc();
+            UniversityAccounts updatedAcc = new UniversityAccounts(
+                    universityEmail.getText(), password.getText(), acc.getCreatedAt(),
+                    acc.getEnabled(), acc.getPerson(), acc.getRole());
+            if(ar.findAccWithEmail(updatedAcc.getUniversityEmail()).isPresent()) {
+                Alert a = new Alert(Alert.AlertType.WARNING);
+                a.setContentText("User with this email already exists! Try again");
+                a.show();
+                return;
+            }
+            ar.updateAccountWithPersonId(updatedAcc, userData.getId());
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION, "User Account Modified");
+            a.show();
+            ((Stage) ((Node) (event.getSource())).getScene().getWindow()).close();
+        } else {
+            Alert a = new Alert(Alert.AlertType.WARNING);
+            a.setContentText("Can't modify! Try again.");
+            a.show();
+        }
+
     }
 
     public void cancelAccountTab() {
@@ -238,5 +281,14 @@ public class ModifyPersonController {
 
     public void cancelPersonalDataTab() {
         personalData.expandedProperty().set(false);
+    }
+
+    private boolean validatePersonalData() {
+        return checkIfEmpty(List.of(firstName, lastName, email, placeOfBirth, pesel, phoneNumber, gender,
+                country, city, postalCode, street, flatNumber));
+    }
+
+    private boolean validateAccData() {
+        return checkIfEmpty(List.of(universityEmail, password));
     }
 }

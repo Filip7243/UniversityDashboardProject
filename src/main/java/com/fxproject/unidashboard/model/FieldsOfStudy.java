@@ -15,7 +15,7 @@ public class FieldsOfStudy {
     private String name;
     @Enumerated(STRING)
     private TypesOfStudy typeOfStudy;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Departments department;
 
     public FieldsOfStudy() {

@@ -17,11 +17,11 @@ public class Lectures {
     private Long id;
     private String lectureTopic;
     private LocalDateTime lectureDate;
-    @ManyToOne(fetch = EAGER)
+    @ManyToOne(fetch = LAZY)
     private Groups group;
-    @ManyToOne(fetch = EAGER)
+    @ManyToOne(fetch = LAZY)
     private Subjects subject;
-    @ManyToOne(fetch = EAGER)
+    @ManyToOne(fetch = LAZY)
     private Professors professor;
 
     public Lectures() {

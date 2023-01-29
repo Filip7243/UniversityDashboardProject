@@ -6,6 +6,7 @@ import com.fxproject.unidashboard.model.Students;
 import com.fxproject.unidashboard.repository.FieldOfStudyRepository;
 import com.fxproject.unidashboard.repository.GroupRepository;
 import com.fxproject.unidashboard.repository.StudentRepository;
+import com.fxproject.unidashboard.utils.HibernateConnect;
 import com.fxproject.unidashboard.validator.Validator;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -16,8 +17,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.criteria.HibernateCriteriaBuilder;
 
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ModifyStudentController {
@@ -55,42 +61,61 @@ public class ModifyStudentController {
 
     public void addFieldOfStudy() {
         // check if students already in fieldOfStudy
-        if (!validateComboBoxes()) {
-        } else {
+        if (validateComboBoxes()) {
             Students userData = getUserData();
             AtomicBoolean flag = new AtomicBoolean(false);
-            userData.getGroups().forEach(grp -> {
+            Set<Groups> studentGroups = userData.getGroups();
+            for (Groups grp : studentGroups) {
                 if (grp.getName().trim().equalsIgnoreCase(groups.valueProperty().get().getName().trim().toLowerCase())) {
                     flag.set(true);
+                    break;
                 }
-            });
+            }
+
             if (flag.get()) {
                 Alert a = new Alert(Alert.AlertType.WARNING);
                 a.setTitle("WARNING");
                 a.setHeaderText("Student already attends on this group");
                 a.show();
             } else {
-                userData.getGroups().add(groups.valueProperty().get());
-                sr.updateStudent(userData);
+                sr.addStudentToGroup(userData.getAlbumId(), groups.valueProperty().get());
+
+                Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+                a.setTitle("CONFIRMATION");
+                a.setHeaderText("Student added to group");
+                a.show();
+                addFieldOfStudyPane.expandedProperty().set(false);
             }
         }
     }
 
     private Students getUserData() {
         Stage stage = (Stage) personalData.getScene().getWindow();
-        return (Students) stage.getUserData();
+        Long albumId = ((Students) stage.getUserData()).getAlbumId();
+        return sr.findStudentByAlbumId(albumId).orElseThrow();
     }
 
     public void loadRemoveStudentFieldsOfStudy() {
         Students userData = getUserData();
-        removingGroups.setItems(FXCollections.observableArrayList(userData.getGroups()));
+        Set<Groups> studentGroups = userData.getGroups();
+        removingGroups.setItems(FXCollections.observableArrayList(studentGroups));
     }
 
     public void removeGroup() {
         Students userData = getUserData();
-        userData.getGroups().remove(removingGroups.valueProperty().get());
+        Groups o = removingGroups.valueProperty().get();
+        Set<Groups> grps = userData.getGroups();
+        for (Groups group : grps) {
+            if(group.getName().equals(o.getName())) {
+                grps.remove(group);
+                break;
+            }
+        }
         sr.updateStudent(userData);
         removeGroupPane.expandedProperty().set(false);
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+        a.setContentText("Student removed from group");
+        a.show();
     }
 
     public void cancelRemoving() {
