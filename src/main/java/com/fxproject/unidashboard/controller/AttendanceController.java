@@ -66,13 +66,20 @@ public class AttendanceController {
 
     public void checkAttendance() {
         // map to attendances class
-        List<Attendances> attendances = attendanceList.getItems().stream().map(af ->
-                new Attendances(null, af.getPresent(), af.getLate(), professorLectures.getValue(), af.getStudent())).toList();
-        ar.save(attendances);
-        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-        a.setContentText("Attendance Check Done!");
-        a.show();
-        cancelAttendance();
+        if(!attendanceList.getItems().isEmpty()) {
+            List<Attendances> attendances = attendanceList.getItems().stream().map(af ->
+                    new Attendances(null, af.getPresent(), af.getLate(), professorLectures.getValue(), af.getStudent())).toList();
+            ar.save(attendances);
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setContentText("Attendance Check Done!");
+            a.show();
+            cancelAttendance();
+        } else {
+            Alert a = new Alert(Alert.AlertType.WARNING);
+            a.setContentText("Check lecture because list is empty");
+            a.show();
+        }
+
     }
 
     public void cancelAttendance() {

@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
@@ -89,7 +90,7 @@ public class GradeStudentController {
         if (!validateTextFields()) {
         } else if (!validateCombos()) {
         } else {
-            Marks mark = new Marks(null, markSpinner.getValue(), LocalDateTime.now(), description.getText(), comboStudents.getValue(), comboSubjects.getValue(), comboTypes.getValue());
+            Marks mark = new Marks(null, markSpinner.getValue(), LocalDate.now(), description.getText(), comboStudents.getValue(), comboSubjects.getValue(), comboTypes.getValue());
             mr.save(mark);
             Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Added!");
             a.show();

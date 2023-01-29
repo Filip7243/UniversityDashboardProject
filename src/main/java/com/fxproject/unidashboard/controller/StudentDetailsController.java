@@ -137,7 +137,7 @@ public class StudentDetailsController {
         Set<Groups> groups = userData.getGroups();
         List<FieldOfStudyGroupDto> fieldOfStudyGroupDtos = groups.stream().
                 map(grp -> new FieldOfStudyGroupDto(grp.getFieldOfStudy().getName(), grp.getName())).toList();
-        List<Marks> studentMarks = mr.findStudentMarks(userData.getAlbumId());
+        List<Marks> studentMarks = mr.findStudentMarks(userData);
         List<SubjectMarkDto> subjectMarkDtos = studentMarks.stream().
                 map(mark -> new SubjectMarkDto(mark.getSubject().getName(), String.valueOf(mark.getMark()))).toList();
         VBox content = (VBox) studentData.getContent();

@@ -142,7 +142,7 @@ public class ProfessorMarksController {
         if (!comboStudents.getItems().isEmpty() || comboStudents != null) {
             comboStudents.valueProperty().addListener((obs, oldValue, newValue) -> {
                 // set student's marks in Observable List
-                studentMarks.setAll(mr.findStudentMarks(newValue.getAlbumId()));
+                studentMarks.setAll(mr.findStudentMarksOnSubject(newValue, comboSubjects.getValue()));
                 // populate data on table
                 marksTable.setItems(studentMarks);
             });

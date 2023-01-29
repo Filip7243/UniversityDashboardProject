@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static com.fxproject.unidashboard.validator.Validator.checkIfValueInComboSelected;
+
 public class ModifyStudentController {
 
     @FXML
@@ -102,20 +104,23 @@ public class ModifyStudentController {
     }
 
     public void removeGroup() {
-        Students userData = getUserData();
-        Groups o = removingGroups.valueProperty().get();
-        Set<Groups> grps = userData.getGroups();
-        for (Groups group : grps) {
-            if(group.getName().equals(o.getName())) {
-                grps.remove(group);
-                break;
+        if (checkIfValueInComboSelected(List.of(removingGroups))) {
+            Students userData = getUserData();
+            Groups o = removingGroups.valueProperty().get();
+            Set<Groups> grps = userData.getGroups();
+            for (Groups group : grps) {
+                if (group.getName().equals(o.getName())) {
+                    grps.remove(group);
+                    break;
+                }
             }
+            sr.updateStudent(userData);
+            removeGroupPane.expandedProperty().set(false);
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setContentText("Student removed from group");
+            a.show();
         }
-        sr.updateStudent(userData);
-        removeGroupPane.expandedProperty().set(false);
-        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-        a.setContentText("Student removed from group");
-        a.show();
+
     }
 
     public void cancelRemoving() {
@@ -131,7 +136,7 @@ public class ModifyStudentController {
     }
 
     private boolean validateComboBoxes() {
-        return Validator.checkIfValueInComboSelected(List.of(groups, fieldOfStudies));
+        return checkIfValueInComboSelected(List.of(groups, fieldOfStudies));
     }
 
 }

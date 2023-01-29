@@ -28,7 +28,10 @@ public class StudentMarksController {
     private MarkRepository mr = new MarkRepository();
 
     public void initialize() throws IOException {
-        List<Marks> studentMarks = mr.findStudentMarks(((Students) loggedInUser).getAlbumId());
+        List<Marks> studentMarks = mr.findStudentMarks(((Students) loggedInUser));
+        for (Marks studentMark : studentMarks) {
+            System.out.println(studentMark.getMark());
+        }
 
         VBox marksBox = new VBox();
         marksBox.setAlignment(Pos.CENTER);
@@ -45,7 +48,7 @@ public class StudentMarksController {
             markInfoLabel.setText(
                     mark.getSubject().getName() + " | " +
                             mark.getType().name() + " " + "| " +
-                            mark.getMarkDate().toLocalDate().toString()
+                            mark.getMarkDate().toString()
             );
             Label markLabel = new Label();
             markLabel.setText(String.valueOf(mark.getMark()));

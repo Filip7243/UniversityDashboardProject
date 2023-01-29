@@ -68,7 +68,7 @@ public class PersonRepository {
         if (personWithId.isPresent()) {
             p = personWithId.get();
             if (p instanceof Students s) {
-                studentsMarks = mr.findStudentMarks(s.getAlbumId());
+                studentsMarks = mr.findStudentMarks(s);
                 studentAttendances = ar.findStudentAttendances(s);
             }
             if (p instanceof Professors prof) {

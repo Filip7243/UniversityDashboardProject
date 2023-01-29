@@ -2,6 +2,7 @@ package com.fxproject.unidashboard.repository;
 
 import com.fxproject.unidashboard.model.Marks;
 import com.fxproject.unidashboard.model.Students;
+import com.fxproject.unidashboard.model.Subjects;
 import com.fxproject.unidashboard.utils.HibernateConnect;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,12 +12,29 @@ import java.util.List;
 
 public class MarkRepository {
 
-    public List<Marks> findStudentMarks(Long albumId) {
+    public List<Marks> findStudentMarks(Students student) {
         Transaction tx = null;
         try (Session session = HibernateConnect.openSession()) {
             tx = session.beginTransaction();
-            Query<Marks> query = session.createQuery("SELECT m FROM Marks m WHERE m.student.albumId = :albumId", Marks.class);
-            query.setParameter("albumId", albumId);
+            Query<Marks> query = session.createQuery("SELECT m FROM Marks m WHERE m.student = :student", Marks.class);
+            query.setParameter("student", student);
+            tx.commit();
+            return query.getResultList();
+        } catch (Exception e) {
+            if (tx != null && tx.isActive()) {
+                tx.rollback();
+            }
+            return List.of();
+        }
+    }
+
+    public List<Marks> findStudentMarksOnSubject(Students student, Subjects subject) {
+        Transaction tx = null;
+        try (Session session = HibernateConnect.openSession()) {
+            tx = session.beginTransaction();
+            Query<Marks> query = session.createQuery("SELECT m FROM Marks m WHERE m.student = :student AND m.subject = :subject", Marks.class);
+            query.setParameter("student", student);
+            query.setParameter("subject", subject);
             tx.commit();
             return query.getResultList();
         } catch (Exception e) {

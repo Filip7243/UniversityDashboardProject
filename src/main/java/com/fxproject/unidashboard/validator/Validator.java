@@ -86,5 +86,9 @@ public class Validator {
         return true;
     }
 
+    public static boolean checkIfSpinnerEmpty(Spinner<?> spinner) {
+        return spinner.getValue() == null;
+    }
+
 
 }

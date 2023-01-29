@@ -2,6 +2,7 @@ package com.fxproject.unidashboard.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -14,7 +15,7 @@ public class Marks {
     @Column(name = "mark_id")
     private Long id;
     private Double mark;
-    private LocalDateTime markDate;
+    private LocalDate markDate;
     private String description;
     @ManyToOne(fetch = FetchType.EAGER)
     private Students student;
@@ -26,7 +27,7 @@ public class Marks {
     public Marks() {
     }
 
-    public Marks(Long id, Double mark, LocalDateTime markDate,
+    public Marks(Long id, Double mark, LocalDate markDate,
                  String description, Students student, Subjects subject, ExamTypes type) {
         this.id = id;
         this.mark = mark;
@@ -53,11 +54,11 @@ public class Marks {
         this.mark = mark;
     }
 
-    public LocalDateTime getMarkDate() {
+    public LocalDate getMarkDate() {
         return markDate;
     }
 
-    public void setMarkDate(LocalDateTime markDate) {
+    public void setMarkDate(LocalDate markDate) {
         this.markDate = markDate;
     }
 

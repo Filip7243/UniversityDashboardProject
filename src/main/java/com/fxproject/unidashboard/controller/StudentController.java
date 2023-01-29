@@ -257,7 +257,7 @@ public class StudentController {
                 markInfoLabel.setText(
                         mark.getSubject().getName() + " | " +
                                 mark.getType().name() + " " + "| " +
-                                mark.getMarkDate().toLocalDate().toString()
+                                mark.getMarkDate().toString()
                 );
                 Label markLabel = new Label();
                 markLabel.setText(String.valueOf(mark.getMark()));
