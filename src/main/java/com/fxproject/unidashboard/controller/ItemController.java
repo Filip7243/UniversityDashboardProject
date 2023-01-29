@@ -50,14 +50,24 @@ public class ItemController {
             String role = ((Label) roleLabelPane.getChildren().get(0)).getText();
             switch (role.toLowerCase()) {
                 case "student" -> {
+                    Students student = sr.findStudentByAlbumId(Long.parseLong(albumId))
+                            .orElseThrow(() -> {
+                                Alert alert = new Alert(Alert.AlertType.WARNING, "Student doesn't exists");
+                                alert.show();
+                                return new RuntimeException(alert.getContentText());
+                            });
                     Stage stage = loadFXML(event, "modify-student.fxml");
-                    Students student = sr.findStudentByAlbumId(Long.parseLong(albumId)).orElseThrow();
                     assert stage != null;
                     stage.setUserData(student);
                 }
                 case "professor" -> {
+                    Professors professor = pr.findProfessorByAlbumId(Long.parseLong(albumId))
+                            .orElseThrow(() -> {
+                                Alert alert = new Alert(Alert.AlertType.WARNING, "Student doesn't exists");
+                                alert.show();
+                                return new RuntimeException(alert.getContentText());
+                            });
                     Stage stage = loadFXML(event, "modify-professor.fxml");
-                    Professors professor = pr.findProfessorByAlbumId(Long.parseLong(albumId)).orElseThrow();
                     assert stage != null;
                     stage.setUserData(professor);
                 }
@@ -82,7 +92,12 @@ public class ItemController {
             Stage stage;
             switch (role.toLowerCase()) {
                 case "student" -> {
-                    Students student = sr.findStudentByAlbumId(Long.parseLong(albumId)).orElseThrow();
+                    Students student = sr.findStudentByAlbumId(Long.parseLong(albumId))
+                            .orElseThrow(() -> {
+                                Alert alert = new Alert(Alert.AlertType.WARNING, "Student doesn't exists");
+                                alert.show();
+                                return new RuntimeException(alert.getContentText());
+                            });
                     stage = loadFXML(event, "student-details.fxml");
                     System.out.println(stage);
                     assert stage != null;
@@ -92,7 +107,12 @@ public class ItemController {
                     stage.setUserData(student);
                 }
                 case "professor" -> {
-                    Professors professor = pr.findProfessorByAlbumId(Long.parseLong(albumId)).orElseThrow();
+                    Professors professor = pr.findProfessorByAlbumId(Long.parseLong(albumId))
+                            .orElseThrow(() -> {
+                                Alert alert = new Alert(Alert.AlertType.WARNING, "Professor doesn't exists");
+                                alert.show();
+                                return new RuntimeException(alert.getContentText());
+                            });
                     stage = loadFXML(event, "professor-details.fxml");
                     assert stage != null;
                     stage.setWidth(1100);
@@ -107,8 +127,12 @@ public class ItemController {
             BorderPane idPane = (BorderPane) lookup.getChildren().get(0);
             Label idLabel = (Label) idPane.getChildren().get(0);
             // find from db lecture with id and create LectureDto
-            System.out.println(idLabel.getText());
-            Lectures lectures = lr.findLectureWithId(Long.parseLong(idLabel.getText())).orElseThrow();
+            Lectures lectures = lr.findLectureWithId(Long.parseLong(idLabel.getText()))
+                    .orElseThrow(() -> {
+                        Alert alert = new Alert(Alert.AlertType.WARNING, "Lecture doesn't exists");
+                        alert.show();
+                        return new RuntimeException(alert.getContentText());
+                    });
             // load fxml
             Stage stage = loadFXML(event, "lecture-details.fxml");
             assert stage != null;
@@ -138,11 +162,21 @@ public class ItemController {
                     VBox vbox = (VBox) scene.lookup("#itemsContainer");
                     switch (role.toLowerCase()) {
                         case "student" -> {
-                            Students student = sr.findStudentByAlbumId(Long.parseLong(albumId)).orElseThrow();
+                            Students student = sr.findStudentByAlbumId(Long.parseLong(albumId))
+                                    .orElseThrow(() -> {
+                                        Alert alert = new Alert(Alert.AlertType.WARNING, "Student doesn't exists");
+                                        alert.show();
+                                        return new RuntimeException(alert.getContentText());
+                                    });
                             personRepository.removePersonWithId(student.getId());
                         }
                         case "professor" -> {
-                            Professors professor = pr.findProfessorByAlbumId(Long.parseLong(albumId)).orElseThrow();
+                            Professors professor = pr.findProfessorByAlbumId(Long.parseLong(albumId))
+                                    .orElseThrow(() -> {
+                                        Alert alert = new Alert(Alert.AlertType.WARNING, "Professor doesn't exists");
+                                        alert.show();
+                                        return new RuntimeException(alert.getContentText());
+                                    });
                             personRepository.removePersonWithId(professor.getId());
                         }
                     }
@@ -156,7 +190,12 @@ public class ItemController {
                     VBox vbox = (VBox) scene.lookup("#itemsContainer");
                     BorderPane idPane = (BorderPane) lookup.getChildren().get(0);
                     Label idLabel = (Label) idPane.getChildren().get(0);
-                    Lectures lectures = lr.findLectureWithId(Long.parseLong(idLabel.getText())).orElseThrow();
+                    Lectures lectures = lr.findLectureWithId(Long.parseLong(idLabel.getText()))
+                            .orElseThrow(() -> {
+                                Alert alert = new Alert(Alert.AlertType.WARNING, "Lecture doesn't exists");
+                                alert.show();
+                                return new NullPointerException(alert.getContentText());
+                            });
                     lr.removeLecture(lectures);
                     vbox.getChildren().remove(lookup);
                     a.setAlertType(Alert.AlertType.INFORMATION);
@@ -164,8 +203,6 @@ public class ItemController {
                     a.show();
                 }
             }
-        } else {
-            // no value returned -> no button has been pressed
         }
 
 
@@ -180,7 +217,6 @@ public class ItemController {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(new Scene(root, 802.4, 610));
             stage.show();
-//            ((Node) (event.getSource())).getScene().getWindow().hide();
             return stage;
         } catch (IOException e) {
             e.printStackTrace();
